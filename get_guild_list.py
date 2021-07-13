@@ -1,3 +1,4 @@
+#%% Cell 1
 import numpy as np
 import json
 import os
@@ -10,11 +11,12 @@ from contextlib import closing
 from requests import get
 from requests.exceptions import RequestException
 
-from Bio import Entrez
-Entrez.api_key = "YOUR API KEY"
+# from Bio import Entrez
+# Entrez.api_key = "YOUR API KEY"
 
 import string
 
+#%% 
 def simple_get(url):
     """
     Attempts to get the content at `url` by making an HTTP GET request.
@@ -42,9 +44,16 @@ def is_good_response(resp):
             and content_type.find('html') > -1)
 
 url = 'https://www.warcraftlogs.com/zone/rankings/26#metric=progress&boss=2383'
+url = 'https://www.warcraftlogs.com/'
 html = simple_get(url)
 html = BeautifulSoup(html, 'html.parser')
 
-test = html.findAll('a', href=True, id=True)
+test = html.findAll('a')#, href=True, id=True)
 
-for a in test
+#%% 
+guild_list = []
+for a in test:
+    if a.get('class') and a['class'][0].find('main-table-guild')>0:
+        adsfasdf
+
+# %%
