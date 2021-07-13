@@ -8,14 +8,13 @@ from bs4 import BeautifulSoup
 
 browser = webdriver.Chrome('C:\Windows\chromeDriver')
 
-
 def find_val_in_str(string_in, search_string1, search_string2):
     idx1 = string_in.find(search_string1)+len(search_string1)
     idx2 = string_in.find(search_string2)
     return(string_in[idx1:idx2])
 
 guild_list = []
-for page_num in np.arange(1,4):
+for page_num in np.arange(1,200):
     
     url = 'https://www.warcraftlogs.com/zone/rankings/26#metric=progress&boss=2383'
     if page_num > 1:
@@ -27,7 +26,7 @@ for page_num in np.arange(1,4):
     else:
         time.sleep(3)
 
-    print('Loaded Website')
+    print('Pulling page: ' + str(page_num), ', List Length: ', str(len(guild_list)))
     html = browser.page_source
 
     html = BeautifulSoup(html, 'html.parser')
@@ -51,16 +50,11 @@ for page_num in np.arange(1,4):
                 elif a_str.find('main-table-guild')>-1:
                     guild_name = find_val_in_str(a_str,'-done">','</a')
                     guild_id = find_val_in_str(a_str,'/reports/','#fight=')
-            # asdfasdfasdf
+
             guild_list.append({'name': guild_name,
                             'id':   guild_id,
                             'rank': guild_rank,
                             'ilvl': guild_ilvl})
-
-    #%% 
-    print('Parsing Html')
-            
-    print('Done Html, page: ' + str(page_num))
         
 with open('guild_list.json', 'w', encoding = 'utf-8') as f:
     json.dump(guild_list, f, ensure_ascii=False, indent = 4)
