@@ -62,6 +62,10 @@ for page_num in np.arange(1,4):
             
     print('Done Html, page: ' + str(page_num))
         
+with open('guild_list.json', 'w', condoing = 'utf-8') as f:
+    json.dump(guild_list, f, ensure_ascii=False, indent = 4)
 
+with open('data.json', 'w') as f:
+    json.dump(guild_list, f)
 
 # %%
