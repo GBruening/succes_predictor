@@ -9,7 +9,8 @@ guild_info = {'guild_name': 'Dinosaur Cowboys',
               'realm': 'Area-52',
               'region': 'US'}
 
-api_key = '3cd25babb96e24aefff5bc1e007f8359'
+with open('..//Warcraftlogs//api_key.txt.') as f:
+    api_key = f.readlines()[0]
 
 link = "https://www.warcraftlogs.com:443/v1/reports/guild/" +  \
         guild_info['guild_name'] + "/" + guild_info['realm'] + "/" + \
