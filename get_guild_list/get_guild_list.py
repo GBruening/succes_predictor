@@ -1,59 +1,91 @@
-#%% Cell 1
+#%% 
 import numpy as np
+import time
 import json
-import os
-import pandas as pd
-import requests
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 
+browser = webdriver.Chrome('C:\Windows\chromeDriver')
 
-from contextlib import closing
-from requests import get
-from requests.exceptions import RequestException
+bosslist = []
+bosslist.append({'boss': 'shriek',
+                 'id':   '2398'})
+bosslist.append({'boss': 'hunt',
+                 'id':   '2418'})
+bosslist.append({'boss': 'sun_king',
+                 'id':   '2402'})
+bosslist.append({'boss': 'art',
+                 'id':   '2405'})
+bosslist.append({'boss': 'innvera',
+                 'id':   '2406'})
+bosslist.append({'boss': 'council',
+                 'id':   '2412'})
+bosslist.append({'boss': 'sludge',
+                 'id':   '2399'})
+bosslist.append({'boss': 'slg',
+                 'id':   '2417'})
+bosslist.append({'boss': 'sire',
+                 'id':   '2407'})
 
-# from Bio import Entrez
-# Entrez.api_key = "YOUR API KEY"
+def find_val_in_str(string_in, search_string1, search_string2):
+    idx1 = string_in.find(search_string1)+len(search_string1)
+    idx2 = string_in.find(search_string2)
+    return(string_in[idx1:idx2])
 
-import string
+#%%
+def get_guild_list(id_num):
+    guild_list = []
+    for page_num in np.arange(1,220):
+        
+        url = 'https://www.warcraftlogs.com/zone/rankings/26#metric=progress&boss=2383'
+        if page_num > 1:
+            url = url + '&page=' + str(page_num)
 
-#%% 
-def simple_get(url):
-    """
-    Attempts to get the content at `url` by making an HTTP GET request.
-    If the content-type of response is some kind of HTML/XML, return the
-    text content, otherwise return None.
-    """
-    try:
-        with closing(get(url, stream=True)) as resp:
-            if is_good_response(resp):
-                return resp.content
-            else:
-                return None
+        browser.get(url)
+        if page_num == 1:
+            time.sleep(10)
+        else:
+            time.sleep(3)
 
-    except RequestException as e:
-        print('Error during requests to {0} : {1}'.format(url, str(e)))
-        return None
+        print('Pulling page: ' + str(page_num), ', List Length: ', str(len(guild_list)))
+        html = browser.page_source
 
-def is_good_response(resp):
-    """
-    Returns True if the response seems to be HTML, False otherwise.
-    """
-    content_type = resp.headers['Content-Type'].lower()
-    return (resp.status_code == 200 
-            and content_type is not None 
-            and content_type.find('html') > -1)
+        html = BeautifulSoup(html, 'html.parser')
+        html_listed = html.findAll('a')#, href=True, id=True)
 
-url = 'https://www.warcraftlogs.com/zone/rankings/26#metric=progress&boss=2383'
-url = 'https://www.warcraftlogs.com/'
-html = simple_get(url)
-html = BeautifulSoup(html, 'html.parser')
+        tr_pull = html.findAll('tr')
 
-test = html.findAll('a')#, href=True, id=True)
+        for k, item in enumerate(tr_pull):
+            if str(item).find('sorting_1">')>-1:
+                td_pull = item.findAll('td')
+                guild_rank = find_val_in_str(str(td_pull[0]),'sorting_1">','\n\t</td>')
+                guild_ilvl = find_val_in_str(str(td_pull[3]),'nowrap="">','\n\n</td>')
 
-#%% 
-guild_list = []
-for a in test:
-    if a.get('class') and a['class'][0].find('main-table-guild')>0:
-        adsfasdf
+                a_pull = item.findAll('a')
+                for a in a_pull:
+                    a_str = str(a)
+                    if a_str.find('main-table-guild')>-1 and a_str.find('/">')>-1:
+                        guild_name = find_val_in_str(a_str,'/">','</a')
+                        guild_id = find_val_in_str(a_str,'/guild/id/','/">')
+                    elif a_str.find('main-table-guild')>-1:
+                        guild_name = find_val_in_str(a_str,'-done">','</a')
+                        guild_id = find_val_in_str(a_str,'/reports/','#fight=')
+                        
+                    if a_str.find('main-table-realm')>-1:
+                        guild_realm  = find_val_in_str(a_str,'">',')</')[0:-4]
+                        guild_region = find_val_in_str(a_str,'">',')</')[-2:len(a_str)]
 
-# %%
+                guild_list.append({'name': guild_name,
+                                'id':   guild_id,
+                                'realm': guild_realm,
+                                'region': guild_region,
+                                'rank': guild_rank,
+                                'ilvl': guild_ilvl})
+    return guild_list
+
+for boss in bosslist:
+    guild_list = get_guild_list(boss['id'])
+
+    with open('guild_list_'+boss['boss']+'.json', 'w', encoding = 'utf-8') as f:
+        json.dump(guild_list, f, ensure_ascii=False, indent = 4)
