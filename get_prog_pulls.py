@@ -14,7 +14,7 @@ with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
 
 # DC is guild 725
-guild_num = 511
+guild_num = 300
 guild_info = {'guild_name': guilds[guild_num]['name'],
               'realm': guilds[guild_num]['realm'].replace(' ','-'),
               'region': guilds[guild_num]['region']}
@@ -113,9 +113,9 @@ def dump_to_json(df, guild_info):
 dump_to_json(pull_df, guild_info)
 
 with open(guild_info['guild_name']+'_pulls.json', encoding = 'utf-8') as f:
-    DC_pulls = json.load(f)
-DC_pulls = pd.read_json(DC_pulls)
-DC_pulls['boss_num'] = np.zeros(len(DC_pulls))
+    pulls = json.load(f)
+pulls = pd.read_json(pulls)
+pulls['boss_num'] = np.zeros(len(pulls))
 
 def add_boss_nums(df):
 
@@ -137,7 +137,7 @@ def add_boss_nums(df):
         
     return df
 
-DC_pulls = add_boss_nums(DC_pulls)
+pulls = add_boss_nums(pulls)
 
 def get_prog_pulls(df, boss_name):
     if type(df.iloc[0]['start_time']) != 'int':
@@ -158,10 +158,10 @@ def combine_boss_df(df):
         only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), item)))
     return only_prog
 
-test1 = combine_boss_df(DC_pulls.copy(deep = True))
+pulls = combine_boss_df(pulls.copy(deep = True))
 
 # %%
-g = sns.FacetGrid(test1, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
+g = sns.FacetGrid(pulls, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
 # g.map(sns.scatterplot, 'pull_num','end_perc', color = 'blue')
 g.map(sns.regplot, 'pull_num','end_perc', lowess = True, 
     scatter_kws = {'color': 'black'},
@@ -190,5 +190,4 @@ for k, ax in enumerate(axes):
     ax.set_xlabel("Pull Number")
     ax.set_title(boss_names[k])
 plt.tight_layout()
-
-# %%
+#%%
