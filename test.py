@@ -8,6 +8,7 @@ from contextlib import closing
 import time
 from datetime import datetime
 import seaborn as sns
+from matplotlib import pyplot as plt
 
 bosslist = []
 bosslist.append({'boss': 'shriek',
@@ -146,18 +147,60 @@ with open('DC_pulls.json', 'w', encoding = 'utf-8') as f:
 with open('DC_pulls.json', encoding = 'utf-8') as f:
     DC_pulls = json.load(f)
 DC_pulls = pd.read_json(DC_pulls)
+DC_pulls['boss_num'] = np.zeros(len(DC_pulls))
 
-def get_prog_pulls(data_df, boss_name):
-    kills_df = data_df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('kill == True')
-    first_kill_time = min(kills_df['end_time'])
-    return data_df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time < '+str(first_kill_time))
+boss_nums = [5, 3, 2, 6, 1, 10, 8, 9, 4, 7]
+boss_names = [
+    'Shriekwing', \
+    'Huntsman Altimor',
+    'Hungering Destroyer', \
+    "Sun King's Salvation",
+    "Artificer Xy'mox", \
+    'Lady Inerva Darkvein', \
+    'The Council of Blood', \
+    'Sludgefist', \
+    'Stone Legion Generals', \
+    'Sire Denathrius']
 
-def add_pull_num(data_df):
-    data_df = data_df.sort_values(by = ['start_time'])
-    data_df.insert(loc = 0, column = 'pull_num', value = np.arange(len(data_df))+1)
-    return data_df
+# for k, item in enumerate(np.unique(DC_pulls['name'])):
+for k, item in enumerate(boss_names):
+    DC_pulls.loc[DC_pulls.index[DC_pulls['name'] == item],'boss_num'] = k
 
-temp = add_pull_num(get_prog_pulls(pull_df,'Sludgefist'))
+def get_prog_pulls(df, boss_name):
+    if type(df.iloc[0]['start_time']) != 'int':
+        df['start_time'] = [time.mktime(x.to_pydatetime().timetuple()) for x in df['start_time']]
+        df['end_time']   = [time.mktime(x.to_pydatetime().timetuple()) for x in df['end_time']]
+    kills_df = df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('kill == True')
+    first_kill_time = min(kills_df['start_time'])
+    return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time <= '+str(first_kill_time))
+
+def add_pull_num(df):
+    df = df.sort_values(by = ['start_time'])
+    df.insert(loc = 0, column = 'pull_num', value = np.arange(len(df))+1)
+    return df
+
+# def add_boss_num(df):
+
+def combine_boss_df(df):
+    only_prog = pd.DataFrame()
+    for k, item in enumerate(np.unique(DC_pulls['name'])):
+        only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), item)))
+    return only_prog
+
+test1 = pd.DataFrame()
+test1 = combine_boss_df(DC_pulls.copy(deep = True))
+
+temp = add_pull_num(get_prog_pulls(DC_pulls.copy(deep = True),'Sludgefist'))
 sns.scatterplot(data = temp, x = 'pull_num', y = 'end_perc')
+
+g = sns.FacetGrid(test1, col = 'boss_num', col_wrap = 4, sharex=False, sharey=False)
+g.map(sns.scatterplot, 'pull_num','end_perc')
+
+axes = g.axes.flatten()
+for k, ax in enumerate(axes):
+    ax.set_ylabel("Wipe Percent")
+    ax.set_xlabel("Pull Number")
+    ax.set_title(boss_names[k])
+plt.tight_layout()
 
 # %%
