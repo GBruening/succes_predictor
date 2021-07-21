@@ -19,18 +19,6 @@ prog_pulls = pd.read_json(prog_pulls)
 engine = create_engine('sqlite://',echo=False)
 
 prog_pulls.to_sql(name = 'nathria_prog', con = engine)
-# %%
-
-# %%
-import pyodbc
-server = 'localhost'
-database = 'postgres'
-username = 'postgres'
-password = 'postgres'
-
-con = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-cusor = cnsn.cursor()
-
 
 # %%
 import psycopg2
