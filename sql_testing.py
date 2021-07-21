@@ -34,3 +34,13 @@ cusor = cnsn.cursor()
 
 # %%
 import psycopg2
+server = 'localhost'
+database = 'dvdrental'
+username = 'postgres'
+password = 'postgres'
+
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+# curs = conn.cursor()
+# test = curs.execute('SELECT * FROM actor','dvd')
+
+my_table = pd.read_sql('select * from actor', conn)
