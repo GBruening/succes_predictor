@@ -14,7 +14,7 @@ with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
 
 # DC is guild 725
-guild_num = 300
+guild_num = 725
 guild_info = {'guild_name': guilds[guild_num]['name'],
               'realm': guilds[guild_num]['realm'].replace(' ','-'),
               'region': guilds[guild_num]['region']}
@@ -104,13 +104,18 @@ def get_all_logs(guild_info, api_key):
 pull_df = get_all_logs(guild_info = guild_info, api_key = api_key)
 
 # %% Save the DC pulls as json so I don't have to pull every time
-def dump_to_json(df, guild_info):
+def dump_to_json(df, guild_info, prog):
     json_pulls = df.to_json()
-    print('Dumping Json to: '+guild_info['guild_name']+'_pulls.json')
-    with open(guild_info['guild_name']+'_pulls.json', 'w', encoding = 'utf-8') as f:
-            json.dump(json_pulls, f, ensure_ascii=False, indent = 4)
+    if prog == 1:
+        print('Dumping Json to: '+guild_info['guild_name']+'_prog_pulls.json')
+        with open(guild_info['guild_name']+'_prog_pulls.json', 'w', encoding = 'utf-8') as f:
+                json.dump(json_pulls, f, ensure_ascii=False, indent = 4)
+    else:
+        print('Dumping Json to: '+guild_info['guild_name']+'_prog_pulls.json')
+        with open(guild_info['guild_name']+'_pulls.json', 'w', encoding = 'utf-8') as f:
+                json.dump(json_pulls, f, ensure_ascii=False, indent = 4)
 
-dump_to_json(pull_df, guild_info)
+dump_to_json(pull_df, guild_info, prog = 0)
 
 with open(guild_info['guild_name']+'_pulls.json', encoding = 'utf-8') as f:
     pulls = json.load(f)
@@ -154,11 +159,13 @@ def add_pull_num(df):
 
 def combine_boss_df(df):
     only_prog = pd.DataFrame()
-    for k, item in enumerate(np.unique(DC_pulls['name'])):
+    for k, item in enumerate(np.unique(df['name'])):
         only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), item)))
     return only_prog
 
-pulls = combine_boss_df(pulls.copy(deep = True))
+prog_pulls = combine_boss_df(pulls.copy(deep = True))
+
+dump_to_json(prog_pulls, guild_info, prog = 1)
 
 # %%
 g = sns.FacetGrid(pulls, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
