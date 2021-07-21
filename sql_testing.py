@@ -28,7 +28,28 @@ username = 'postgres'
 password = 'postgres'
 
 conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-# curs = conn.cursor()
+curs = conn.cursor()
+curs.execute("select exists(select * from information_schema.tables where table_name=%s)", ('actor',))
+curs.fetchone()[0]
 # test = curs.execute('SELECT * FROM actor','dvd')
 
 my_table = pd.read_sql('select * from actor', conn)
+
+#%%
+from sqlalchemy import create_engine
+server = 'localhost'
+database = 'nathria_prog'
+username = 'postgres'
+password = 'postgres'
+
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+curs.execute("select exists(select * from information_schema.tables where table_name=%s)", (guild_info['guild_name'],))
+
+if not curs.fetchone()[0]:
+    prog_pulls.to_sql(guild_info['guild_name'],engine)
+
+
+
+# %%
