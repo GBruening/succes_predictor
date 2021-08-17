@@ -2,6 +2,7 @@
 import numpy as np
 import json
 import os
+from numpy.lib.type_check import _asfarray_dispatcher
 import pandas as pd
 import requests
 from contextlib import closing
@@ -106,7 +107,6 @@ def dump_to_json(df, guild_info, prog):
         with open(guild_info['guild_name']+'_pulls.json', 'w', encoding = 'utf-8') as f:
                 json.dump(json_pulls, f, ensure_ascii=False, indent = 4)
 
-
 def add_boss_nums(df):
 
     boss_nums = [5, 3, 2, 6, 1, 10, 8, 9, 4, 7]
@@ -141,9 +141,21 @@ def add_pull_num(df):
     return df
 
 def combine_boss_df(df):
+    boss_names = [
+        'Shriekwing', \
+        'Huntsman Altimor',
+        'Hungering Destroyer', \
+        "Sun King's Salvation",
+        "Artificer Xy'mox", \
+        'Lady Inerva Darkvein', \
+        'The Council of Blood', \
+        'Sludgefist', \
+        'Stone Legion Generals', \
+        'Sire Denathrius']
     only_prog = pd.DataFrame()
     for k, boss_name in enumerate(np.unique(df['name'])):
-        only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), boss_name)))
+        if boss_name in boss_names:
+            only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), boss_name)))
     return only_prog
 
 # Open guild list
@@ -176,23 +188,29 @@ for guild_num in np.arange(len(guilds)):
     guild_info = {'guild_name': guilds[guild_num]['name'],
                 'realm': guilds[guild_num]['realm'].replace(' ','-'),
                 'region': guilds[guild_num]['region']}
-    print('Pulling data from '+guild_info['guild_name']+'.')
-    with open('..//Warcraftlogs//api_key.txt.') as f:
-        api_key = f.readlines()[0]
+    if not guild_info['guild_name'] in already_added_guilds:
+        print('Pulling data from '+guild_info['guild_name']+'.')
+        with open('..//Warcraftlogs//api_key.txt.') as f:
+            api_key = f.readlines()[0]
 
-    pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
+        try:
+            pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
 
-    if len(pulls) != 0:
-        pulls['boss_num'] = np.zeros(len(pulls))
+            if len(pulls) != 0:
+                pulls['boss_num'] = np.zeros(len(pulls))
 
-        pulls = add_boss_nums(pulls)
+                pulls = add_boss_nums(pulls)
 
-        prog_pulls = combine_boss_df(pulls.copy(deep = True))
-        prog_pulls['guild_name'] = guild_info['guild_name']
+                prog_pulls = combine_boss_df(pulls.copy(deep = True))
+                prog_pulls['guild_name'] = guild_info['guild_name']
 
-        if not guild_info['guild_name'] in np.unique(already_added_guilds):
-            print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
-            prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
+                # if not guild_info['guild_name'] in np.unique(already_added_guilds):
+                print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
+                prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
+        except:
+            print("Couldn't pull Name: "+guild_info['guild_name'] + \
+                        ', Realm: '+guild_info['realm'] + \
+                        ', Region: '+guild_info['region'])
 
 
 #%%
