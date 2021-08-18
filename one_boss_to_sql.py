@@ -184,33 +184,33 @@ already_added_guilds = [item[0] for item in curs.fetchall()]
 # DC is guild 725
 # for guild_num in np.arange(len(guilds)):
 # guild_num = 60
-for guild_num in np.arange(len(guilds)):
+for guild_num in np.arange(350,len(guilds)):
     guild_info = {'guild_name': guilds[guild_num]['name'],
                 'realm': guilds[guild_num]['realm'].replace(' ','-'),
                 'region': guilds[guild_num]['region']}
     if not guild_info['guild_name'] in already_added_guilds:
-        print('Pulling data from '+guild_info['guild_name']+'.')
+        print('Pulling data from '+guild_info['guild_name']+'. Num '+str(guild_num)+'.')
         with open('..//Warcraftlogs//api_key.txt.') as f:
             api_key = f.readlines()[0]
 
-        try:
-            pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
+        # try:
+        pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
 
-            if len(pulls) != 0:
-                pulls['boss_num'] = np.zeros(len(pulls))
+        if len(pulls) != 0:
+            pulls['boss_num'] = np.zeros(len(pulls))
 
-                pulls = add_boss_nums(pulls)
+            pulls = add_boss_nums(pulls)
 
-                prog_pulls = combine_boss_df(pulls.copy(deep = True))
-                prog_pulls['guild_name'] = guild_info['guild_name']
+            prog_pulls = combine_boss_df(pulls.copy(deep = True))
+            prog_pulls['guild_name'] = guild_info['guild_name']
 
-                # if not guild_info['guild_name'] in np.unique(already_added_guilds):
-                print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
-                prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
-        except:
-            print("Couldn't pull Name: "+guild_info['guild_name'] + \
-                        ', Realm: '+guild_info['realm'] + \
-                        ', Region: '+guild_info['region'])
+            # if not guild_info['guild_name'] in np.unique(already_added_guilds):
+            print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
+            prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
+        # except:
+        #     print("Couldn't pull Name: "+guild_info['guild_name'] + \
+        #                 ', Realm: '+guild_info['realm'] + \
+        #                 ', Region: '+guild_info['region'])
 
 
-#%%
+ # %%
