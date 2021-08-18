@@ -10,10 +10,6 @@ from bs4 import BeautifulSoup
 from contextlib import closing
 from requests import get
 from requests.exceptions import RequestException
-
-# from Bio import Entrez
-# Entrez.api_key = "YOUR API KEY"
-
 import string
 
 #%% 

@@ -2,6 +2,7 @@
 import numpy as np
 import json
 import os
+from numpy.lib.type_check import _asfarray_dispatcher
 import pandas as pd
 import requests
 from contextlib import closing
@@ -10,17 +11,7 @@ from datetime import datetime
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
-    guilds = json.load(f)
-
-# DC is guild 725
-guild_num = 725
-guild_info = {'guild_name': guilds[guild_num]['name'],
-              'realm': guilds[guild_num]['realm'].replace(' ','-'),
-              'region': guilds[guild_num]['region']}
-
-with open('..//Warcraftlogs//api_key.txt.') as f:
-    api_key = f.readlines()[0]
+# %% Define Functions
 
 def is_good_response_json(resp):
     """
@@ -64,12 +55,15 @@ def get_all_logs(guild_info, api_key):
     fight_link = 'https://www.warcraftlogs.com:443/v1/report/fights/'
     pull_df = []
     sl_release_ms = datetime.fromisoformat('2020-11-20').timestamp()*1000
+    sanctum_release_ms = datetime.fromisoformat('2021-06-05').timestamp()*1000
     past_day = 0
 
     fight_starts_ms = []
     for k, single_log in enumerate(log_list):
         if single_log['start'] < sl_release_ms:
             break
+        if single_log['start'] > sanctum_release_ms:
+            continue
         date = datetime.fromtimestamp(single_log['start']/1000)
         log_start_ms = single_log['start']
         fight_id = single_log['id']
@@ -98,12 +92,10 @@ def get_all_logs(guild_info, api_key):
                                             'zoneDifficulty': fight['difficulty'],
                                             'start_time': log_start_ms+fight['start_time'],
                                             'end_time': log_start_ms+fight['end_time']})
-        print(k)
+        if k % 25 == 0:
+            print(k)
     return pd.DataFrame(pull_df)
 
-pull_df = get_all_logs(guild_info = guild_info, api_key = api_key)
-
-# %% Save the DC pulls as json so I don't have to pull every time
 def dump_to_json(df, guild_info, prog):
     json_pulls = df.to_json()
     if prog == 1:
@@ -114,13 +106,6 @@ def dump_to_json(df, guild_info, prog):
         print('Dumping Json to: '+guild_info['guild_name']+'_prog_pulls.json')
         with open(guild_info['guild_name']+'_pulls.json', 'w', encoding = 'utf-8') as f:
                 json.dump(json_pulls, f, ensure_ascii=False, indent = 4)
-
-dump_to_json(pull_df, guild_info, prog = 0)
-
-with open(guild_info['guild_name']+'_pulls.json', encoding = 'utf-8') as f:
-    pulls = json.load(f)
-pulls = pd.read_json(pulls)
-pulls['boss_num'] = np.zeros(len(pulls))
 
 def add_boss_nums(df):
 
@@ -142,12 +127,10 @@ def add_boss_nums(df):
         
     return df
 
-pulls = add_boss_nums(pulls)
-
 def get_prog_pulls(df, boss_name):
-    if type(df.iloc[0]['start_time']) != 'int':
-        df['start_time'] = [time.mktime(x.to_pydatetime().timetuple()) for x in df['start_time']]
-        df['end_time']   = [time.mktime(x.to_pydatetime().timetuple()) for x in df['end_time']]
+    # if type(df.iloc[0]['start_time']) != 'int':
+    #     df['start_time'] = [time.mktime(x.to_pydatetime().timetuple()) for x in df['start_time']]
+    #     df['end_time']   = [time.mktime(x.to_pydatetime().timetuple()) for x in df['end_time']]
     kills_df = df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('kill == True')
     first_kill_time = min(kills_df['start_time'])
     return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time <= '+str(first_kill_time))
@@ -158,43 +141,76 @@ def add_pull_num(df):
     return df
 
 def combine_boss_df(df):
+    boss_names = [
+        'Shriekwing', \
+        'Huntsman Altimor',
+        'Hungering Destroyer', \
+        "Sun King's Salvation",
+        "Artificer Xy'mox", \
+        'Lady Inerva Darkvein', \
+        'The Council of Blood', \
+        'Sludgefist', \
+        'Stone Legion Generals', \
+        'Sire Denathrius']
     only_prog = pd.DataFrame()
-    for k, item in enumerate(np.unique(df['name'])):
-        only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), item)))
+    for k, boss_name in enumerate(np.unique(df['name'])):
+        if boss_name in boss_names:
+            only_prog = only_prog.append(add_pull_num(get_prog_pulls(df.copy(deep = True), boss_name)))
     return only_prog
 
-prog_pulls = combine_boss_df(pulls.copy(deep = True))
+# Open guild list
+with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
+    guilds = json.load(f)
 
-dump_to_json(prog_pulls, guild_info, prog = 1)
+# %% Setup the SQL Stuff
+from sqlalchemy import create_engine
+import psycopg2
+server = 'localhost'
+database = 'nathria_prog'
+username = 'postgres'
+password = 'postgres'
 
-# %%
-g = sns.FacetGrid(pulls, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
-# g.map(sns.scatterplot, 'pull_num','end_perc', color = 'blue')
-g.map(sns.regplot, 'pull_num','end_perc', lowess = True, 
-    scatter_kws = {'color': 'black'},
-    line_kws = {'color': 'blue'})
-g.fig.suptitle(guild_info['guild_name']+' Castle Nathria Prog', size = 20)
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+curs.execute('select * from "nathria_prog";')
+temp_df = pd.DataFrame(curs.fetchall())
+temp_df.columns = [desc[0] for desc in curs.description]
 
-boss_nums = [5, 3, 2, 6, 1, 10, 8, 9, 4, 7]
-boss_names = [
-    'Shriekwing', \
-    'Huntsman Altimor',
-    'Hungering Destroyer', \
-    "Sun King's Salvation",
-    "Artificer Xy'mox", \
-    'Lady Inerva Darkvein', \
-    'The Council of Blood', \
-    'Sludgefist', \
-    'Stone Legion Generals', \
-    'Sire Denathrius']
+curs.execute('select distinct guild_name from nathria_prog')
+already_added_guilds = [item[0] for item in curs.fetchall()]
 
-# for ax in g.axes.flat:
-#     ax.scatter(x = 'pull_num', y = 'end_perc', lowess = True)
+# %% Get new data.
+# DC is guild 725
+# for guild_num in np.arange(len(guilds)):
+# guild_num = 60
+for guild_num in np.arange(len(guilds)):
+    guild_info = {'guild_name': guilds[guild_num]['name'],
+                'realm': guilds[guild_num]['realm'].replace(' ','-'),
+                'region': guilds[guild_num]['region']}
+    if not guild_info['guild_name'] in already_added_guilds:
+        print('Pulling data from '+guild_info['guild_name']+'.')
+        with open('..//Warcraftlogs//api_key.txt.') as f:
+            api_key = f.readlines()[0]
 
-axes = g.axes.flatten()
-for k, ax in enumerate(axes):
-    ax.set_ylabel("Wipe Percent")
-    ax.set_xlabel("Pull Number")
-    ax.set_title(boss_names[k])
-plt.tight_layout()
+        try:
+            pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
+
+            if len(pulls) != 0:
+                pulls['boss_num'] = np.zeros(len(pulls))
+
+                pulls = add_boss_nums(pulls)
+
+                prog_pulls = combine_boss_df(pulls.copy(deep = True))
+                prog_pulls['guild_name'] = guild_info['guild_name']
+
+                # if not guild_info['guild_name'] in np.unique(already_added_guilds):
+                print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
+                prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
+        except:
+            print("Couldn't pull Name: "+guild_info['guild_name'] + \
+                        ', Realm: '+guild_info['realm'] + \
+                        ', Region: '+guild_info['region'])
+
+
 #%%
