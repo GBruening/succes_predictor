@@ -188,7 +188,7 @@ already_added_length = len(already_added_guilds)
 # DC is guild 725
 # for guild_num in np.arange(len(guilds)):
 # guild_num = 60
-for guild_num in np.arange(232,len(guilds)):
+for guild_num in np.arange(350,len(guilds)):
     guild_info = {'guild_name': guilds[guild_num]['name'],
                 'realm': guilds[guild_num]['realm'].replace(' ','-').replace("'",''),
                 'region': guilds[guild_num]['region']}
