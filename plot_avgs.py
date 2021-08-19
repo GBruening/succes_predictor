@@ -25,14 +25,17 @@ curs.execute('select * from "nathria_prog";')
 temp_df = pd.DataFrame(curs.fetchall())
 temp_df.columns = [desc[0] for desc in curs.description]
 
-test = temp_df.groupby(['pull_num','boss_num'], as_index=False).mean()
+avg_df = temp_df.groupby(['pull_num','boss_num'], as_index=False).mean()
+sd_df = temp_df.groupby(['pull_num','boss_num'], as_index=False).std()
 # sns.scatterplot(x = 'pull_num', y = 'end_perc', data = test)
 
-g = sns.FacetGrid(test, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
-# g.map(sns.scatterplot, 'pull_num','end_perc', color = 'blue')
+g = sns.FacetGrid(avg_df, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
 g.map(sns.regplot, 'pull_num','end_perc', lowess = True, scatter = False,
     scatter_kws = {'color': 'black'},
-    line_kws = {'color': 'blue'})
+    line_kws = {'color': 'red'})
+
+# g = sns.FacetGrid(sd_df, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
+# g.map(sns.scatterplot, 'pull_num','end_perc')
 # g.map(sns.regplot, 'pull_num','end_perc', lowess = True, scatter = False,
 #     scatter_kws = {'color': 'black'},
 #     line_kws = {'color': 'blue'})
@@ -51,8 +54,12 @@ boss_names = [
     'Stone Legion Generals', \
     'Sire Denathrius']
 
-# for ax in g.axes.flat:
-#     ax.scatter(x = 'pull_num', y = 'end_perc', lowess = True)
+for k, ax in enumerate(g.axes.flat):
+    avg_mean = avg_df.query('boss_num == '+str(k))['end_perc']
+    sd_end_perc = sd_df.query('boss_num == '+str(k))['end_perc']
+    sd_pull = sd_df.query('boss_num == '+str(k))['pull_num']
+    ax.fill_between(x = sd_pull, y1 = avg_mean-sd_end_perc, y2 = avg_mean + sd_end_perc)
+    # ax.scatter(x = 'pull_num', y = 'end_perc', lowess = True)
 
 axes = g.axes.flatten()
 for k, ax in enumerate(axes):
