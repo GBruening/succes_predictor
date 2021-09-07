@@ -221,7 +221,8 @@ for guild_num in np.arange(1075,len(guilds)):
             # else:
             #     already_added_length = pull_length
         # except:
-            # print("Couldn't pull Name: "+guild_info['guild_name'] + \
+            # print("Couldn't pull Name: "+guild_i6+52
+            # nfo['guild_name'] + \
             #             ', Realm: '+guild_info['realm'] + \
             #             ', Region: '+guild_info['region'])
 

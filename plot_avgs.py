@@ -27,7 +27,6 @@ temp_df.columns = [desc[0] for desc in curs.description]
 
 avg_df = temp_df.groupby(['pull_num','boss_num'], as_index=False).mean()
 sd_df = temp_df.groupby(['pull_num','boss_num'], as_index=False).std()
-# sns.scatterplot(x = 'pull_num', y = 'end_perc', data = test)
 
 g = sns.FacetGrid(avg_df, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
 g.map(sns.regplot, 'pull_num','end_perc', lowess = True, scatter = False,
