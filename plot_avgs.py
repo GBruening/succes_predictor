@@ -21,17 +21,20 @@ engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_pr
 conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
 curs = conn.cursor()
 
-curs.execute('select * from "nathria_prog_padded";')
-df = pd.DataFrame(curs.fetchall())
-df.columns = [desc[0] for desc in curs.description]
+# curs.execute('select * from "nathria_prog_padded";')
+# df = pd.DataFrame(curs.fetchall())
+# df.columns = [desc[0] for desc in curs.description]
+# avg_df = df.groupby(['pull_num','boss_num'], as_index=False).mean()
+# sd_df = df.groupby(['pull_num','boss_num'], as_index=False).std()
 
-avg_df = df.groupby(['pull_num','boss_num'], as_index=False).mean()
-sd_df = df.groupby(['pull_num','boss_num'], as_index=False).std()
+curs.execute('select * from "nathria_prog_avg";')
+avg_df = pd.DataFrame(curs.fetchall())
+avg_df.columns = [desc[0] for desc in curs.description]
+curs.execute('select * from "nathria_prog_std";')
+sd_df = pd.DataFrame(curs.fetchall())
+sd_df.columns = [desc[0] for desc in curs.description]
 
 g = sns.FacetGrid(avg_df, col = 'boss_num', col_wrap = 4, sharex=False, sharey=True)
-# g.map(sns.regplot, 'pull_num','end_perc', lowess = True, scatter = False,
-#     scatter_kws = {'color': 'black'},
-#     line_kws = {'color': 'red'})
 g.map(sns.lineplot, 'pull_num','end_perc', color = 'red')
 
 boss_nums = [5, 3, 2, 6, 1, 10, 8, 9, 4, 7]
