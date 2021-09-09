@@ -187,8 +187,8 @@ already_added_length = len(already_added_guilds)
 # %% Get new data.
 # DC is guild 725
 # for guild_num in np.arange(len(guilds)):
-# guild_num = 60
-for guild_num in np.arange(350,len(guilds)):
+# guild_num = 1075
+for guild_num in np.arange(1075,len(guilds)):
     guild_info = {'guild_name': guilds[guild_num]['name'],
                 'realm': guilds[guild_num]['realm'].replace(' ','-').replace("'",''),
                 'region': guilds[guild_num]['region']}
@@ -221,9 +221,59 @@ for guild_num in np.arange(350,len(guilds)):
             # else:
             #     already_added_length = pull_length
         # except:
-            # print("Couldn't pull Name: "+guild_info['guild_name'] + \
+            # print("Couldn't pull Name: "+guild_i6+52
+            # nfo['guild_name'] + \
             #             ', Realm: '+guild_info['realm'] + \
             #             ', Region: '+guild_info['region'])
 
 
-#%%
+
+#%% Filling in with 0's
+fdsa
+from sqlalchemy import create_engine
+import psycopg2
+server = 'localhost'
+database = 'nathria_prog'
+username = 'postgres'
+password = 'postgres'
+
+if 'conn' in locals():
+    conn.close()
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+
+curs.execute('select * from "nathria_prog";')
+padded_df = pd.DataFrame(curs.fetchall())
+padded_df.columns = [desc[0] for desc in curs.description]
+
+for boss_num in np.unique(df['boss_num']):
+    boss_df = df.query('boss_num == '+str(boss_num))
+    max_pulls = max(boss_df['pull_num'])
+    for guild in np.unique(boss_df['guild_name']):
+        print('Boss Number: '+str(boss_num)+' Guild: '+str(guild))
+        guild_df = boss_df.query('guild_name == "'+str(guild)+'"')
+        max_guild_pull = max(guild_df['pull_num'])
+        df_add = guild_df.loc[np.repeat(guild_df.index.values[-1],max_pulls-max_guild_pull)]
+        df_add['pull_num'] = [item+k+1 for k, item in enumerate(df_add['pull_num'])]
+        guild_df.to_sql('nathria_prog_padded', engine, if_exists = 'append', index = False)
+        df_add.to_sql('nathria_prog_padded', engine, if_exists = 'append', index = False)
+        padded_df = padded_df.append(df_add, ignore_index = True)
+
+#%% Avg/STD sql addition
+
+if 'conn' in locals():
+    conn.close()
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+
+curs.execute('select * from "nathria_prog_padded";')
+df = pd.DataFrame(curs.fetchall())
+df.columns = [desc[0] for desc in curs.description]
+
+avg_df = df.groupby(['pull_num','boss_num'], as_index=False).mean()
+sd_df = df.groupby(['pull_num','boss_num'], as_index=False).std()
+
+avg_df.to_sql('nathria_prog_avg', engine, if_exists = 'replace', index = False)
+sd_df.to_sql('nathria_prog_std', engine, if_exists = 'replace', index = False)
