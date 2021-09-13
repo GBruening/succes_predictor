@@ -30,52 +30,82 @@ curs = conn.cursor()
 
 def get_prog_hours(guild_name):
     
+    sql_table_exist = curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+        ('nathria_guild_raid_hours',))
+    if curs.fetchone()[0]:
+        curs.execute("select * from nathria_guild_raid_hours where guild_name = '"+str(guild_name)+"'")
+        guild_already_added = pd.DataFrame(curs.fetchall())
+        guild_already_added.columns = [desc[0] for desc in curs.description]
+    else:
+        guild_already_added = []        
+
+    if len(guild_already_added) == 1:
+        print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
+        return None
+
     curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
     guild_pulls = pd.DataFrame(curs.fetchall())
     guild_pulls.columns = [desc[0] for desc in curs.description]
+    guild_pulls = guild_pulls.sort_values(by = ['boss_num','pull_num'])
 
     daily_hours = []
-    weekly_hours = []
+    weekly_hours = [0]
     first_daily_pull = 0
     pull_times = np.sort(guild_pulls['start_time'])
     pull_end_times = np.sort(guild_pulls['end_time'])
-    cur_day = datetime.fromtimestamp(pull_times[0]/1e3).day
-    cur_week = datetime.fromtimestamp(pull_times[0]/1e3).isocalendar()[1]
+    cur_day = datetime.fromtimestamp(pull_times[0]).day
+    cur_week = datetime.fromtimestamp(pull_times[0]).isocalendar()[1]
 
-    for k, row in guild_pulls.sort_values(by = 'start_time').iterrows():
-        if datetime.fromtimestamp(row['start_time']/1e3).day != cur_day:
-            first_daily_pull_time = pull_times[first_daily_pull]
-            last_daily_pull_time = pull_end_times[k-1]
-            time_delta = datetime.fromtimestamp(last_daily_pull_time/1e3)-\
-                datetime.fromtimestamp(first_daily_pull_time/1e3)
+    days = [datetime.fromtimestamp(x).day for x in pull_times]
+    weeks = [datetime.fromtimestamp(x).isocalendar()[1] for x in pull_times]
+
+    cur_day = days[0]
+    cur_week = weeks[0]
+    for k, day in enumerate(days):
+        if day != cur_day:
+            time_delta = datetime.fromtimestamp(pull_end_times[k-1])-\
+                datetime.fromtimestamp(pull_times[first_daily_pull])
             if time_delta.total_seconds()/3600 > 10:
                 break
             daily_hours.append(time_delta.total_seconds()/3600)
-            cur_day = datetime.fromtimestamp(row['start_time']/1e3).day
+            cur_day = day
             first_daily_pull = k
-        if datetime.fromtimestamp(row['start_time']/1e3).isocalendar()[1] != cur_week:
-            first_daily_pull_time = pull_times[first_daily_pull]
-            last_daily_pull_time = pull_end_times[k-1]
-            time_delta = datetime.fromtimestamp(last_daily_pull_time/1e3)-\
-                datetime.fromtimestamp(first_daily_pull_time/1e3)
-            if time_delta.total_seconds()/3600 > 10:
-                break
-            weekly_hours.append(time_delta.total_seconds()/3600)
-            cur_day = datetime.fromtimestamp(row['start_time']/1e3).day
-            first_daily_pull = k
+
+            if weeks[k] != cur_week:
+                weekly_hours.append(0)
+                cur_week = weeks[k]
+
+            if len(weekly_hours)>0:
+                weekly_hours[-1] += time_delta.total_seconds()/3600
+            else:
+                weekly_hours[0] += time_delta.total_seconds()/3600
+
     
     guild_daily_hours = int(stats.mode(np.round(np.array(daily_hours)*2)/2)[0])
     guild_weekly_hours = int(stats.mode(np.round(np.array(weekly_hours)*2)/2)[0])
     guild_hours = pd.DataFrame({
-        'guild_name': guild_name,
-        'daily_hours': guild_daily_hours,
-        'weekly_hours': guild_weekly_hours
+        'guild_name': [guild_name],
+        'daily_hours': [guild_daily_hours],
+        'weekly_hours': [guild_weekly_hours]
     })
+    print('Adding guild '+str(guild_name)+' to nathria_guild_raid_hours.')
     guild_hours.to_sql('nathria_guild_raid_hours', engine, if_exists = 'append', index = False)
 
-
 def get_boss_prog_time(guild_name):
+    
+    sql_table_exist = curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+        ('nathria_guild_bossprog_hours',))
+    if curs.fetchone()[0]:
+        curs.execute("select * from nathria_guild_bossprog_hours where guild_name = '"+str(guild_name)+"'")
+        guild_already_added = pd.DataFrame(curs.fetchall())
+        guild_already_added.columns = [desc[0] for desc in curs.description]
+    else:
+        guild_already_added = []        
 
+    if len(guild_already_added) == 10:
+        print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
+        return None
+    
     curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
     guild_pulls = pd.DataFrame(curs.fetchall())
     guild_pulls.columns = [desc[0] for desc in curs.description]
@@ -108,11 +138,14 @@ def get_boss_prog_time(guild_name):
 
     boss_prog_time = np.trunc(np.array(boss_prog_time)*1e5)/1e5
     boss_prog_df = pd.DataFrame({
-        'name': guild_pulls.groupby(['boss_num','name'],as_index=False).mean()['name'][1],
-        'prog_time': boss_prog_time
+        'name': guild_pulls.groupby(['boss_num','name'],as_index=False).mean()['name'],
+        'prog_time': boss_prog_time, 
+        'guild_name': guild_name
     })
+    print('Adding guild '+str(guild_name)+' to nathria_guild_bossprog_hours.')
     boss_prog_df.to_sql('nathria_guild_bossprog_hours', engine, if_exists = 'append', index = False)
 
-guild_hours = int(stats.mode(np.round(np.array(prog_hours)*2)/2)[0])
+
+
 
 #%%
