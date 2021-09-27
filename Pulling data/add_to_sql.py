@@ -11,6 +11,10 @@ from datetime import datetime
 import seaborn as sns
 from matplotlib import pyplot as plt
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 # %% Define Functions
 
 def is_good_response_json(resp):
@@ -68,7 +72,7 @@ def get_all_logs(guild_info, api_key):
         log_start_ms = single_log['start']
         fight_id = single_log['id']
         log = simple_request(fight_link + fight_id + '?api_key=' + api_key)
-        time.sleep(.5)
+        # time.sleep(.25)
 
         if log:
             log = log.json()
@@ -136,7 +140,8 @@ def get_prog_pulls(df, boss_name):
         first_kill_time = min(kills_df['start_time'])
     else:
         first_kill_time = min(df.query('name == "'+boss_name+'"')['start_time'])
-    return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time <= '+str(first_kill_time))
+    # return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time <= '+str(first_kill_time))
+    return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5')
 
 def add_pull_num(df):
     df = df.sort_values(by = ['start_time'])
@@ -162,7 +167,7 @@ def combine_boss_df(df):
     return only_prog
 
 # Open guild list
-with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
+with open('../get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
 
 # %% Setup the SQL Stuff
@@ -181,22 +186,34 @@ temp_df = pd.DataFrame(curs.fetchall())
 temp_df.columns = [desc[0] for desc in curs.description]
 np.unique(temp_df['guild_name'])
 
-curs.execute('select distinct guild_name from nathria_prog')
-already_added_guilds = [item[0] for item in curs.fetchall()]
-already_added_length = len(already_added_guilds)
+curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+    ('nathria_prog_allpulls',))
+if curs.fetchone()[0]:
+    # curs.execute("select * from nathria_prog_allpulls where guild_name = '"+str(guild_name)+"'")
+    curs.execute('select distinct guild_name from nathria_prog_allpulls')
+    already_added_guilds = [item[0] for item in curs.fetchall()]
+    already_added_length = len(already_added_guilds)
+else:
+    already_added_guilds = []
+    already_added_length = 0
+    # if len(already_added_guilds) == 1:
+        # print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
+        # return None     
+# curs.execute('select distinct guild_name from nathria_prog_allpulls')
+# already_added_guilds = [item[0] for item in curs.fetchall()]
+# already_added_length = len(already_added_guilds)
 # %% Get new data.
 # DC is guild 725
 # for guild_num in np.arange(len(guilds)):
 # guild_num = 1075
-for guild_num in np.arange(1075,len(guilds)):
+for guild_num in np.arange(1,len(guilds)):
     guild_info = {'guild_name': guilds[guild_num]['name'],
                 'realm': guilds[guild_num]['realm'].replace(' ','-').replace("'",''),
                 'region': guilds[guild_num]['region']}
     if not guild_info['guild_name'] in already_added_guilds:
         print('Pulling data from '+guild_info['guild_name']+'. Number '+str(guild_num)+'.')
-        with open('..//Warcraftlogs//api_key.txt.') as f:
+        with open('..//..//Warcraftlogs//api_key.txt.') as f:
             api_key = f.readlines()[0]
-
         try:
             pulls = get_all_logs(guild_info = guild_info, api_key = api_key)
         except:
@@ -209,13 +226,16 @@ for guild_num in np.arange(1075,len(guilds)):
 
             prog_pulls = combine_boss_df(pulls.copy(deep = True))
             prog_pulls['guild_name'] = guild_info['guild_name']
+            prog_pulls['realm'] = guild_info['realm']
+            prog_pulls['region'] = guild_info['region']
+            prog_pulls['guild_num'] = guild_num
 
             # if not guild_info['guild_name'] in np.unique(already_added_guilds):
             print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
-            prog_pulls.to_sql('nathria_prog', engine, if_exists='append')
+            prog_pulls.to_sql('nathria_prog_allpulls', engine, if_exists='append')
 
-            curs.execute('select distinct guild_name from nathria_prog')
-            pull_length = len([item[0] for item in curs.fetchall()])
+            # curs.execute('select distinct guild_name from nathria_prog')
+            # pull_length = len([item[0] for item in curs.fetchall()])
             # if already_added_length == pull_length:
             #     break
             # else:
