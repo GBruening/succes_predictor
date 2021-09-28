@@ -7,12 +7,16 @@ import requests
 from contextlib import closing
 import time
 from datetime import datetime
+from requests.models import HTTPBasicAuth
 import seaborn as sns
 from matplotlib import pyplot as plt
+from requests import get
+from bs4 import BeautifulSoup
 
 from dotenv import load_dotenv, dotenv_values
 from requests_oauthlib import OAuth2, OAuth2Session
 
+#%%
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
@@ -20,23 +24,75 @@ os.chdir(dname)
 env_vars = dotenv_values('config.env')
 client_id = env_vars['id']
 client_secret = env_vars['secret']
+code = env_vars['code']
 
 callback_uri = "http://localhost:8080"
 authorize_url = "https://www.warcraftlogs.com/oauth/authorize"
 token_url = "https://www.warcraftlogs.com/oauth/token"
 
-# authorization_redirect_url = authorize_url + '?response_type=code&client_id=' + client_id + '&redirect_uri=' + callback_uri + '&scope=openid'
+# warcraftlogs = OAuth2Session(client_id, redirect_uri=callback_uri)
+# authorization_url, state = warcraftlogs.authorization_url(authorize_url,
+#         access_type="offline")
 
-warcraftlogs = OAuth2Session(client_id, redirect_uri=callback_uri)
-authorization_url, state = warcraftlogs.authorization_url(authorize_url,
-        access_type="offline")
-# session['oauth_state'] = state
+# token = warcraftlogs.fetch_token(token_url = token_url,
+#                                  auth = HTTPBasicAuth(client_id, client_secret),
+#                                  code = code)
+# access_token = token['access_token']
+# refresh_token = token['refresh_token']
+# with open('refresh_token.env', 'w') as f:
+#     f.write('refresh_token = '+str(refresh_token)+'\nacces_token = '+str(access_token))
 
-token = warcraftlogs.fetch_token(token_url = token_url, 
-                                 client_secret = client_secret,
-                                 authorization_response = callback_uri)
+if os.path.isfile('refresh_token.env'):
+    env_vars = dotenv_values('refresh_token.env')
+    refresh_token = env_vars['refresh_token']
+    # refresh_token = env_vars['access_token']
+else:
+    raise 'Get your fresh token dumby'
 
+print(refresh_token)
+warcraftlogs = OAuth2Session(client_id = client_id, token = refresh_token)
+token = warcraftlogs.refresh_token(token_url = token_url,
+                                 auth = HTTPBasicAuth(client_id, client_secret),
+                                 refresh_token = refresh_token)
+access_token = token['access_token']
+refresh_token = token['refresh_token']
+with open('refresh_token.env', 'w') as f:
+    f.write('refresh_token = '+str(refresh_token)+'\nacces_token = '+str(access_token))
 
+graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client"
+headers = {"Authorization": f"Bearer {access_token}"}
+
+query = """{
+  characterData {
+    character(id: 52208679){
+      guildRank
+      level
+      name
+    }
+  }
+}"""
+
+query = """{
+  reportData{
+    reports(guildID: 95321, endTime: 1622872800000.0, startTime: 1605855600000.0){
+      data{
+        fights(difficulty: 5){
+          name          
+          averageItemLevel
+        #   friendlyPlayers
+          id
+        }
+      }
+    }
+  }
+}"""
+
+r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+if r.status_code == 200:
+    test = r.json()
+    print(json.dumps(r.json(), indent=2))
+
+print(refresh_token)
 
 with open('..//get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
@@ -74,4 +130,5 @@ def simple_request(url):
         print('Error during requests to {0} : {1}'.format(url, str(e)))
         return None
 
-#%%
+ #%%
+# %%
