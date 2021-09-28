@@ -65,3 +65,25 @@ for k, ax in enumerate(axes):
 plt.tight_layout()
 
 #%%
+
+curs.execute('select * from "nathria_prog";')
+test = pd.DataFrame(curs.fetchall())
+test.columns = [desc[0] for desc in curs.description]
+asdfasdf
+curs.execute('select MAX(pull_num), guild_num, boss_num from "nathria_prog_allpulls" group by guild_num, boss_num;')
+test = pd.DataFrame(curs.fetchall())
+test.columns = [desc[0] for desc in curs.description]
+
+'select * from nathria_prog_allpulls where '
+'select MAX(pull_num) from "nathria_prog_allpulls" group by guild_num, boss_num;'
+
+
+
+# %% Aggregating the data
+curs.execute('select * from "nathria_prog";')
+allpulls = pd.DataFrame(curs.fetchall())
+allpulls.columns = [desc[0] for desc in curs.description]
+
+temp_frame = pd.DataFrame()
+for gn in np.unique(allpulls['guildnum']):
+    one_guild = allpulls.query('guild_num == gn')
