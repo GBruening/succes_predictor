@@ -45,49 +45,62 @@ token_url = "https://www.warcraftlogs.com/oauth/token"
 if os.path.isfile('refresh_token.env'):
     env_vars = dotenv_values('refresh_token.env')
     refresh_token = env_vars['refresh_token']
-    # refresh_token = env_vars['access_token']
+    access_token = env_vars['access_token']
 else:
     raise 'Get your fresh token dumby'
 
 print(refresh_token)
-warcraftlogs = OAuth2Session(client_id = client_id, token = refresh_token)
-token = warcraftlogs.refresh_token(token_url = token_url,
-                                 auth = HTTPBasicAuth(client_id, client_secret),
-                                 refresh_token = refresh_token)
-access_token = token['access_token']
-refresh_token = token['refresh_token']
-with open('refresh_token.env', 'w') as f:
-    f.write('refresh_token = '+str(refresh_token)+'\nacces_token = '+str(access_token))
+try:
+    warcraftlogs = OAuth2Session(client_id = client_id)
+    graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client"
+    headers = {"Authorization": f"Bearer {access_token}"}
 
-graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client"
-headers = {"Authorization": f"Bearer {access_token}"}
-
-query = """{
-  characterData {
-    character(id: 52208679){
-      guildRank
-      level
-      name
-    }
-  }
-}"""
-
-query = """{
-  reportData{
-    reports(guildID: 95321, endTime: 1622872800000.0, startTime: 1605855600000.0){
-      data{
-        fights(difficulty: 5){
-          name          
-          averageItemLevel
-        #   friendlyPlayers
-          id
+    query = """{
+    reportData{
+        reports(guildID: 95321, endTime: 1622872800000.0, startTime: 1605855600000.0){
+        data{
+            fights(difficulty: 5){
+            name          
+            averageItemLevel
+            #   friendlyPlayers
+            id
+            }
         }
-      }
+        }
     }
-  }
-}"""
+    }"""
 
-r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)    
+except:
+    token = warcraftlogs.refresh_token(token_url = token_url,
+                                    auth = HTTPBasicAuth(client_id, client_secret),
+                                    refresh_token = refresh_token)
+    access_token = token['access_token']
+    refresh_token = token['refresh_token']
+    with open('refresh_token.env', 'w') as f:
+        f.write('refresh_token = '+str(refresh_token)+'\naccess_token = '+str(access_token))
+        
+    warcraftlogs = OAuth2Session(client_id = client_id)
+    graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client"
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    query = """{
+    reportData{
+        reports(guildID: 95321, endTime: 1622872800000.0, startTime: 1605855600000.0){
+        data{
+            fights(difficulty: 5){
+            name          
+            averageItemLevel
+            #   friendlyPlayers
+            id
+            }
+        }
+        }
+    }
+    }"""
+
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)    
+
 if r.status_code == 200:
     test = r.json()
     print(json.dumps(r.json(), indent=2))
