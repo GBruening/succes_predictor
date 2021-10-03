@@ -110,6 +110,138 @@ print(refresh_token)
 with open('..//get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
 
+
+
+#%%
+def get_guild_id(guild):
+    query = """    
+        {
+        guildData{
+            guild(name: "%s", serverSlug: "%s", serverRegion: "%s"){
+            id
+            }
+        }
+        }
+    """ % (guild['name'], guild['realm'].replace(' ', '-'), guild['region'])
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    guild_id = r.json()['data']['guildData']['guild']['id']
+    return guild_id
+
+def get_log_list(guild):
+    guild['id'] = get_guild_id(guild)
+    query = ("{"
+    f"reportData{{"
+    f"    reports(guildID: {guild['id']}, zoneID: 26){{"
+    f"    data{{"
+    f"        code"
+    f"        startTime"
+    f"        endTime"
+    f"    }}"
+    f"    }}"
+    f"}}"
+    f"}}")
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    log_list = r.json()['data']['reportData']['reports']['data']
+
+    return log_list
+
+def get_pulls(log, guild):
+    log_id = log['code']
+    query = """
+    {
+    reportData{
+        report(code: "%s"){
+        fights(difficulty: 5){
+            name
+            id
+            averageItemLevel
+            bossPercentage
+            kill
+            startTime
+            endTime
+        }
+        }
+    }
+    }
+    """ % (log_id)
+
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    fight_list = r.json()['data']['reportData']['report']['fights']
+    for k in range(len(fight_list)):
+        fight_list[k].update({'log_code': log_id})    
+    return fight_list
+
+def get_fight_info(fight, guild):
+    code = fight['log_code']
+    fight_ID = fight['id']
+    start_time = fight['startTime']
+    end_time = fight['endTime']
+    query = """
+    {
+    reportData{
+        report(code: "%s"){
+        table(fightIDs: %s, startTime: %s, endTime: %s)
+        }
+    }
+    }
+    """ % (code, fight_ID, str(start_time), str(end_time))
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    table = r.json()['data']['reportData']['report']['table']['data']
+    comp = table['composition']
+    roles = table['playerDetails']
+    player_list = []
+    for role in roles:
+        players = roles[role]
+        for player in players:
+            stats = player['combatantInfo']['stats']
+            primaries = ['Agility','Intellect','Strength']
+            for primary in primaries:
+                if primary in stats.keys():
+                    break
+
+            player_info = {}
+            player_info= {'class': player['type'],
+                          'spec': player['specs'][0],
+                          'role': role,
+                          'ilvl': player['minItemLevel'],
+                          'primary': stats[primary]['min'],
+                          'mastery': stats['Mastery']['min'],
+                          'crit': stats['Crit']['min'],
+                          'haste': stats['Haste']['min'],
+                          'vers': stats['Versatility']['min'],
+                          'stamina': stats['Stamina']['min']}
+            player_list.append(player_info)
+
+
+
+    comp_list = []
+    for player in comp:
+        comp_list.append((player['type'], player['specs']['spec'], player['specs']['role']))
+
+    
+    # fight_list = r.json()['data']['reportData']['report']['fights']
+
+for guild in guilds:
+    guild = guilds[725]
+    query = ("{"
+    f"reportData{{"
+    f"    reports(guildID: {guild['id']}, zoneID: 26){{"
+    f"    data{{"
+    f"        fights(difficulty: 5){{"
+    f"        name"
+    f"        averageItemLevel"
+    f"        id"
+    f"        }}"
+    f"    }}"
+    f"    }}"
+    f"}}"
+    f"}}")
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)    
+
+    if r.status_code == 200:
+        print(json.dumps(r.json(), indent=2))
+
+#%%
 # DC is guild 725
 guild_num = 725
 guild_info = {'guild_name': guilds[guild_num]['name'],
