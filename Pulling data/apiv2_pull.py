@@ -30,6 +30,18 @@ callback_uri = "http://localhost:8080"
 authorize_url = "https://www.warcraftlogs.com/oauth/authorize"
 token_url = "https://www.warcraftlogs.com/oauth/token"
 
+# warcraftlogs = OAuth2Session(client_id, redirect_uri=callback_uri)
+# authorization_url, state = warcraftlogs.authorization_url(authorize_url,
+#         access_type="offline")
+
+# token = warcraftlogs.fetch_token(token_url = token_url,
+#                                  auth = HTTPBasicAuth(client_id, client_secret),
+#                                  code = code)
+# access_token = token['access_token']
+# refresh_token = token['refresh_token']
+# with open('refresh_token.env', 'w') as f:
+#     f.write('refresh_token = '+str(refresh_token)+'\nacces_token = '+str(access_token))
+
 if os.path.isfile('refresh_token.env'):
     env_vars = dotenv_values('refresh_token.env')
     refresh_token = env_vars['refresh_token']
@@ -37,7 +49,7 @@ if os.path.isfile('refresh_token.env'):
 else:
     raise 'Get your fresh token dumby'
 
-print(refresh_token)
+# print(refresh_token)
 try:
     warcraftlogs = OAuth2Session(client_id = client_id)
     graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client"
@@ -89,14 +101,216 @@ except:
 
     r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)    
 
-if r.status_code == 200:
-    test = r.json()
-    print(json.dumps(r.json(), indent=2))
-
-print(refresh_token)
-
 with open('..//get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
+
+#%%
+def get_guild_id(guild):
+    query = """    
+        {
+        guildData{
+            guild(name: "%s", serverSlug: "%s", serverRegion: "%s"){
+            id
+            }
+        }
+        }
+    """ % (guild['name'], guild['realm'].replace(' ', '-'), guild['region'])
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    guild_id = r.json()['data']['guildData']['guild']['id']
+    return guild_id
+
+def get_log_list(guild):
+    guild['id'] = get_guild_id(guild)
+    query = ("{"
+    f"reportData{{"
+    f"    reports(guildID: {guild['id']}, zoneID: 26){{"
+    f"    data{{"
+    f"        code"
+    f"        startTime"
+    f"        endTime"
+    f"    }}"
+    f"    }}"
+    f"}}"
+    f"}}")
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    log_list = r.json()['data']['reportData']['reports']['data']
+
+    return log_list
+
+def get_pulls(log, guild):
+    log_id = log['code']
+    query = """
+    {
+    reportData{
+        report(code: "%s"){
+        fights(difficulty: 5){
+            name
+            id
+            averageItemLevel
+            bossPercentage
+            kill
+            startTime
+            endTime
+        }
+        }
+    }
+    }
+    """ % (log_id)
+
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    fight_list = r.json()['data']['reportData']['report']['fights']
+    for k in range(len(fight_list)):
+        fight_list[k].update({'log_code': log_id})    
+    return fight_list
+
+def get_fight_info(fight, guild, unique_id):
+    code = fight['log_code']
+    fight_ID = fight['id']
+    start_time = fight['startTime']
+    end_time = fight['endTime']
+    query = """
+    {
+    reportData{
+        report(code: "%s"){
+        table(fightIDs: %s, startTime: %s, endTime: %s)
+        }
+    }
+    }
+    """ % (code, fight_ID, str(start_time), str(end_time))
+    r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
+    table = r.json()['data']['reportData']['report']['table']['data']
+    comp = table['composition']
+    roles = table['playerDetails']
+    player_list = []
+    for role in roles:
+        players = roles[role]
+        for player in players:
+            if len(player['combatantInfo']) > 0:
+                stats = player['combatantInfo']['stats']
+                primaries = ['Agility','Intellect','Strength']
+                for primary in primaries:
+                    if primary in stats.keys():
+                        break
+
+                player_info = {}
+                player_info= {'unique_id': unique_id,
+                            'class': player['type'],
+                            'spec': player['specs'][0],
+                            'role': role,
+                            'ilvl': player['minItemLevel'],
+                            'primary': stats[primary]['min'],
+                            'mastery': stats['Mastery']['min'],
+                            'crit': stats['Crit']['min'],
+                            'haste': stats['Haste']['min'],
+                            'vers': stats['Versatility']['min'],
+                            'stamina': stats['Stamina']['min'],
+                            'boss_name': fight['name']}
+                player_list.append(player_info)
+            else:
+                if 'specs' in player.keys():
+                    player_info= {'unique_id': unique_id,
+                                'class': player['type'],
+                                'spec': player['specs'][0],
+                                'role': role,
+                                'ilvl': player['minItemLevel'],
+                                'primary': np.NaN,
+                                'mastery': np.NaN,
+                                'crit': np.NaN,
+                                'haste': np.NaN,
+                                'vers': np.NaN,
+                                'stamina': np.NaN,
+                                'boss_name': fight['name']}
+                else:
+                    player_info= {'unique_id': unique_id,
+                                'class': player['type'],
+                                'spec': np.NaN,
+                                'role': role,
+                                'ilvl': player['minItemLevel'],
+                                'primary': np.NaN,
+                                'mastery': np.NaN,
+                                'crit': np.NaN,
+                                'haste': np.NaN,
+                                'vers': np.NaN,
+                                'stamina': np.NaN,
+                                'boss_name': fight['name']}
+
+                player_list.append(player_info)
+    return player_list
+
+
+
+    comp_list = []
+    for player in comp:
+        comp_list.append((player['type'], player['specs']['spec'], player['specs']['role']))
+
+    
+    # fight_list = r.json()['data']['reportData']['report']['fights']
+
+
+
+# %% Setup the SQL Stuff
+from sqlalchemy import create_engine
+import psycopg2
+server = 'localhost'
+database = 'nathria_prog'
+username = 'postgres'
+password = 'postgres'
+
+if 'conn' in locals():
+    conn.close()
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+
+curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+    ('nathria_prog_v2',))
+if curs.fetchone()[0]:
+    curs.execute('select distinct guild_name from nathria_prog_v2')
+    already_added_guilds = [item[0] for item in curs.fetchall()]
+    already_added_length = len(already_added_guilds)
+else:
+    already_added_guilds = []
+    already_added_length = 0
+
+def check_in_sql(unique_id):
+    curs.execute('select * from nathria_prog_v2 where unique_id == "%s"' % (unique_id))
+    return True if curs.fetchone()[0] else False
+
+def add_to_sql(curs, table, info):
+    placeholders = ', '.join(['%s'] * len(info))
+    columns = ', '.join(info.keys())
+    sql = "INSERT INTO %s ( %s ) VALUES ( %s )" % (str(table), columns, placeholders)
+    curs.execute(sql, list(info.values()))
+
+# for guild in guilds[725]:
+guild = guilds[725]
+log_list = get_log_list(guild)
+
+
+for k, log in enumerate(log_list):
+    print(f'Parsing log #{k} of {len(log_list)}')
+    fight_list = get_pulls(log, guild)
+    for q, fight in enumerate(fight_list):
+        # print(q)
+        fight['unique_id'] = fight['log_code'] + '_' + str(fight['id'])
+        # if check_in_sql(fight['unique_id']):
+        #     continue
+
+        player_info = get_fight_info(fight, guild, fight['unique_id'])
+
+        add_to_sql(curs, 'nathria_prog_v2', fight)
+        for player in player_info:
+            add_to_sql(curs, 'nathria_prog_v2', player)
+
+    
+
+# for guild in guilds[725]:
+#     log_list = get_log_list(guild)
+#     for log in log_list:
+#         fight_list = get_pulls(log, guild)
+#         for fight in fight_list:
+#             fight_info = get_fight_info(fight, guild)
+#             asdfasdfsaf
 
 #%%
 # DC is guild 725
