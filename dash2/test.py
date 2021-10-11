@@ -95,18 +95,18 @@ def update_fig(guild_name, prog_or_all):
                 "end_perc": 'Wipe Percent (%)',
                 "name": ''},
         category_orders={'name': list(np.array(boss_names)[np.unique(newdf['boss_num']).astype(int)])},
-        facet_col_spacing=0.06,
-        title = str(guild_name))
+        facet_col_spacing=0.06)#, title = str(guild_name))
     fig.update_xaxes(matches = None)
     fig.for_each_xaxis(lambda xaxis: xaxis.update(showticklabels=True))
     fig.for_each_yaxis(lambda yaxis: yaxis.update(showticklabels=True))
     fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
-
     fig.update_layout(
         template = 'plotly_dark',
-        plot_bgcolor = 'rgba(34,34,34,255)',
-        paper_bgcolor = 'rgba(34,34,34,255)',
+        # plot_bgcolor = 'rgba(34,34,34,255)',
+        # paper_bgcolor = 'rgba(34,34,34,255)',
+        plot_bgcolor = 'rgba(0,0,0,255)',
+        paper_bgcolor = 'rgba(0,0,0,255)',
         autosize=True,
         # width=1500,
         height=np.ceil(n_bosses/2)*300,
@@ -114,10 +114,11 @@ def update_fig(guild_name, prog_or_all):
             l=150,
             r=150,
             b=30,
-            t=30,
+            t=60,
             pad=4
         ),
-        transition_duration = 500
+        transition_duration = 500,
+        font = dict(size = 18)
     )
     return fig
 
@@ -139,7 +140,7 @@ def update_fig(guild_name, prog_or_all):
 
 #%% Make App
 app.layout = html.Div(children=[
-    html.H1('Castle Nathria Pull Data'),
+    html.H1('Castle Nathria Pull Data', style={'backgroundColor':'black'}),
     html.Div([
         "Choose guild: ",
         dcc.Dropdown(id = 'guild_name',
@@ -159,13 +160,15 @@ app.layout = html.Div(children=[
         labelStyle={'display': 'flex'}
         )
     ]),
-    html.Br(),
+    html.Br(style={'backgroundColor':'black'}),
     # html.Div(id='my-output'),
     dcc.Graph(
         id='single_guild_graph'
     )
     
-])
+], style={'backgroundColor':'black'})
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+#%%

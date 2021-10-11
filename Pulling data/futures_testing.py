@@ -2,27 +2,9 @@
 from requests_futures.sessions import FuturesSession
 import os
 
-def get_page_args(page_url):
-    return {"url": page_url}
-
-if os.path.exists('nysd-links.pkd'):
-    link_list = dill.load(open('nysd-links.pkd', 'rb'))
-else:
-    print('Getting Links')
-    session = FuturesSession(max_workers = 5)
-    page1_url
-    pages = []
-    pages.extend([page1_url])
-    for k in range(1,26):
-        added_page = [page1_url+'?page='+str(k)]
-        pages.extend(added_page)
-    
-    futures = [session.get(**get_page_args(pages[i])) for i in range(0,26)]
-    link_list = [item for l in [get_links(future.result()) for future in futures] for item in l]
-
 session = FuturesSession(max_workers = 10)
 
-def make_query(log):
+def make_logs_query(log):
     log_id = log['code']
     query = """
     {
@@ -46,39 +28,51 @@ def make_query(log):
 
 def get_log_args(log, graphql_endpoint, headers):
     args = {'url': graphql_endpoint,
-            'json': {'query': make_query(log)},
+            'json': {'query': make_logs_query(log)},
             'headers': headers}
     return args
-futures = [session.post(**get_log_args(log, graphql_endpoint, headers)) for log in log_list]
 
-for item in futures:
-    fights = item.json()['data']['reportData']['report']['fights']
-    for k, fight in enumerate(fights):
-        fight
+def get_fight_list(log_list, graphql_endpoint, headers):
+    futures = [session.post(**get_log_args(log, graphql_endpoint, headers)) for log in log_list]
 
-link_list = [item for l in [get_links(future.result()) for future in futures] for item in l]
+    fights_list = []
+    for q, item in enumerate(futures):
+        fights = item.result().json()['data']['reportData']['report']['fights']
+        for k, fight in enumerate(fights):
+            fight['code'] = log_list[q]['code']
+            fight['log_start'] = log_list[q]['startTime']
+            fight['log_end'] = log_list[q]['endTime']
+            fight['unique_id'] = log_list[q]['code'] + '_' + str(fight['id'])
+            fights_list.extend([fight])
+    
+    return fights_list
 
-log = log_list[56]
-query = """
-{
-reportData{
-    report(code: "%s"){
-    fights(difficulty: 5){
-        name
-        id
-        averageItemLevel
-        bossPercentage
-        kill
-        startTime
-        endTime
+def make_fights_query(fight):
+    code = fight['code']
+    fight_ID = fight['id']
+    start_time = fight['startTime']
+    end_time = fight['endTime']
+    query = """
+    {
+    reportData{
+        report(code: "%s"){
+        table(fightIDs: %s, startTime: %s, endTime: %s)
+        }
     }
     }
-}
-}
-""" % (log_id)
+    """ % (code, fight_ID, str(start_time), str(end_time))
 
-r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)
-fight_list = r.json()['data']['reportData']['report']['fights']
-for k in range(len(fight_list)):
-    fight_list[k].update({'log_code': log_id})    
-return fight_list
+    return query
+
+def get_fight_args(log, graphql_endpoint, headers):
+    args = {'url': graphql_endpoint,
+            'json': {'query': make_fights_query(log)},
+            'headers': headers}
+    return args
+
+def get_fight_table(fights_list, graphql_endpoint, headers):
+    futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
+
+    
+
+

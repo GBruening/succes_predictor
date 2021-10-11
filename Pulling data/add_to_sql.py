@@ -229,7 +229,7 @@ for guild_num in np.arange(1,len(guilds)):
             prog_pulls['realm'] = guild_info['realm']
             prog_pulls['region'] = guild_info['region']
             prog_pulls['guild_num'] = guild_num
-
+            assadfasdf
             # if not guild_info['guild_name'] in np.unique(already_added_guilds):
             print('Adding guild '+guild_info['guild_name']+' to nathria_prog postgressql table.')
             prog_pulls.to_sql('nathria_prog_allpulls', engine, if_exists='append')

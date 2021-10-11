@@ -6,13 +6,16 @@ import pandas as pd
 import requests
 from contextlib import closing
 import time
-from datetime import datetime
+import datetime
 from requests.models import HTTPBasicAuth
 import seaborn as sns
 from matplotlib import pyplot as plt
 from requests import get
 from requests_futures.sessions import FuturesSession
 from bs4 import BeautifulSoup
+from concurrent.futures import as_completed
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 
 from dotenv import load_dotenv, dotenv_values
 from requests_oauthlib import OAuth2, OAuth2Session
@@ -322,121 +325,8 @@ def add_to_sql(curs, table, info):
     sql = "INSERT INTO %s ( %s ) VALUES ( %s )" % (str(table), columns, placeholders)
     curs.execute(sql, list(info.values()))
 
-#%% This is for futures use
-    
-def make_logs_query(log):
-    log_id = log['code']
-    query = """
-    {
-    reportData{
-        report(code: "%s"){
-        fights(difficulty: 5){
-            name
-            id
-            averageItemLevel
-            bossPercentage
-            kill
-            startTime
-            endTime
-        }
-        }
-    }
-    }
-    """ % (log_id)
-
-    return query
-
-def get_log_args(log, graphql_endpoint, headers):
-    args = {'url': graphql_endpoint,
-            'json': {'query': make_logs_query(log)},
-            'headers': headers}
-    return args
-
-def get_fight_list(log_list, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 2)
-    futures = [session.post(**get_log_args(log, graphql_endpoint, headers)) for log in log_list]
-
-    fights_list = []
-    for q, item in enumerate(futures):
-        result = item.result()
-        if result.status_code!=200:
-            print(result.status_code)
-        fights = result.json()['data']['reportData']['report']['fights']
-        for k, fight in enumerate(fights):
-            fight['log_code'] = log_list[q]['code']
-            fight['log_start'] = log_list[q]['startTime']
-            fight['log_end'] = log_list[q]['endTime']
-            fight['unique_id'] = log_list[q]['code'] + '_' + str(fight['id'])
-            fights_list.extend([fight])
-    
-    return fights_list
-
-def get_prog_pulls(df, boss_name):
-    if type(df.iloc[0]['start_time']) != 'int':
-        df['start_time'] = [time.mktime(x.to_pydatetime().timetuple()) for x in df['start_time']]
-        df['end_time']   = [time.mktime(x.to_pydatetime().timetuple()) for x in df['end_time']]
-    kills_df = df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('kill == True')
-    first_kill_time = min(kills_df['start_time'])
-    return df.query('name == "'+boss_name+'"').query('zoneDifficulty == 5').query('start_time <= '+str(first_kill_time))
-
-def add_pull_num(df):
-    df = df.sort_values(by = ['start_time'])
-    df.insert(loc = 0, column = 'pull_num', value = np.arange(len(df))+1)
-    return df
-
-def combine_boss_df(df):
-    boss_names = [
-        'Shriekwing', \
-        'Huntsman Altimor',
-        'Hungering Destroyer', \
-        "Sun King's Salvation",
-        "Artificer Xy'mox", \
-        'Lady Inerva Darkvein', \
-        'The Council of Blood', \
-        'Sludgefist', \
-        'Stone Legion Generals', \
-        'Sire Denathrius']
-    combine_df = pd.DataFrame()
-    for k, boss_name in enumerate(np.unique(df['name'])):
-        if boss_name in boss_names and boss_name in np.unique(df['name']):
-            combine_df = combine_df.append(add_pull_num(df.copy(deep = True).query('name == "'+boss_name+'"')))
-    combine_df = combine_df.reset_index().drop(columns = 'index')
-    return combine_df
-
-n_start = 3500
-for gnum, guild in enumerate(guilds[n_start:]):
-    if guild['name'] in already_added_guilds:
-        continue
-    # log_list = get_log_list(guild)
-    try:
-        log_list = get_log_list_apiv1(guild)
-        if len(log_list) == 0:
-            print(f'Log list empty for {guild["name"]}')
-        fightdf = pd.DataFrame()
-        playerdf = pd.DataFrame()
-        print(f'Parsing guild {guild["name"]} (#{gnum+1+n_start} of {len(guilds)})')
-        fight_list = get_fight_list(log_list, graphql_endpoint, headers)
-        fightdf = pd.DataFrame()
-        for q, fight in enumerate(fight_list):
-            fight['boss_perc'] = fight.pop('bossPercentage')
-            fight['average_item_level'] = fight.pop('averageItemLevel')
-            fight['unique_id'] = fight['log_code'] + '_' + str(fight['id'])
-            fight['start_time'] = fight.pop('startTime')
-            fight['end_time'] = fight.pop('endTime')
-            fight['guild_name'] = guild['name']
-            fight['guild_realm'] = guild['realm']
-            fight['guild_region'] = guild['region']
-            fightdf = fightdf.append(pd.DataFrame(fight, index=['i',]))
-        fightdf = combine_boss_df(fightdf.copy(deep = True))
-        fightdf.to_sql('nathria_prog_v2', engine, if_exists='append')
-        if len(fightdf)>1:
-            print(f'Adding to SQL guild {guild["name"]}')
-        time.sleep(3)
-    except:
-        continue
-
 #%%
-asdfasdf
+
 from sqlalchemy import create_engine
 import psycopg2
 server = 'localhost'
@@ -482,7 +372,7 @@ def get_fight_args(log, graphql_endpoint, headers):
     return args
 
 def get_fight_table(fights_list, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 2)
+    session = FuturesSession(max_workers = 5)
     futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
 
     fights_tables = []
@@ -490,12 +380,71 @@ def get_fight_table(fights_list, graphql_endpoint, headers):
         result = item.result()
         if result.status_code!=200:
             print(result.status_code)
+        if result.status_code!=429:
+            raise 'To fast go fix it'
         # if is_good_response_json(item.result()):
         try:
             fights_tables.append(result.json()['data']['reportData']['report']['table']['data'])
         except:
             pass
     return fights_tables
+
+def get_fight_table_and_parse(fights_list, graphql_endpoint, headers):
+    # session = FuturesSession(max_workers = 1)
+
+    # retries = 5
+    # status_forcelist = [429, 502]    
+    # retry = Retry(
+    #     total=retries,
+    #     read=retries,
+    #     connect=retries,
+    #     respect_retry_after_header=True,
+    #     status_forcelist=status_forcelist,
+    # )
+    # adapter = HTTPAdapter(max_retries=retry)
+    # session.mount('http://', adapter)
+    # session.mount('https://', adapter)
+
+    # futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
+    
+    player_list = []
+    q = 0
+    # for future in as_completed(futures):
+    req_num = 0
+    last_time = datetime.datetime.now()
+    for fight in fights_list:
+        cur_time = datetime.datetime.now()
+        time_diff = (cur_time - last_time).microseconds
+        if time_diff < 50000:
+            # print(time_diff)
+            time.sleep(0.05 - (time_diff/1e6))
+        result = requests.post(**get_fight_args(fight, graphql_endpoint, headers))
+        last_time = datetime.datetime.now()
+        if result.status_code!=200:
+            time.sleep(5)
+            print(result.status_code)
+        else:
+            cur_time = datetime.datetime.now()
+        if result.status_code==429:
+            print(result.status_code)
+            time.sleep(10)
+            result = requests.post(**get_fight_args(fight, graphql_endpoint, headers))
+        try:
+            table = result.json()['data']['reportData']['report']['table']['data']
+
+            if q % 50 == 0:
+                print(f'Parsing {guild_name}, fight # {q+1} of {len(fights_list)}')
+
+            player_info = parse_fight_table(table, fights_list[q]['name'], fights_list[q]['unique_id'], guild_name)
+            if len(player_list) == 0:
+                player_list = player_info
+            else:
+                player_list.extend(player_info)
+            q+=1
+        except:
+            pass
+
+    return pd.DataFrame.from_dict(player_list)
 
 def parse_fight_table(table, boss_name, unique_id, guild_name):
 
@@ -545,7 +494,7 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
                 stamina = np.NaN
         
             player_info= {'unique_id': unique_id,
-                        'name': player['name'],
+                        'player_name': player['name'],
                         'guild_name': guild_name,
                         'server': player['server'],
                         'class': player['type'],
@@ -563,27 +512,41 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
             player_list.append(player_info)
     return player_list
 
-for guild_name in logged_guilds:
+gnum = 0
+guild_name = logged_guilds[gnum]
+start_num = 496
+for gnum, guild_name in enumerate(logged_guilds[start_num:]):
     curs.execute(f"select * from nathria_prog_v2 where guild_name = '{guild_name}'")
     pulls = pd.DataFrame(curs.fetchall())
     pulls.columns = [desc[0] for desc in curs.description]
     fights_list = pulls.to_dict('records')
 
-    curs.execute(f"select distinct unique_id from nathria_prog_v2_players where guild_name = '{guild_name}'")
-    added_fights = [item[0] for item in curs.fetchall()]
+    curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+        ('nathria_prog_v2_players',))
+    if curs.fetchone()[0]:
+        curs.execute(f"select distinct unique_id from nathria_prog_v2_players where guild_name = '{guild_name}'")
+        added_fights = [item[0] for item in curs.fetchall()]
+    else:
+        added_fights = []
+
     fight_list = [fight for fight in fights_list if fight['unique_id'] not in added_fights]
     
     if len(fight_list)>1:
-        fights_tables = get_fight_table(fights_list, graphql_endpoint, headers)
+        print(f'Pulling fight logs {guild_name}, #{gnum+1+start_num} of {len(logged_guilds)}.')
 
-        playerdf = pd.DataFrame()
-        for q, table in enumerate(fights_tables):
-            unique_id = fights_list[q]['unique_id']
-            guild_name = guild_name
-            player_info = parse_fight_table(table, fights_list[q]['name'], unique_id, guild_name)
-            for player in player_info:
-                for player in player_info:
-                    playerdf = playerdf.append(pd.DataFrame(player, index=['i',]))
-        if len(playerdf)>1:
-            print(f'Adding to SQL guild player info {guild["name"]}')
+        # fights_tables = get_fight_table(fights_list, graphql_endpoint, headers)
+
+        playerdf = get_fight_table_and_parse(fights_list, graphql_endpoint, headers)
+        # playerdf = pd.DataFrame()
+        # for q, table in enumerate(fights_tables):
+            # if q % 50 == 0:
+            #     print(f'Parsing {guild_name}, fight # {q+1} of {len(fights_tables)}')
+        #     player_info = parse_fight_table(table, fights_list[q]['name'], fights_list[q]['unique_id'], guild_name)
+        #     for player in player_info:
+        #         for player in player_info:
+        #             playerdf = playerdf.append(pd.DataFrame(player, index=['i',]))
+        # if len(playerdf)>1:
+            # print(f'Adding to SQL guild player info {guild_name}')
         playerdf.to_sql('nathria_prog_v2_players', engine, if_exists='append')
+
+#%%
