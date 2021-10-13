@@ -1,6 +1,6 @@
 
 def futures_process_fight_table(fights_list, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 1)
+    session = FuturesSession(max_workers = 5)
 
     retries = 5
     status_forcelist = [429, 502]    
@@ -18,7 +18,9 @@ def futures_process_fight_table(fights_list, graphql_endpoint, headers):
     futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
 
     player_list = []
-    for future in as_completed(futures):
+    for q, future in enumerate(as_completed(futures)):
+        if q % 100 == 0:
+            print(f'Parsing {guild_name}, fight # {q+1} of {len(fights_list)}')
         result = future.result()
         if result.status_code != 200:
             print(result.status_code)
@@ -29,6 +31,39 @@ def futures_process_fight_table(fights_list, graphql_endpoint, headers):
         else:
             player_list.extend(player_info)
     return player_list, result
+
+def make_batches(list_, n):
+    new_list = []
+    for k in range(0, len(list_), n):
+        new_list.append(list_[k:k+n])
+    return new_list
+
+def batch_process_fight_table(fights_list, graphql_endpoint, headers):
+    fight = fights_list[0]
+    batches = make_batches(fights_list, 550)
+    player_list = []
+    last_time = datetime.datetime.now()
+    for batch_num, batch_fight in enumerate(batches):
+
+        result = requests.post(**get_fight_args(fight, graphql_endpoint, headers))
+        if 'X-RateLimit-Remaining' in result.headers.keys() and int(result.headers['X-RateLimit-Remaining'])<550:
+            print('At rate limit, wait longer.')
+            time.sleep(60)
+
+        print(f'Parsing batch # {batch_num}')
+        plist, fut = futures_process_fight_table(batch_fight, graphql_endpoint, headers)
+        # if 'X-RateLimit-Remaining' in fut.headers.keys() and int(fut.headers['X-RateLimit-Remaining'])<50:
+        cur_time = datetime.datetime.now()
+        time_diff = (cur_time - last_time).seconds
+        print(f'Sleeping for {60-time_diff+3}.')
+        for sleepy_time in range(60-time_diff+3):
+            if sleepy_time % 10 == 0:
+                print('\r', f'Slept for {sleepy_time}')
+            time.sleep(1)
+        last_time = datetime.datetime.now()
+        player_list.extend(plist)
+    return pd.DataFrame.from_dict(player_list)
+
 
 
 def get_fight_table_and_parse(fights_list, graphql_endpoint, headers):

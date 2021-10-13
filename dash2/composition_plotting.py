@@ -10,6 +10,7 @@ import json
 import os
 import time
 import datetime
+import regex as re
 
 from sqlalchemy import create_engine
 import psycopg2
@@ -78,6 +79,7 @@ boss_names = ['Shriekwing', \
             'Sire Denathrius']
 
 
+specific_boss = boss_names[-1]
 kills_query = \
     f"\
         select * from max_pull_count_small \
@@ -87,17 +89,61 @@ curs.execute(kills_query)
 kills_query = pd.DataFrame(curs.fetchall())
 kills_query.columns = [desc[0] for desc in curs.description]
 
-specific_boss = boss_names[0]
 if 'conn' in locals():
     conn.close()
-engine = create_engine('postgresql://postgres:postgres@192.168.0.6:5432/nathria_prog')
-conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
+try:
+    engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+    conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+except:
+    engine = create_engine('postgresql://postgres:postgres@192.168.0.6:5432/nathria_prog')
+    conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
 curs = conn.cursor()
-    
-specific_boss = boss_names[-1]
 
+
+def make_agg_data_groupcomp(df):
+    
+    n_pulls = len(df.unique_id.unique())
+    df = df.groupby(['unique_id','p_class', 'spec', 'role']).\
+        size().\
+        reset_index(name='counts')
+
+    df['test'] = df[df.columns[1:4]].apply(
+        lambda x: ', '.join(x.dropna().astype(str)),
+        axis=1
+    )
+    temp_df = df.groupby(['unique_id','test']).count().unstack(fill_value=0).stack().reset_index().copy(deep = True)
+    avg_comp = temp_df.groupby(['test']).mean().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'mean_val'})
+    std_comp = temp_df.groupby(['test']).std().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'std_val'})
+
+    avg_comp['p_class'] = avg_comp[avg_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
+    )
+    avg_comp['spec'] = avg_comp[avg_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
+    )
+    avg_comp['role'] = avg_comp[avg_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
+    )
+
+    std_comp['p_class'] = std_comp[std_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
+    )
+    std_comp['spec'] = std_comp[std_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
+    )
+    std_comp['role'] = std_comp[std_comp.columns[0]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
+    )
+
+    df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
+        rename(columns={'role_x': 'role'}).query('role == "dps"')
+
+    df = df.reindex(columns=['p_class', 'spec', 'role', 'mean_val','std_val'])
+
+    return df
 
 def make_comp_plot(specific_boss):
+    specific_boss = specific_boss.replace("'", "''")
     
     curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
         ilvl, covenant, boss_name \
@@ -106,28 +152,32 @@ def make_comp_plot(specific_boss):
             (select * from max_pull_count_small \
             where name = '{specific_boss}' and kill = 'True') as kill_df \
         on players.unique_id = kill_df.unique_id;")
-    test = pd.DataFrame(curs.fetchall())
-    test.columns = [desc[0] for desc in curs.description]
+    df = pd.DataFrame(curs.fetchall())
+    df.columns = [desc[0] for desc in curs.description]
 
-    n_pulls = len(test.unique_id.unique())
-    test2 = test.groupby(['unique_id','p_class', 'spec', 'role']).\
+    # df = make_agg_data_groupcomp(df)
+
+    n_pulls = len(df.unique_id.unique())
+
+
+    df = df.groupby(['p_class', 'spec', 'role']).\
         size().\
         reset_index(name='counts')
-        
-    avg_comp = test2.\
-        groupby(['p_class','spec','role']).\
-        mean().reset_index().dropna().\
-        rename(columns={'counts': 'mean_val'})
-    std_comp = test2.\
-        groupby(['p_class','spec','role']).\
-        std().reset_index().dropna().\
-        rename(columns={'counts': 'std_val'})
-    counts_comp = test2.\
-        groupby(['p_class','role','spec']).\
-        sum().reset_index().dropna()
 
-    comb_df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
-        rename(columns={'role_x': 'role'})
+    # avg_comp = df.\
+    #     groupby(['p_class','spec','role']).\
+    #     mean().reset_index().dropna().\
+    #     rename(columns={'counts': 'mean_val'})
+    # std_comp = df.\
+    #     groupby(['p_class','spec','role']).\
+    #     std().reset_index().dropna().\
+    #     rename(columns={'counts': 'std_val'})
+    # counts_comp = df.\
+    #     groupby(['p_class','role','spec']).\
+    #     sum().reset_index().dropna()
+    # counts_comp.counts = counts_comp.counts/n_pulls
+    # # df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
+    # #     rename(columns={'role_x': 'role'}).query('role == "dps"')
         
     colors = {'DeathKnight': '#D62728',
             'DemonHunter': '#750D86',
@@ -158,7 +208,8 @@ def make_comp_plot(specific_boss):
             bars.append(go.Bar(
                 x = spec_df.p_class,
                 y = spec_df.mean_val,
-                width = .25,
+                # y = spec_df.counts,
+                width = .15,
                 error_y=dict(
                     type='data', 
                     array=[spec_df.std_val],
@@ -189,8 +240,73 @@ def make_comp_plot(specific_boss):
     )
     return fig
 
-testdf = comb_df.query("role == 'dps'").copy(deep=True)
-fig = make_comp_plot(testdf)
+# testdf = comb_df.query("role == 'dps'").copy(deep=True)
+fig = make_comp_plot(specific_boss)
 # CURRENTLY INCORRECT BECAUSE OF HOW OFTEN THINGS SHOW UP
 
+subplots = [[1,1],
+            [1,2],
+            [2,1],
+            [2,2],
+            [3,1],
+            [3,2],
+            [4,1],
+            [4,2],
+            [5,1],
+            [5,2]]
+bosses_to_plot = [name for name in np.array(boss_names)[0:1]]
+fig2 = make_subplots(rows=int(np.ceil(len(bosses_to_plot)/2)), cols=2,
+        vertical_spacing = 0.25,
+        subplot_titles = bosses_to_plot)
+
+# fig2.append_trace(fig, row=1, col=1)
+
+for k, boss in enumerate(bosses_to_plot):
+    print(k)
+    fig = make_comp_plot(boss)
+    print(subplots[k][0], subplots[k][1])
+    for item in fig.data:
+        fig2.append_trace(item, row=subplots[k][0], col=subplots[k][1])
+        # if k == 0:
+        #     fig2['layout']['xaxis']['tickangle'] = -30
+        #     fig2['layout']['xaxis']['title'] = 'Player Class'
+        #     fig2['layout']['yaxis']['title'] = 'Average number of class/spec<br>in kill group (mean ± SD).'
+        # else:
+        #     fig2['layout']['xaxis'+str(k)]['tickangle'] = -30
+        #     fig2['layout']['xaxis'+str(k)]['title'] = 'Player Class'
+        #     fig2['layout']['yaxis'+str(k)]['title'] = 'Average number of class/spec<br>in kill group (mean ± SD).'
+
+fig2.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Player Class', tickangle = -20))
+fig2.for_each_yaxis(lambda yaxis: yaxis.update(title = '# of Class in Group.'))
+
+fig2.update_layout(
+    width = 900,
+    height = 300*len(bosses_to_plot)/2,
+    template = 'plotly_dark',
+    plot_bgcolor = 'rgba(0,0,0,255)',
+    paper_bgcolor = 'rgba(0,0,0,255)',
+    # autosize=True,
+    transition_duration = 500,
+    font = dict(size = 9),
+    uniformtext_minsize=4, 
+    uniformtext_mode='show',
+    showlegend = False,
+    title_text=f'Approximate group composition', 
+    title_x=0.5
+)
+    
 #%%
+
+def figures_to_html(figs, filename="dashboard.html"):
+    dashboard = open(filename, 'w')
+    dashboard.write("<html><head></head><body>" + "\n")
+    for fig in figs:
+        inner_html = fig.to_html().split('<body>')[1].split('</body>')[0]
+        dashboard.write(inner_html)
+    dashboard.write("</body></html>" + "\n")
+
+
+fig1 = make_comp_plot(boss_names[0])
+fig2 = make_comp_plot(boss_names[1])
+fig3 = make_comp_plot(boss_names[2])
+fig4 = figures_to_html([fig1, fig2, fig3])

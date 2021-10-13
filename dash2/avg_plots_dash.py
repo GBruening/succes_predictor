@@ -124,7 +124,8 @@ def update_fig(specific_boss):
     
     fig.append_trace(go.Histogram(
         x = pull_count['pull_num'], histnorm='probability',
-        name = 'Pull Count'
+        name = 'Pull Count',
+        marker=dict(color = 'grey'),
     ), row=1, col=1)
     fig['layout']['xaxis']['title'] = 'Total Pull Count'
     fig['layout']['yaxis']['title'] = 'Proportion'
@@ -139,7 +140,8 @@ def update_fig(specific_boss):
     fig.append_trace(go.Histogram(
         x = filter_df(pull_count.copy(deep = True), 'average_item_level')['average_item_level'], 
         histnorm='probability',
-        name = 'Item Level'
+        name = 'Item Level',
+        marker=dict(color = 'grey'),
     ), row=1, col=2)
     fig['layout']['xaxis2']['title'] = 'Average Group Item Level at Kill'
     fig['layout']['yaxis2']['title'] = 'Proportion'
@@ -163,7 +165,8 @@ def update_fig(specific_boss):
     # fig = px.histogram(prog_hours, x = 'prog_time')
     fig.append_trace(go.Histogram(
         x = prog_hours['prog_time'], histnorm='probability',
-        name = 'Progression Hours'
+        name = 'Progression Hours',
+        marker=dict(color = 'grey'),
     ), row=2, col=1)
     fig['layout']['xaxis3']['title'] = 'Total Progression Time (Hours)<br>(Includes groups that have not killed boss)'
     fig['layout']['yaxis3']['title'] = 'Proportion'
@@ -198,11 +201,12 @@ def update_fig(specific_boss):
         x = new_kill_df['date'],
         y = new_kill_df['n'],
         name = 'Kill Date',
-        mode = 'lines'
+        mode = 'lines',
+        marker=dict(color = 'grey'),
     ), row=2, col=2)
     fig['layout']['xaxis4']['tickangle'] = -45
     fig['layout']['xaxis4']['title'] = 'Date of kill'
-    fig['layout']['yaxis4']['title'] = 'Proportion'
+    fig['layout']['yaxis4']['title'] = 'Cumulative Density'
     # fig.add_vline(
     #     x = np.median(kill_dates['date']),
     #         line_color = 'red',

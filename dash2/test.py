@@ -172,3 +172,44 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 
 #%%
+
+def make_agg_data_groupcomp(df):
+
+    df = smalldf.copy(deep = True)
+    n_pulls = len(df.unique_id.unique())
+
+    df['test'] = df[df.columns[1:4]].apply(
+        lambda x: ', '.join(x.dropna().astype(str)),
+        axis=1
+    )
+
+    temp_df = df.groupby(['unique_id','test']).\
+        size().unstack(fill_value=0).stack().reset_index(name='counts')
+
+    temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
+    )
+    temp_df['spec'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
+    )
+    temp_df['role'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
+    )
+
+    temp_df.groupby(['p_class','spec','role']).size().reset_index().dropna()
+
+    df.groupby(['p_class', 'spec', 'role']).\
+        size().\
+        reset_index(name='counts')
+
+
+    # avg_comp = temp_df.groupby(['test']).mean().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'mean_val'})
+    # std_comp = temp_df.groupby(['test']).std().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'std_val'})
+
+
+    # df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
+    #     rename(columns={'role_x': 'role'}).query('role == "dps"')
+
+    # df = df.reindex(columns=['p_class', 'spec', 'role', 'mean_val','std_val'])
+
+    return df
