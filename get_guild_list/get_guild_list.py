@@ -5,6 +5,7 @@ import json
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
+import re
 
 browser = webdriver.Chrome('C:\Windows\chromeDriver')
 
@@ -33,6 +34,7 @@ def find_val_in_str(string_in, search_string1, search_string2):
     idx2 = string_in.find(search_string2)
     return(string_in[idx1:idx2])
 
+id_reg = re.compile('[*\d]')
 #%%
 def get_guild_list(id_num):
     guild_list = []
@@ -44,7 +46,7 @@ def get_guild_list(id_num):
 
         browser.get(url)
         if page_num == 1:
-            time.sleep(10)
+            time.sleep(5)
         else:
             time.sleep(3)
 
@@ -56,6 +58,7 @@ def get_guild_list(id_num):
 
         tr_pull = html.findAll('tr')
 
+        a_pull = item.findAll('a', class_ = 'main-table-guild')
         for k, item in enumerate(tr_pull):
             if str(item).find('sorting_1">')>-1:
                 td_pull = item.findAll('td')
@@ -63,6 +66,7 @@ def get_guild_list(id_num):
                 guild_ilvl = find_val_in_str(str(td_pull[3]),'nowrap="">','\n\n</td>')
 
                 a_pull = item.findAll('a')
+                asdfasdfasdf
                 for a in a_pull:
                     a_str = str(a)
                     if a_str.find('main-table-guild')>-1 and a_str.find('/">')>-1:
@@ -89,3 +93,5 @@ for boss in bosslist:
 
     with open('guild_list_'+boss['boss']+'.json', 'w', encoding = 'utf-8') as f:
         json.dump(guild_list, f, ensure_ascii=False, indent = 4)
+
+#%%

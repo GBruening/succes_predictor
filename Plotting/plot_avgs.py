@@ -104,16 +104,6 @@ fig = px.histogram(test, x = 'pull_num', facet_col = 'name', facet_col_wrap = 2,
     category_orders={'name': list(np.array(boss_names)[np.unique(test['boss_num']).astype(int)])},
     )
 
-fig.add_trace(
-    go.Scatter(
-        x=[2, 4],
-        y=[4, 8],
-        mode="lines",
-        line=go.scatter.Line(color="gray"),
-        showlegend=False)
-)
-
-
 fig.update_layout(
     template = 'plotly_dark',
     plot_bgcolor = 'rgba(34,34,34,255)',
