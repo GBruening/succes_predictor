@@ -100,40 +100,30 @@ except:
 curs = conn.cursor()
 
 
-def make_agg_data_groupcomp(df):
-    
+def make_agg_data_groupcomp(df):    
     n_pulls = len(df.unique_id.unique())
-    df = df.groupby(['unique_id','p_class', 'spec', 'role']).\
-        size().\
-        reset_index(name='counts')
 
     df['test'] = df[df.columns[1:4]].apply(
         lambda x: ', '.join(x.dropna().astype(str)),
         axis=1
     )
-    temp_df = df.groupby(['unique_id','test']).count().unstack(fill_value=0).stack().reset_index().copy(deep = True)
-    avg_comp = temp_df.groupby(['test']).mean().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'mean_val'})
-    std_comp = temp_df.groupby(['test']).std().reset_index().dropna().iloc[:,0:2].rename(columns={'p_class': 'std_val'})
 
-    avg_comp['p_class'] = avg_comp[avg_comp.columns[0]].apply(
+    temp_df = df.groupby(['unique_id','test']).\
+        size().unstack(fill_value=0).stack().reset_index(name='counts')
+
+    temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
     )
-    avg_comp['spec'] = avg_comp[avg_comp.columns[0]].apply(
+    temp_df['spec'] = temp_df[temp_df.columns[1]].apply(
         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
     )
-    avg_comp['role'] = avg_comp[avg_comp.columns[0]].apply(
+    temp_df['role'] = temp_df[temp_df.columns[1]].apply(
         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
     )
 
-    std_comp['p_class'] = std_comp[std_comp.columns[0]].apply(
-        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
-    )
-    std_comp['spec'] = std_comp[std_comp.columns[0]].apply(
-        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
-    )
-    std_comp['role'] = std_comp[std_comp.columns[0]].apply(
-        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
-    )
+    avg_comp = temp_df.groupby(['p_class','spec','role']).mean().reset_index().dropna().rename(columns={'counts': 'mean_val'})
+    std_comp = temp_df.groupby(['p_class','spec','role']).std().reset_index().dropna().rename(columns={'counts': 'std_val'})
+    std_comp['std_val'] = std_comp['std_val']/np.sqrt(n_pulls)
 
     df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
         rename(columns={'role_x': 'role'}).query('role == "dps"')
@@ -152,17 +142,15 @@ def make_comp_plot(specific_boss):
             (select * from max_pull_count_small \
             where name = '{specific_boss}' and kill = 'True') as kill_df \
         on players.unique_id = kill_df.unique_id;")
-    df = pd.DataFrame(curs.fetchall())
-    df.columns = [desc[0] for desc in curs.description]
+    sql_df = pd.DataFrame(curs.fetchall())
+    sql_df.columns = [desc[0] for desc in curs.description]
 
-    # df = make_agg_data_groupcomp(df)
+    n_pulls = len(sql_df.unique_id.unique())
+    df = make_agg_data_groupcomp(sql_df)
 
-    n_pulls = len(df.unique_id.unique())
-
-
-    df = df.groupby(['p_class', 'spec', 'role']).\
-        size().\
-        reset_index(name='counts')
+    # df = df.groupby(['p_class', 'spec', 'role']).\
+    #     size().\
+    #     reset_index(name='counts')
 
     # avg_comp = df.\
     #     groupby(['p_class','spec','role']).\
