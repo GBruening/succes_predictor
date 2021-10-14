@@ -99,9 +99,23 @@ except:
     conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
 curs = conn.cursor()
 
+def make_agg_data_groupcomp(specific_boss):  
+    specific_boss = specific_boss.replace("'", "''")
+    
+    curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
+        ilvl, covenant, boss_name \
+        from nathria_prog_v2_players as players \
+        join \
+            (select * from max_pull_count_small \
+            where name = '{specific_boss}' and kill = 'True') as kill_df \
+        on players.unique_id = kill_df.unique_id;")
+    sql_df = pd.DataFrame(curs.fetchall())
+    sql_df.columns = [desc[0] for desc in curs.description]
 
-def make_agg_data_groupcomp(df):    
-    n_pulls = len(df.unique_id.unique())
+    n_pulls = len(sql_df.unique_id.unique())
+      
+    df = sql_df
+    df = df.dropna(subset = ['p_class','spec','role'])
 
     df['test'] = df[df.columns[1:4]].apply(
         lambda x: ', '.join(x.dropna().astype(str)),
@@ -111,6 +125,9 @@ def make_agg_data_groupcomp(df):
     temp_df = df.groupby(['unique_id','test']).\
         size().unstack(fill_value=0).stack().reset_index(name='counts')
 
+    test = []
+    for x in temp_df[temp_df.columns[1]]:
+        test.append(re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0])
     temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
     )
@@ -126,27 +143,15 @@ def make_agg_data_groupcomp(df):
     std_comp['std_val'] = std_comp['std_val']/np.sqrt(n_pulls)
 
     df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
-        rename(columns={'role_x': 'role'}).query('role == "dps"')
+        rename(columns={'role_x': 'role'})
 
     df = df.reindex(columns=['p_class', 'spec', 'role', 'mean_val','std_val'])
+    df['n_pulls'] = n_pulls
 
     return df
 
 def make_comp_plot(specific_boss):
-    specific_boss = specific_boss.replace("'", "''")
-    
-    curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
-        ilvl, covenant, boss_name \
-        from nathria_prog_v2_players as players \
-        join \
-            (select * from max_pull_count_small \
-            where name = '{specific_boss}' and kill = 'True') as kill_df \
-        on players.unique_id = kill_df.unique_id;")
-    sql_df = pd.DataFrame(curs.fetchall())
-    sql_df.columns = [desc[0] for desc in curs.description]
-
-    n_pulls = len(sql_df.unique_id.unique())
-    df = make_agg_data_groupcomp(sql_df)
+    df = make_agg_data_groupcomp(specific_boss)
 
     # df = df.groupby(['p_class', 'spec', 'role']).\
     #     size().\
@@ -228,6 +233,7 @@ def make_comp_plot(specific_boss):
     )
     return fig
 
+#%%
 # testdf = comb_df.query("role == 'dps'").copy(deep=True)
 fig = make_comp_plot(specific_boss)
 # CURRENTLY INCORRECT BECAUSE OF HOW OFTEN THINGS SHOW UP
@@ -255,14 +261,6 @@ for k, boss in enumerate(bosses_to_plot):
     print(subplots[k][0], subplots[k][1])
     for item in fig.data:
         fig2.append_trace(item, row=subplots[k][0], col=subplots[k][1])
-        # if k == 0:
-        #     fig2['layout']['xaxis']['tickangle'] = -30
-        #     fig2['layout']['xaxis']['title'] = 'Player Class'
-        #     fig2['layout']['yaxis']['title'] = 'Average number of class/spec<br>in kill group (mean ± SD).'
-        # else:
-        #     fig2['layout']['xaxis'+str(k)]['tickangle'] = -30
-        #     fig2['layout']['xaxis'+str(k)]['title'] = 'Player Class'
-        #     fig2['layout']['yaxis'+str(k)]['title'] = 'Average number of class/spec<br>in kill group (mean ± SD).'
 
 fig2.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Player Class', tickangle = -20))
 fig2.for_each_yaxis(lambda yaxis: yaxis.update(title = '# of Class in Group.'))
@@ -282,19 +280,17 @@ fig2.update_layout(
     title_text=f'Approximate group composition', 
     title_x=0.5
 )
-    
-#%%
-
-def figures_to_html(figs, filename="dashboard.html"):
-    dashboard = open(filename, 'w')
-    dashboard.write("<html><head></head><body>" + "\n")
-    for fig in figs:
-        inner_html = fig.to_html().split('<body>')[1].split('</body>')[0]
-        dashboard.write(inner_html)
-    dashboard.write("</body></html>" + "\n")
 
 
-fig1 = make_comp_plot(boss_names[0])
-fig2 = make_comp_plot(boss_names[1])
-fig3 = make_comp_plot(boss_names[2])
-fig4 = figures_to_html([fig1, fig2, fig3])
+#%% Add stuff to Sql
+
+
+# playerdf.to_sql('nathria_prog_v2_players', engine, if_exists='append')
+
+for specific_boss in boss_names:
+    print(f'Making sql for group comp: {specific_boss}')
+    df = make_agg_data_groupcomp(specific_boss)
+    df['name'] = specific_boss
+    df.to_sql('nathria_kill_comps', engine, if_exists='append')
+
+# %%

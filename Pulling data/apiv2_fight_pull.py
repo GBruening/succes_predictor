@@ -380,7 +380,7 @@ def get_fight_args(log, graphql_endpoint, headers):
     return args
 
 def get_fight_table(fights_list, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 5)
+    session = FuturesSession(max_workers = 1)
     futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
 
     fights_tables = []
@@ -421,7 +421,7 @@ def get_fight_table_and_parse(fights_list, graphql_endpoint, headers):
     req_num = 0
     last_time = datetime.datetime.now()
     for fight in fights_list:
-        print(q)
+        # print(q)
         # if time_diff < 50000:
         #     # print(time_diff)
         #     time.sleep(0.05 - (time_diff/1e6))
@@ -533,7 +533,7 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
 
 
 def futures_process_fight_table(fights_list, parsed_num, tot_len, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 4)
+    session = FuturesSession(max_workers = 1)
 
     retries = 5
     status_forcelist = [429, 502]    
@@ -604,7 +604,7 @@ def batch_process_fight_table(fights_list, graphql_endpoint, headers):
 
 gnum = 0
 guild_name = logged_guilds[gnum]
-start_num = 765
+start_num = 801
 for gnum, guild_name in enumerate(logged_guilds[start_num:]):
     curs.execute(f"select * from nathria_prog_v2 where guild_name = '{guild_name}'")
     pulls = pd.DataFrame(curs.fetchall())
@@ -624,9 +624,10 @@ for gnum, guild_name in enumerate(logged_guilds[start_num:]):
     if len(fights_list)>1:
         print(f'Pulling fight logs {guild_name}, #{gnum+1+start_num} of {len(logged_guilds)}.')
 
-        # playerdf = get_fight_table_and_parse(fights_list, graphql_endpoint, headers)
-        playerdf = batch_process_fight_table(fights_list, graphql_endpoint, headers)
+        playerdf = get_fight_table_and_parse(fights_list, graphql_endpoint, headers)
+        # playerdf = batch_process_fight_table(fights_list, graphql_endpoint, headers)
 
         playerdf.to_sql('nathria_prog_v2_players', engine, if_exists='append')
+        time.sleep(180)
 
 #%%
