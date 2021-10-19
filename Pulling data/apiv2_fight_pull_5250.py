@@ -430,8 +430,7 @@ def get_fight_table_and_parse(fights_list, graphql_endpoint, headers):
             cur_time = datetime.datetime.now()
             time_diff = (cur_time - last_time).microseconds
             print('Hit rate limit, sleeping for a sec.')
-            # time.sleep(60-(time_diff/1e6)+10)
-            time.sleep(60)
+            time.sleep(60-(time_diff/1e6)+10)
             last_time = datetime.datetime.now()
         # last_time = datetime.datetime.now()
         if result.status_code!=200:
@@ -605,7 +604,7 @@ def batch_process_fight_table(fights_list, graphql_endpoint, headers):
 
 gnum = 0
 guild_name = logged_guilds[gnum]
-start_num = 1405
+start_num = 5250
 for gnum, guild_name in enumerate(logged_guilds[start_num:]):
     curs.execute(f"select * from nathria_prog_v2 where guild_name = '{guild_name}'")
     pulls = pd.DataFrame(curs.fetchall())

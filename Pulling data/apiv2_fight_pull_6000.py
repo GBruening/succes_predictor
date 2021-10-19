@@ -605,7 +605,7 @@ def batch_process_fight_table(fights_list, graphql_endpoint, headers):
 
 gnum = 0
 guild_name = logged_guilds[gnum]
-start_num = 1405
+start_num = 6020
 for gnum, guild_name in enumerate(logged_guilds[start_num:]):
     curs.execute(f"select * from nathria_prog_v2 where guild_name = '{guild_name}'")
     pulls = pd.DataFrame(curs.fetchall())

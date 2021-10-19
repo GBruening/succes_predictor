@@ -25,7 +25,6 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-
 # warcraftlogs = OAuth2Session(client_id, redirect_uri=callback_uri)
 # authorization_url, state = warcraftlogs.authorization_url(authorize_url,
 #         access_type="offline")
@@ -35,19 +34,20 @@ os.chdir(dname)
 #                                  code = code)
 # access_token = token['access_token']
 # refresh_token = token['refresh_token']
-# with open('refresh_token_foof.env', 'w') as f:
+# with open('refresh_token.env', 'w') as f:
 #     f.write('refresh_token = '+str(refresh_token)+'\nacces_token = '+str(access_token))
 
-if os.path.isfile('refresh_token_foof.env'):
-    env_vars = dotenv_values('refresh_token_foof.env')
+if os.path.isfile('refresh_token.env'):
+    env_vars = dotenv_values('refresh_token.env')
     refresh_token = env_vars['refresh_token']
     access_token = env_vars['access_token']
 else:
     raise 'Get your fresh token dumby'
 
-env_vars = dotenv_values('config_foof.env')
+env_vars = dotenv_values('config.env')
 client_id = env_vars['id']
 client_secret = env_vars['secret']
+code = env_vars['code']
 
 callback_uri = "http://localhost:8080"
 authorize_url = "https://www.warcraftlogs.com/oauth/authorize"
@@ -83,7 +83,7 @@ except:
                                     refresh_token = refresh_token)
     access_token = token['access_token']
     refresh_token = token['refresh_token']
-    with open('refresh_token_foof.env', 'w') as f:
+    with open('refresh_token.env', 'w') as f:
         f.write('refresh_token = '+str(refresh_token)+'\naccess_token = '+str(access_token))
         
     warcraftlogs = OAuth2Session(client_id = client_id)
@@ -106,6 +106,8 @@ except:
     }"""
 
     r = requests.post(graphql_endpoint, json={"query": query}, headers=headers)    
+    if r.status_code == 401:
+        raise 'Got 401 error'
 
 with open('..//get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
@@ -340,6 +342,12 @@ database = 'nathria_prog'
 username = 'postgres'
 password = 'postgres'
 
+if 'conn' in locals():
+    conn.close()
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+curs = conn.cursor()
+
 curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
     ('nathria_prog_v2',))
 if curs.fetchone()[0]:
@@ -372,7 +380,7 @@ def get_fight_args(log, graphql_endpoint, headers):
     return args
 
 def get_fight_table(fights_list, graphql_endpoint, headers):
-    session = FuturesSession(max_workers = 5)
+    session = FuturesSession(max_workers = 1)
     futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
 
     fights_tables = []
@@ -413,16 +421,24 @@ def get_fight_table_and_parse(fights_list, graphql_endpoint, headers):
     req_num = 0
     last_time = datetime.datetime.now()
     for fight in fights_list:
+        # print(q)
         # if time_diff < 50000:
         #     # print(time_diff)
         #     time.sleep(0.05 - (time_diff/1e6))
         result = requests.post(**get_fight_args(fight, graphql_endpoint, headers))
-        if int(result.headers['X-RateLimit-Remaining'])<50:
+        if 'X-RateLimit-Remaining' in result.headers.keys() and int(result.headers['X-RateLimit-Remaining'])<50:
             cur_time = datetime.datetime.now()
             time_diff = (cur_time - last_time).microseconds
             print('Hit rate limit, sleeping for a sec.')
-            time.sleep(60-(time_diff/1e6)+10)
+            # time.sleep(60-(time_diff/1e6)+10)
+            time.sleep(60)
             last_time = datetime.datetime.now()
+        # last_time = datetime.datetime.now()
+        if result.status_code!=200:
+            time.sleep(5)
+            print(result.status_code)
+        else:
+            cur_time = datetime.datetime.now()
         if result.status_code==429:
             print(result.status_code)
             time.sleep(10)
@@ -460,7 +476,13 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
                     ilvl = player['minItemLevel']
                 except:
                     ilvl = np.NaN
-
+            
+            try:
+                server = player['server']
+                class_ = player['type']
+            except:
+                server = np.NaN
+                class_ = np.NaN
             try:
                 covenant = player['combatantInfo']['covenantID']
             except:
@@ -494,8 +516,8 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
             player_info= {'unique_id': unique_id,
                         'player_name': player['name'],
                         'guild_name': guild_name,
-                        'server': player['server'],
-                        'class': player['type'],
+                        'server': server,
+                        'class': class_,
                         'spec': spec,
                         'role': role,
                         'ilvl': ilvl,
@@ -510,11 +532,80 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
             player_list.append(player_info)
     return player_list
 
-gnum = 0
-g_len = len(logged_guilds)
-guild_name = logged_guilds[gnum]
-start_num = 580
 
+def futures_process_fight_table(fights_list, parsed_num, tot_len, graphql_endpoint, headers):
+    session = FuturesSession(max_workers = 1)
+
+    retries = 5
+    status_forcelist = [429, 502]    
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        respect_retry_after_header=True,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+
+    futures = [session.post(**get_fight_args(fight, graphql_endpoint, headers)) for fight in fights_list]
+
+    player_list = []
+    for q, future in enumerate(as_completed(futures)):
+        parsed_num += 1
+        if parsed_num % 100 == 0:
+            print(f'Parsing {guild_name}, fight # {parsed_num+1} of {tot_len}')
+        result = future.result()
+        if result.status_code != 200:
+            print(result.status_code)
+        if result.status_code == 502:
+            continue
+        table = result.json()['data']['reportData']['report']['table']['data']
+        player_info = parse_fight_table(table, fights_list[q]['name'], fights_list[q]['unique_id'], guild_name)
+        if len(player_list) == 0:
+            player_list = player_info
+        else:
+            player_list.extend(player_info)
+    return player_list, result, parsed_num
+
+def make_batches(list_, n):
+    new_list = []
+    for k in range(0, len(list_), n):
+        new_list.append(list_[k:k+n])
+    return new_list
+
+def batch_process_fight_table(fights_list, graphql_endpoint, headers):
+    fight = fights_list[0]
+    batches = make_batches(fights_list, 550)
+    player_list = []
+    last_time = datetime.datetime.now()
+    tot_len = len(fights_list)
+    parsed_num = 0
+    for batch_num, batch_fight in enumerate(batches):
+
+        result = requests.post(**get_fight_args(fight, graphql_endpoint, headers))
+        if 'X-RateLimit-Remaining' in result.headers.keys() and int(result.headers['X-RateLimit-Remaining'])<550:
+            print('At rate limit, wait longer.')
+            time.sleep(60)
+
+        print(f'Parsing batch # {batch_num} of {len(batches)}')
+        plist, fut, parsed_num = futures_process_fight_table(batch_fight, parsed_num, tot_len, graphql_endpoint, headers)
+        cur_time = datetime.datetime.now()
+        time_diff = (cur_time - last_time).seconds
+        if time_diff < 60:
+            print(f'Sleeping for {60-time_diff+3}.')
+            for sleepy_time in range(60-time_diff+3):
+                if sleepy_time % 10 == 0:
+                    print('\r', f'Slept for {sleepy_time}')
+                time.sleep(1)
+        last_time = datetime.datetime.now()
+        player_list.extend(plist)
+    return pd.DataFrame.from_dict(player_list)
+
+gnum = 0
+guild_name = logged_guilds[gnum]
+start_num = len(logged_guilds)
 for gnum, guild_name in enumerate(reversed(logged_guilds)):
     curs.execute(f"select * from nathria_prog_v2 where guild_name = '{guild_name}'")
     pulls = pd.DataFrame(curs.fetchall())
@@ -529,24 +620,15 @@ for gnum, guild_name in enumerate(reversed(logged_guilds)):
     else:
         added_fights = []
 
-    fight_list = [fight for fight in fights_list if fight['unique_id'] not in added_fights]
+    fights_list = [fight for fight in fights_list if fight['unique_id'] not in added_fights]
     
-    if len(fight_list)>1:
-        print(f'Pulling fight logs {guild_name}, #{g_len-gnum} of {len(logged_guilds)}.')
-
-        # fights_tables = get_fight_table(fights_list, graphql_endpoint, headers)
+    if len(fights_list)>1:
+        print(f'Pulling fight logs {guild_name}, #{1+start_num-gnum} of {len(logged_guilds)}.')
 
         playerdf = get_fight_table_and_parse(fights_list, graphql_endpoint, headers)
-        # playerdf = pd.DataFrame()
-        # for q, table in enumerate(fights_tables):
-            # if q % 50 == 0:
-            #     print(f'Parsing {guild_name}, fight # {q+1} of {len(fights_tables)}')
-        #     player_info = parse_fight_table(table, fights_list[q]['name'], fights_list[q]['unique_id'], guild_name)
-        #     for player in player_info:
-        #         for player in player_info:
-        #             playerdf = playerdf.append(pd.DataFrame(player, index=['i',]))
-        # if len(playerdf)>1:
-            # print(f'Adding to SQL guild player info {guild_name}')
+        # playerdf = batch_process_fight_table(fights_list, graphql_endpoint, headers)
+
         playerdf.to_sql('nathria_prog_v2_players', engine, if_exists='append')
+        time.sleep(180)
 
 #%%

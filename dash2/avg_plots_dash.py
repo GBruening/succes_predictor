@@ -332,8 +332,6 @@ def update_fig(specific_boss):
     dx = bins[1] - bins[0]
     n = np.cumsum(n)*dx
 
-
-
     new_kill_df = pd.DataFrame(data = {'n': n, 'kill_time': bins[0:-1]})
     new_kill_df['date'] = [datetime.datetime.fromtimestamp(item) for item in new_kill_df['kill_time']]
 
@@ -434,6 +432,7 @@ def make_comp_plot(specific_boss):
                     array=[spec_df.std_val],
                     thickness=0.75),
                 text = spec_df.spec,
+                hovertemplate = '%{text} %{x} <br> %{y:.2f} ± %{error_y:.2f}',
                 offsetgroup = spec_count,
                 showlegend = False,
                 marker = {'color': colors[p_class]}))
@@ -450,6 +449,7 @@ def make_comp_plot(specific_boss):
         paper_bgcolor = 'rgba(0,0,0,255)',
         # height=np.ceil(10/2)*200,
         height=400,
+        width = 1000,
         margin=dict(
             l=100,
             r=100,
@@ -460,7 +460,7 @@ def make_comp_plot(specific_boss):
         autosize=True,
         transition_duration = 500,
         font = dict(size = 14),
-        uniformtext_minsize=5, 
+        uniformtext_minsize=4, 
         uniformtext_mode='show',
         showlegend = False,
         title_text=f'Approximate group composition<br>for {specific_boss}', 
@@ -505,6 +505,6 @@ app.layout = html.Div(children=[
 ], style={'backgroundColor':'black'})
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8050)
 
 #%%
