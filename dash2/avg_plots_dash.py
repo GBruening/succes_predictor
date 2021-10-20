@@ -494,17 +494,21 @@ app.layout = html.Div(children=[
         dcc.Graph(
             id='single_guild_graph'
         )
-    ])
-    ,
+    ]),    
+    html.Br(),   
+    html.Br(),   
+    html.Br(),   
+    html.Br(),   
+    html.Br(),
     html.Div([
         html.Br(style={'backgroundColor':'black'}),
         dcc.Graph(
             id = 'group_comp_plot'
         )
-    ])    
+    ])
 ], style={'backgroundColor':'black'})
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)
+    app.run_server(debug=False, port=8050)
 
 #%%

@@ -15,6 +15,11 @@ import plotly.graph_objects as go
 
 import joblib
 
+import os
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 # app = Dash(__name__, external_stylesheets=external_stylesheets)
@@ -102,12 +107,22 @@ def update_fig(guild_name, prog_or_all, specific_boss):
                 'Stone Legion Generals', \
                 'Sire Denathrius']
 
-    fig = px.scatter(newdf, x = 'pull_num', y = 'end_perc', facet_col = 'name', facet_col_wrap=2,
-        labels = {"pull_num": 'Pull Number',
-                "end_perc": 'Wipe Percent (%)',
-                "name": ''},
-        category_orders={'name': list(np.array(boss_names)[np.unique(newdf['boss_num']).astype(int)])},
-        facet_col_spacing=0.06)#, title = str(guild_name))
+    # fig = px.scatter(newdf, x = 'pull_num', y = 'end_perc', 
+    #     facet_col = 'name', 
+    #     facet_col_wrap=2,
+    #     labels = {"pull_num": 'Pull Number',
+    #             "end_perc": 'Wipe Percent (%)',
+    #             "name": 'Wipe Percentage (0 = Kill)'},
+    #     category_orders={'name': list(np.array(boss_names)[np.unique(newdf['boss_num']).astype(int)])},
+    #     facet_col_spacing=0.06)#, title = str(guild_name))
+    
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x = newdf['pull_num'], 
+        y = newdf['end_perc'],
+        name = 'Wipe Percentage (0 = Kill)',
+        mode = 'markers')
+        )
+    fig.update_yaxes(title = 'Wipe or Success Probability (%)', range = [-3, 100])
     fig.update_traces(hovertemplate = 'Pull %{x}<br>%{y:.2f}% Wipe')
     fig.update_xaxes(matches = None)
     fig.for_each_xaxis(lambda xaxis: xaxis.update(showticklabels=True))
@@ -115,44 +130,48 @@ def update_fig(guild_name, prog_or_all, specific_boss):
     fig.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Pull Number'))
     fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
+    try:
+        model_specific_boss = specific_boss.replace(' ','_')
+        filename = f'{model_specific_boss}_mod.pickle'
+        clf = joblib.load(filename)
+
+        def listify_pulls(end_perc):
+            pull_list = []
+
+            n_fights = 10
+            end_perc
+
+            pulls = [100]*n_fights
+            for k in range(len(end_perc)-1):
+                if k == 0:
+                    pass
+                else:
+                    pulls.pop(0)
+                    pulls.append(end_perc[k])
+                pull_list.append(pulls.copy())
+            return pull_list
+
+        pulls = listify_pulls(list(newdf.sort_values(by = ['pull_num'])['end_perc']))
+
+        s_prob = [item[1] for item in clf.predict_proba(pulls)]
+
+        fig = fig
+        fig.add_trace(
+            go.Scatter(x = sorted(newdf['pull_num']), 
+                    y = np.array(s_prob)*100,
+                    marker = {'size': 0,
+                            'opacity': 0},
+                    # showlegend = False,
+                    name = 'Kill Probability<br>on next pull',
+                    # hovertemplate = 'Win Prob<br>on next pull<br>%{y:.2f}%'),
+                    hovertemplate = '%{y:.2f}%'),
+            # row = 1,
+            # col = 1,
+        )
+    except:
+        pass
     
-    filename = f'{specific_boss}_mod.pickle'
-    clf = joblib.load(filename)
-
-    def listify_pulls(end_perc):
-        pull_list = []
-
-        n_fights = 10
-        end_perc
-
-        pulls = [100]*n_fights
-        for k in range(len(end_perc)-1):
-            if k == 0:
-                pass
-            else:
-                pulls.pop(0)
-                pulls.append(end_perc[k])
-            pull_list.append(pulls.copy())
-        return pull_list
-
-    pulls = listify_pulls(list(newdf.sort_values(by = ['pull_num'])['end_perc']))
-
-    s_prob = [item[1] for item in clf.predict_proba(pulls)]
-
-    fig2 = fig
-    fig2.add_trace(
-        go.Scatter(x = sorted(newdf['pull_num']), 
-                y = np.array(s_prob)*100,
-                marker = {'size': 0,
-                          'opacity': 0},
-                showlegend = False,
-                name = '',
-                hovertemplate = 'Win Prob<br>%{y:.2f}'),
-        row = 1,
-        col = 1,
-    )
-    
-    fig.update_layout(hovermode = 'x unified')
+    fig.update_layout(hovermode = 'x')
     fig.update_layout(
         template = 'plotly_dark',
         # plot_bgcolor = 'rgba(34,34,34,255)',
@@ -160,7 +179,7 @@ def update_fig(guild_name, prog_or_all, specific_boss):
         plot_bgcolor = 'rgba(0,0,0,255)',
         paper_bgcolor = 'rgba(0,0,0,255)',
         autosize=True,
-        width=800,
+        width=1000,
         height=np.ceil(n_bosses/2)*400,
         margin=dict(
             l=100,
@@ -224,10 +243,13 @@ app.layout = html.Div(children=[
     html.Br(style={'backgroundColor':'black'}),
     # html.Div(id='my-output'),
     dcc.Graph(
-        id='single_guild_graph'
-    )
+        id='single_guild_graph', style={'backgroundColor':'black'}
+    ),
+   html.Br(),   
+   html.Br(),   
+   html.Br(),
     
 ], style={'backgroundColor':'black'})
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8051)
+    app.run_server(debug=False, port=8051)

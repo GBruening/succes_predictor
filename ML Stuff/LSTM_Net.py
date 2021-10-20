@@ -5,15 +5,9 @@
 import numpy as np
 import pandas as pd
 import ast
-
-from keras.datasets import imdb
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
-from keras.layers.embeddings import Embedding
-from keras.preprocessing import sequence
+from joblib import dump, load
+import joblib
+import pickle
 
 import os
 from sqlalchemy import create_engine
@@ -44,62 +38,86 @@ curs = conn.cursor()
 
 
 # %% Get the data sets
+boss_names = ['Shriekwing', \
+            'Huntsman Altimor',
+            'Hungering Destroyer', \
+            "Sun King's Salvation",
+            "Artificer Xy'mox", \
+            'Lady Inerva Darkvein', \
+            'The Council of Blood', \
+            'Sludgefist', \
+            'Stone Legion Generals', \
+            'Sire Denathrius']
+boss = boss_names[-1]
 
-temp = pd.read_csv('pull_list_Shriekwing.csv')
+for boss in reversed(boss_names[5:-1]):
+    print(f'Fitting boss: {boss}')
+    boss_csv = str(boss.replace(' ','_'))
+    temp = pd.read_csv(f'pull_list_{boss_csv}.csv')
 
-pull_list = [ast.literal_eval(item) for item in list(temp['pulls'])]
-kill_list = list(temp['kills'])
+    pull_list = [ast.literal_eval(item) for item in list(temp['pulls'])]
+    kill_list = list(temp['kills'])
 
-# %%
-# encode class values as integers
-# LSTM with dropout for sequence classification in the IMDB dataset
-import numpy
-numpy.random.seed(7)
+    # encode class values as integers
+    # LSTM with dropout for sequence classification in the IMDB dataset
+    import numpy
+    numpy.random.seed(7)
 
-from sklearn import datasets, tree, utils
-# import graphviz 
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import train_test_split 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import make_classification
+    from sklearn import datasets, tree, utils
+    # import graphviz 
+    from sklearn.model_selection import GridSearchCV
+    from sklearn.model_selection import train_test_split 
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.datasets import make_classification
 
-X_train, X_test, Y_train, Y_test = train_test_split(pull_list, kill_list, test_size = .1) 
+    X_train, X_test, Y_train, Y_test = train_test_split(pull_list, kill_list, test_size = .1) 
 
-# tree_clf = tree.DecisionTreeClassifier(max_depth=3).fit(X_train, Y_train)
-# tree_clf.score(X_test, Y_test)
+    # tree_clf = tree.DecisionTreeClassifier(max_depth=3).fit(X_train, Y_train)
+    # tree_clf.score(X_test, Y_test)
 
-clf = RandomForestClassifier(n_estimators = 200,
-                             n_jobs = 5)
+    clf = RandomForestClassifier(n_estimators = 200,
+                                    n_jobs = 5)
 
-# clf = RandomForestClassifier(max_depth=4,
-#                              random_state=0,
-#                              oob_score=True,
-#                              n_jobs = 5)
-# clf.fit(X_train, Y_train)
-# clf.predict_proba([[100, 100, 100, 100, 100, 100, 100, 100, 100, 100]])
-# clf.score(X_test, Y_test)
+    # clf = RandomForestClassifier(max_depth=4,
+    #                              random_state=0,
+    #                              oob_score=True,
+    #                              n_jobs = 5)
+    # clf.fit(X_train, Y_train)
+    # clf.predict_proba([[100, 100, 100, 100, 100, 100, 100, 100, 100, 100]])
+    # clf.score(X_test, Y_test)
 
-param_grid = {
-    'bootstrap': [True],
-    'max_depth': [1,5,10,40],
-    'min_samples_leaf': [3, 4, 5],
-    'min_samples_split': [8, 10, 12],
-    'n_estimators': [100, 200, 300, 1000]
-}
+    param_grid = {
+        'bootstrap': [True],
+        'max_depth': [8,12],
+        'min_samples_leaf': [5,10],
+        'min_samples_split': [10,25],
+        'n_estimators': [100, 200]
+    }
 
-grid_search = GridSearchCV(clf, param_grid = param_grid,
-                           cv = 5, n_jobs = 3, verbose = 5)
-grid_search.fit(pull_list, kill_list)
+    grid_search = GridSearchCV(clf, param_grid = param_grid,
+                            cv = 5, n_jobs = 8, verbose = 5)
+    grid_search.fit(pull_list, kill_list)
+    # grid_search.score(X_test, Y_test)
+    # grid_search.fit(pull_list, kill_list)
 
+    boss_str = str(boss.replace(' ','_'))
+    # pickle.dump(grid_search, open(boss_str, 'w'))
 
+    filename = f'{boss_str}_mod.pickle'
+    joblib.dump(grid_search, filename)
+
+loaded_model = joblib.load(filename)
+
+asdfs
+#%%
 
 from sklearn import model_selection, ensemble
 
-cv = model_selection.ShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
-model_selection.cross_val_score(clf, X_train, Y_train, cv=cv, 
-                                scoring='neg_mean_squared_error', 
-                                verbose = 2, 
-                                n_jobs = 5)
+# cv = model_selection.ShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
+# rf = model_selection.cross_val_score(clf, X_train, Y_train, cv=cv, 
+#                                 scoring='neg_mean_squared_error', 
+#                                 verbose = 2, 
+#                                 n_jobs = 5)
 # clf.estimators_[0].feature_importances_
 
 
