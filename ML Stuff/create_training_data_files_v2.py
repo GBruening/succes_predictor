@@ -85,6 +85,7 @@ boss_names = ['Shriekwing', \
             'Stone Legion Generals', \
             'Sire Denathrius']
 
+
 for boss in reversed(boss_names):
     specific_boss = boss.replace("'", "''")
     curs.execute(f"Select name, pull_num, kill, boss_perc, average_item_level, guild_name, guild_realm, guild_region,\

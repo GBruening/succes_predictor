@@ -6,6 +6,8 @@ import dash_html_components as html
 import os
 import sys
 
+# from dash_functions import *
+
 if sys.platform.lower() == "win32": 
     os.system('color')
 
@@ -40,6 +42,6 @@ def TierStats():
     return render_template('TierStats.html')
 
 if __name__ == '__main__':
-    # flask_server.run(debug = False)
-    flask_server.run(debug = True)
+    flask_server.run(debug = False)
+    # flask_server.run(debug = True)
 
