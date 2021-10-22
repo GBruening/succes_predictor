@@ -40,10 +40,12 @@ def rm_repeat_boss(df):
 def listify(df):
     pull_list = []
     kill_list = []
+    ilvl_list = []
 
     n_fights = 10
     boss_perc = list(df['boss_perc'])
     kill = list(df['kill'])
+    ilvl = list(df['average_item_level'])
 
     pulls = [100]*n_fights
     for k in range(len(boss_perc)-1):
@@ -54,7 +56,8 @@ def listify(df):
             pulls.append(df['boss_perc'][k])
         pull_list.append(pulls.copy())
         kill_list.append(kill[k+1])
-    return pull_list, kill_list
+        ilvl_list.append(ilvl[k+1])
+    return pull_list, kill_list, ilvl_list
 
 # %% Setup
 server = 'localhost'
@@ -84,43 +87,45 @@ boss_names = ['Shriekwing', \
             'Sludgefist', \
             'Stone Legion Generals', \
             'Sire Denathrius']
+boss = boss_names[-1]
+# for boss in boss_names:
+specific_boss = boss.replace("'", "''")
+curs.execute(f"Select name, pull_num, kill, boss_perc, average_item_level, guild_name, guild_realm, guild_region,\
+    log_start+start_time as fight_start_time\
+    from nathria_prog_v2 where name = '{specific_boss}';")
 
-for boss in boss_names:
-    specific_boss = boss.replace("'", "''")
-    curs.execute(f"Select name, pull_num, kill, boss_perc, average_item_level, guild_name, guild_realm, guild_region,\
-        log_start+start_time as fight_start_time\
-        from nathria_prog_v2 where name = '{specific_boss}';")
+pull_df = pd.DataFrame(curs.fetchall())
+pull_df.columns = [desc[0] for desc in curs.description]
 
-    pull_df = pd.DataFrame(curs.fetchall())
-    pull_df.columns = [desc[0] for desc in curs.description]
+guilds_df = pull_df[['guild_name','guild_realm']].drop_duplicates()
 
-    guilds_df = pull_df[['guild_name','guild_realm']].drop_duplicates()
+pull_list = []
+kill_list = []
+ilvl_list = []
+counter = 0
 
-    pull_list = []
-    kill_list = []
-    counter = 0
+for index, row in guilds_df.iterrows():
+    guild = row[0]
+    realm = row[1]
+    one_guild_df = pull_df.query(f'guild_name == "{guild}"').\
+        query(f'guild_realm == "{realm}"').\
+        sort_values(by = ['fight_start_time'])
+    one_guild_df = rm_repeat_boss(one_guild_df.copy())
+    temp_pull, temp_kill, temp_ilvl = listify(one_guild_df.copy(deep = True))
+    pull_list.extend(temp_pull)
+    kill_list.extend(temp_kill)
+    ilvl_list.extend(temp_ilvl)
+    counter += 1
+    if counter % 100 == 0:
+        print(f'Boss: {boss}, Added #{counter} of {len(guilds_df)}')
 
-    for index, row in guilds_df.iterrows():
-        guild = row[0]
-        realm = row[1]
-        one_guild_df = pull_df.query(f'guild_name == "{guild}"').\
-            query(f'guild_realm == "{realm}"').\
-            sort_values(by = ['fight_start_time'])
-        one_guild_df = rm_repeat_boss(one_guild_df.copy())
-        temp_pull, temp_kill = listify(one_guild_df.copy(deep = True))
-        pull_list.extend(temp_pull)
-        kill_list.extend(temp_kill)
-        counter += 1
-        if counter % 100 == 0:
-            print(f'Boss: {boss}, Added #{counter} of {len(guilds_df)}')
-
-    merged_pull_kill = [(pull_list[i], kill_list[i]) for i in range(0, len(kill_list))]
-    with open('pull_list_'+str(boss.replace(' ','_'))+'.csv', 'w') as f:
-        csv_out=csv.writer(f, lineterminator = '\n')
-        csv_out.writerow(['pulls','kills'])
-        csv_out.writerows(merged_pull_kill)
-        # for row in merged_pull_kill:
-        #     csv_out.writerow(row)
+merged_pull_kill = [(pull_list[i], ilvl_list[i], kill_list[i]) for i in range(0, len(kill_list))]
+with open('pull_list_'+str(boss.replace(' ','_'))+'.csv', 'w') as f:
+    csv_out=csv.writer(f, lineterminator = '\n')
+    csv_out.writerow(['pulls','kills'])
+    csv_out.writerows(merged_pull_kill)
+    # for row in merged_pull_kill:
+    #     csv_out.writerow(row)
 
     # f.write(str(pull_list) + '\n')
 asfasfasf
