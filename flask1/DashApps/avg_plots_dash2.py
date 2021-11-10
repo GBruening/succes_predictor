@@ -341,7 +341,7 @@ def init_dashboard(server):
             uniformtext_minsize=4, 
             uniformtext_mode='show',
             showlegend = False,
-            title_text=f'Approximate group composition<br>for {specific_boss}', 
+            title_text=f'Average group composition<br>for {specific_boss}', 
             title_x=0.5
         )
         comp_plot = fig

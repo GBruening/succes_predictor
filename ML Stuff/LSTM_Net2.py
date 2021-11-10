@@ -50,17 +50,6 @@ boss_names = ['Shriekwing', \
             'Sire Denathrius']
 boss = boss_names[-1]
 
-# for boss in reversed(boss_names[5:-1]):
-print(f'Fitting boss: {boss}')
-boss_csv = str(boss.replace(' ','_'))
-data = pd.read_csv(f'pull_list_{boss_csv}.csv')
-
-pull_list = [ast.literal_eval(item) for item in list(data['pulls'])]
-# pull_list = [item.strip('][').split(', ') for item in list(data['pulls'])]
-# data['pulls'] = list(pull_list)
-ilvl_list = list(data['ilvl'])
-kill_list = list(data['kills'])
-
 from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
@@ -131,99 +120,111 @@ def build_model(**kwargs):
 
     return full_pipe
 
-# kwargs = {'max_depth': 5,
-#           'min_s_leaf': 10,
-#           'min_split': 5,
-#           'n_est': 50,
-#           'alpha': 1,
-#           'last_alpha': 10}
+for boss in reversed(boss_names[0:-1]):
+    print(f'Fitting boss: {boss}')
+    boss_csv = str(boss.replace(' ','_'))
+    data = pd.read_csv(f'pull_list_{boss_csv}.csv')
 
-# full_pipe = build_model(**kwargs)
-
-# X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
-
-# full_pipe.fit(X_train, y_train)
+    pull_list = [ast.literal_eval(item) for item in list(data['pulls'])]
+    # pull_list = [item.strip('][').split(', ') for item in list(data['pulls'])]
+    # data['pulls'] = list(pull_list)
+    ilvl_list = list(data['ilvl'])
+    kill_list = list(data['kills'])
 
 
-from itertools import product
-import pickle
-from os import path
-# pickle.dump(full_mod, open('full_mod.pickle', 'wb'))
+    # kwargs = {'max_depth': 5,
+    #           'min_s_leaf': 10,
+    #           'min_split': 5,
+    #           'n_est': 50,
+    #           'alpha': 1,
+    #           'last_alpha': 10}
 
-kwargs = {'max_depth': [5,10,20],
-          'min_s_leaf': [10,20],
-          'min_split': [5,15],
-          'n_est': [100],
-          'alpha': [.1,10],
-          'last_alpha': [.1,10]}
+    # full_pipe = build_model(**kwargs)
 
-scores = []
-if path.exists('score_keeper.pickle'):
-    scores = pickle.load(open("score_keeper.pickle",'rb'))
-    max_depth  = [score[0] for score in scores]
-    min_s_leaf = [score[1] for score in scores]
-    min_split  = [score[2] for score in scores]
-    n_est      = [score[3] for score in scores]
-    alpha      = [score[4] for score in scores]
-    last_alpha = [score[5] for score in scores]
-else:
-    max_depth  = []
-    min_s_leaf = []
-    min_split  = []
-    n_est      = []
-    alpha      = []
-    last_alpha = []
+    # X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
+
+    # full_pipe.fit(X_train, y_train)
+
+
+    from itertools import product
+    import pickle
+    from os import path
+    # pickle.dump(full_mod, open('full_mod.pickle', 'wb'))
+
+    kwargs = {'max_depth': [5,10,20],
+            'min_s_leaf': [10,20],
+            'min_split': [5,15],
+            'n_est': [100],
+            'alpha': [.1,10],
+            'last_alpha': [.1,10]}
+
     scores = []
-n_cv = 5
-for k, combin in enumerate(product(*kwargs.values())):
-    for cv in range(0,n_cv):
-        if (combin[0] in max_depth and 
-            combin[1] in min_s_leaf and 
-            combin[2] in min_split and 
-            combin[3] in n_est and 
-            combin[4] in alpha and 
-            combin[5] in last_alpha):
-            print(f'Skipping {k+1}', end = '\r')
-            continue
+    if path.exists('score_keeper.pickle'):
+        scores = pickle.load(open("score_keeper.pickle",'rb'))
+        max_depth  = [score[0] for score in scores]
+        min_s_leaf = [score[1] for score in scores]
+        min_split  = [score[2] for score in scores]
+        n_est      = [score[3] for score in scores]
+        alpha      = [score[4] for score in scores]
+        last_alpha = [score[5] for score in scores]
+    else:
+        max_depth  = []
+        min_s_leaf = []
+        min_split  = []
+        n_est      = []
+        alpha      = []
+        last_alpha = []
+        scores = []
+    n_cv = 5
+    for k, combin in enumerate(product(*kwargs.values())):
+        for cv in range(0,n_cv):
+            if (combin[0] in max_depth and 
+                combin[1] in min_s_leaf and 
+                combin[2] in min_split and 
+                combin[3] in n_est and 
+                combin[4] in alpha and 
+                combin[5] in last_alpha):
+                print(f'Skipping {k+1}', end = '\r')
+                continue
+                
+            kwarg = {'max_depth':  combin[0],
+                    'min_s_leaf': combin[1],
+                    'min_split':  combin[2],
+                    'n_est':      combin[3],
+                    'alpha':      combin[4],
+                    'last_alpha': combin[5]}
+
+            full_pipe = build_model(**kwarg)
+
+            X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
+            full_pipe.fit(X_train, y_train)
             
-        kwarg = {'max_depth':  combin[0],
-                 'min_s_leaf': combin[1],
-                 'min_split':  combin[2],
-                 'n_est':      combin[3],
-                 'alpha':      combin[4],
-                 'last_alpha': combin[5]}
-
-        full_pipe = build_model(**kwarg)
-
-        X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
-        full_pipe.fit(X_train, y_train)
-        
-        score = full_pipe.score(X_test, y_test)
-        scores.append((combin[0], combin[1], combin[2], combin[3], combin[4], score))
-        pickle.dump(scores, open('score_keeper.pickle', 'wb'))
-        print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
+            score = full_pipe.score(X_test, y_test)
+            scores.append((combin[0], combin[1], combin[2], combin[3], combin[4], score))
+            pickle.dump(scores, open('score_keeper.pickle', 'wb'))
+            print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
 
 
-if path.exists('score_keeper.pickle'):
-    scores = pickle.load(open("score_keeper.pickle",'rb'))
-df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', 'score'])
-df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', ]).agg({'score': ['mean']}).reset_index()
+    if path.exists('score_keeper.pickle'):
+        scores = pickle.load(open("score_keeper.pickle",'rb'))
+    df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', 'score'])
+    df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', ]).agg({'score': ['mean']}).reset_index()
 
-maxdf = df.loc[df['score']['mean'].argmax()]
+    maxdf = df.loc[df['score']['mean'].argmax()]
 
-kwarg = {'max_depth': int(maxdf['max_depth']),
-         'min_s_leaf': float(maxdf['min_s_leaf']),
-         'min_split': int(maxdf['min_split']),
-         'n_est': int(maxdf['n_est']),
-         'alpha': float(maxdf['alpha']),
-         'last_alpha': float(maxdf['last_alpha'])}
+    kwarg = {'max_depth': int(maxdf['max_depth']),
+            'min_s_leaf': float(maxdf['min_s_leaf']),
+            'min_split': int(maxdf['min_split']),
+            'n_est': int(maxdf['n_est']),
+            'alpha': float(maxdf['alpha']),
+            'last_alpha': float(maxdf['last_alpha'])}
 
-full_pipe = build_model(**kwarg)
-full_pipe.fit(data, data['kills'])
+    full_pipe = build_model(**kwarg)
+    full_pipe.fit(data, data['kills'])
 
-boss_str = str(boss.replace(' ','_'))
-filename = f'{boss_str}_mod.pickle'
-joblib.dump(full_pipe, filename)
+    boss_str = str(boss.replace(' ','_'))
+    filename = f'{boss_str}_mod.pickle'
+    joblib.dump(full_pipe, filename)
 
 #%%
 # class pullmodel(BaseEstimator, RegressorMixin):

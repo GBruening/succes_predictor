@@ -172,6 +172,78 @@ def parse_fight_table(table, boss_name, unique_id, guild_name):
             player_list.append(player_info)
     return player_list
 
+
+from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
+from sklearn.linear_model import RidgeClassifier
+
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import FeatureUnion, Pipeline
+from sklearn.model_selection import train_test_split 
+from sklearn.ensemble import RandomForestClassifier
+
+class ModelTransformer(BaseEstimator, TransformerMixin):    
+    def __init__(self, model):
+        self.model = model
+        # What needs to be done here?
+    
+    def fit(self, X, y, **kwargs):
+        self.model.fit(X, y)
+        return self
+        # Fit the stored predictor.
+        # Question: what should be returned?
+    
+    def transform(self, X):
+        return np.array(self.model.predict(X)).reshape(-1, 1)
+        # Use predict on the stored predictor as a "transformation".
+        # Be sure to return a 2-D array.
+
+class pull_encoder(BaseEstimator, TransformerMixin):
+    def fit(self, X, y = None):
+        return self
+    
+    def transform(self, X):
+        return [ast.literal_eval(item) for item in list(X['pulls'])]
+
+def build_model(**kwargs):
+    # selector = ColumnTransformer(transformers = [('pulls','passthrough',[0])])
+    pull_pipe = Pipeline([
+        # ('features', ColumnTransformer(transformers = [('pulls','passthrough',[0])])),
+        ('encoder', pull_encoder()),
+        ('pull_classifier', RandomForestClassifier(bootstrap = True, n_jobs = 10))
+    ])
+    params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],
+                    'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
+                    # 'pull_classifier__min_samples_split': kwargs['min_split'],
+                    'pull_classifier__n_estimators': kwargs['n_est']}
+    pull_pipe.set_params(**params_pulls)
+    pull_trans = ModelTransformer(pull_pipe)
+    # pull_trans.fit(data, kill_list)
+
+    ilvl_feat = ColumnTransformer(transformers = [('ilvl','passthrough',[1])])
+    ilvl_pipe = Pipeline([
+        ('features', ilvl_feat),
+        ('ilvl_regressor', RidgeClassifier())
+    ])
+    params_ilvl = {'ilvl_regressor__alpha': kwargs['alpha']}
+    ilvl_pipe.set_params(**params_ilvl)
+    ilvl_trans = ModelTransformer(ilvl_pipe)
+    # ilvl_trans.fit(data, kill_list)
+
+    union = FeatureUnion([
+        ('pulls', pull_trans),
+        ('ilvl', ilvl_trans)
+    ])
+
+    full_pipe = Pipeline([
+        ('union', union),
+        ('regression', RidgeClassifier(alpha = kwargs['last_alpha']))
+    ])
+
+    return full_pipe
+
+
 #%% Create Data
 import numpy as np
 import json
