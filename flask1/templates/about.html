@@ -1,6 +1,67 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <h1>About the app.</h1>
-    <p class="lead">This is about</p>
+    <h2>Background</h2>
+        <p>
+            <img src = "../static/Images/echo_sylv2.gif" hspace = 20 style='float: right; width:50%; height: auto'>
+            World of warcraft is an online video game with millions of active unique users every month.
+
+            Within the game, players form into groups and attempt to defeat encounters by ‘pulling’ the encounter multiple times slowly progressing until they defeat it.
+            Defeating one of these encounters can be very exciting and rewarding to players as shown by the image.
+            Understanding how close a group is to defeating a boss is very important to players as they may spend hours or even days progressing on a single encounter.        
+            
+        </p>
+        <p>
+            Below are some helpful terms:
+            <ul>
+                <li>Encounter: The boss fight that players seek to defeat.</li>
+                <li>Pull: A single attempt at an encounter/boss.</li>
+                <li>Progression: Repeatedly pulling an encounter.</li>
+                <li>Wipe: A failed pull. Recorded as % through the encounter.</li>
+            </ul>
+        
+        </p>
+    <br><hr>
+    <h2>The Problem</h2>
+        <p>
+            <img src = "../static/Images/wcl_img.png" hspace = 20 style='float: right; width:50%; height: auto'>
+
+            The current method (<a href='warcraftlogs.com'>warcraftlogs</a>) of analyzing ones progress shows very detailed information about specific encounters, but not much information about progress over time.
+            Current tooling does not provide meaningful insights to how groups progress over the span of days.
+            This image shows the current system, which breaks encounters down by day, making it difficult to know how groups progress over time.
+        
+        
+        </p>
+    <br><br><br><br><br><br><br><br><br><hr>
+    <h2>The Solution</h2>
+        <p>
+            This interactive website will allow players to have a much better understanding of their groups progression over time and gain insight into how their group is doing.
+            Players will be enabled to do a few things:
+            <ol>
+                <li>Gain a better understanding of their progression.</li>
+                <li>The ability to compare their own group to friends or other groups more easily.</li>
+                <li>Use a machine learning method to predict the chances of success on subsequent encounters.</li>
+            </ol>
+            This interactive tool will has two primary pages. The first is '<a href='/SingleGuild/'>single guild</a>' which shows players
+            how a specific group is progressing on a specific encounter. Along with this I developed a machine learning model to predict chance
+            of success which is shown as well.
+            The second page is '<a href='/TierStats/'>tier stats</a>' which shows aggregated statistics about each encounter. This will
+            allow players to compare their group to other groups who have defeated the boss in important metrics. We also show
+            average group composition for each boss as this may better inform groups about helpful composition changes they can make.
+
+        </p>
+    <!-- <div class="row">
+        <div class="column">
+            <a href='/SingleGuild/'>
+                <img src = "../static/Images/single_guild.gif" alt='Single Guild' hspace = 20 style='float: right; width:90%; height: auto'>
+            </a>
+        </div>
+        <div class="column">
+            <a href='/TierStats/'>
+                <img src = "../static/Images/agg_stats.gif" alt='Aggregate Stats' hspace = 20 style='float: left; width:90%; height: auto'>
+            </a>
+        </div>
+    </div> -->
+    <br><br><br>
+    
 {% endblock %}

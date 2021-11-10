@@ -10,7 +10,7 @@ from datetime import datetime
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-with open('get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
+with open('..//get_guild_list/guild_list_hungering.json', encoding='utf-8') as f:
     guilds = json.load(f)
 
 # DC is guild 725
