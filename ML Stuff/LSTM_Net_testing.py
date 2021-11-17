@@ -80,19 +80,19 @@ class ModelTransformer(BaseEstimator, TransformerMixin):
         # Use predict on the stored predictor as a "transformation".
         # Be sure to return a 2-D array.
 
-class pull_encoder(BaseEstimator, TransformerMixin):
-    def fit(self, X, y = None):
-        return self
+# class pull_encoder(BaseEstimator, TransformerMixin):
+#     def fit(self, X, y = None):
+#         return self
     
-    def transform(self, X):
-        if isinstance(X, list):
-            return X
-        else:
-            return [ast.literal_eval(item) for item in list(X['pulls'])]
+#     def transform(self, X):
+#         if isinstance(X, list):
+#             return X
+#         else:
+#             return [ast.literal_eval(item) for item in list(X['pulls'])]
 
 def build_model(**kwargs):
     pull_pipe = Pipeline([
-        ('encoder', pull_encoder()),
+        # ('encoder', pull_encoder()),
         ('pull_classifier', RandomForestClassifier(bootstrap = True, n_jobs = 5))
     ])
     params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],

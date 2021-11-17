@@ -6,6 +6,15 @@ import dash_html_components as html
 import os
 import sys
 
+from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
+from sklearn.linear_model import RidgeClassifier
+
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import FeatureUnion, Pipeline
+from sklearn.model_selection import train_test_split 
+from sklearn.ensemble import RandomForestClassifier
 # from dash_functions import *
 
 if sys.platform.lower() == "win32": 
@@ -17,6 +26,16 @@ from DashApps.single_guild_plotting2 import init_dashboard as init_single_dash
 
 dash_app_agg = init_agg_dash(flask_server)
 dash_app_single = init_single_dash(flask_server)
+
+class pull_encoder(BaseEstimator, TransformerMixin):
+    def fit(self, X, y = None):
+        return self
+    
+    def transform(self, X):
+        if isinstance(X, list):
+            return X
+        else:
+            return [ast.literal_eval(item) for item in list(X['pulls'])]
 
 @flask_server.route("/")
 def home():

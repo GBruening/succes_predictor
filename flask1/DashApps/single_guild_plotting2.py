@@ -14,11 +14,12 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 
 import joblib
+import ast
 from dotenv import load_dotenv, dotenv_values
 from requests_oauthlib import OAuth2, OAuth2Session
 import requests
 import regex as re
-
+    
 #%% Functions
 def filter_df(df_filter, metric):
     new_df_filt = pd.DataFrame()
@@ -66,182 +67,6 @@ def rm_repeat_boss(df):
     temp_df['pull_num'] = temp_df.index+1
     return temp_df
 
-def get_one_guild_pulls(specific_boss, guild_name):
-    specific_boss = specific_boss.replace("'", "''")
-    curs2.execute(f"Select *, log_start+start_time as fight_start_time\
-        from nathria_prog_v2 where name = '{specific_boss}' and guild_name = '{guild_name}';")
-
-    pull_df = pd.DataFrame(curs2.fetchall())
-    pull_df.columns = [desc[0] for desc in curs2.description]
-
-    pull_df = rm_repeat_boss(pull_df)
-    return pull_df
-
-def make_fights_query_onefight(fight):
-    code = fight['log_code']
-    fight_ID = int(fight['id'])
-    start_time = fight['start_time']
-    end_time = fight['end_time']
-    query = """
-    {
-    reportData{
-        report(code: "%s"){
-        table(fightIDs: %s, startTime: %s, endTime: %s)
-        }
-    }
-    }
-    """ % (code, fight_ID, str(start_time), str(end_time))
-
-    return query
-
-def get_fight_args(log, graphql_endpoint, headers):
-    args = {'url': graphql_endpoint,
-            'json': {'query': make_fights_query_onefight(log)},
-            'headers': headers}
-    return args
-
-def parse_fight_table(table, boss_name, unique_id, guild_name):
-
-    comp = table['composition']
-    roles = table['playerDetails']
-    player_list = []
-    for role in roles:
-        players = roles[role]
-        for player in players:
-            try:
-                gear_ilvl = [piece['itemLevel'] for piece in player['combatantInfo']['gear']]
-                ilvl = np.mean(gear_ilvl)
-            except:
-                try:
-                    ilvl = player['minItemLevel']
-                except:
-                    ilvl = np.NaN
-            
-            try:
-                server = player['server']
-                class_ = player['type']
-            except:
-                server = np.NaN
-                class_ = np.NaN
-            try:
-                covenant = player['combatantInfo']['covenantID']
-            except:
-                covenant = np.NaN
-
-            try:
-                spec = player['specs'][0]
-            except:
-                spec = np.NaN
-
-            try:
-                stats = player['combatantInfo']['stats']
-                primaries = ['Agility','Intellect','Strength']
-                for primary in primaries:
-                    if primary in stats.keys():
-                        break
-                primary= stats[primary]['min']
-                mastery= stats['Mastery']['min']
-                crit= stats['Crit']['min']
-                haste= stats['Haste']['min']
-                vers= stats['Versatility']['min']
-                stamina= stats['Stamina']['min']
-            except:
-                primary = np.NaN
-                mastery = np.NaN
-                crit = np.NaN
-                haste = np.NaN
-                vers = np.NaN
-                stamina = np.NaN
-        
-            player_info= {'unique_id': unique_id,
-                        'player_name': player['name'],
-                        'guild_name': guild_name,
-                        'server': server,
-                        'class': class_,
-                        'spec': spec,
-                        'role': role,
-                        'ilvl': ilvl,
-                        'covenant': covenant,
-                        'primary': primary,
-                        'mastery': mastery,
-                        'crit': crit,
-                        'haste': haste,
-                        'vers': vers,
-                        'stamina': stamina,
-                        'boss_name': boss_name}
-            player_list.append(player_info)
-    return player_list
-
-
-from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import Ridge
-from sklearn.linear_model import RidgeClassifier
-
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import FeatureUnion, Pipeline
-from sklearn.model_selection import train_test_split 
-from sklearn.ensemble import RandomForestClassifier
-
-class ModelTransformer(BaseEstimator, TransformerMixin):    
-    def __init__(self, model):
-        self.model = model
-        # What needs to be done here?
-    
-    def fit(self, X, y, **kwargs):
-        self.model.fit(X, y)
-        return self
-        # Fit the stored predictor.
-        # Question: what should be returned?
-    
-    def transform(self, X):
-        return np.array(self.model.predict(X)).reshape(-1, 1)
-        # Use predict on the stored predictor as a "transformation".
-        # Be sure to return a 2-D array.
-
-class pull_encoder(BaseEstimator, TransformerMixin):
-    def fit(self, X, y = None):
-        return self
-    
-    def transform(self, X):
-        return [ast.literal_eval(item) for item in list(X['pulls'])]
-
-def build_model(**kwargs):
-    # selector = ColumnTransformer(transformers = [('pulls','passthrough',[0])])
-    pull_pipe = Pipeline([
-        # ('features', ColumnTransformer(transformers = [('pulls','passthrough',[0])])),
-        ('encoder', pull_encoder()),
-        ('pull_classifier', RandomForestClassifier(bootstrap = True, n_jobs = 10))
-    ])
-    params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],
-                    'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
-                    # 'pull_classifier__min_samples_split': kwargs['min_split'],
-                    'pull_classifier__n_estimators': kwargs['n_est']}
-    pull_pipe.set_params(**params_pulls)
-    pull_trans = ModelTransformer(pull_pipe)
-    # pull_trans.fit(data, kill_list)
-
-    ilvl_feat = ColumnTransformer(transformers = [('ilvl','passthrough',[1])])
-    ilvl_pipe = Pipeline([
-        ('features', ilvl_feat),
-        ('ilvl_regressor', RidgeClassifier())
-    ])
-    params_ilvl = {'ilvl_regressor__alpha': kwargs['alpha']}
-    ilvl_pipe.set_params(**params_ilvl)
-    ilvl_trans = ModelTransformer(ilvl_pipe)
-    # ilvl_trans.fit(data, kill_list)
-
-    union = FeatureUnion([
-        ('pulls', pull_trans),
-        ('ilvl', ilvl_trans)
-    ])
-
-    full_pipe = Pipeline([
-        ('union', union),
-        ('regression', RidgeClassifier(alpha = kwargs['last_alpha']))
-    ])
-
-    return full_pipe
 
 #%% Create Data
 import numpy as np
@@ -253,8 +78,18 @@ from datetime import datetime
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 
-nathria_prog = pd.read_csv('nathria_prog.csv')
 
+boss_names = ['Shriekwing', \
+            'Huntsman Altimor',
+            'Hungering Destroyer', \
+            "Sun King's Salvation",
+            "Artificer Xy'mox", \
+            'Lady Inerva Darkvein', \
+            'The Council of Blood', \
+            'Sludgefist', \
+            'Stone Legion Generals', \
+            'Sire Denathrius']
+            
 def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
@@ -268,59 +103,23 @@ def init_dashboard(server):
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
     # dash_app.server = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 
-    guilds = 
-    curs.execute('select distinct guild_name from nathria_prog')
-    guilds = [item[0] for item in curs.fetchall()]
+    pulls_all = pd.read_csv(dname+'/nathria_prog_allpulls_small.csv')
 
-    boss_names = ['Shriekwing', \
-                'Huntsman Altimor',
-                'Hungering Destroyer', \
-                "Sun King's Salvation",
-                "Artificer Xy'mox", \
-                'Lady Inerva Darkvein', \
-                'The Council of Blood', \
-                'Sludgefist', \
-                'Stone Legion Generals', \
-                'Sire Denathrius']
-
+    guilds = pulls_all['guild_name'].unique()
 
     #%%
     @dash_app.callback(
         Output('single_guild_graph', 'figure'),
         Input('guild_name', 'value'),
-        Input('prog_or_all', 'value'),
         Input('specific_boss', 'value')
     )
-    def update_fig(guild_name, prog_or_all, specific_boss):
-            
-        # curs.execute('select distinct guild_name from nathria_prog')
-        # guilds = [item[0] for item in curs.fetchall()]
+    def update_fig(guild_name, specific_boss):
+        
+        specific_boss = specific_boss.replace("'", "\\'")
 
-        specific_boss = specific_boss.replace("'", "''")
-        # curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
-
-        if prog_or_all == 'prog_only_pulls':
-            curs.execute(f"select * from nathria_prog where guild_name = '{guild_name}' and name = '{specific_boss}'")
-        elif prog_or_all == 'all_pulls':
-            curs.execute(f"select * from nathria_prog_allpulls where guild_name = '{guild_name}' and name = '{specific_boss}'")
-
-        # curs.execute("select * from nathria_prog where guild_name = '" + str(guilds[int(guild_num)])+"'")
-        pulls = pd.DataFrame(curs.fetchall())
-        pulls.columns = [desc[0] for desc in curs.description]
-        newdf = pulls.sort_values(by = 'boss_num')
+        pulls = pulls_all.query(f"guild_name == '{guild_name}'").query(f"name == '{specific_boss}'")
+        newdf = pulls.sort_values(by = 'boss_num').sort_values(by = 'pull_num')
         n_bosses = len(np.unique(pulls['boss_num']))
-
-        boss_names = ['Shriekwing', \
-                    'Huntsman Altimor',
-                    'Hungering Destroyer', \
-                    "Sun King's Salvation",
-                    "Artificer Xy'mox", \
-                    'Lady Inerva Darkvein', \
-                    'The Council of Blood', \
-                    'Sludgefist', \
-                    'Stone Legion Generals', \
-                    'Sire Denathrius']
-
         
         fig = go.Figure()
         fig.add_trace(go.Scatter(x = newdf['pull_num'], 
@@ -336,9 +135,11 @@ def init_dashboard(server):
         fig.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Pull Number'))
         fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
+
         # try:
-        model_specific_boss = specific_boss.replace(' ','_')
-        filename = dname+f'.\{model_specific_boss}_mod.pickle'
+        model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
+        filename = dname+f'\{model_specific_boss}_mod.pickle'
+        # print(filename)
         clf = joblib.load(filename)
 
         def listify_pulls(end_perc):
@@ -371,11 +172,7 @@ def init_dashboard(server):
                     name = 'Kill Probability<br>on next pull',
                     # hovertemplate = 'Win Prob<br>on next pull<br>%{y:.2f}%'),
                     hovertemplate = '%{y:.2f}%'),
-            # row = 1,
-            # col = 1,
         )
-        # except:
-        #     pass
         
         fig.update_layout(hovermode = 'x')
         fig.update_layout(
@@ -400,124 +197,110 @@ def init_dashboard(server):
 
         return fig
 
-    # @dash_app.callback(
-    #     Output('single_guild_comp', 'figure'),
-    #     Input('guild_name', 'value'),
-    #     Input('specific_boss', 'value')
-    # )
-    # def create_single_guild_comp(guild_name, specific_boss):
-    #     specific_boss = specific_boss.replace("'", "''")
+    pull_df_players = pd.read_csv(dname+'/only_first_kill_players.csv')
 
-    #     pulls_for_comp = get_one_guild_pulls(specific_boss, guild_name)
+    @dash_app.callback(
+        Output('single_guild_comp', 'figure'),
+        Input('guild_name', 'value'),
+        Input('specific_boss', 'value')
+    )
+    def create_single_guild_comp(guild_name, specific_boss):
+        specific_boss = specific_boss.replace("'", "''")
+
+        player_df = pull_df_players.query(f"guild_name == '{guild_name}'").query(f"name == '{specific_boss}'")
+            
+        player_df['test'] = player_df[player_df.columns[18:21]].apply(
+            lambda x: ', '.join(x.dropna().astype(str)),
+            axis=1
+        )
+
+        temp_df = player_df.groupby(['unique_id','test']).\
+            size().unstack(fill_value=0).stack().reset_index(name='counts')
         
-    #     first_kill = pulls_for_comp.query('kill == 1.0')
-    #     if len(first_kill) > 0:
-    #         first_time = first_kill.loc[first_kill['fight_start_time'].idxmin()]['fight_start_time']
-    #         pulls_for_comp = pulls_for_comp.query(f'fight_start_time < {first_time+10}')
-    #     last_pull = pulls_for_comp.tail(1).to_dict(orient="records")[0]
-    #     last_pull['id'] = int(last_pull['id'])
+        test = []
+        for x in temp_df[temp_df.columns[1]]:
+            test.append(re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0])
+        temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
+            lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
+        )
+        temp_df['spec'] = temp_df[temp_df.columns[1]].apply(
+            lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
+        )
+        temp_df['role'] = temp_df[temp_df.columns[1]].apply(
+            lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
+        )
+        df = temp_df.copy(deep = True)
 
-    #     result = requests.post(**get_fight_args(last_pull, graphql_endpoint, headers))
-    #     table = result.json()['data']['reportData']['report']['table']['data']
+        colors = {'DeathKnight': '#D62728',
+                'DemonHunter': '#750D86',
+                'Druid': '#F58518',
+                'Hunter': '#54A24B',
+                'Mage': '#17BECF',
+                'Monk': '#22FFA7',
+                'Paladin': '#FF97FF',
+                'Priest': '#E2E2E2',
+                'Rogue': '#EECA3B',
+                'Shaman': '#3366CC',
+                'Warlock': '#636EFA',
+                'Warrior': '#8C564B'}
 
-    #     player_info = parse_fight_table(table, 
-    #         last_pull['name'], 
-    #         last_pull['unique_id'], 
-    #         guild_name)
-    #     player_df = pd.DataFrame.from_dict(player_info)
-        
-    #     player_df['test'] = player_df[player_df.columns[4:7]].apply(
-    #         lambda x: ', '.join(x.dropna().astype(str)),
-    #         axis=1
-    #     )
+        bars = []
+        for p_class in df['p_class'].unique():
+            class_df = df.query(f"p_class == '{p_class}'").copy(deep = True)
+            spec_count = 0
+            specs = class_df['spec'].unique()
+            if len(specs) == 2:
+                offsets = [1,3]
+            elif len(specs) == 1:
+                offsets = [2]
+            else:
+                offsets = [0,2,4]
+            for spec in specs:
+                spec_df = class_df.query(f"spec == '{spec}'").copy(deep = True)
+                bars.append(go.Bar(
+                    x = spec_df.p_class,
+                    y = spec_df.counts,
+                    name = '',
+                    # y = spec_df.counts,
+                    width = .15,
+                    text = spec_df.spec,
+                    hovertemplate = '%{text} %{x} <br> %{y:.2f}',
+                    offsetgroup = spec_count,
+                    showlegend = False,
+                    marker = {'color': colors[p_class]}))
+                # bars[-1].hoverlabel = spec
+                spec_count += 1
+        comp_fig = go.FigureWidget(data=bars)
+        comp_fig['layout']['xaxis']['tickangle'] = -30
+        comp_fig['layout']['xaxis']['title'] = 'Player Class'
+        comp_fig['layout']['yaxis']['title'] = f'Group comp on last pull<br>for.'
+        comp_fig.update_traces(textposition='outside')
+        comp_fig.update_layout(
+            template = 'plotly_dark',
+            plot_bgcolor = '#222222',
+            paper_bgcolor = '#222222',
+            # height=np.ceil(10/2)*200,
+            height=400,
+            # width = 1000,
+            margin=dict(
+                l=100,
+                r=100,
+                b=50,
+                t=30,
+                pad=2
+            ),
+            autosize=True,
+            transition_duration = 500,
+            font = dict(size = 14),
+            uniformtext_minsize=4, 
+            uniformtext_mode='show',
+            showlegend = False,
+            title_text=f'{guild_name} composition<br>for {specific_boss}', 
+            title_x=0.5
+        )
+        comp_fig
+        return comp_fig
 
-    #     temp_df = player_df.groupby(['unique_id','test']).\
-    #         size().unstack(fill_value=0).stack().reset_index(name='counts')
-
-        
-    #     test = []
-    #     for x in temp_df[temp_df.columns[1]]:
-    #         test.append(re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0])
-    #     temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
-    #         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
-    #     )
-    #     temp_df['spec'] = temp_df[temp_df.columns[1]].apply(
-    #         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
-    #     )
-    #     temp_df['role'] = temp_df[temp_df.columns[1]].apply(
-    #         lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
-    #     )
-    #     df = temp_df.copy(deep = True)
-
-    #     colors = {'DeathKnight': '#D62728',
-    #             'DemonHunter': '#750D86',
-    #             'Druid': '#F58518',
-    #             'Hunter': '#54A24B',
-    #             'Mage': '#17BECF',
-    #             'Monk': '#22FFA7',
-    #             'Paladin': '#FF97FF',
-    #             'Priest': '#E2E2E2',
-    #             'Rogue': '#EECA3B',
-    #             'Shaman': '#3366CC',
-    #             'Warlock': '#636EFA',
-    #             'Warrior': '#8C564B'}
-
-    #     bars = []
-    #     for p_class in df['p_class'].unique():
-    #         class_df = df.query(f"p_class == '{p_class}'").copy(deep = True)
-    #         spec_count = 0
-    #         specs = class_df['spec'].unique()
-    #         if len(specs) == 2:
-    #             offsets = [1,3]
-    #         elif len(specs) == 1:
-    #             offsets = [2]
-    #         else:
-    #             offsets = [0,2,4]
-    #         for spec in specs:
-    #             spec_df = class_df.query(f"spec == '{spec}'").copy(deep = True)
-    #             bars.append(go.Bar(
-    #                 x = spec_df.p_class,
-    #                 y = spec_df.counts,
-    #                 name = '',
-    #                 # y = spec_df.counts,
-    #                 width = .15,
-    #                 text = spec_df.spec,
-    #                 hovertemplate = '%{text} %{x} <br> %{y:.2f}',
-    #                 offsetgroup = spec_count,
-    #                 showlegend = False,
-    #                 marker = {'color': colors[p_class]}))
-    #             # bars[-1].hoverlabel = spec
-    #             spec_count += 1
-    #     comp_fig = go.FigureWidget(data=bars)
-    #     comp_fig['layout']['xaxis']['tickangle'] = -30
-    #     comp_fig['layout']['xaxis']['title'] = 'Player Class'
-    #     comp_fig['layout']['yaxis']['title'] = f'Group comp on last pull<br>for.'
-    #     comp_fig.update_traces(textposition='outside')
-    #     comp_fig.update_layout(
-    #         template = 'plotly_dark',
-    #         plot_bgcolor = '#222222',
-    #         paper_bgcolor = '#222222',
-    #         # height=np.ceil(10/2)*200,
-    #         height=400,
-    #         # width = 1000,
-    #         margin=dict(
-    #             l=100,
-    #             r=100,
-    #             b=50,
-    #             t=30,
-    #             pad=2
-    #         ),
-    #         autosize=True,
-    #         transition_duration = 500,
-    #         font = dict(size = 14),
-    #         uniformtext_minsize=4, 
-    #         uniformtext_mode='show',
-    #         showlegend = False,
-    #         title_text=f'{guild_name} composition<br>for {specific_boss}', 
-    #         title_x=0.5
-    #     )
-    #     comp_fig
-    #     return comp_fig
 
     #%% Make App
     dash_app.layout = html.Div(children=[
@@ -531,18 +314,6 @@ def init_dashboard(server):
                                 'width': '300px'})
         ]),
         html.Div([
-            html.P("All pulls or Progression Pulls?", style={'color': 'white'}),        
-            dcc.RadioItems(options=[
-                {'label': 'All Pulls', 'value': 'all_pulls'},
-                {'label': 'Progression Only', 'value': 'prog_only_pulls'}
-            ],
-            id = 'prog_or_all',
-            value = 'all_pulls',
-            labelStyle={'color': 'white',
-                        'display': 'flex'}
-            )
-        ]),
-        html.Div([
             html.P('Choose Boss', style={'color': 'white'}),        
             dcc.Dropdown(id = 'specific_boss',
                         options = [{'label': name, 'value': name} for k, name in enumerate(boss_names)],
@@ -554,10 +325,10 @@ def init_dashboard(server):
         dcc.Graph(
             id='single_guild_graph', style={'backgroundColor':'#222222'}
         ),
-        # html.Br(),  
-        # dcc.Graph(
-        #     id='single_guild_comp', style={'backgroundColor':'black'}
-        # ), 
+        html.Br(),  
+        dcc.Graph(
+            id='single_guild_comp', style={'backgroundColor':'black'}
+        ), 
     html.Br(),   
     html.Br(),   
     html.Br(),
