@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Run this app with `python app.py` and
-# visit http://127.0.0.1:8050/ in your web browser.
 #%%
 import dash
 import dash_bootstrap_components as dbc
@@ -25,6 +21,13 @@ import regex as re
 
 from sqlalchemy import create_engine
 import psycopg2
+
+import os
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 # app = Dash(__name__, external_stylesheets=external_stylesheets)
 dash_app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
@@ -57,6 +60,7 @@ def filter_df(df_filter, metric):
         new_df_filt = new_df_filt.append(boss_df.query(str(metric)+ ' < '+str(upper)).query(str(metric)+ ' > '+str(lower)))
     return new_df_filt
 
+#%% Create Data
 boss_names = ['Shriekwing', \
             'Huntsman Altimor',
             'Hungering Destroyer', \
@@ -68,6 +72,9 @@ boss_names = ['Shriekwing', \
             'Stone Legion Generals', \
             'Sire Denathrius']
 
+
+pull_count_notouchy = pd.read_csv('max_pull_count_small.csv')
+prog_hours_notouchy = pd.read_csv('nathria_guild_bossprog_hours.csv')
 
 @dash_app.callback(
     Output('agg_stats', 'figure'),
@@ -90,14 +97,7 @@ def update_fig(specific_boss):
                         vertical_spacing = 0.25)
 
     # Pull Count Plotting
-    pull_count_query = \
-        f"\
-            select name, pull_num, average_item_level from max_pull_count_small \
-            where name = '{specific_boss}' and kill = 'True';\
-        "
-    curs.execute(pull_count_query)
-    pull_count = pd.DataFrame(curs.fetchall())
-    pull_count.columns = [desc[0] for desc in curs.description]
+    pull_count = pull_count_notouchy.query(f"name == '{specific_boss}'")
     pull_count = pull_count.rename(columns = {'max': 'pull_num'}).query('pull_num > 5')
     pull_count = add_boss_nums(pull_count)
     pull_count = filter_df(pull_count.copy(deep = True), 'pull_num')
@@ -117,11 +117,7 @@ def update_fig(specific_boss):
     )
     
     # Progression Time Plotting
-    curs.execute(f"select boss_num, prog_time, name, guild_name \
-        from nathria_guild_bossprog_hours \
-        where name = '{specific_boss}' and prog_time > 0.5;")
-    prog_hours = pd.DataFrame(curs.fetchall())
-    prog_hours.columns = [desc[0] for desc in curs.description]
+    prog_hours = prog_hours_notouchy.query(f"name == '{specific_boss}'")
     prog_hours = add_boss_nums(prog_hours)
     prog_hours = filter_df(prog_hours.copy(deep = True), 'prog_time')
     # prog_hours = pd.read_csv('G://My Drive//succes_predictor//dash2//prog_hours.csv')
@@ -157,39 +153,32 @@ def update_fig(specific_boss):
         col = 1
     )
 
-    # # Kill Dates
-    # kill_date_query = \
-    #     f"\
-    #         select name, (log_start + end_time)/1000 as kill_time \
-    #         from max_pull_count_small \
-    #         where name = '{specific_boss}' and kill = 'True';\
-    #     "
-    # curs.execute(kill_date_query)
-    # kill_dates = pd.DataFrame(curs.fetchall())
-    # kill_dates.columns = [desc[0] for desc in curs.description]
-    # kill_dates['date'] = [datetime.datetime.fromtimestamp(item) for item in kill_dates['kill_time']]
-    # kill_dates = add_boss_nums(kill_dates)
-    # kill_dates = filter_df(kill_dates.copy(deep = True), 'kill_time')
+    # Kill Dates
+    kill_dates = pull_count
+    kill_dates['kill_time'] = (kill_dates['log_start'] + kill_dates['end_time'])/1000
+    kill_dates['date'] = [datetime.datetime.fromtimestamp(item) for item in kill_dates['kill_time']]
+    kill_dates = add_boss_nums(kill_dates)
+    kill_dates = filter_df(kill_dates.copy(deep = True), 'kill_time')
 
-    # # n, bins, patches = plt.hist(kill_dates['kill_time'], 100, density=True, histtype='step',
-    # #                         cumulative=True, label='Empirical')
-    # n, bins = np.histogram(kill_dates['kill_time'], bins = 100, density = True)  
-    # dx = bins[1] - bins[0]
-    # n = np.cumsum(n)*dx
+    # n, bins, patches = plt.hist(kill_dates['kill_time'], 100, density=True, histtype='step',
+    #                         cumulative=True, label='Empirical')
+    n, bins = np.histogram(kill_dates['kill_time'], bins = 100, density = True)  
+    dx = bins[1] - bins[0]
+    n = np.cumsum(n)*dx
 
-    # new_kill_df = pd.DataFrame(data = {'n': n, 'kill_time': bins[0:-1]})
-    # new_kill_df['date'] = [datetime.datetime.fromtimestamp(item) for item in new_kill_df['kill_time']]
+    new_kill_df = pd.DataFrame(data = {'n': n, 'kill_time': bins[0:-1]})
+    new_kill_df['date'] = [datetime.datetime.fromtimestamp(item) for item in new_kill_df['kill_time']]
 
-    # fig.append_trace(go.Scatter(
-    #     x = new_kill_df['date'],
-    #     y = new_kill_df['n'],
-    #     name = 'Kill Date',
-    #     mode = 'lines',
-    #     marker=dict(color = 'grey'),
-    # ), row=2, col=2)
-    # fig['layout']['xaxis4']['tickangle'] = -45
-    # fig['layout']['xaxis4']['title'] = 'Date of kill'
-    # fig['layout']['yaxis4']['title'] = 'Cumulative Density'
+    fig.append_trace(go.Scatter(
+        x = new_kill_df['date'],
+        y = new_kill_df['n'],
+        name = 'Kill Date',
+        mode = 'lines',
+        marker=dict(color = 'grey'),
+    ), row=2, col=2)
+    fig['layout']['xaxis4']['tickangle'] = -45
+    fig['layout']['xaxis4']['title'] = 'Date of kill'
+    fig['layout']['yaxis4']['title'] = 'Cumulative Density'
     # fig.add_vline(
     #     x = np.median(kill_dates['date']),
     #         line_color = 'red',
@@ -228,18 +217,13 @@ def update_fig(specific_boss):
     agg_plot = fig
     return agg_plot
 
-
+nathria_kill_comps = pd.read_csv('nathria_kill_comps.csv')
 @dash_app.callback(
     Output('group_comp_plot', 'figure'),
     Input('specific_boss', 'value')
 )
 def make_comp_plot(specific_boss):
-    specific_boss = specific_boss.replace("'", "''")
-    curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
-    sql_df = pd.DataFrame(curs.fetchall())
-    sql_df.columns = [desc[0] for desc in curs.description]
-
-    df = sql_df
+    df = nathria_kill_comps.query(f"name == '{specific_boss}'")
         
     colors = {'DeathKnight': '#D62728',
             'DemonHunter': '#750D86',
@@ -355,3 +339,6 @@ dash_app.layout = html.Div(children=[
         )
     ])
 ], style={'backgroundColor':'#222222'})
+
+if __name__ == '__main__':
+    dash_app.run_server(debug=False, port=8051)
