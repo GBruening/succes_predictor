@@ -15,8 +15,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import FeatureUnion, Pipeline
 from sklearn.model_selection import train_test_split 
 from sklearn.ensemble import RandomForestClassifier
-# from dash_functions import *
-
 if sys.platform.lower() == "win32": 
     os.system('color')
 
