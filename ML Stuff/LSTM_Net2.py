@@ -9,6 +9,10 @@ from joblib import dump, load
 import joblib
 import pickle
 
+from itertools import product
+import pickle
+from os import path
+
 import os
 from sqlalchemy import create_engine
 import psycopg2
@@ -92,35 +96,37 @@ def build_model(**kwargs):
     ])
     params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],
                     'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
-                    'pull_classifier__min_samples_split': kwargs['min_split'],
+                    # 'pull_classifier__min_samples_split': kwargs['min_split'],
                     'pull_classifier__n_estimators': kwargs['n_est']}
     pull_pipe.set_params(**params_pulls)
     pull_trans = ModelTransformer(pull_pipe)
+    full_pipe = pull_pipe
     # pull_trans.fit(data, kill_list)
 
-    ilvl_feat = ColumnTransformer(transformers = [('ilvl','passthrough',[1])])
-    ilvl_pipe = Pipeline([
-        ('features', ilvl_feat),
-        ('ilvl_regressor', RidgeClassifier())
-    ])
-    params_ilvl = {'ilvl_regressor__alpha': kwargs['alpha']}
-    ilvl_pipe.set_params(**params_ilvl)
-    ilvl_trans = ModelTransformer(ilvl_pipe)
+    # ilvl_feat = ColumnTransformer(transformers = [('ilvl','passthrough',[1])])
+    # ilvl_pipe = Pipeline([
+    #     ('features', ilvl_feat),
+    #     ('ilvl_regressor', RidgeClassifier())
+    # ])
+    # params_ilvl = {'ilvl_regressor__alpha': kwargs['alpha']}
+    # ilvl_pipe.set_params(**params_ilvl)
+    # ilvl_trans = ModelTransformer(ilvl_pipe)
     # ilvl_trans.fit(data, kill_list)
 
     union = FeatureUnion([
         ('pulls', pull_trans),
-        ('ilvl', ilvl_trans)
+        # ('ilvl', ilvl_trans)
     ])
 
-    full_pipe = Pipeline([
-        ('union', union),
-        ('regression', RidgeClassifier(alpha = kwargs['last_alpha']))
-    ])
+    # full_pipe = Pipeline([
+    #     ('union', union),
+    #     ('regression', RidgeClassifier(alpha = kwargs['last_alpha']))
+    # ])
 
     return full_pipe
 
-for boss in reversed(boss_names[0:-1]):
+#%%
+for boss in boss_names:
     print(f'Fitting boss: {boss}')
     boss_csv = str(boss.replace(' ','_'))
     data = pd.read_csv(f'pull_list_{boss_csv}.csv')
@@ -144,37 +150,38 @@ for boss in reversed(boss_names[0:-1]):
     # X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
 
     # full_pipe.fit(X_train, y_train)
-
-
-    from itertools import product
-    import pickle
-    from os import path
     # pickle.dump(full_mod, open('full_mod.pickle', 'wb'))
 
-    kwargs = {'max_depth': [5,10,20],
-            'min_s_leaf': [10,20],
-            'min_split': [5,15],
+    # kwargs = {'max_depth': [5,10,20],
+    #         'min_s_leaf': [10,20],
+    #         'min_split': [5,15],
+    #         'n_est': [100],
+    #         'alpha': [.1,10],
+    #         'last_alpha': [.1,10]}
+    kwargs = {'max_depth': [10],
+            'min_s_leaf': [10],
+            'min_split': [5],
             'n_est': [100],
-            'alpha': [.1,10],
-            'last_alpha': [.1,10]}
+            'alpha': [10],
+            'last_alpha': [1]}
 
     scores = []
-    if path.exists('score_keeper.pickle'):
-        scores = pickle.load(open("score_keeper.pickle",'rb'))
-        max_depth  = [score[0] for score in scores]
-        min_s_leaf = [score[1] for score in scores]
-        min_split  = [score[2] for score in scores]
-        n_est      = [score[3] for score in scores]
-        alpha      = [score[4] for score in scores]
-        last_alpha = [score[5] for score in scores]
-    else:
-        max_depth  = []
-        min_s_leaf = []
-        min_split  = []
-        n_est      = []
-        alpha      = []
-        last_alpha = []
-        scores = []
+    # if path.exists('score_keeper.pickle'):
+    #     scores = pickle.load(open("score_keeper.pickle",'rb'))
+    #     max_depth  = [score[0] for score in scores]
+    #     min_s_leaf = [score[1] for score in scores]
+    #     min_split  = [score[2] for score in scores]
+    #     n_est      = [score[3] for score in scores]
+    #     alpha      = [score[4] for score in scores]
+    #     last_alpha = [score[5] for score in scores]
+    # else:
+    max_depth  = []
+    min_s_leaf = []
+    min_split  = []
+    n_est      = []
+    alpha      = []
+    last_alpha = []
+    scores = []
     n_cv = 5
     for k, combin in enumerate(product(*kwargs.values())):
         for cv in range(0,n_cv):
@@ -189,7 +196,7 @@ for boss in reversed(boss_names[0:-1]):
                 
             kwarg = {'max_depth':  combin[0],
                     'min_s_leaf': combin[1],
-                    'min_split':  combin[2],
+                    # 'min_split':  combin[2],
                     'n_est':      combin[3],
                     'alpha':      combin[4],
                     'last_alpha': combin[5]}
@@ -200,15 +207,15 @@ for boss in reversed(boss_names[0:-1]):
             full_pipe.fit(X_train, y_train)
             
             score = full_pipe.score(X_test, y_test)
-            scores.append((combin[0], combin[1], combin[2], combin[3], combin[4], score))
+            scores.append((combin[0], combin[1], combin[2], combin[3], combin[4], combin[5], score))
             pickle.dump(scores, open('score_keeper.pickle', 'wb'))
             print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
 
 
-    if path.exists('score_keeper.pickle'):
-        scores = pickle.load(open("score_keeper.pickle",'rb'))
-    df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', 'score'])
-    df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha','last_alpha', ]).agg({'score': ['mean']}).reset_index()
+    # if path.exists('score_keeper.pickle'):
+    #     scores = pickle.load(open("score_keeper.pickle",'rb'))
+    df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
+    df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
 
     maxdf = df.loc[df['score']['mean'].argmax()]
 
@@ -217,15 +224,18 @@ for boss in reversed(boss_names[0:-1]):
             'min_split': int(maxdf['min_split']),
             'n_est': int(maxdf['n_est']),
             'alpha': float(maxdf['alpha']),
-            'last_alpha': float(maxdf['last_alpha'])}
+            'last_alpha': 1}
+            # 'last_alpha': float(maxdf['last_alpha'])}
 
     full_pipe = build_model(**kwarg)
     full_pipe.fit(data, data['kills'])
 
     boss_str = str(boss.replace(' ','_'))
     filename = f'{boss_str}_mod.pickle'
+
     joblib.dump(full_pipe, filename)
 
+asdfasdf
 #%%
 # class pullmodel(BaseEstimator, RegressorMixin):
 #     def __init__(self, depth = 3, minleaf = 20, minsplit = 10):
@@ -258,9 +268,9 @@ for boss in reversed(boss_names[0:-1]):
 
 
 # encode class values as integers
-# LSTM with dropout for sequence classification in the IMDB dataset
+# LSTM with dropout for sequence classification
 import numpy
-numpy.random.seed(7)
+# numpy.random.seed(7)
 
 from sklearn import datasets, tree, utils
 # import graphviz 

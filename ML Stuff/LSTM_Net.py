@@ -48,7 +48,7 @@ boss_names = ['Shriekwing', \
             'Sludgefist', \
             'Stone Legion Generals', \
             'Sire Denathrius']
-boss = boss_names[-1]
+boss = boss_names[2]
 
 # for boss in reversed(boss_names[5:-1]):
 print(f'Fitting boss: {boss}')
@@ -150,12 +150,18 @@ import pickle
 from os import path
 # pickle.dump(full_mod, open('full_mod.pickle', 'wb'))
 
-kwargs = {'max_depth': [5,10,20],
-          'min_s_leaf': [10,20],
-          'min_split': [5,15],
+# kwargs = {'max_depth': [5,10,20],
+#           'min_s_leaf': [10,20],
+#           'min_split': [5,15],
+#           'n_est': [100],
+#           'alpha': [.1,10],
+#           'last_alpha': [.1,10]}
+kwargs = {'max_depth': [5],
+          'min_s_leaf': [10],
+          'min_split': [5],
           'n_est': [100],
-          'alpha': [.1,10],
-          'last_alpha': [.1,10]}
+          'alpha': [10],
+          'last_alpha': [1]}
 
 scores = []
 if path.exists('score_keeper.pickle'):
