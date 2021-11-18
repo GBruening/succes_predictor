@@ -132,6 +132,8 @@ def init_dashboard(server):
 
         # try:
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
+        print(os.listdir())
+        print(os.getcwd())
         filename = f'Dashapps/{model_specific_boss}_mod.pickle'
         # print(filename)
         clf = joblib.load(filename)
