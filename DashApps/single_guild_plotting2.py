@@ -141,7 +141,8 @@ def init_dashboard(server):
                     return X
                 else:
                     return [ast.literal_eval(item) for item in list(X['pulls'])]
-                    
+                
+        pull_encoder = pull_encoder()
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
         filename = dname+f'//{model_specific_boss}_mod.pickle'
         clf = joblib.load(filename)
