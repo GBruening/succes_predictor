@@ -147,9 +147,9 @@ for boss in boss_names[6:]:
     #         # 'alpha': float(maxdf['alpha']),
     #         'last_alpha': 1}
 
-    kwarg = {'max_depth': [20],
+    kwarg = {'max_depth': 20,
             # 'min_s_leaf': [20],
-            'n_est': [500]}#,
+            'n_est': 500}#,
             # 'alpha': [10]}
 
     full_pipe = build_model(**kwarg)
