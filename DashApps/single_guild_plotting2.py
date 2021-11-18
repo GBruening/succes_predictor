@@ -200,9 +200,9 @@ def init_dashboard(server):
     def create_single_guild_comp(guild_name, specific_boss):
         # specific_boss = boss_names[1]
         specific_boss = specific_boss.replace("'", "\\'")
-        player_df = pull_df_players.query(f"guild_name == '{guild_name}'").query(f"name == '{specific_boss}'")
+        player_df = pull_df_players.query(f"guild_name == '{guild_name}'").query(f"boss_name == '{specific_boss}'")
             
-        player_df['test'] = player_df[player_df.columns[18:21]].apply(
+        player_df['test'] = player_df[player_df.columns[5:8]].apply(
             lambda x: ', '.join(x.dropna().astype(str)),
             axis=1
         )
