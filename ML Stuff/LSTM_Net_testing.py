@@ -119,7 +119,7 @@ for boss in boss_names:
     #         'n_est': [50, 100, 500]}#,
     #         # 'alpha': [10]}
     kwargs = {'max_depth': [5,10,20],
-            'min_s_leaf': [20],
+            # 'min_s_leaf': [20],
             'n_est': [50, 100, 500]}#,
             # 'alpha': [10]}
 
@@ -139,8 +139,7 @@ for boss in boss_names:
                 continue
                 
             kwarg = {'max_depth':  int(combin[0]),
-                    'min_s_leaf': int(combin[1]),
-                    'n_est':      int(combin[2])}
+                    'n_est':      int(combin[1])}
 
             full_pipe = build_model(**kwarg)
 
@@ -156,13 +155,13 @@ for boss in boss_names:
 
     # df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
     # df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
-    df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf','n_est', 'score'])
-    df = df.groupby(['max_depth', 'min_s_leaf', 'n_est']).agg({'score': ['mean']}).reset_index()
+    df = pd.DataFrame(scores, columns = ['max_depth','n_est', 'score'])
+    df = df.groupby(['max_depth', 'n_est']).agg({'score': ['mean']}).reset_index()
 
     maxdf = df.loc[df['score']['mean'].argmax()]
 
     kwarg = {'max_depth': int(maxdf['max_depth']),
-            'min_s_leaf': float(maxdf['min_s_leaf']),
+            # 'min_s_leaf': float(maxdf['min_s_leaf']),
             # 'min_split': int(maxdf['min_split']),
             'n_est': int(maxdf['n_est']),
             # 'alpha': float(maxdf['alpha']),
