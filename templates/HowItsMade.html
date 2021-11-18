@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>How it's made.</h1>
+    <p>
+        There weree three main components to developing this web app.
+
+        <ol>
+            <li>First was creating a method to pull and store millions of data logs from an api provided by warcraftlogs.</li>
+            <li>The second component involved creating dashboards using plotly and dash that can be integrated into a webserver using flask.</li>
+            <li>The last part uses machine learning to develope a predictive model of success using random forrest classification, regression, and neural nets (in development).</li>
+        </ol>
+    </p>
+    <hr>
+
+    <h3>
+        Getting the data.
+    </h3>
+
+    <p>
+        The data was pulled using the <a href='https://www.warcraftlogs.com/api/docs'>warcraftlogs web api</a> and then stored using a postgresql SQL server.
+    </p>
+    <p>
+        To determine what data to pull, I webscraped the warcraftlogs webiste to find groups/logs that had killed specific bosses using Beautiful soup.
+        Using this list of groups, I then accessed the warcraftlogs api via Oauth2 and requests to get detailed pull information.
+        The warcraftlogs api provides details about times, events, players, and the encounter for each individual fight.
+        Depending on the data being pulled via the api, the data was then stored into a postgresql server locally.
+    </p>
+    <p>
+        A postgresql server was set up locally to store the large amount of data being extracted (20 gb).
+        The data was split into multiple relational tables to allow for easier data manipulation and acquisition.
+        Some example tables included pull information for each guild and boss, details about players within each of those pulls
+        <ul>
+            <li>Information about fight progress by pull count for each group.</li>
+            <li>Details about players (used in group composition plotting) for each fight found in the previous table.</li>
+            <li>Aggregated information about pull count, progression time, average item level for specific bosses.</li>
+        </ul>
+        Data from these tables was used to generate the plots shown on the web application and
+        also used to live pull small amounts of information from the warcraftlogs api in the web application.
+
+        For the purposes of this heroku app, data was paired down and saved to CSV files which were equivalent to the SQL tables. 
+    </p>
+
+<hr>
+
+<h3>
+    Creating the web app.
+</h3>
+
+    <p>
+        The webapp was developed using the Flask framework along with Dash applications embedded. 
+    </p>
+
+    <p>
+        Dash dashboards were developed using plotly, pandas, and psycopg2.
+        Psycopg2 was used to collect data from the postgresql server using SQL queries. 
+        Once data was acquired from the sql database, I used pandas to collect, clean, and organize the data sets.
+        Last I used plotly to develop interactive visualizations for guild progress, group composition, and aggregate statistics.
+    </p>
+<hr>
+
+<h3>
+    Developing the machine learning models.
+</h3>
+    
+    <p>
+        Using the data that was pulled from the warcraftlogs api, 
+        I cleaned and organized the data and then fed it into classification models to predict the success of groups for each boss.
+        The currently model uses Random Forest Classification on pull history to predict success, but a more complex model is being developed.
+    </p>
+
+    <p>
+        There are three main data sources that are used in the more complex machine learning classification. 
+        <ul>
+            <li>
+                The first is pull history for each group. This gives us information about how the group is progressing withing the fight.
+                If a group is static and stuck at one point in the fight, the chances of them suceeding are low.
+                However, if they are constantly improving within the fight they may be close to suceeding.
+                This classification is modeled using an LSTM neural network, implemented using Keras and TensorFlow.
+            </li>
+            <li>
+                The second data source is group item level on the most recent pull.
+                The idea behind this is that the higher the group item level, the higher the chance of success.
+                This is modeled usinga Ridge Classifier implemented in Scikit-learn.
+            </li>
+            <li>
+                The last data set being used is details about players on the most recent pull.
+                Details about the players include class, spec, item level, and player stats.
+                In current development, I use a Random Forest Classifier to predict success using all these metrics.
+                A deep neural network may be developed as another method to classify success using these metrics.
+            </li>
+        </ul>
+        Each of these three data sources are the aggregated using Pipelines into one classifier of success.
+        I then predict the probability of group success on the next pull and integrate this into the single guild progression plot.
+    </p>
+{% endblock %}
