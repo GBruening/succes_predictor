@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn gbruening_tdi:app
