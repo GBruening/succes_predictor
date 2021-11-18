@@ -6,6 +6,7 @@
 
 import joblib
 import regex as re
+import pandas as pd
 
 import os
 abspath = os.path.abspath(__file__)
