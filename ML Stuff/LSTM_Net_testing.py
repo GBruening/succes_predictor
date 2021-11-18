@@ -80,24 +80,25 @@ class ModelTransformer(BaseEstimator, TransformerMixin):
         # Use predict on the stored predictor as a "transformation".
         # Be sure to return a 2-D array.
 
-# class pull_encoder(BaseEstimator, TransformerMixin):
-#     def fit(self, X, y = None):
-#         return self
+class pull_encoder(BaseEstimator, TransformerMixin):
+    def fit(self, X, y = None):
+        return self
     
-#     def transform(self, X):
-#         if isinstance(X, list):
-#             return X
-#         else:
-#             return [ast.literal_eval(item) for item in list(X['pulls'])]
+    def transform(self, X):
+        if isinstance(X, list):
+            return X
+        else:
+            return [ast.literal_eval(item) for item in list(X['pulls'])]
 
 def build_model(**kwargs):
     pull_pipe = Pipeline([
-        # ('encoder', pull_encoder()),
+        ('encoder', pull_encoder()),
         ('pull_classifier', RandomForestClassifier(bootstrap = True, n_jobs = 5))
     ])
     params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],
                     'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
                     'pull_classifier__n_estimators': kwargs['n_est']}
+
     pull_pipe.set_params(**params_pulls)
     full_pipe = pull_pipe
 
@@ -113,35 +114,28 @@ for boss in boss_names:
     ilvl_list = list(data['ilvl'])
     kill_list = list(data['kills'])
 
-    kwargs = {'max_depth': [10],
-            'min_s_leaf': [10],
-            'n_est': [100],
-            'alpha': [10]}
+    kwargs = {'max_depth': [5,10,20],
+            'min_s_leaf': [5, 20, 50],
+            'n_est': [50, 100, 500]}#,
+            # 'alpha': [10]}
 
     # scores = []
     max_depth  = []
     min_s_leaf = []
-    min_split  = []
     n_est      = []
-    alpha      = []
-    last_alpha = []
     scores = []
     n_cv = 5
     for k, combin in enumerate(product(*kwargs.values())):
         for cv in range(0,n_cv):
             if (combin[0] in max_depth and 
                 combin[1] in min_s_leaf and 
-                combin[2] in min_split and 
-                combin[3] in n_est and 
-                combin[4] in alpha and 
-                combin[5] in last_alpha):
+                combin[2] in n_est):
                 print(f'Skipping {k+1}', end = '\r')
                 continue
                 
             kwarg = {'max_depth':  combin[0],
                     'min_s_leaf': combin[1],
-                    'n_est':      combin[2],
-                    'alpha':      combin[3]}
+                    'n_est':      combin[2]}
 
             full_pipe = build_model(**kwarg)
 
@@ -152,15 +146,17 @@ for boss in boss_names:
 
     # df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
     # df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
+    df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf','n_est', 'score'])
+    df = df.groupby(['max_depth', 'min_s_leaf', 'n_est']).agg({'score': ['mean']}).reset_index()
 
-    # maxdf = df.loc[df['score']['mean'].argmax()]
+    maxdf = df.loc[df['score']['mean'].argmax()]
 
-    # kwarg = {'max_depth': int(maxdf['max_depth']),
-    #         'min_s_leaf': float(maxdf['min_s_leaf']),
-    #         'min_split': int(maxdf['min_split']),
-    #         'n_est': int(maxdf['n_est']),
-    #         'alpha': float(maxdf['alpha']),
-    #         'last_alpha': 1}
+    kwarg = {'max_depth': int(maxdf['max_depth']),
+            'min_s_leaf': float(maxdf['min_s_leaf']),
+            # 'min_split': int(maxdf['min_split']),
+            'n_est': int(maxdf['n_est']),
+            # 'alpha': float(maxdf['alpha']),
+            'last_alpha': 1}
 
     full_pipe = build_model(**kwarg)
     full_pipe.fit(data, data['kills'])
