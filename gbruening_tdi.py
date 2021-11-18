@@ -80,6 +80,5 @@ def HowItsMade():
     return render_template('HowItsMade.html')
 
 if __name__ == '__main__':
-    # app.run(debug = False)
-    app.run(debug = True)
+    app.run(debug = False)
 
