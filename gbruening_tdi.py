@@ -42,16 +42,6 @@ from DashApps.single_guild_plotting2 import init_dashboard as init_single_dash
 dash_app_agg = init_agg_dash(app)
 dash_app_single = init_single_dash(app)
 
-class pull_encoder(BaseEstimator, TransformerMixin):
-    def fit(self, X, y = None):
-        return self
-    
-    def transform(self, X):
-        if isinstance(X, list):
-            return X
-        else:
-            return [ast.literal_eval(item) for item in list(X['pulls'])]
-
 @app.route("/")
 def home():
     """Landing page."""
