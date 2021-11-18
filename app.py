@@ -1,8 +1,24 @@
+#%%
 from flask import Flask, render_template, send_file
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
 
+import dash
+import dash_bootstrap_components as dbc
+from dash import Dash
+from dash import dcc
+from dash import html
+from dash.dependencies import Input, Output
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import matplotlib.pyplot as plt
+
+import pandas as pd
+import numpy as np
+import json
+import os
+import time
+import datetime
+import regex as re
 import os
 import sys
 
@@ -18,6 +34,7 @@ from sklearn.ensemble import RandomForestClassifier
 if sys.platform.lower() == "win32": 
     os.system('color')
 
+#%%
 flask_server = Flask(__name__, instance_relative_config=False)
 from DashApps.avg_plots_dash2 import init_dashboard as init_agg_dash
 from DashApps.single_guild_plotting2 import init_dashboard as init_single_dash
@@ -59,6 +76,6 @@ def TierStats():
     return render_template('TierStats.html')
 
 if __name__ == '__main__':
-    flask_server.run(debug = False)
-    # flask_server.run(debug = True)
+    # flask_server.run(debug = False)
+    flask_server.run(debug = True)
 

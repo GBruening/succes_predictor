@@ -6,18 +6,14 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 import plotly.express as px
 import pandas as pd
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 
 import joblib
-import ast
-from dotenv import load_dotenv, dotenv_values
-from requests_oauthlib import OAuth2, OAuth2Session
-import requests
 import regex as re
     
 #%% Functions
@@ -205,8 +201,8 @@ def init_dashboard(server):
         Input('specific_boss', 'value')
     )
     def create_single_guild_comp(guild_name, specific_boss):
-        specific_boss = specific_boss.replace("'", "''")
-
+        # specific_boss = boss_names[1]
+        specific_boss = specific_boss.replace("'", "\\'")
         player_df = pull_df_players.query(f"guild_name == '{guild_name}'").query(f"name == '{specific_boss}'")
             
         player_df['test'] = player_df[player_df.columns[18:21]].apply(

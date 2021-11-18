@@ -1,0 +1,398 @@
+;index,p_class,spec,role,mean_val,std_val,n_pulls,name
+0,DeathKnight,Blood,tanks,0.284278075,0.007395782,4675,Shriekwing
+1,DeathKnight,Frost,dps,0.081925134,0.004287202,4675,Shriekwing
+2,DeathKnight,Unholy,dps,1.179251337,0.013750985,4675,Shriekwing
+3,DemonHunter,Havoc,dps,0.676149733,0.010588159,4675,Shriekwing
+4,DemonHunter,Vengeance,tanks,0.65368984,0.00922697,4675,Shriekwing
+5,Druid,Balance,dps,1.622032086,0.016897672,4675,Shriekwing
+6,Druid,Feral,dps,0.140106952,0.005450848,4675,Shriekwing
+7,Druid,Guardian,tanks,0.186951872,0.006434193,4675,Shriekwing
+8,Druid,Restoration,healers,0.608770053,0.009991634,4675,Shriekwing
+9,Hunter,BeastMastery,dps,0.282994652,0.008680778,4675,Shriekwing
+10,Hunter,Marksmanship,dps,2.007058824,0.019275688,4675,Shriekwing
+11,Hunter,Survival,dps,0.013262032,0.001673253,4675,Shriekwing
+12,Mage,Arcane,dps,0.060106952,0.004036983,4675,Shriekwing
+13,Mage,Fire,dps,1.696898396,0.017520453,4675,Shriekwing
+14,Mage,Frost,dps,0.179465241,0.006833704,4675,Shriekwing
+15,Monk,Brewmaster,tanks,0.537326203,0.008800257,4675,Shriekwing
+16,Monk,Mistweaver,healers,0.242994652,0.006984493,4675,Shriekwing
+17,Monk,Windwalker,dps,0.562566845,0.009966431,4675,Shriekwing
+18,Paladin,Holy,healers,0.870588235,0.01065068,4675,Shriekwing
+19,Paladin,Protection,tanks,0.274010695,0.007069271,4675,Shriekwing
+20,Paladin,Retribution,dps,0.588235294,0.010524566,4675,Shriekwing
+21,Priest,Discipline,healers,0.590588235,0.009582351,4675,Shriekwing
+22,Priest,Holy,healers,0.503529412,0.009277344,4675,Shriekwing
+23,Priest,Shadow,dps,1.035508021,0.013373589,4675,Shriekwing
+24,Rogue,Assassination,dps,0.121497326,0.005993724,4675,Shriekwing
+25,Rogue,Outlaw,dps,0.592299465,0.011228443,4675,Shriekwing
+26,Rogue,Subtlety,dps,0.327272727,0.009435286,4675,Shriekwing
+27,Shaman,Elemental,dps,0.468877005,0.009896787,4675,Shriekwing
+28,Shaman,Enhancement,dps,0.220534759,0.00668201,4675,Shriekwing
+29,Shaman,Restoration,healers,1.328128342,0.012397876,4675,Shriekwing
+30,Warlock,Affliction,dps,1.393582888,0.015670483,4675,Shriekwing
+31,Warlock,Demonology,dps,0.049839572,0.003550069,4675,Shriekwing
+32,Warlock,Destruction,dps,0.13368984,0.005753965,4675,Shriekwing
+33,Warrior,Arms,dps,0.576684492,0.009963697,4675,Shriekwing
+34,Warrior,Fury,dps,0.423957219,0.009694717,4675,Shriekwing
+35,Warrior,Protection,tanks,0.127486631,0.005107509,4675,Shriekwing
+0,DeathKnight,Blood,tanks,0.279820839,0.007928363,4242,Huntsman Altimor
+1,DeathKnight,Frost,dps,0.120933522,0.005702221,4242,Huntsman Altimor
+2,DeathKnight,Unholy,dps,1.188118812,0.014003529,4242,Huntsman Altimor
+3,DemonHunter,Havoc,dps,0.629655823,0.0109908,4242,Huntsman Altimor
+4,DemonHunter,Vengeance,tanks,0.675860443,0.009416789,4242,Huntsman Altimor
+5,Druid,Balance,dps,1.62776992,0.017483654,4242,Huntsman Altimor
+6,Druid,Feral,dps,0.11338991,0.005221341,4242,Huntsman Altimor
+7,Druid,Guardian,tanks,0.19047619,0.006874076,4242,Huntsman Altimor
+8,Druid,Restoration,healers,0.653465347,0.010555863,4242,Huntsman Altimor
+9,Hunter,BeastMastery,dps,0.277227723,0.009197823,4242,Huntsman Altimor
+10,Hunter,Marksmanship,dps,2.136256483,0.020956959,4242,Huntsman Altimor
+11,Hunter,Survival,dps,0.013908534,0.001798312,4242,Huntsman Altimor
+12,Mage,Arcane,dps,0.047147572,0.00368708,4242,Huntsman Altimor
+13,Mage,Fire,dps,1.702734559,0.017992717,4242,Huntsman Altimor
+14,Mage,Frost,dps,0.238095238,0.008518692,4242,Huntsman Altimor
+15,Monk,Brewmaster,tanks,0.531824611,0.009021552,4242,Huntsman Altimor
+16,Monk,Mistweaver,healers,0.243517209,0.007272316,4242,Huntsman Altimor
+17,Monk,Windwalker,dps,0.508958039,0.010233858,4242,Huntsman Altimor
+18,Paladin,Holy,healers,0.971239981,0.011164671,4242,Huntsman Altimor
+19,Paladin,Protection,tanks,0.257190005,0.007144927,4242,Huntsman Altimor
+20,Paladin,Retribution,dps,0.546911834,0.010446213,4242,Huntsman Altimor
+21,Priest,Discipline,healers,0.525931165,0.009298998,4242,Huntsman Altimor
+22,Priest,Holy,healers,0.665959453,0.011237058,4242,Huntsman Altimor
+23,Priest,Shadow,dps,0.902404526,0.013979125,4242,Huntsman Altimor
+24,Rogue,Assassination,dps,0.143092881,0.007018307,4242,Huntsman Altimor
+25,Rogue,Outlaw,dps,0.600895804,0.011500233,4242,Huntsman Altimor
+26,Rogue,Subtlety,dps,0.167609618,0.007032892,4242,Huntsman Altimor
+27,Shaman,Elemental,dps,0.397689769,0.010096985,4242,Huntsman Altimor
+28,Shaman,Enhancement,dps,0.183404055,0.006522284,4242,Huntsman Altimor
+29,Shaman,Restoration,healers,1.462046205,0.012675314,4242,Huntsman Altimor
+30,Warlock,Affliction,dps,1.303158887,0.015232245,4242,Huntsman Altimor
+31,Warlock,Demonology,dps,0.04408298,0.003406438,4242,Huntsman Altimor
+32,Warlock,Destruction,dps,0.195426686,0.007496426,4242,Huntsman Altimor
+33,Warrior,Arms,dps,0.542432815,0.009971694,4242,Huntsman Altimor
+34,Warrior,Fury,dps,0.441065535,0.010859987,4242,Huntsman Altimor
+35,Warrior,Protection,tanks,0.135077793,0.005646577,4242,Huntsman Altimor
+0,Boss,Balance,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+1,DeathKnight,Blood,tanks,0.294624746,0.011806793,1972,Hungering Destroyer
+2,DeathKnight,Fire,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+3,DeathKnight,Frost,dps,0.095841785,0.007806796,1972,Hungering Destroyer
+4,DeathKnight,Unholy,dps,1.127789047,0.02010951,1972,Hungering Destroyer
+5,DemonHunter,Havoc,dps,0.523326572,0.015747996,1972,Hungering Destroyer
+6,DemonHunter,Vengeance,tanks,0.817444219,0.014474051,1972,Hungering Destroyer
+7,Druid,Balance,dps,1.65010142,0.026823539,1972,Hungering Destroyer
+8,Druid,Blood,tanks,0.000507099,0.000507099,1972,Hungering Destroyer
+9,Druid,Feral,dps,0.09989858,0.007303379,1972,Hungering Destroyer
+10,Druid,Guardian,tanks,0.198275862,0.010462605,1972,Hungering Destroyer
+11,Druid,Restoration,healers,0.582150101,0.015647731,1972,Hungering Destroyer
+12,Druid,Unholy,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+13,Hunter,BeastMastery,dps,0.295638945,0.015540083,1972,Hungering Destroyer
+14,Hunter,Marksmanship,dps,1.9168357,0.02982898,1972,Hungering Destroyer
+15,Hunter,Survival,dps,0.011663286,0.002418353,1972,Hungering Destroyer
+16,Mage,Arcane,dps,0.039046653,0.004864986,1972,Hungering Destroyer
+17,Mage,Fire,dps,1.745436105,0.025715054,1972,Hungering Destroyer
+18,Mage,Frost,dps,0.169878296,0.009888875,1972,Hungering Destroyer
+19,Mage,Unholy,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+20,Monk,Brewmaster,tanks,0.557302231,0.013501461,1972,Hungering Destroyer
+21,Monk,Mistweaver,healers,0.198782961,0.009490412,1972,Hungering Destroyer
+22,Monk,Windwalker,dps,0.499492901,0.014779405,1972,Hungering Destroyer
+23,NPC,Balance,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+24,NPC,Guardian,tanks,0.000507099,0.000507099,1972,Hungering Destroyer
+25,Paladin,Fire,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+26,Paladin,Holy,healers,1.031947262,0.017709358,1972,Hungering Destroyer
+27,Paladin,Protection,tanks,0.244929006,0.010599722,1972,Hungering Destroyer
+28,Paladin,Retribution,dps,0.464503043,0.014582388,1972,Hungering Destroyer
+29,Priest,Discipline,healers,1.052738337,0.017836226,1972,Hungering Destroyer
+30,Priest,Holy,healers,0.401115619,0.013224141,1972,Hungering Destroyer
+31,Priest,Shadow,dps,0.827079108,0.020098228,1972,Hungering Destroyer
+32,Rogue,Assassination,dps,0.231744422,0.013256934,1972,Hungering Destroyer
+33,Rogue,Outlaw,dps,0.575557809,0.017480919,1972,Hungering Destroyer
+34,Rogue,Subtlety,dps,0.168864097,0.009949537,1972,Hungering Destroyer
+35,Shaman,Elemental,dps,0.359533469,0.014666617,1972,Hungering Destroyer
+36,Shaman,Enhancement,dps,0.147058824,0.00862814,1972,Hungering Destroyer
+37,Shaman,Restoration,healers,1.716024341,0.019400882,1972,Hungering Destroyer
+38,Warlock,Affliction,dps,1.359026369,0.021744702,1972,Hungering Destroyer
+39,Warlock,Balance,dps,0.000507099,0.000507099,1972,Hungering Destroyer
+40,Warlock,Demonology,dps,0.048174442,0.004928822,1972,Hungering Destroyer
+41,Warlock,Destruction,dps,0.122718053,0.008431317,1972,Hungering Destroyer
+42,Warrior,Arms,dps,0.434077079,0.013708582,1972,Hungering Destroyer
+43,Warrior,Fury,dps,0.567444219,0.017335254,1972,Hungering Destroyer
+44,Warrior,Protection,tanks,0.157200811,0.009063183,1972,Hungering Destroyer
+0,DeathKnight,Blood,tanks,0.215366705,0.011851361,1718,Sun King's Salvation
+1,DeathKnight,Frost,dps,0.105937136,0.008451924,1718,Sun King's Salvation
+2,DeathKnight,Holy,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+3,DeathKnight,Unholy,dps,1.325960419,0.023974377,1718,Sun King's Salvation
+4,DemonHunter,Havoc,dps,0.597206054,0.017067395,1718,Sun King's Salvation
+5,DemonHunter,Holy,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+6,DemonHunter,Vengeance,tanks,0.739231665,0.015016596,1718,Sun King's Salvation
+7,Druid,Affliction,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+8,Druid,Balance,dps,1.867869616,0.028410806,1718,Sun King's Salvation
+9,Druid,Feral,dps,0.083236321,0.007390048,1718,Sun King's Salvation
+10,Druid,Guardian,tanks,0.164726426,0.010158113,1718,Sun King's Salvation
+11,Druid,Holy,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+12,Druid,Restoration,healers,0.530849825,0.017033578,1718,Sun King's Salvation
+13,Hunter,BeastMastery,dps,0.219441211,0.013203806,1718,Sun King's Salvation
+14,Hunter,Fury,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+15,Hunter,Holy,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+16,Hunter,Marksmanship,dps,1.827124563,0.03161125,1718,Sun King's Salvation
+17,Hunter,Survival,dps,0.00814901,0.002169654,1718,Sun King's Salvation
+18,Mage,Arcane,dps,0.041327125,0.005824331,1718,Sun King's Salvation
+19,Mage,Fire,dps,1.919091967,0.029354184,1718,Sun King's Salvation
+20,Mage,Frost,dps,0.137369034,0.009770232,1718,Sun King's Salvation
+21,Mage,Havoc,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+22,Mage,Restoration,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+23,Monk,Balance,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+24,Monk,Brewmaster,tanks,0.444121071,0.014381907,1718,Sun King's Salvation
+25,Monk,Mistweaver,healers,0.363213038,0.013268916,1718,Sun King's Salvation
+26,Monk,Windwalker,dps,0.472642608,0.015028312,1718,Sun King's Salvation
+27,Paladin,Balance,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+28,Paladin,Blood,tanks,0.000582072,0.000582072,1718,Sun King's Salvation
+29,Paladin,Fire,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+30,Paladin,Holy,healers,0.97322468,0.018252773,1718,Sun King's Salvation
+31,Paladin,Protection,tanks,0.303841676,0.012093184,1718,Sun King's Salvation
+32,Paladin,Retribution,dps,0.418509895,0.014799609,1718,Sun King's Salvation
+33,Priest,Discipline,healers,0.027939464,0.005783243,1718,Sun King's Salvation
+34,Priest,Holy,healers,1.832363213,0.021532872,1718,Sun King's Salvation
+35,Priest,Marksmanship,dps,0.001164144,0.001164144,1718,Sun King's Salvation
+36,Priest,Shadow,dps,0.512223516,0.018805985,1718,Sun King's Salvation
+37,Rogue,Assassination,dps,0.146100116,0.01032275,1718,Sun King's Salvation
+38,Rogue,Outlaw,dps,0.607683353,0.019878062,1718,Sun King's Salvation
+39,Rogue,Subtlety,dps,0.161233993,0.011052446,1718,Sun King's Salvation
+40,Rogue,Windwalker,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+41,Shaman,Elemental,dps,0.300349243,0.013766288,1718,Sun King's Salvation
+42,Shaman,Enhancement,dps,0.129220023,0.009082096,1718,Sun King's Salvation
+43,Shaman,Outlaw,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+44,Shaman,Restoration,healers,1.729336438,0.021980231,1718,Sun King's Salvation
+45,Warlock,Affliction,dps,1.427240978,0.025180892,1718,Sun King's Salvation
+46,Warlock,Demonology,dps,0.041327125,0.005010858,1718,Sun King's Salvation
+47,Warlock,Destruction,dps,0.137951106,0.009988552,1718,Sun King's Salvation
+48,Warlock,Restoration,healers,0.000582072,0.000582072,1718,Sun King's Salvation
+49,Warrior,Arms,dps,0.335855646,0.013719315,1718,Sun King's Salvation
+50,Warrior,Fury,dps,0.649592549,0.018255432,1718,Sun King's Salvation
+51,Warrior,Protection,tanks,0.119324796,0.008448293,1718,Sun King's Salvation
+52,Warrior,Retribution,dps,0.000582072,0.000582072,1718,Sun King's Salvation
+0,DeathKnight,Blood,tanks,0.266784452,0.016986825,1132,Artificer Xy'mox
+1,DeathKnight,Frost,dps,0.102473498,0.010755787,1132,Artificer Xy'mox
+2,DeathKnight,Unholy,dps,1.455830389,0.030446172,1132,Artificer Xy'mox
+3,DemonHunter,Havoc,dps,0.526501767,0.020040733,1132,Artificer Xy'mox
+4,DemonHunter,Vengeance,tanks,0.775618375,0.020211533,1132,Artificer Xy'mox
+5,Druid,Balance,dps,1.736749117,0.03813142,1132,Artificer Xy'mox
+6,Druid,Feral,dps,0.090989399,0.009420812,1132,Artificer Xy'mox
+7,Druid,Guardian,tanks,0.160777385,0.012333076,1132,Artificer Xy'mox
+8,Druid,Restoration,healers,0.498233216,0.018810177,1132,Artificer Xy'mox
+9,Hunter,BeastMastery,dps,0.25,0.01658712,1132,Artificer Xy'mox
+10,Hunter,Marksmanship,dps,1.973498233,0.042007158,1132,Artificer Xy'mox
+11,Hunter,Survival,dps,0.003533569,0.00176444,1132,Artificer Xy'mox
+12,Mage,Arcane,dps,0.03975265,0.007026552,1132,Artificer Xy'mox
+13,Mage,Fire,dps,2.093639576,0.037952001,1132,Artificer Xy'mox
+14,Mage,Frost,dps,0.128091873,0.012259652,1132,Artificer Xy'mox
+15,Monk,Brewmaster,tanks,0.600706714,0.018187883,1132,Artificer Xy'mox
+16,Monk,Mistweaver,healers,0.204946996,0.013930509,1132,Artificer Xy'mox
+17,Monk,Windwalker,dps,0.469964664,0.019036827,1132,Artificer Xy'mox
+18,Paladin,Holy,healers,1.094522968,0.021337194,1132,Artificer Xy'mox
+19,Paladin,Protection,tanks,0.19434629,0.0128451,1132,Artificer Xy'mox
+20,Paladin,Retribution,dps,0.438162544,0.018803427,1132,Artificer Xy'mox
+21,Priest,Discipline,healers,0.780918728,0.022526368,1132,Artificer Xy'mox
+22,Priest,Holy,healers,0.536219081,0.019831323,1132,Artificer Xy'mox
+23,Priest,Shadow,dps,0.835689046,0.02793981,1132,Artificer Xy'mox
+24,Rogue,Assassination,dps,0.22614841,0.015104826,1132,Artificer Xy'mox
+25,Rogue,Outlaw,dps,0.601590106,0.025695396,1132,Artificer Xy'mox
+26,Rogue,Subtlety,dps,0.119257951,0.013312601,1132,Artificer Xy'mox
+27,Shaman,Elemental,dps,0.356890459,0.019115389,1132,Artificer Xy'mox
+28,Shaman,Enhancement,dps,0.119257951,0.00995581,1132,Artificer Xy'mox
+29,Shaman,Restoration,healers,1.71819788,0.027512555,1132,Artificer Xy'mox
+30,Warlock,Affliction,dps,1.462897527,0.030684467,1132,Artificer Xy'mox
+31,Warlock,Demonology,dps,0.045053004,0.006415939,1132,Artificer Xy'mox
+32,Warlock,Destruction,dps,0.102473498,0.010386348,1132,Artificer Xy'mox
+33,Warrior,Arms,dps,0.35335689,0.017909573,1132,Artificer Xy'mox
+34,Warrior,Fury,dps,0.628091873,0.021655862,1132,Artificer Xy'mox
+35,Warrior,Protection,tanks,0.136925795,0.011240955,1132,Artificer Xy'mox
+0,DeathKnight,Blood,tanks,0.200302343,0.014345222,1323,Lady Inerva Darkvein
+1,DeathKnight,Frost,dps,0.10808768,0.011654024,1323,Lady Inerva Darkvein
+2,DeathKnight,Unholy,dps,1.425547997,0.028807155,1323,Lady Inerva Darkvein
+3,DemonHunter,Havoc,dps,0.55404384,0.020132259,1323,Lady Inerva Darkvein
+4,DemonHunter,Vengeance,tanks,0.819349962,0.01817617,1323,Lady Inerva Darkvein
+5,Druid,Balance,dps,1.980347695,0.035073081,1323,Lady Inerva Darkvein
+6,Druid,Feral,dps,0.095238095,0.008752996,1323,Lady Inerva Darkvein
+7,Druid,Guardian,tanks,0.189720333,0.013299968,1323,Lady Inerva Darkvein
+8,Druid,Restoration,healers,0.272864701,0.013704692,1323,Lady Inerva Darkvein
+9,Hunter,BeastMastery,dps,0.226001512,0.016864303,1323,Lady Inerva Darkvein
+10,Hunter,Marksmanship,dps,2.072562358,0.041998553,1323,Lady Inerva Darkvein
+11,Hunter,Survival,dps,0.006802721,0.002260702,1323,Lady Inerva Darkvein
+12,Mage,Arcane,dps,0.044595616,0.007422885,1323,Lady Inerva Darkvein
+13,Mage,Fire,dps,2.098261527,0.039357451,1323,Lady Inerva Darkvein
+14,Mage,Frost,dps,0.167800454,0.012068686,1323,Lady Inerva Darkvein
+15,Monk,Brewmaster,tanks,0.580498866,0.017212477,1323,Lady Inerva Darkvein
+16,Monk,Mistweaver,healers,0.123204837,0.010556742,1323,Lady Inerva Darkvein
+17,Monk,Windwalker,dps,0.579743008,0.020629523,1323,Lady Inerva Darkvein
+18,Paladin,Holy,healers,0.979591837,0.021339455,1323,Lady Inerva Darkvein
+19,Paladin,Protection,tanks,0.207860922,0.011951814,1323,Lady Inerva Darkvein
+20,Paladin,Retribution,dps,0.574452003,0.021001427,1323,Lady Inerva Darkvein
+21,Priest,Discipline,healers,0.570672714,0.019339284,1323,Lady Inerva Darkvein
+22,Priest,Holy,healers,0.329554044,0.015166562,1323,Lady Inerva Darkvein
+23,Priest,Shadow,dps,1.229780801,0.029732381,1323,Lady Inerva Darkvein
+24,Rogue,Assassination,dps,0.238095238,0.016669497,1323,Lady Inerva Darkvein
+25,Rogue,Outlaw,dps,0.723356009,0.024063296,1323,Lady Inerva Darkvein
+26,Rogue,Subtlety,dps,0.148148148,0.013546647,1323,Lady Inerva Darkvein
+27,Shaman,Elemental,dps,0.576719577,0.021479845,1323,Lady Inerva Darkvein
+28,Shaman,Enhancement,dps,0.157974301,0.010904824,1323,Lady Inerva Darkvein
+29,Shaman,Restoration,healers,1.162509448,0.023983712,1323,Lady Inerva Darkvein
+30,Unknown,Blood,tanks,0.000755858,0.000755858,1323,Lady Inerva Darkvein
+31,Warlock,Affliction,dps,1.530612245,0.032324682,1323,Lady Inerva Darkvein
+32,Warlock,Demonology,dps,0.051398337,0.006784464,1323,Lady Inerva Darkvein
+33,Warlock,Destruction,dps,0.148148148,0.01188284,1323,Lady Inerva Darkvein
+34,Warrior,Arms,dps,0.407407407,0.01953439,1323,Lady Inerva Darkvein
+35,Warrior,Fury,dps,0.652305367,0.023010392,1323,Lady Inerva Darkvein
+36,Warrior,Protection,tanks,0.140589569,0.01105756,1323,Lady Inerva Darkvein
+0,DeathKnight,Blood,tanks,0.201030928,0.029004408,388,The Council of Blood
+1,DeathKnight,Frost,dps,0.136597938,0.022462057,388,The Council of Blood
+2,DeathKnight,Unholy,dps,1.639175258,0.064023178,388,The Council of Blood
+3,DemonHunter,Havoc,dps,0.530927835,0.040527574,388,The Council of Blood
+4,DemonHunter,Vengeance,tanks,0.884020619,0.041433731,388,The Council of Blood
+5,Druid,Balance,dps,2.363402062,0.086509838,388,The Council of Blood
+6,Druid,Feral,dps,0.072164948,0.018244169,388,The Council of Blood
+7,Druid,Guardian,tanks,0.154639175,0.024580127,388,The Council of Blood
+8,Druid,Restoration,healers,0.360824742,0.03993626,388,The Council of Blood
+9,Hunter,BeastMastery,dps,0.270618557,0.031667923,388,The Council of Blood
+10,Hunter,Marksmanship,dps,1.976804124,0.083813101,388,The Council of Blood
+11,Hunter,Survival,dps,0.00257732,0.00257732,388,The Council of Blood
+12,Mage,Arcane,dps,0.056701031,0.015644891,388,The Council of Blood
+13,Mage,Fire,dps,2.103092784,0.077671752,388,The Council of Blood
+14,Mage,Frost,dps,0.175257732,0.026579724,388,The Council of Blood
+15,Monk,Brewmaster,tanks,0.719072165,0.035607216,388,The Council of Blood
+16,Monk,Mistweaver,healers,0.172680412,0.0277261,388,The Council of Blood
+17,Monk,Windwalker,dps,0.530927835,0.040197578,388,The Council of Blood
+18,Paladin,Holy,healers,1.283505155,0.043856917,388,The Council of Blood
+19,Paladin,Protection,tanks,0.136597938,0.019612972,388,The Council of Blood
+20,Paladin,Retribution,dps,0.409793814,0.034220861,388,The Council of Blood
+21,Priest,Discipline,healers,0.989690722,0.042557899,388,The Council of Blood
+22,Priest,Holy,healers,0.309278351,0.032117045,388,The Council of Blood
+23,Priest,Shadow,dps,0.963917526,0.056154722,388,The Council of Blood
+24,Rogue,Assassination,dps,0.242268041,0.028878678,388,The Council of Blood
+25,Rogue,Outlaw,dps,0.548969072,0.048007642,388,The Council of Blood
+26,Rogue,Subtlety,dps,0.100515464,0.026200866,388,The Council of Blood
+27,Shaman,Elemental,dps,0.360824742,0.033596474,388,The Council of Blood
+28,Shaman,Enhancement,dps,0.097938144,0.017931015,388,The Council of Blood
+29,Shaman,Restoration,healers,2.020618557,0.061494993,388,The Council of Blood
+30,Warlock,Affliction,dps,1.667525773,0.073179023,388,The Council of Blood
+31,Warlock,Demonology,dps,0.036082474,0.010794032,388,The Council of Blood
+32,Warlock,Destruction,dps,0.164948454,0.024677695,388,The Council of Blood
+33,Warrior,Arms,dps,0.265463918,0.029610858,388,The Council of Blood
+34,Warrior,Fury,dps,0.780927835,0.048853969,388,The Council of Blood
+35,Warrior,Protection,tanks,0.208762887,0.028514717,388,The Council of Blood
+0,Boss,Fire,dps,0.003311258,0.003311258,302,Sludgefist
+1,Boss,Holy,healers,0.003311258,0.003311258,302,Sludgefist
+2,DeathKnight,Blood,tanks,0.158940397,0.028985255,302,Sludgefist
+3,DeathKnight,Frost,dps,0.066225166,0.015081386,302,Sludgefist
+4,DeathKnight,Holy,healers,0.003311258,0.003311258,302,Sludgefist
+5,DeathKnight,Restoration,healers,0.003311258,0.003311258,302,Sludgefist
+6,DeathKnight,Unholy,dps,0.907284768,0.050016386,302,Sludgefist
+7,DemonHunter,Brewmaster,tanks,0.003311258,0.003311258,302,Sludgefist
+8,DemonHunter,Havoc,dps,0.314569536,0.030599802,302,Sludgefist
+9,DemonHunter,Vengeance,tanks,0.953642384,0.046119701,302,Sludgefist
+10,Druid,Affliction,dps,0.003311258,0.003311258,302,Sludgefist
+11,Druid,Balance,dps,2.344370861,0.089132819,302,Sludgefist
+12,Druid,Feral,dps,0.07615894,0.019691674,302,Sludgefist
+13,Druid,Fire,dps,0.003311258,0.003311258,302,Sludgefist
+14,Druid,Guardian,tanks,0.139072848,0.025725473,302,Sludgefist
+15,Druid,Restoration,healers,0.433774834,0.036055955,302,Sludgefist
+16,Hunter,BeastMastery,dps,0.251655629,0.034924362,302,Sludgefist
+17,Hunter,Marksmanship,dps,2.016556291,0.100870625,302,Sludgefist
+18,Hunter,Shadow,dps,0.003311258,0.003311258,302,Sludgefist
+19,Mage,Arcane,dps,0.036423841,0.019509546,302,Sludgefist
+20,Mage,Balance,dps,0.003311258,0.003311258,302,Sludgefist
+21,Mage,Fire,dps,2.38410596,0.101225886,302,Sludgefist
+22,Mage,Frost,dps,0.092715232,0.024238183,302,Sludgefist
+23,Monk,Brewmaster,tanks,0.622516556,0.03462267,302,Sludgefist
+24,Monk,Fire,dps,0.003311258,0.003311258,302,Sludgefist
+25,Monk,Fury,dps,0.003311258,0.003311258,302,Sludgefist
+26,Monk,Mistweaver,healers,0.158940397,0.029362335,302,Sludgefist
+27,Monk,Windwalker,dps,0.463576159,0.039952687,302,Sludgefist
+28,Paladin,Holy,healers,1.32781457,0.046262046,302,Sludgefist
+29,Paladin,Protection,tanks,0.09602649,0.017617939,302,Sludgefist
+30,Paladin,Retribution,dps,0.324503311,0.03870791,302,Sludgefist
+31,Paladin,Unholy,dps,0.003311258,0.003311258,302,Sludgefist
+32,Priest,Discipline,healers,0.993377483,0.048744637,302,Sludgefist
+33,Priest,Holy,healers,0.433774834,0.036055955,302,Sludgefist
+34,Priest,Restoration,healers,0.003311258,0.003311258,302,Sludgefist
+35,Priest,Shadow,dps,0.990066225,0.052753097,302,Sludgefist
+36,Rogue,Assassination,dps,0.390728477,0.035396782,302,Sludgefist
+37,Rogue,Outlaw,dps,0.241721854,0.032725844,302,Sludgefist
+38,Rogue,Subtlety,dps,0.062913907,0.018107362,302,Sludgefist
+39,Shaman,Elemental,dps,0.387417219,0.033771038,302,Sludgefist
+40,Shaman,Enhancement,dps,0.062913907,0.013995223,302,Sludgefist
+41,Shaman,Restoration,healers,2.023178808,0.071816555,302,Sludgefist
+42,Warlock,Affliction,dps,1.910596026,0.094895466,302,Sludgefist
+43,Warlock,Demonology,dps,0.036423841,0.015767438,302,Sludgefist
+44,Warlock,Destruction,dps,0.082781457,0.017212153,302,Sludgefist
+45,Warrior,Arms,dps,0.248344371,0.030466183,302,Sludgefist
+46,Warrior,Fury,dps,0.658940397,0.047357728,302,Sludgefist
+47,Warrior,Protection,tanks,0.238410596,0.031611023,302,Sludgefist
+0,DeathKnight,Blood,tanks,0.190140845,0.047862198,142,Stone Legion Generals
+1,DeathKnight,Frost,dps,0.169014085,0.034581319,142,Stone Legion Generals
+2,DeathKnight,Unholy,dps,1.246478873,0.069378435,142,Stone Legion Generals
+3,DemonHunter,Havoc,dps,0.528169014,0.052595848,142,Stone Legion Generals
+4,DemonHunter,Vengeance,tanks,0.845070423,0.051251225,142,Stone Legion Generals
+5,Druid,Balance,dps,1.852112676,0.076734876,142,Stone Legion Generals
+6,Druid,Feral,dps,0.021126761,0.012110725,142,Stone Legion Generals
+7,Druid,Guardian,tanks,0.133802817,0.030362366,142,Stone Legion Generals
+8,Druid,Restoration,healers,0.450704225,0.058770291,142,Stone Legion Generals
+9,Hunter,BeastMastery,dps,0.11971831,0.030776574,142,Stone Legion Generals
+10,Hunter,Marksmanship,dps,2.112676056,0.124870762,142,Stone Legion Generals
+11,Mage,Arcane,dps,0.049295775,0.030524115,142,Stone Legion Generals
+12,Mage,Fire,dps,1.964788732,0.122981951,142,Stone Legion Generals
+13,Mage,Frost,dps,0.253521127,0.041734231,142,Stone Legion Generals
+14,Monk,Brewmaster,tanks,0.64084507,0.053207526,142,Stone Legion Generals
+15,Monk,Mistweaver,healers,0.126760563,0.028018778,142,Stone Legion Generals
+16,Monk,Windwalker,dps,0.612676056,0.05814757,142,Stone Legion Generals
+17,Paladin,Holy,healers,1.323943662,0.056137892,142,Stone Legion Generals
+18,Paladin,Protection,tanks,0.161971831,0.031026979,142,Stone Legion Generals
+19,Paladin,Retribution,dps,0.450704225,0.051525005,142,Stone Legion Generals
+20,Priest,Discipline,healers,0.76056338,0.045723714,142,Stone Legion Generals
+21,Priest,Holy,healers,0.507042254,0.079169144,142,Stone Legion Generals
+22,Priest,Shadow,dps,0.61971831,0.062998997,142,Stone Legion Generals
+23,Rogue,Assassination,dps,0.133802817,0.031965034,142,Stone Legion Generals
+24,Rogue,Outlaw,dps,0.654929577,0.067819746,142,Stone Legion Generals
+25,Rogue,Subtlety,dps,0.035211268,0.028987461,142,Stone Legion Generals
+26,Shaman,Elemental,dps,0.394366197,0.047887912,142,Stone Legion Generals
+27,Shaman,Enhancement,dps,0.049295775,0.018231315,142,Stone Legion Generals
+28,Shaman,Restoration,healers,1.985915493,0.070661865,142,Stone Legion Generals
+29,Warlock,Affliction,dps,1.38028169,0.09145512,142,Stone Legion Generals
+30,Warlock,Demonology,dps,0.021126761,0.012110725,142,Stone Legion Generals
+31,Warlock,Destruction,dps,0.253521127,0.049406244,142,Stone Legion Generals
+32,Warrior,Arms,dps,0.14084507,0.046441172,142,Stone Legion Generals
+33,Warrior,Fury,dps,0.915492958,0.067411401,142,Stone Legion Generals
+34,Warrior,Protection,tanks,0.161971831,0.032596987,142,Stone Legion Generals
+0,DeathKnight,Blood,tanks,0.227272727,0.05061604,176,Sire Denathrius
+1,DeathKnight,Frost,dps,0.068181818,0.020687704,176,Sire Denathrius
+2,DeathKnight,Unholy,dps,1.681818182,0.085694606,176,Sire Denathrius
+3,DemonHunter,Havoc,dps,0.534090909,0.049607372,176,Sire Denathrius
+4,DemonHunter,Vengeance,tanks,0.931818182,0.058437951,176,Sire Denathrius
+5,Druid,Balance,dps,2.261363636,0.124313344,176,Sire Denathrius
+6,Druid,Feral,dps,0.085227273,0.021107018,176,Sire Denathrius
+7,Druid,Guardian,tanks,0.164772727,0.035227273,176,Sire Denathrius
+8,Druid,Restoration,healers,0.318181818,0.053507439,176,Sire Denathrius
+9,Hunter,BeastMastery,dps,0.125,0.0274749,176,Sire Denathrius
+10,Hunter,Marksmanship,dps,1.920454545,0.133495265,176,Sire Denathrius
+11,Mage,Arcane,dps,0.045454545,0.025249639,176,Sire Denathrius
+12,Mage,Fire,dps,2.272727273,0.131043402,176,Sire Denathrius
+13,Mage,Frost,dps,0.079545455,0.02198462,176,Sire Denathrius
+14,Monk,Brewmaster,tanks,0.727272727,0.048653656,176,Sire Denathrius
+15,Monk,Mistweaver,healers,0.051136364,0.016651287,176,Sire Denathrius
+16,Monk,Windwalker,dps,0.630681818,0.064212087,176,Sire Denathrius
+17,Paladin,Holy,healers,1.426136364,0.07581586,176,Sire Denathrius
+18,Paladin,Protection,tanks,0.136363636,0.038107534,176,Sire Denathrius
+19,Paladin,Retribution,dps,0.420454545,0.056086194,176,Sire Denathrius
+20,Priest,Discipline,healers,1.0625,0.056497471,176,Sire Denathrius
+21,Priest,Holy,healers,0.153409091,0.034593162,176,Sire Denathrius
+22,Priest,Shadow,dps,1.193181818,0.094565276,176,Sire Denathrius
+23,Rogue,Assassination,dps,0.494318182,0.069318182,176,Sire Denathrius
+24,Rogue,Outlaw,dps,0.340909091,0.047518094,176,Sire Denathrius
+25,Rogue,Subtlety,dps,0.039772727,0.016827612,176,Sire Denathrius
+26,Shaman,Elemental,dps,0.488636364,0.063954446,176,Sire Denathrius
+27,Shaman,Enhancement,dps,0.096590909,0.023739628,176,Sire Denathrius
+28,Shaman,Restoration,healers,1.704545455,0.08728152,176,Sire Denathrius
+29,Warlock,Affliction,dps,1.931818182,0.102751405,176,Sire Denathrius
+30,Warlock,Demonology,dps,0.005681818,0.005681818,176,Sire Denathrius
+31,Warlock,Destruction,dps,0.079545455,0.035532299,176,Sire Denathrius
+32,Warrior,Arms,dps,0.278409091,0.045355005,176,Sire Denathrius
+33,Warrior,Fury,dps,0.965909091,0.071576735,176,Sire Denathrius
+34,Warrior,Protection,tanks,0.125,0.026266615,176,Sire Denathrius

@@ -114,8 +114,12 @@ for boss in boss_names:
     ilvl_list = list(data['ilvl'])
     kill_list = list(data['kills'])
 
+    # kwargs = {'max_depth': [5,10,20],
+    #         'min_s_leaf': [5, 20, 50],
+    #         'n_est': [50, 100, 500]}#,
+    #         # 'alpha': [10]}
     kwargs = {'max_depth': [5,10,20],
-            'min_s_leaf': [5, 20, 50],
+            'min_s_leaf': [20],
             'n_est': [50, 100, 500]}#,
             # 'alpha': [10]}
 
@@ -124,6 +128,7 @@ for boss in boss_names:
     min_s_leaf = []
     n_est      = []
     scores = []
+    open('score_keeper.pickle', 'w').close()
     n_cv = 5
     for k, combin in enumerate(product(*kwargs.values())):
         for cv in range(0,n_cv):
@@ -133,16 +138,21 @@ for boss in boss_names:
                 print(f'Skipping {k+1}', end = '\r')
                 continue
                 
-            kwarg = {'max_depth':  combin[0],
-                    'min_s_leaf': combin[1],
-                    'n_est':      combin[2]}
+            kwarg = {'max_depth':  int(combin[0]),
+                    'min_s_leaf': int(combin[1]),
+                    'n_est':      int(combin[2])}
 
             full_pipe = build_model(**kwarg)
 
             X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
             full_pipe.fit(X_train, y_train)
             
-            print(f'Iter: {k+1}, Score: 1, Fitted {kwarg}', end = '\r')
+            score = full_pipe.score(X_test, y_test)
+            scores.append((combin[0], combin[1], combin[2], score))
+            pickle.dump(scores, open('score_keeper.pickle', 'wb'))
+            print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
+            
+            # print(f'Iter: {k+1}, Score: 1, Fitted {kwarg}', end = '\r')
 
     # df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
     # df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
@@ -167,3 +177,5 @@ for boss in boss_names:
     joblib.dump(full_pipe, filename)
 
 asdfasdf
+
+#%%

@@ -1,5 +1,4 @@
 # Large Data Files
-*.csv
 *.pickle
 
 # Byte-compiled / optimized / DLL files
