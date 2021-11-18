@@ -14,3 +14,4 @@ matplotlib==3.4.3
 dash_core_components==2.0.0
 scikit_learn==1.0.1
 gunicorn
+ipywidgest==7.0.0
