@@ -21,26 +21,6 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-#%% Functions
-
-
-# %% Setup
-server = 'localhost'
-database = 'nathria_prog'
-username = 'postgres'
-password = 'postgres'
-
-if 'conn' in locals():
-    conn.close()
-try:
-    engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
-    conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-except:
-    engine = create_engine('postgresql://postgres:postgres@192.168.0.6:5432/nathria_prog')
-    conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
-curs = conn.cursor()
-
-
 # %% Get the data sets
 boss_names = ['Shriekwing', \
             'Huntsman Altimor',
@@ -96,7 +76,7 @@ def build_model(**kwargs):
         ('pull_classifier', RandomForestClassifier(bootstrap = True, n_jobs = 5))
     ])
     params_pulls = {'pull_classifier__max_depth': kwargs['max_depth'],
-                    'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
+                    # 'pull_classifier__min_samples_leaf': kwargs['min_s_leaf'],
                     'pull_classifier__n_estimators': kwargs['n_est']}
 
     pull_pipe.set_params(**params_pulls)
@@ -147,7 +127,7 @@ for boss in boss_names:
             full_pipe.fit(X_train, y_train)
             
             score = full_pipe.score(X_test, y_test)
-            scores.append((combin[0], combin[1], combin[2], score))
+            scores.append((combin[0], combin[1], score))
             pickle.dump(scores, open('score_keeper.pickle', 'wb'))
             print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
             

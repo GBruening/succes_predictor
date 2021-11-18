@@ -67,13 +67,13 @@ def home():
 def about():
     return render_template('about.html')
 
-@flask_server.route('/SingleGuild/')
-def SingleGuild():
-    return render_template('SingleGuild.html')
+# @flask_server.route('/SingleGuild/')
+# def SingleGuild():
+#     return render_template('SingleGuild.html')
 
-@flask_server.route('/TierStats/')
-def TierStats():
-    return render_template('TierStats.html')
+# @flask_server.route('/TierStats/')
+# def TierStats():
+#     return render_template('TierStats.html')
 
 if __name__ == '__main__':
     flask_server.run(debug = False)
