@@ -63,16 +63,6 @@ def rm_repeat_boss(df):
     temp_df['pull_num'] = temp_df.index+1
     return temp_df
 
-from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
-class pull_encoder(BaseEstimator, TransformerMixin):
-    def fit(self, X, y = None):
-        return self
-    
-    def transform(self, X):
-        if isinstance(X, list):
-            return X
-        else:
-            return [ast.literal_eval(item) for item in list(X['pulls'])]
 
 #%% Create Data
 import numpy as np
@@ -141,6 +131,17 @@ def init_dashboard(server):
         fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
         # try:
+        from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
+        class pull_encoder(BaseEstimator, TransformerMixin):
+            def fit(self, X, y = None):
+                return self
+            
+            def transform(self, X):
+                if isinstance(X, list):
+                    return X
+                else:
+                    return [ast.literal_eval(item) for item in list(X['pulls'])]
+                    
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
         filename = dname+f'//{model_specific_boss}_mod.pickle'
         clf = joblib.load(filename)
