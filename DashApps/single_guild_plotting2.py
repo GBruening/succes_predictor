@@ -134,7 +134,7 @@ def init_dashboard(server):
 
         # try:
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
-        filename = dname+f'\{model_specific_boss}_mod.pickle'
+        filename = dname+f'/{model_specific_boss}_mod.pickle'
         # print(filename)
         clf = joblib.load(filename)
 
@@ -242,6 +242,8 @@ def init_dashboard(server):
 
         bars = []
         for p_class in df['p_class'].unique():
+            if p_class not in colors.keys():
+                continue
             class_df = df.query(f"p_class == '{p_class}'").copy(deep = True)
             spec_count = 0
             specs = class_df['spec'].unique()

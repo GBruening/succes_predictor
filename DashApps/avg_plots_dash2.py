@@ -248,6 +248,8 @@ def init_dashboard(server):
 
         bars = []
         for p_class in df['p_class'].unique():
+            if p_class not in colors.keys():
+                continue
             class_df = df.query(f"p_class == '{p_class}'")
             spec_count = 0
             specs = class_df['spec'].unique()

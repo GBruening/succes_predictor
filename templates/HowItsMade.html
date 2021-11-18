@@ -24,6 +24,7 @@
         To determine what data to pull, I webscraped the warcraftlogs webiste to find groups/logs that had killed specific bosses using Beautiful soup.
         Using this list of groups, I then accessed the warcraftlogs api via Oauth2 and requests to get detailed pull information.
         The warcraftlogs api provides details about times, events, players, and the encounter for each individual fight.
+        Much of this data was 'dirty', meaning things may have been mislabeled or improperly labeled which mean I did a lot of data cleaning for this project.
         Depending on the data being pulled via the api, the data was then stored into a postgresql server locally.
     </p>
     <p>
@@ -93,4 +94,16 @@
         Each of these three data sources are the aggregated using Pipelines into one classifier of success.
         I then predict the probability of group success on the next pull and integrate this into the single guild progression plot.
     </p>
+
+    <h3>
+        Known Bugs
+    </h3>
+        
+        <p>
+        <ul>
+        <li>
+            11-18-2021: The heroku app has a bug for the single guild group composition plotting. The csv that stores the information is missing data for *some* bosses.
+        </li>
+        </ul>
+        </p>
 {% endblock %}
