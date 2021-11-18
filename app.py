@@ -76,6 +76,6 @@ def TierStats():
     return render_template('TierStats.html')
 
 if __name__ == '__main__':
-    # flask_server.run(debug = False)
-    flask_server.run(debug = True)
+    flask_server.run(debug = False)
+    # flask_server.run(debug = True)
 
