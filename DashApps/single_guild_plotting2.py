@@ -132,12 +132,11 @@ def init_dashboard(server):
 
         # try:
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
-        print(os.listdir('/Dashapps/'))
-        print(os.getcwd('/Dashapps/'))
-        print(os.listdir('/Dashapps/'))
-        print(os.getcwd('/Dashapps/'))
-        print(os.listdir('/Dashapps/'))
-        filename = f'/Dashapps/{model_specific_boss}_mod.pickle'
+        print(os.listdir(dname))
+        print(os.listdir(dname))
+        print(os.listdir(dname))
+        print(os.listdir(dname))
+        filename = dname+f'//{model_specific_boss}_mod.pickle'
         clf = joblib.load(filename)
 
         def listify_pulls(end_perc):
