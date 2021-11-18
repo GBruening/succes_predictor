@@ -74,7 +74,6 @@ from datetime import datetime
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 
-
 boss_names = ['Shriekwing', \
             'Huntsman Altimor',
             'Hungering Destroyer', \
@@ -131,10 +130,9 @@ def init_dashboard(server):
         fig.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Pull Number'))
         fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
-
         # try:
         model_specific_boss = specific_boss.replace(' ','_').replace("\\'",'')
-        filename = dname+f'/{model_specific_boss}_mod.pickle'
+        filename = f'Dashapps/{model_specific_boss}_mod.pickle'
         # print(filename)
         clf = joblib.load(filename)
 
