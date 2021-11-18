@@ -35,12 +35,12 @@ if sys.platform.lower() == "win32":
     os.system('color')
 
 #%%
-flask_server = Flask(__name__, instance_relative_config=False)
+app = Flask(__name__, instance_relative_config=False)
 from DashApps.avg_plots_dash2 import init_dashboard as init_agg_dash
 from DashApps.single_guild_plotting2 import init_dashboard as init_single_dash
 
-dash_app_agg = init_agg_dash(flask_server)
-dash_app_single = init_single_dash(flask_server)
+dash_app_agg = init_agg_dash(app)
+dash_app_single = init_single_dash(app)
 
 class pull_encoder(BaseEstimator, TransformerMixin):
     def fit(self, X, y = None):
@@ -52,7 +52,7 @@ class pull_encoder(BaseEstimator, TransformerMixin):
         else:
             return [ast.literal_eval(item) for item in list(X['pulls'])]
 
-@flask_server.route("/")
+@app.route("/")
 def home():
     """Landing page."""
     return render_template(
@@ -63,19 +63,19 @@ def home():
         body="This is a homepage served with Flask.",
     )
 
-@flask_server.route('/About/')
+@app.route('/About/')
 def about():
     return render_template('about.html')
 
-# @flask_server.route('/SingleGuild/')
+# @app.route('/SingleGuild/')
 # def SingleGuild():
 #     return render_template('SingleGuild.html')
 
-# @flask_server.route('/TierStats/')
+# @app.route('/TierStats/')
 # def TierStats():
 #     return render_template('TierStats.html')
 
 if __name__ == '__main__':
-    flask_server.run(debug = False)
-    # flask_server.run(debug = True)
+    app.run(debug = False)
+    # app.run(debug = True)
 
