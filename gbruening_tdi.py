@@ -67,13 +67,13 @@ def home():
 def about():
     return render_template('about.html')
 
-# @app.route('/SingleGuild/')
-# def SingleGuild():
-#     return render_template('SingleGuild.html')
+@app.route('/SingleGuild/')
+def SingleGuild():
+    return render_template('SingleGuild.html')
 
-# @app.route('/TierStats/')
-# def TierStats():
-#     return render_template('TierStats.html')
+@app.route('/TierStats/')
+def TierStats():
+    return render_template('TierStats.html')
 
 if __name__ == '__main__':
     app.run(debug = False)
