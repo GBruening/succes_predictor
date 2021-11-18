@@ -85,7 +85,7 @@ def build_model(**kwargs):
     return full_pipe
 
 #%%
-for boss in boss_names:
+for boss in boss_names[6:]:
     print(f'Fitting boss: {boss}')
     boss_csv = str(boss.replace(' ','_'))
     data = pd.read_csv(f'pull_list_{boss_csv}.csv')
@@ -98,54 +98,59 @@ for boss in boss_names:
     #         'min_s_leaf': [5, 20, 50],
     #         'n_est': [50, 100, 500]}#,
     #         # 'alpha': [10]}
-    kwargs = {'max_depth': [5,10,20],
+    kwargs = {'max_depth': [20],
             # 'min_s_leaf': [20],
-            'n_est': [50, 100, 500]}#,
+            'n_est': [500]}#,
             # 'alpha': [10]}
 
     # scores = []
-    max_depth  = []
-    min_s_leaf = []
-    n_est      = []
-    scores = []
-    open('score_keeper.pickle', 'w').close()
-    n_cv = 5
-    for k, combin in enumerate(product(*kwargs.values())):
-        for cv in range(0,n_cv):
-            if (combin[0] in max_depth and 
-                combin[1] in min_s_leaf and 
-                combin[2] in n_est):
-                print(f'Skipping {k+1}', end = '\r')
-                continue
+    # max_depth  = []
+    # min_s_leaf = []
+    # n_est      = []
+    # scores = []
+    # open('score_keeper.pickle', 'w').close()
+    # n_cv = 5
+    # for k, combin in enumerate(product(*kwargs.values())):
+    #     for cv in range(0,n_cv):
+    #         if (combin[0] in max_depth and 
+    #             combin[1] in min_s_leaf and 
+    #             combin[2] in n_est):
+    #             print(f'Skipping {k+1}', end = '\r')
+    #             continue
                 
-            kwarg = {'max_depth':  int(combin[0]),
-                    'n_est':      int(combin[1])}
+    #         kwarg = {'max_depth':  int(combin[0]),
+    #                 'n_est':      int(combin[1])}
 
-            full_pipe = build_model(**kwarg)
+    #         full_pipe = build_model(**kwarg)
 
-            X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
-            full_pipe.fit(X_train, y_train)
+    #         X_train, X_test, y_train, y_test = train_test_split(data, data['kills'], test_size = 0.2)
+    #         full_pipe.fit(X_train, y_train)
             
-            score = full_pipe.score(X_test, y_test)
-            scores.append((combin[0], combin[1], score))
-            pickle.dump(scores, open('score_keeper.pickle', 'wb'))
-            print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
+    #         score = full_pipe.score(X_test, y_test)
+    #         scores.append((combin[0], combin[1], score))
+    #         pickle.dump(scores, open('score_keeper.pickle', 'wb'))
+    #         print(f'Iter: {k+1}, Score: {score}, Fitted {kwarg}', end = '\r')
             
-            # print(f'Iter: {k+1}, Score: 1, Fitted {kwarg}', end = '\r')
+    #         # print(f'Iter: {k+1}, Score: 1, Fitted {kwarg}', end = '\r')
 
-    # df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
-    # df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
-    df = pd.DataFrame(scores, columns = ['max_depth','n_est', 'score'])
-    df = df.groupby(['max_depth', 'n_est']).agg({'score': ['mean']}).reset_index()
+    # # df = pd.DataFrame(scores, columns = ['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha', 'score'])
+    # # df = df.groupby(['max_depth', 'min_s_leaf', 'min_split','n_est','alpha', 'last_alpha']).agg({'score': ['mean']}).reset_index()
+    # df = pd.DataFrame(scores, columns = ['max_depth','n_est', 'score'])
+    # df = df.groupby(['max_depth', 'n_est']).agg({'score': ['mean']}).reset_index()
 
-    maxdf = df.loc[df['score']['mean'].argmax()]
+    # maxdf = df.loc[df['score']['mean'].argmax()]
 
-    kwarg = {'max_depth': int(maxdf['max_depth']),
-            # 'min_s_leaf': float(maxdf['min_s_leaf']),
-            # 'min_split': int(maxdf['min_split']),
-            'n_est': int(maxdf['n_est']),
-            # 'alpha': float(maxdf['alpha']),
-            'last_alpha': 1}
+    # kwarg = {'max_depth': int(maxdf['max_depth']),
+    #         # 'min_s_leaf': float(maxdf['min_s_leaf']),
+    #         # 'min_split': int(maxdf['min_split']),
+    #         'n_est': int(maxdf['n_est']),
+    #         # 'alpha': float(maxdf['alpha']),
+    #         'last_alpha': 1}
+
+    kwarg = {'max_depth': [20],
+            # 'min_s_leaf': [20],
+            'n_est': [500]}#,
+            # 'alpha': [10]}
 
     full_pipe = build_model(**kwarg)
     full_pipe.fit(data, data['kills'])
