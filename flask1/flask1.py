@@ -8,7 +8,7 @@ import sys
 
 # from dash_functions import *
 
-if sys.platform.lower() == "win32": 
+if sys.platform.lower() == "win32":
     os.system('color')
 
 flask_server = Flask(__name__, instance_relative_config=False)

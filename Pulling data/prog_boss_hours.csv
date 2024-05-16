@@ -1,0 +1,3465 @@
+,name,boss_num,prog_time,guild_name
+0,Shriekwing,0,2.77778,BDGG
+1,Huntsman Altimor,1,5.55556,BDGG
+2,Hungering Destroyer,2,22.22222,BDGG
+3,Sun King's Salvation,3,5.55556,BDGG
+4,Artificer Xy'mox,4,2.77778,BDGG
+5,Lady Inerva Darkvein,5,30.55556,BDGG
+6,The Council of Blood,6,27.77778,BDGG
+7,Sludgefist,7,0.0,BDGG
+8,Stone Legion Generals,8,27.77778,BDGG
+9,Sire Denathrius,9,5.55556,BDGG
+0,Shriekwing,0,0.0,Blood Legion
+1,Huntsman Altimor,1,0.0,Blood Legion
+2,Hungering Destroyer,2,8.33333,Blood Legion
+3,Sun King's Salvation,3,0.0,Blood Legion
+4,Artificer Xy'mox,4,27.77778,Blood Legion
+5,Lady Inerva Darkvein,5,5.55556,Blood Legion
+6,The Council of Blood,6,52.77778,Blood Legion
+7,Sludgefist,7,27.77778,Blood Legion
+8,Stone Legion Generals,8,122.22224,Blood Legion
+9,Sire Denathrius,9,19.44446,Blood Legion
+0,Shriekwing,0,5.55556,Diversity Quota
+1,Huntsman Altimor,1,2.77778,Diversity Quota
+2,Hungering Destroyer,2,2.77778,Diversity Quota
+3,Sun King's Salvation,3,5.55556,Diversity Quota
+4,Artificer Xy'mox,4,5.55556,Diversity Quota
+5,Lady Inerva Darkvein,5,5.55556,Diversity Quota
+6,The Council of Blood,6,2.77778,Diversity Quota
+7,Sludgefist,7,11.11112,Diversity Quota
+8,Stone Legion Generals,8,16.66668,Diversity Quota
+9,Sire Denathrius,9,13.8889,Diversity Quota
+0,Sludgefist,7,5.55556,Practice
+0,Shriekwing,0,0.0,Future
+1,Huntsman Altimor,1,2.77778,Future
+2,Hungering Destroyer,2,5.55556,Future
+3,Sun King's Salvation,3,8.33334,Future
+4,Artificer Xy'mox,4,5.55556,Future
+5,Lady Inerva Darkvein,5,8.33333,Future
+6,The Council of Blood,6,16.66666,Future
+7,Sludgefist,7,19.44445,Future
+8,Stone Legion Generals,8,25.00002,Future
+0,Shriekwing,0,2.77778,Halcyon
+1,Huntsman Altimor,1,2.77778,Halcyon
+2,Hungering Destroyer,2,2.77778,Halcyon
+3,Sun King's Salvation,3,2.77778,Halcyon
+4,Artificer Xy'mox,4,8.33334,Halcyon
+5,Lady Inerva Darkvein,5,2.77778,Halcyon
+6,The Council of Blood,6,16.66668,Halcyon
+7,Sludgefist,7,16.66668,Halcyon
+8,Stone Legion Generals,8,33.33336,Halcyon
+9,Sire Denathrius,9,19.44446,Halcyon
+0,Shriekwing,0,0.0,FlashPoint KTB
+1,Huntsman Altimor,1,0.0,FlashPoint KTB
+2,Hungering Destroyer,2,2.77778,FlashPoint KTB
+3,Sun King's Salvation,3,2.77778,FlashPoint KTB
+4,Artificer Xy'mox,4,2.77778,FlashPoint KTB
+5,Lady Inerva Darkvein,5,5.55556,FlashPoint KTB
+6,Sludgefist,7,0.0,FlashPoint KTB
+0,Shriekwing,0,0.0,Incarnate
+1,Huntsman Altimor,1,0.0,Incarnate
+2,Hungering Destroyer,2,0.0,Incarnate
+3,Sun King's Salvation,3,2.77778,Incarnate
+4,Artificer Xy'mox,4,2.77778,Incarnate
+5,Lady Inerva Darkvein,5,0.0,Incarnate
+6,The Council of Blood,6,0.0,Incarnate
+7,Sludgefist,7,2.77778,Incarnate
+8,Stone Legion Generals,8,8.33334,Incarnate
+9,Sire Denathrius,9,5.55556,Incarnate
+0,Shriekwing,0,0.0,Honestly
+1,Huntsman Altimor,1,2.77778,Honestly
+2,Hungering Destroyer,2,2.77778,Honestly
+3,Sun King's Salvation,3,5.55556,Honestly
+4,Artificer Xy'mox,4,11.11112,Honestly
+5,Lady Inerva Darkvein,5,16.66668,Honestly
+6,The Council of Blood,6,13.8889,Honestly
+7,Sludgefist,7,13.8889,Honestly
+8,Stone Legion Generals,8,28.7778,Honestly
+9,Sire Denathrius,9,19.44446,Honestly
+0,Shriekwing,0,0.0,Elicit
+1,Huntsman Altimor,1,0.0,Elicit
+2,Hungering Destroyer,2,0.0,Elicit
+3,Sun King's Salvation,3,0.0,Elicit
+4,Artificer Xy'mox,4,2.77778,Elicit
+5,Lady Inerva Darkvein,5,0.0,Elicit
+6,The Council of Blood,6,2.77778,Elicit
+7,Sludgefist,7,5.55556,Elicit
+8,Stone Legion Generals,8,5.55556,Elicit
+9,Sire Denathrius,9,2.77778,Elicit
+0,Shriekwing,0,2.77778,Unfortunate
+1,Huntsman Altimor,1,0.0,Unfortunate
+2,Hungering Destroyer,2,0.0,Unfortunate
+3,Sun King's Salvation,3,0.0,Unfortunate
+4,Artificer Xy'mox,4,0.0,Unfortunate
+5,Lady Inerva Darkvein,5,0.0,Unfortunate
+6,The Council of Blood,6,0.0,Unfortunate
+7,Sludgefist,7,5.55556,Unfortunate
+8,Stone Legion Generals,8,0.0,Unfortunate
+9,Sire Denathrius,9,8.33334,Unfortunate
+0,Shriekwing,0,2.77778,Restricted
+1,Huntsman Altimor,1,2.77778,Restricted
+2,Hungering Destroyer,2,5.55556,Restricted
+3,Sun King's Salvation,3,5.55556,Restricted
+4,Artificer Xy'mox,4,11.11112,Restricted
+5,Lady Inerva Darkvein,5,11.11112,Restricted
+6,The Council of Blood,6,11.11112,Restricted
+7,Sludgefist,7,13.8889,Restricted
+8,Stone Legion Generals,8,37.11114,Restricted
+9,Sire Denathrius,9,25.00002,Restricted
+0,Shriekwing,0,11.11112,CATASTROPHE
+1,Huntsman Altimor,1,19.44446,CATASTROPHE
+2,Hungering Destroyer,2,11.11112,CATASTROPHE
+3,Sun King's Salvation,3,13.8889,CATASTROPHE
+4,Artificer Xy'mox,4,16.66668,CATASTROPHE
+5,Lady Inerva Darkvein,5,13.8889,CATASTROPHE
+6,The Council of Blood,6,5.55556,CATASTROPHE
+7,Sludgefist,7,16.66668,CATASTROPHE
+8,Stone Legion Generals,8,13.8889,CATASTROPHE
+9,Sire Denathrius,9,25.00002,CATASTROPHE
+0,Shriekwing,0,11.11112,Hope n Despair
+1,Huntsman Altimor,1,16.66668,Hope n Despair
+2,Hungering Destroyer,2,8.33334,Hope n Despair
+3,Sun King's Salvation,3,2.77778,Hope n Despair
+4,Artificer Xy'mox,4,8.33334,Hope n Despair
+5,Lady Inerva Darkvein,5,11.11112,Hope n Despair
+6,The Council of Blood,6,5.55556,Hope n Despair
+7,Sludgefist,7,19.44446,Hope n Despair
+8,Stone Legion Generals,8,22.22224,Hope n Despair
+9,Sire Denathrius,9,13.8889,Hope n Despair
+0,Shriekwing,0,5.55556,Northern Sky
+1,Huntsman Altimor,1,8.33334,Northern Sky
+2,Hungering Destroyer,2,8.33334,Northern Sky
+3,Sun King's Salvation,3,16.66668,Northern Sky
+4,Artificer Xy'mox,4,16.66668,Northern Sky
+5,Lady Inerva Darkvein,5,11.11112,Northern Sky
+6,The Council of Blood,6,8.33334,Northern Sky
+7,Sludgefist,7,5.55556,Northern Sky
+8,Stone Legion Generals,8,27.7778,Northern Sky
+9,Sire Denathrius,9,19.44446,Northern Sky
+0,Shriekwing,0,11.11112,The Next Step
+1,Huntsman Altimor,1,0.0,The Next Step
+2,Hungering Destroyer,2,5.55556,The Next Step
+3,Sun King's Salvation,3,2.77778,The Next Step
+4,Artificer Xy'mox,4,13.8889,The Next Step
+5,Lady Inerva Darkvein,5,0.0,The Next Step
+6,The Council of Blood,6,19.44446,The Next Step
+7,Sludgefist,7,13.8889,The Next Step
+8,Stone Legion Generals,8,47.22226,The Next Step
+9,Sire Denathrius,9,25.00002,The Next Step
+0,Shriekwing,0,8.33334,Slack
+1,Huntsman Altimor,1,5.55556,Slack
+2,Hungering Destroyer,2,5.55556,Slack
+3,Sun King's Salvation,3,16.66668,Slack
+4,Artificer Xy'mox,4,11.11112,Slack
+5,Lady Inerva Darkvein,5,5.55556,Slack
+6,The Council of Blood,6,22.22224,Slack
+7,Sludgefist,7,13.8889,Slack
+8,Stone Legion Generals,8,44.44448,Slack
+9,Sire Denathrius,9,36.11114,Slack
+0,Shriekwing,0,19.44446,NonSense
+1,Huntsman Altimor,1,13.8889,NonSense
+2,Hungering Destroyer,2,11.11112,NonSense
+3,Sun King's Salvation,3,2.77778,NonSense
+4,Artificer Xy'mox,4,13.8889,NonSense
+5,Lady Inerva Darkvein,5,5.55556,NonSense
+6,The Council of Blood,6,25.00002,NonSense
+7,Sludgefist,7,22.22224,NonSense
+8,Stone Legion Generals,8,30.55558,NonSense
+9,Sire Denathrius,9,44.44448,NonSense
+0,Shriekwing,0,2.77778,CyaThursday
+1,Huntsman Altimor,1,2.77778,CyaThursday
+2,Hungering Destroyer,2,5.55556,CyaThursday
+3,Sun King's Salvation,3,0.0,CyaThursday
+4,Artificer Xy'mox,4,2.77778,CyaThursday
+5,Lady Inerva Darkvein,5,2.77778,CyaThursday
+6,The Council of Blood,6,0.0,CyaThursday
+7,Sludgefist,7,0.0,CyaThursday
+8,Stone Legion Generals,8,8.33334,CyaThursday
+9,Sire Denathrius,9,5.55556,CyaThursday
+0,Shriekwing,0,0.0,Tony Halme Pro Skater
+1,Huntsman Altimor,1,2.77778,Tony Halme Pro Skater
+2,Hungering Destroyer,2,2.77778,Tony Halme Pro Skater
+3,Sun King's Salvation,3,5.55556,Tony Halme Pro Skater
+4,Artificer Xy'mox,4,8.33334,Tony Halme Pro Skater
+5,Lady Inerva Darkvein,5,5.55556,Tony Halme Pro Skater
+6,The Council of Blood,6,8.33334,Tony Halme Pro Skater
+7,Sludgefist,7,16.66668,Tony Halme Pro Skater
+8,Stone Legion Generals,8,27.7778,Tony Halme Pro Skater
+9,Sire Denathrius,9,25.00002,Tony Halme Pro Skater
+0,Shriekwing,0,5.55556,Security
+1,Huntsman Altimor,1,0.0,Security
+2,Hungering Destroyer,2,8.33334,Security
+3,Sun King's Salvation,3,8.33334,Security
+4,Artificer Xy'mox,4,5.55556,Security
+5,Lady Inerva Darkvein,5,8.33334,Security
+6,The Council of Blood,6,11.11112,Security
+7,Sludgefist,7,8.33334,Security
+8,Stone Legion Generals,8,36.11114,Security
+9,Sire Denathrius,9,25.00002,Security
+0,Shriekwing,0,5.55556,Familiar with Drama
+1,Huntsman Altimor,1,2.77778,Familiar with Drama
+2,Hungering Destroyer,2,8.33334,Familiar with Drama
+3,Sun King's Salvation,3,5.55556,Familiar with Drama
+4,Artificer Xy'mox,4,8.33334,Familiar with Drama
+5,Lady Inerva Darkvein,5,2.77778,Familiar with Drama
+6,The Council of Blood,6,13.8889,Familiar with Drama
+7,Sludgefist,7,22.22224,Familiar with Drama
+8,Stone Legion Generals,8,44.44448,Familiar with Drama
+9,Sire Denathrius,9,11.11112,Familiar with Drama
+0,Shriekwing,0,2.77778,Oblivion
+1,Huntsman Altimor,1,2.77778,Oblivion
+2,Hungering Destroyer,2,5.55556,Oblivion
+3,Sun King's Salvation,3,8.33334,Oblivion
+4,Artificer Xy'mox,4,13.8889,Oblivion
+5,Lady Inerva Darkvein,5,8.33334,Oblivion
+6,The Council of Blood,6,11.11112,Oblivion
+7,Sludgefist,7,13.8889,Oblivion
+8,Stone Legion Generals,8,44.44448,Oblivion
+9,Sire Denathrius,9,30.55558,Oblivion
+0,Shriekwing,0,5.55556,baited
+1,Huntsman Altimor,1,2.77778,baited
+2,Hungering Destroyer,2,8.33334,baited
+3,Sun King's Salvation,3,8.33334,baited
+4,Artificer Xy'mox,4,8.33334,baited
+5,Lady Inerva Darkvein,5,5.55556,baited
+6,The Council of Blood,6,16.66668,baited
+7,Sludgefist,7,8.33334,baited
+8,Stone Legion Generals,8,47.22226,baited
+9,Sire Denathrius,9,38.88892,baited
+0,Shriekwing,0,2.77778,Advance
+1,Huntsman Altimor,1,0.0,Advance
+2,Hungering Destroyer,2,2.77778,Advance
+3,Sun King's Salvation,3,8.33334,Advance
+4,Artificer Xy'mox,4,8.33334,Advance
+5,Lady Inerva Darkvein,5,2.77778,Advance
+6,The Council of Blood,6,8.33334,Advance
+7,Sludgefist,7,2.77778,Advance
+8,Stone Legion Generals,8,33.33336,Advance
+9,Sire Denathrius,9,25.00002,Advance
+0,Shriekwing,0,2.77778,SNYGGA POJKAR
+1,Huntsman Altimor,1,2.77778,SNYGGA POJKAR
+2,Hungering Destroyer,2,2.77778,SNYGGA POJKAR
+3,Sun King's Salvation,3,2.77778,SNYGGA POJKAR
+4,Artificer Xy'mox,4,0.0,SNYGGA POJKAR
+5,Lady Inerva Darkvein,5,0.0,SNYGGA POJKAR
+6,The Council of Blood,6,2.77778,SNYGGA POJKAR
+7,Sludgefist,7,5.55556,SNYGGA POJKAR
+8,Stone Legion Generals,8,5.55556,SNYGGA POJKAR
+9,Sire Denathrius,9,11.11112,SNYGGA POJKAR
+0,Shriekwing,0,0.0,Innominatum
+1,Huntsman Altimor,1,0.0,Innominatum
+2,Hungering Destroyer,2,0.0,Innominatum
+3,Sun King's Salvation,3,0.0,Innominatum
+4,Artificer Xy'mox,4,0.0,Innominatum
+5,Lady Inerva Darkvein,5,2.77778,Innominatum
+6,The Council of Blood,6,0.0,Innominatum
+7,Sludgefist,7,2.77778,Innominatum
+8,Stone Legion Generals,8,0.0,Innominatum
+0,Shriekwing,0,2.77778,Innervision
+1,Huntsman Altimor,1,0.0,Innervision
+2,Hungering Destroyer,2,2.77778,Innervision
+3,Sun King's Salvation,3,8.33334,Innervision
+4,Artificer Xy'mox,4,13.8889,Innervision
+5,Lady Inerva Darkvein,5,5.55556,Innervision
+6,The Council of Blood,6,11.11112,Innervision
+7,Sludgefist,7,19.44446,Innervision
+8,Stone Legion Generals,8,50.00004,Innervision
+9,Sire Denathrius,9,41.6667,Innervision
+0,Shriekwing,0,5.55556,Myth
+1,Huntsman Altimor,1,16.66668,Myth
+2,Hungering Destroyer,2,5.55556,Myth
+3,Sun King's Salvation,3,8.33334,Myth
+4,Artificer Xy'mox,4,13.8889,Myth
+5,Lady Inerva Darkvein,5,2.77778,Myth
+6,The Council of Blood,6,38.88892,Myth
+7,Sludgefist,7,25.00002,Myth
+8,Stone Legion Generals,8,38.88892,Myth
+9,Sire Denathrius,9,41.6667,Myth
+0,Shriekwing,0,0.0,Dedicated Casuals
+1,Huntsman Altimor,1,0.0,Dedicated Casuals
+2,Hungering Destroyer,2,8.33334,Dedicated Casuals
+3,Sun King's Salvation,3,5.55556,Dedicated Casuals
+4,Artificer Xy'mox,4,5.55556,Dedicated Casuals
+5,Lady Inerva Darkvein,5,8.33334,Dedicated Casuals
+6,The Council of Blood,6,13.8889,Dedicated Casuals
+7,Sludgefist,7,27.7778,Dedicated Casuals
+8,Stone Legion Generals,8,27.7778,Dedicated Casuals
+9,Sire Denathrius,9,38.88892,Dedicated Casuals
+0,Shriekwing,0,0.0,Waít for it
+1,Huntsman Altimor,1,5.55556,Waít for it
+2,Hungering Destroyer,2,2.77778,Waít for it
+3,Sun King's Salvation,3,11.11112,Waít for it
+4,Artificer Xy'mox,4,2.77778,Waít for it
+5,Lady Inerva Darkvein,5,2.77778,Waít for it
+6,The Council of Blood,6,8.33334,Waít for it
+7,Sludgefist,7,5.55556,Waít for it
+8,Stone Legion Generals,8,5.55556,Waít for it
+9,Sire Denathrius,9,8.33334,Waít for it
+0,Shriekwing,0,0.0,Quichons
+1,Huntsman Altimor,1,0.0,Quichons
+2,Hungering Destroyer,2,0.0,Quichons
+3,Sun King's Salvation,3,8.33334,Quichons
+4,Artificer Xy'mox,4,13.8889,Quichons
+5,Lady Inerva Darkvein,5,2.77778,Quichons
+6,The Council of Blood,6,2.77778,Quichons
+7,Sludgefist,7,13.8889,Quichons
+8,Stone Legion Generals,8,25.00002,Quichons
+9,Sire Denathrius,9,27.7778,Quichons
+0,Shriekwing,0,0.0,The Amazing Zoo
+1,Huntsman Altimor,1,0.0,The Amazing Zoo
+2,Hungering Destroyer,2,2.77778,The Amazing Zoo
+3,Sun King's Salvation,3,2.77778,The Amazing Zoo
+4,Artificer Xy'mox,4,13.8889,The Amazing Zoo
+5,Lady Inerva Darkvein,5,13.8889,The Amazing Zoo
+6,The Council of Blood,6,13.8889,The Amazing Zoo
+7,Sludgefist,7,8.33334,The Amazing Zoo
+8,Stone Legion Generals,8,27.7778,The Amazing Zoo
+9,Sire Denathrius,9,33.33336,The Amazing Zoo
+0,Shriekwing,0,5.55556,Benched
+1,Huntsman Altimor,1,2.77778,Benched
+2,Hungering Destroyer,2,5.55556,Benched
+3,Sun King's Salvation,3,5.55556,Benched
+4,Artificer Xy'mox,4,2.77778,Benched
+5,Lady Inerva Darkvein,5,0.0,Benched
+6,The Council of Blood,6,16.66668,Benched
+7,Sludgefist,7,13.8889,Benched
+8,Stone Legion Generals,8,22.22224,Benched
+9,Sire Denathrius,9,22.22224,Benched
+0,Shriekwing,0,13.8889,Vision
+1,Huntsman Altimor,1,13.8889,Vision
+2,Hungering Destroyer,2,8.33334,Vision
+3,Sun King's Salvation,3,13.8889,Vision
+4,Artificer Xy'mox,4,13.8889,Vision
+5,Lady Inerva Darkvein,5,8.33334,Vision
+6,The Council of Blood,6,11.11112,Vision
+7,Sludgefist,7,19.44446,Vision
+8,Stone Legion Generals,8,55.5556,Vision
+9,Sire Denathrius,9,25.00002,Vision
+0,Shriekwing,0,2.77778,Union
+1,Huntsman Altimor,1,0.0,Union
+2,Hungering Destroyer,2,5.55556,Union
+3,Sun King's Salvation,3,8.33334,Union
+4,Artificer Xy'mox,4,2.77778,Union
+5,Lady Inerva Darkvein,5,5.55556,Union
+6,The Council of Blood,6,13.8889,Union
+7,Sludgefist,7,11.11112,Union
+8,Stone Legion Generals,8,33.33336,Union
+9,Sire Denathrius,9,22.22224,Union
+0,Shriekwing,0,2.77778,Infinity
+1,Huntsman Altimor,1,2.77778,Infinity
+2,Hungering Destroyer,2,8.33334,Infinity
+3,Sun King's Salvation,3,5.55556,Infinity
+4,Artificer Xy'mox,4,8.33334,Infinity
+5,Lady Inerva Darkvein,5,8.33334,Infinity
+6,The Council of Blood,6,11.11112,Infinity
+7,Sludgefist,7,11.11112,Infinity
+8,Stone Legion Generals,8,38.88892,Infinity
+9,Sire Denathrius,9,19.44446,Infinity
+0,Shriekwing,0,2.77778,Consequence
+1,Huntsman Altimor,1,0.0,Consequence
+2,Hungering Destroyer,2,8.33334,Consequence
+3,Sun King's Salvation,3,11.11112,Consequence
+4,Artificer Xy'mox,4,8.33334,Consequence
+5,Lady Inerva Darkvein,5,8.33334,Consequence
+6,The Council of Blood,6,19.44446,Consequence
+7,Sludgefist,7,11.11112,Consequence
+8,Stone Legion Generals,8,33.33336,Consequence
+9,Sire Denathrius,9,27.7778,Consequence
+0,Shriekwing,0,0.0,Polaris
+1,Huntsman Altimor,1,0.0,Polaris
+2,Hungering Destroyer,2,11.11112,Polaris
+3,Sun King's Salvation,3,8.33334,Polaris
+4,Artificer Xy'mox,4,8.33334,Polaris
+5,Lady Inerva Darkvein,5,0.0,Polaris
+6,The Council of Blood,6,13.8889,Polaris
+7,Sludgefist,7,11.11112,Polaris
+8,Stone Legion Generals,8,13.8889,Polaris
+9,Sire Denathrius,9,19.44446,Polaris
+0,Shriekwing,0,11.11112,vodka
+1,Huntsman Altimor,1,22.22224,vodka
+2,Hungering Destroyer,2,11.11112,vodka
+3,Sun King's Salvation,3,8.33334,vodka
+4,Artificer Xy'mox,4,11.11112,vodka
+5,Lady Inerva Darkvein,5,2.77778,vodka
+6,The Council of Blood,6,22.22224,vodka
+7,Sludgefist,7,22.22224,vodka
+8,Stone Legion Generals,8,41.6667,vodka
+9,Sire Denathrius,9,52.7778,vodka
+0,Shriekwing,0,5.55556,Country Club
+1,Huntsman Altimor,1,5.55556,Country Club
+2,Hungering Destroyer,2,5.55556,Country Club
+3,Sun King's Salvation,3,13.8889,Country Club
+4,Artificer Xy'mox,4,8.33334,Country Club
+5,Lady Inerva Darkvein,5,8.33334,Country Club
+6,The Council of Blood,6,13.8889,Country Club
+7,Sludgefist,7,11.11112,Country Club
+8,Stone Legion Generals,8,33.33336,Country Club
+9,Sire Denathrius,9,25.00002,Country Club
+0,Shriekwing,0,2.77778,Fused
+1,Huntsman Altimor,1,8.33334,Fused
+2,Hungering Destroyer,2,2.77778,Fused
+3,Sun King's Salvation,3,2.77778,Fused
+4,Artificer Xy'mox,4,2.77778,Fused
+5,Lady Inerva Darkvein,5,5.55556,Fused
+6,The Council of Blood,6,5.55556,Fused
+7,Sludgefist,7,11.11112,Fused
+8,Stone Legion Generals,8,11.11112,Fused
+9,Sire Denathrius,9,13.8889,Fused
+0,Shriekwing,0,0.0,Melee Mechanics
+1,Huntsman Altimor,1,2.77778,Melee Mechanics
+2,Hungering Destroyer,2,8.33334,Melee Mechanics
+3,Sun King's Salvation,3,2.77778,Melee Mechanics
+4,Artificer Xy'mox,4,0.0,Melee Mechanics
+5,Lady Inerva Darkvein,5,8.33334,Melee Mechanics
+6,The Council of Blood,6,11.11112,Melee Mechanics
+7,Sludgefist,7,5.55556,Melee Mechanics
+8,Stone Legion Generals,8,22.22224,Melee Mechanics
+9,Sire Denathrius,9,16.66668,Melee Mechanics
+0,Shriekwing,0,2.77778,Might
+1,Huntsman Altimor,1,2.77778,Might
+2,Hungering Destroyer,2,2.77778,Might
+3,Sun King's Salvation,3,5.55556,Might
+4,Artificer Xy'mox,4,5.55556,Might
+5,Lady Inerva Darkvein,5,2.77778,Might
+6,The Council of Blood,6,11.11112,Might
+7,Sludgefist,7,13.8889,Might
+8,Stone Legion Generals,8,41.6667,Might
+9,Sire Denathrius,9,25.00002,Might
+0,Shriekwing,0,5.55556,Wizards and Monkeys
+1,Huntsman Altimor,1,5.55556,Wizards and Monkeys
+2,Hungering Destroyer,2,22.22222,Wizards and Monkeys
+3,Sun King's Salvation,3,2.77778,Wizards and Monkeys
+4,Artificer Xy'mox,4,8.33334,Wizards and Monkeys
+5,Lady Inerva Darkvein,5,30.55556,Wizards and Monkeys
+6,The Council of Blood,6,8.33334,Wizards and Monkeys
+7,Sludgefist,7,8.33334,Wizards and Monkeys
+8,Stone Legion Generals,8,127.7778,Wizards and Monkeys
+9,Sire Denathrius,9,55.55558,Wizards and Monkeys
+0,Shriekwing,0,2.77778,didnt ask
+1,Huntsman Altimor,1,2.77778,didnt ask
+2,Hungering Destroyer,2,8.33334,didnt ask
+3,Sun King's Salvation,3,8.33334,didnt ask
+4,Artificer Xy'mox,4,11.11112,didnt ask
+5,Lady Inerva Darkvein,5,22.22222,didnt ask
+6,The Council of Blood,6,5.55556,didnt ask
+7,Sludgefist,7,8.33334,didnt ask
+8,Stone Legion Generals,8,19.44446,didnt ask
+9,Sire Denathrius,9,11.11112,didnt ask
+0,Shriekwing,0,2.77778,Formality
+1,Huntsman Altimor,1,2.77778,Formality
+2,Hungering Destroyer,2,25.0,Formality
+3,Sun King's Salvation,3,5.55556,Formality
+4,Artificer Xy'mox,4,5.55556,Formality
+5,Lady Inerva Darkvein,5,25.0,Formality
+6,The Council of Blood,6,33.33334,Formality
+7,Sludgefist,7,13.8889,Formality
+8,Stone Legion Generals,8,83.33336,Formality
+9,Sire Denathrius,9,55.55558,Formality
+0,Shriekwing,0,5.55556,Spike Flail
+1,Huntsman Altimor,1,2.77778,Spike Flail
+2,Hungering Destroyer,2,5.55556,Spike Flail
+3,Sun King's Salvation,3,13.8889,Spike Flail
+4,Artificer Xy'mox,4,5.55556,Spike Flail
+5,Lady Inerva Darkvein,5,8.33334,Spike Flail
+6,The Council of Blood,6,25.00002,Spike Flail
+7,Sludgefist,7,19.44446,Spike Flail
+8,Stone Legion Generals,8,41.6667,Spike Flail
+9,Sire Denathrius,9,33.33336,Spike Flail
+0,Shriekwing,0,8.33334,HC
+1,Huntsman Altimor,1,25.00002,HC
+2,Hungering Destroyer,2,22.22224,HC
+3,Sun King's Salvation,3,16.66668,HC
+4,Artificer Xy'mox,4,13.8889,HC
+5,Lady Inerva Darkvein,5,16.66668,HC
+6,The Council of Blood,6,30.55558,HC
+7,Sludgefist,7,22.22224,HC
+8,Stone Legion Generals,8,55.5556,HC
+9,Sire Denathrius,9,55.5556,HC
+0,Shriekwing,0,2.77778,Unity
+1,Huntsman Altimor,1,0.0,Unity
+2,Hungering Destroyer,2,5.55556,Unity
+3,Sun King's Salvation,3,11.11112,Unity
+4,Artificer Xy'mox,4,8.33334,Unity
+5,Lady Inerva Darkvein,5,11.11112,Unity
+6,The Council of Blood,6,33.33336,Unity
+7,Sludgefist,7,22.22224,Unity
+8,Stone Legion Generals,8,61.11116,Unity
+9,Sire Denathrius,9,55.55558,Unity
+0,Shriekwing,0,0.0,Vigil
+1,Huntsman Altimor,1,0.0,Vigil
+2,Hungering Destroyer,2,8.33334,Vigil
+3,Sun King's Salvation,3,2.77778,Vigil
+4,Artificer Xy'mox,4,5.55556,Vigil
+5,Lady Inerva Darkvein,5,8.33334,Vigil
+6,The Council of Blood,6,11.11112,Vigil
+7,Sludgefist,7,11.11112,Vigil
+8,Stone Legion Generals,8,33.33336,Vigil
+9,Sire Denathrius,9,50.00004,Vigil
+0,Shriekwing,0,2.77778,Muscle Memory
+1,Huntsman Altimor,1,2.77778,Muscle Memory
+2,Hungering Destroyer,2,8.33334,Muscle Memory
+3,Sun King's Salvation,3,16.66668,Muscle Memory
+4,Artificer Xy'mox,4,8.33334,Muscle Memory
+5,Lady Inerva Darkvein,5,11.11112,Muscle Memory
+6,The Council of Blood,6,13.8889,Muscle Memory
+7,Sludgefist,7,19.44446,Muscle Memory
+8,Stone Legion Generals,8,41.6667,Muscle Memory
+9,Sire Denathrius,9,36.11114,Muscle Memory
+0,Shriekwing,0,5.55556,Lethal
+1,Huntsman Altimor,1,2.77778,Lethal
+2,Hungering Destroyer,2,2.77778,Lethal
+3,Sun King's Salvation,3,2.77778,Lethal
+4,Artificer Xy'mox,4,8.33334,Lethal
+5,Lady Inerva Darkvein,5,2.77778,Lethal
+6,The Council of Blood,6,8.33334,Lethal
+7,Sludgefist,7,13.8889,Lethal
+8,Stone Legion Generals,8,33.33336,Lethal
+9,Sire Denathrius,9,25.00002,Lethal
+0,Shriekwing,0,5.55556,Inside Voices
+1,Huntsman Altimor,1,2.77778,Inside Voices
+2,Hungering Destroyer,2,0.0,Inside Voices
+3,Sun King's Salvation,3,2.77778,Inside Voices
+4,Artificer Xy'mox,4,0.0,Inside Voices
+5,Lady Inerva Darkvein,5,0.0,Inside Voices
+6,The Council of Blood,6,5.55556,Inside Voices
+7,Sludgefist,7,16.66668,Inside Voices
+8,Stone Legion Generals,8,11.11112,Inside Voices
+9,Sire Denathrius,9,5.55556,Inside Voices
+0,Shriekwing,0,0.0,poptart corndoG
+1,Huntsman Altimor,1,2.77778,poptart corndoG
+2,Hungering Destroyer,2,2.77778,poptart corndoG
+3,Sun King's Salvation,3,11.11112,poptart corndoG
+4,Artificer Xy'mox,4,8.33334,poptart corndoG
+5,Lady Inerva Darkvein,5,8.33334,poptart corndoG
+6,The Council of Blood,6,5.55556,poptart corndoG
+7,Sludgefist,7,27.77778,poptart corndoG
+8,Stone Legion Generals,8,86.11113,poptart corndoG
+9,Sire Denathrius,9,27.7778,poptart corndoG
+0,Shriekwing,0,2.77778,Essence
+1,Huntsman Altimor,1,0.0,Essence
+2,Hungering Destroyer,2,25.0,Essence
+3,Sun King's Salvation,3,2.77778,Essence
+4,Artificer Xy'mox,4,25.0,Essence
+5,Lady Inerva Darkvein,5,2.77778,Essence
+6,The Council of Blood,6,33.33334,Essence
+7,Sludgefist,7,52.77778,Essence
+8,Stone Legion Generals,8,11.11112,Essence
+9,Sire Denathrius,9,13.8889,Essence
+0,Shriekwing,0,0.0,We Gucci
+1,Huntsman Altimor,1,8.33334,We Gucci
+2,Hungering Destroyer,2,30.55556,We Gucci
+3,Sun King's Salvation,3,5.55556,We Gucci
+4,Artificer Xy'mox,4,27.77778,We Gucci
+5,Lady Inerva Darkvein,5,25.0,We Gucci
+6,The Council of Blood,6,80.55556,We Gucci
+7,Sludgefist,7,33.33334,We Gucci
+8,Stone Legion Generals,8,108.33334,We Gucci
+9,Sire Denathrius,9,91.66667,We Gucci
+0,Shriekwing,0,0.0,Focus Up
+1,Huntsman Altimor,1,0.0,Focus Up
+2,Hungering Destroyer,2,5.55556,Focus Up
+3,Sun King's Salvation,3,5.55556,Focus Up
+4,Artificer Xy'mox,4,2.77778,Focus Up
+5,Lady Inerva Darkvein,5,2.77778,Focus Up
+6,The Council of Blood,6,13.8889,Focus Up
+7,Sludgefist,7,2.77778,Focus Up
+8,Stone Legion Generals,8,38.88892,Focus Up
+9,Sire Denathrius,9,69.44445,Focus Up
+0,Shriekwing,0,2.77778,Idiot
+1,Huntsman Altimor,1,5.55556,Idiot
+2,Hungering Destroyer,2,0.0,Idiot
+3,Sun King's Salvation,3,27.77778,Idiot
+4,Artificer Xy'mox,4,2.77778,Idiot
+5,Lady Inerva Darkvein,5,2.77778,Idiot
+6,The Council of Blood,6,16.66668,Idiot
+7,Sludgefist,7,13.8889,Idiot
+8,Stone Legion Generals,8,22.22224,Idiot
+9,Sire Denathrius,9,36.11114,Idiot
+0,Shriekwing,0,0.0,Temerity
+1,Huntsman Altimor,1,0.0,Temerity
+2,Hungering Destroyer,2,0.0,Temerity
+3,Sun King's Salvation,3,2.77778,Temerity
+4,Artificer Xy'mox,4,5.55556,Temerity
+5,Lady Inerva Darkvein,5,5.55556,Temerity
+6,The Council of Blood,6,22.22222,Temerity
+7,Sludgefist,7,27.77778,Temerity
+8,Stone Legion Generals,8,13.8889,Temerity
+9,Sire Denathrius,9,11.11112,Temerity
+0,Shriekwing,0,8.33334,Deal With It
+1,Huntsman Altimor,1,11.11112,Deal With It
+2,Hungering Destroyer,2,11.11112,Deal With It
+3,Sun King's Salvation,3,11.11112,Deal With It
+4,Artificer Xy'mox,4,5.55556,Deal With It
+5,Lady Inerva Darkvein,5,13.8889,Deal With It
+6,The Council of Blood,6,8.33334,Deal With It
+7,Sludgefist,7,11.11112,Deal With It
+8,Stone Legion Generals,8,19.44446,Deal With It
+9,Sire Denathrius,9,16.66668,Deal With It
+0,Shriekwing,0,0.0,Honolulu
+1,Huntsman Altimor,1,2.77778,Honolulu
+2,Hungering Destroyer,2,0.0,Honolulu
+3,Sun King's Salvation,3,0.0,Honolulu
+4,Artificer Xy'mox,4,5.55556,Honolulu
+5,Lady Inerva Darkvein,5,8.33334,Honolulu
+6,The Council of Blood,6,2.77778,Honolulu
+7,Sludgefist,7,0.0,Honolulu
+8,Stone Legion Generals,8,11.11112,Honolulu
+9,Sire Denathrius,9,13.8889,Honolulu
+0,Shriekwing,0,0.0,Okay Tier
+1,Huntsman Altimor,1,0.0,Okay Tier
+2,Hungering Destroyer,2,2.77778,Okay Tier
+3,Sun King's Salvation,3,5.55556,Okay Tier
+4,Artificer Xy'mox,4,8.33334,Okay Tier
+5,Lady Inerva Darkvein,5,8.33334,Okay Tier
+6,The Council of Blood,6,19.44446,Okay Tier
+7,Sludgefist,7,11.11112,Okay Tier
+8,Stone Legion Generals,8,33.33336,Okay Tier
+9,Sire Denathrius,9,25.00002,Okay Tier
+0,Shriekwing,0,2.77778,Bloody Tearz
+1,Huntsman Altimor,1,2.77778,Bloody Tearz
+2,Hungering Destroyer,2,2.77778,Bloody Tearz
+3,Sun King's Salvation,3,13.8889,Bloody Tearz
+4,Artificer Xy'mox,4,11.11112,Bloody Tearz
+5,Lady Inerva Darkvein,5,2.77778,Bloody Tearz
+6,The Council of Blood,6,22.22224,Bloody Tearz
+7,Sludgefist,7,19.44446,Bloody Tearz
+8,Stone Legion Generals,8,44.44448,Bloody Tearz
+9,Sire Denathrius,9,27.7778,Bloody Tearz
+0,Shriekwing,0,0.0,Wiping As Intended
+1,Huntsman Altimor,1,0.0,Wiping As Intended
+2,Hungering Destroyer,2,0.0,Wiping As Intended
+3,Sun King's Salvation,3,2.77778,Wiping As Intended
+4,Artificer Xy'mox,4,2.77778,Wiping As Intended
+5,Lady Inerva Darkvein,5,5.55556,Wiping As Intended
+6,The Council of Blood,6,0.0,Wiping As Intended
+7,Sludgefist,7,2.77778,Wiping As Intended
+8,Stone Legion Generals,8,16.66668,Wiping As Intended
+9,Sire Denathrius,9,11.11112,Wiping As Intended
+0,Shriekwing,0,0.0,Reformed
+1,Huntsman Altimor,1,0.0,Reformed
+2,Hungering Destroyer,2,2.77778,Reformed
+3,Sludgefist,7,0.0,Reformed
+4,Stone Legion Generals,8,0.0,Reformed
+5,Sire Denathrius,9,2.77778,Reformed
+0,Shriekwing,0,0.0,Just Kill the Boss
+1,Huntsman Altimor,1,0.0,Just Kill the Boss
+2,Hungering Destroyer,2,0.0,Just Kill the Boss
+3,Sun King's Salvation,3,2.77778,Just Kill the Boss
+4,Artificer Xy'mox,4,0.0,Just Kill the Boss
+5,Lady Inerva Darkvein,5,0.0,Just Kill the Boss
+6,Stone Legion Generals,8,2.77778,Just Kill the Boss
+7,Sire Denathrius,9,2.77778,Just Kill the Boss
+0,Shriekwing,0,8.33334,Norrlands Guld
+1,Huntsman Altimor,1,0.0,Norrlands Guld
+2,Hungering Destroyer,2,8.33334,Norrlands Guld
+3,Sun King's Salvation,3,8.33334,Norrlands Guld
+4,Artificer Xy'mox,4,13.8889,Norrlands Guld
+5,Lady Inerva Darkvein,5,8.33334,Norrlands Guld
+6,The Council of Blood,6,11.11112,Norrlands Guld
+7,Sludgefist,7,19.44446,Norrlands Guld
+8,Stone Legion Generals,8,41.6667,Norrlands Guld
+9,Sire Denathrius,9,19.44446,Norrlands Guld
+0,Shriekwing,0,0.0,Revenant
+1,Huntsman Altimor,1,2.77778,Revenant
+2,Hungering Destroyer,2,5.55556,Revenant
+3,Sun King's Salvation,3,8.33334,Revenant
+4,Artificer Xy'mox,4,11.11111,Revenant
+5,Lady Inerva Darkvein,5,8.33334,Revenant
+6,The Council of Blood,6,22.22224,Revenant
+7,Sludgefist,7,25.00002,Revenant
+8,Stone Legion Generals,8,41.66668,Revenant
+9,Sire Denathrius,9,19.44446,Revenant
+0,Shriekwing,0,0.0,Humble
+1,Huntsman Altimor,1,2.77778,Humble
+2,Hungering Destroyer,2,2.77778,Humble
+3,Sun King's Salvation,3,13.8889,Humble
+4,Artificer Xy'mox,4,8.33334,Humble
+5,Lady Inerva Darkvein,5,5.55556,Humble
+6,The Council of Blood,6,13.8889,Humble
+7,Sludgefist,7,16.66668,Humble
+8,Stone Legion Generals,8,27.7778,Humble
+9,Sire Denathrius,9,30.55558,Humble
+0,Shriekwing,0,0.0,Rain
+1,Huntsman Altimor,1,2.77778,Rain
+2,Hungering Destroyer,2,8.33334,Rain
+3,Sun King's Salvation,3,8.33334,Rain
+4,Artificer Xy'mox,4,8.33334,Rain
+5,Lady Inerva Darkvein,5,5.55556,Rain
+6,The Council of Blood,6,11.11112,Rain
+7,Sludgefist,7,11.11112,Rain
+8,Stone Legion Generals,8,69.44445,Rain
+9,Sire Denathrius,9,47.22224,Rain
+0,Shriekwing,0,0.0,Awarëness
+1,Huntsman Altimor,1,0.0,Awarëness
+2,Hungering Destroyer,2,5.55556,Awarëness
+3,Sun King's Salvation,3,5.55556,Awarëness
+4,Artificer Xy'mox,4,5.55556,Awarëness
+5,Lady Inerva Darkvein,5,5.55556,Awarëness
+6,The Council of Blood,6,16.66668,Awarëness
+7,Sludgefist,7,13.8889,Awarëness
+8,Stone Legion Generals,8,27.7778,Awarëness
+9,Sire Denathrius,9,27.7778,Awarëness
+0,Shriekwing,0,0.0,FASTz
+1,Huntsman Altimor,1,5.55556,FASTz
+2,Hungering Destroyer,2,22.22222,FASTz
+3,Sun King's Salvation,3,0.0,FASTz
+4,Artificer Xy'mox,4,25.0,FASTz
+5,Lady Inerva Darkvein,5,5.55556,FASTz
+6,The Council of Blood,6,47.22222,FASTz
+7,Sludgefist,7,30.55556,FASTz
+8,Stone Legion Generals,8,108.33334,FASTz
+9,Sire Denathrius,9,122.22222,FASTz
+0,Shriekwing,0,19.44446,Ethical
+1,Huntsman Altimor,1,8.33334,Ethical
+2,Hungering Destroyer,2,5.55556,Ethical
+3,Sun King's Salvation,3,5.55556,Ethical
+4,Artificer Xy'mox,4,13.8889,Ethical
+5,Lady Inerva Darkvein,5,11.11112,Ethical
+6,The Council of Blood,6,2.77778,Ethical
+7,Sludgefist,7,16.66668,Ethical
+8,Stone Legion Generals,8,33.33336,Ethical
+9,Sire Denathrius,9,22.22224,Ethical
+0,Shriekwing,0,5.55556,Medium
+1,Huntsman Altimor,1,0.0,Medium
+2,Hungering Destroyer,2,2.77778,Medium
+3,Sun King's Salvation,3,2.77778,Medium
+4,Artificer Xy'mox,4,13.8889,Medium
+5,Lady Inerva Darkvein,5,8.33334,Medium
+6,The Council of Blood,6,5.55556,Medium
+7,Sludgefist,7,16.66668,Medium
+8,Stone Legion Generals,8,36.11114,Medium
+9,Sire Denathrius,9,33.33336,Medium
+0,Shriekwing,0,0.0,Relevant
+1,Huntsman Altimor,1,0.0,Relevant
+2,Hungering Destroyer,2,0.0,Relevant
+3,Sun King's Salvation,3,5.55556,Relevant
+4,Artificer Xy'mox,4,5.55556,Relevant
+5,Lady Inerva Darkvein,5,0.0,Relevant
+6,The Council of Blood,6,0.0,Relevant
+7,Sludgefist,7,2.77778,Relevant
+8,Stone Legion Generals,8,5.55556,Relevant
+9,Sire Denathrius,9,22.22224,Relevant
+0,Shriekwing,0,0.0,Crimson
+1,Huntsman Altimor,1,0.0,Crimson
+2,Hungering Destroyer,2,0.0,Crimson
+3,Sun King's Salvation,3,0.0,Crimson
+4,Artificer Xy'mox,4,0.0,Crimson
+5,Lady Inerva Darkvein,5,0.0,Crimson
+6,The Council of Blood,6,2.77778,Crimson
+7,Sludgefist,7,2.77778,Crimson
+8,Stone Legion Generals,8,16.66668,Crimson
+9,Sire Denathrius,9,11.11112,Crimson
+0,Shriekwing,0,2.77778,Mortal
+1,Huntsman Altimor,1,2.77778,Mortal
+2,Hungering Destroyer,2,8.33334,Mortal
+3,Sun King's Salvation,3,11.11112,Mortal
+4,Artificer Xy'mox,4,16.66668,Mortal
+5,Lady Inerva Darkvein,5,5.55556,Mortal
+6,The Council of Blood,6,13.8889,Mortal
+7,Sludgefist,7,13.8889,Mortal
+8,Stone Legion Generals,8,42.6667,Mortal
+9,Sire Denathrius,9,38.88892,Mortal
+0,Shriekwing,0,0.0,Group Therapy
+1,Huntsman Altimor,1,2.77778,Group Therapy
+2,Hungering Destroyer,2,2.77778,Group Therapy
+3,Sun King's Salvation,3,8.33334,Group Therapy
+4,Artificer Xy'mox,4,5.55556,Group Therapy
+5,Lady Inerva Darkvein,5,8.33334,Group Therapy
+6,The Council of Blood,6,11.11112,Group Therapy
+7,Sludgefist,7,8.33334,Group Therapy
+8,Stone Legion Generals,8,27.7778,Group Therapy
+9,Sire Denathrius,9,13.8889,Group Therapy
+0,Shriekwing,0,5.55556,Stones
+1,Huntsman Altimor,1,0.0,Stones
+2,Hungering Destroyer,2,5.55556,Stones
+3,Sun King's Salvation,3,8.33334,Stones
+4,Artificer Xy'mox,4,11.11112,Stones
+5,Lady Inerva Darkvein,5,2.77778,Stones
+6,The Council of Blood,6,16.66668,Stones
+7,Sludgefist,7,19.44446,Stones
+8,Stone Legion Generals,8,50.00004,Stones
+9,Sire Denathrius,9,27.7778,Stones
+0,Shriekwing,0,2.77778,Mainframe
+1,Huntsman Altimor,1,5.55556,Mainframe
+2,Hungering Destroyer,2,5.55556,Mainframe
+3,Sun King's Salvation,3,5.55556,Mainframe
+4,Artificer Xy'mox,4,5.55556,Mainframe
+5,Lady Inerva Darkvein,5,0.0,Mainframe
+6,The Council of Blood,6,8.33334,Mainframe
+7,Sludgefist,7,13.8889,Mainframe
+8,Stone Legion Generals,8,8.33334,Mainframe
+9,Sire Denathrius,9,19.44446,Mainframe
+0,Shriekwing,0,0.0,High Status
+1,Huntsman Altimor,1,2.77778,High Status
+2,Hungering Destroyer,2,0.0,High Status
+3,Sun King's Salvation,3,5.55556,High Status
+4,Artificer Xy'mox,4,8.33334,High Status
+5,Lady Inerva Darkvein,5,0.0,High Status
+6,The Council of Blood,6,11.11112,High Status
+7,Sludgefist,7,13.8889,High Status
+8,Stone Legion Generals,8,8.33334,High Status
+0,Shriekwing,0,0.0,Invalid Target
+1,Huntsman Altimor,1,5.55556,Invalid Target
+2,Hungering Destroyer,2,2.77778,Invalid Target
+3,Sun King's Salvation,3,8.33334,Invalid Target
+4,Artificer Xy'mox,4,8.33334,Invalid Target
+5,Lady Inerva Darkvein,5,2.77778,Invalid Target
+6,The Council of Blood,6,22.22224,Invalid Target
+7,Sludgefist,7,13.8889,Invalid Target
+8,Stone Legion Generals,8,36.11114,Invalid Target
+9,Sire Denathrius,9,30.55558,Invalid Target
+0,Shriekwing,0,5.55556,Superbia
+1,Huntsman Altimor,1,0.0,Superbia
+2,Hungering Destroyer,2,0.0,Superbia
+3,Sun King's Salvation,3,2.77778,Superbia
+4,Artificer Xy'mox,4,5.55556,Superbia
+5,Lady Inerva Darkvein,5,2.77778,Superbia
+6,The Council of Blood,6,11.11112,Superbia
+7,Sludgefist,7,11.11112,Superbia
+8,Stone Legion Generals,8,33.33336,Superbia
+9,Sire Denathrius,9,25.00002,Superbia
+0,Shriekwing,0,16.66668,macht DRUCK
+1,Huntsman Altimor,1,8.33334,macht DRUCK
+2,Hungering Destroyer,2,2.77778,macht DRUCK
+3,Sun King's Salvation,3,22.22224,macht DRUCK
+4,Artificer Xy'mox,4,8.33334,macht DRUCK
+5,Lady Inerva Darkvein,5,2.77778,macht DRUCK
+6,The Council of Blood,6,8.33334,macht DRUCK
+7,Sludgefist,7,22.22224,macht DRUCK
+8,Stone Legion Generals,8,33.33336,macht DRUCK
+9,Sire Denathrius,9,25.00002,macht DRUCK
+0,Shriekwing,0,8.33334,Schwingen des Phoenix
+1,Huntsman Altimor,1,0.0,Schwingen des Phoenix
+2,Hungering Destroyer,2,5.55556,Schwingen des Phoenix
+3,Sun King's Salvation,3,8.33334,Schwingen des Phoenix
+4,Artificer Xy'mox,4,8.33334,Schwingen des Phoenix
+5,Lady Inerva Darkvein,5,5.55556,Schwingen des Phoenix
+6,The Council of Blood,6,16.66668,Schwingen des Phoenix
+7,Sludgefist,7,22.22224,Schwingen des Phoenix
+8,Stone Legion Generals,8,33.33336,Schwingen des Phoenix
+9,Sire Denathrius,9,33.33336,Schwingen des Phoenix
+0,Shriekwing,0,8.33334,Pure
+1,Huntsman Altimor,1,2.77778,Pure
+2,Hungering Destroyer,2,2.77778,Pure
+3,Sun King's Salvation,3,5.55556,Pure
+4,Artificer Xy'mox,4,8.33334,Pure
+5,Lady Inerva Darkvein,5,8.33334,Pure
+6,The Council of Blood,6,8.33334,Pure
+7,Sludgefist,7,13.8889,Pure
+8,Stone Legion Generals,8,44.44448,Pure
+9,Sire Denathrius,9,19.44446,Pure
+0,Shriekwing,0,0.0,Colour
+1,Huntsman Altimor,1,2.77778,Colour
+2,Hungering Destroyer,2,0.0,Colour
+3,Sun King's Salvation,3,8.33334,Colour
+4,Artificer Xy'mox,4,11.11112,Colour
+5,Lady Inerva Darkvein,5,2.77778,Colour
+6,The Council of Blood,6,11.11112,Colour
+7,Sludgefist,7,19.44446,Colour
+8,Stone Legion Generals,8,33.33336,Colour
+9,Sire Denathrius,9,27.7778,Colour
+0,Shriekwing,0,5.55556,Sabotage
+1,Huntsman Altimor,1,0.0,Sabotage
+2,Hungering Destroyer,2,5.55556,Sabotage
+3,Sun King's Salvation,3,2.77778,Sabotage
+4,Artificer Xy'mox,4,13.8889,Sabotage
+5,Lady Inerva Darkvein,5,2.77778,Sabotage
+6,The Council of Blood,6,13.8889,Sabotage
+7,Sludgefist,7,11.11112,Sabotage
+8,Stone Legion Generals,8,25.00002,Sabotage
+9,Sire Denathrius,9,30.55558,Sabotage
+0,Shriekwing,0,0.0,Adoria
+1,Huntsman Altimor,1,0.0,Adoria
+2,Hungering Destroyer,2,2.77778,Adoria
+3,Sun King's Salvation,3,5.55556,Adoria
+4,Artificer Xy'mox,4,8.33334,Adoria
+5,Lady Inerva Darkvein,5,5.55556,Adoria
+6,The Council of Blood,6,16.66668,Adoria
+7,Sludgefist,7,16.66668,Adoria
+8,Stone Legion Generals,8,25.00002,Adoria
+9,Sire Denathrius,9,38.88892,Adoria
+0,Shriekwing,0,0.0,TeamTilt
+1,Huntsman Altimor,1,0.0,TeamTilt
+2,Hungering Destroyer,2,2.77778,TeamTilt
+3,Sun King's Salvation,3,0.0,TeamTilt
+4,Artificer Xy'mox,4,2.77778,TeamTilt
+5,Lady Inerva Darkvein,5,0.0,TeamTilt
+6,The Council of Blood,6,0.0,TeamTilt
+7,Sludgefist,7,0.0,TeamTilt
+8,Stone Legion Generals,8,2.77778,TeamTilt
+9,Sire Denathrius,9,2.77778,TeamTilt
+0,Shriekwing,0,2.77778,Fragglene
+1,Huntsman Altimor,1,0.0,Fragglene
+2,Hungering Destroyer,2,5.55556,Fragglene
+3,Sun King's Salvation,3,2.77778,Fragglene
+4,Artificer Xy'mox,4,8.33334,Fragglene
+5,Lady Inerva Darkvein,5,16.66668,Fragglene
+6,The Council of Blood,6,13.8889,Fragglene
+7,Sludgefist,7,13.8889,Fragglene
+8,Stone Legion Generals,8,33.33336,Fragglene
+9,Sire Denathrius,9,27.7778,Fragglene
+0,Shriekwing,0,0.0,Integrity
+1,Huntsman Altimor,1,0.0,Integrity
+2,Hungering Destroyer,2,0.0,Integrity
+3,Sun King's Salvation,3,2.77778,Integrity
+4,Artificer Xy'mox,4,2.77778,Integrity
+5,Lady Inerva Darkvein,5,0.0,Integrity
+6,The Council of Blood,6,0.0,Integrity
+7,Sludgefist,7,11.11112,Integrity
+8,Stone Legion Generals,8,2.77778,Integrity
+9,Sire Denathrius,9,0.0,Integrity
+0,Shriekwing,0,0.0,Mythic Ravers
+1,Huntsman Altimor,1,0.0,Mythic Ravers
+2,Hungering Destroyer,2,0.0,Mythic Ravers
+3,Sun King's Salvation,3,0.0,Mythic Ravers
+4,Artificer Xy'mox,4,0.0,Mythic Ravers
+5,Lady Inerva Darkvein,5,0.0,Mythic Ravers
+6,The Council of Blood,6,0.0,Mythic Ravers
+7,Sludgefist,7,0.0,Mythic Ravers
+8,Stone Legion Generals,8,5.55556,Mythic Ravers
+9,Sire Denathrius,9,11.11112,Mythic Ravers
+0,Shriekwing,0,0.0,Competence Optional
+1,Huntsman Altimor,1,2.77778,Competence Optional
+2,Hungering Destroyer,2,0.0,Competence Optional
+3,Sun King's Salvation,3,2.77778,Competence Optional
+4,Artificer Xy'mox,4,0.0,Competence Optional
+5,Lady Inerva Darkvein,5,2.77778,Competence Optional
+6,The Council of Blood,6,0.0,Competence Optional
+7,Sludgefist,7,5.55556,Competence Optional
+8,Stone Legion Generals,8,25.00002,Competence Optional
+9,Sire Denathrius,9,22.22224,Competence Optional
+0,Shriekwing,0,2.77778,Burden
+1,Huntsman Altimor,1,5.55556,Burden
+2,Hungering Destroyer,2,2.77778,Burden
+3,Sun King's Salvation,3,2.77778,Burden
+4,Artificer Xy'mox,4,16.66668,Burden
+5,Lady Inerva Darkvein,5,11.11112,Burden
+6,The Council of Blood,6,5.55556,Burden
+7,Sludgefist,7,22.22224,Burden
+8,Stone Legion Generals,8,16.66668,Burden
+9,Sire Denathrius,9,19.44446,Burden
+0,Shriekwing,0,2.77778,Low Expectations
+1,Huntsman Altimor,1,2.77778,Low Expectations
+2,Hungering Destroyer,2,13.8889,Low Expectations
+3,Sun King's Salvation,3,11.11112,Low Expectations
+4,Artificer Xy'mox,4,8.33334,Low Expectations
+5,Lady Inerva Darkvein,5,11.11112,Low Expectations
+6,The Council of Blood,6,5.55556,Low Expectations
+7,Sludgefist,7,8.33334,Low Expectations
+8,Stone Legion Generals,8,5.55556,Low Expectations
+0,Shriekwing,0,0.0,Ascendance
+1,Huntsman Altimor,1,2.77778,Ascendance
+2,Hungering Destroyer,2,0.0,Ascendance
+3,Sun King's Salvation,3,0.0,Ascendance
+4,Artificer Xy'mox,4,5.55556,Ascendance
+5,Lady Inerva Darkvein,5,2.77778,Ascendance
+6,The Council of Blood,6,5.55556,Ascendance
+7,Sludgefist,7,5.55556,Ascendance
+8,Stone Legion Generals,8,13.8889,Ascendance
+9,Sire Denathrius,9,44.44448,Ascendance
+0,Shriekwing,0,0.0,Amazing Stories
+1,Huntsman Altimor,1,0.0,Amazing Stories
+2,Hungering Destroyer,2,0.0,Amazing Stories
+3,Artificer Xy'mox,4,2.77778,Amazing Stories
+4,Lady Inerva Darkvein,5,5.55556,Amazing Stories
+5,The Council of Blood,6,0.0,Amazing Stories
+6,Sludgefist,7,2.77778,Amazing Stories
+7,Stone Legion Generals,8,2.77778,Amazing Stories
+8,Sire Denathrius,9,0.0,Amazing Stories
+0,Shriekwing,0,19.44446,Sanity
+1,Huntsman Altimor,1,11.11112,Sanity
+2,Hungering Destroyer,2,8.33334,Sanity
+3,Sun King's Salvation,3,5.55556,Sanity
+4,Artificer Xy'mox,4,8.33334,Sanity
+5,Lady Inerva Darkvein,5,5.55556,Sanity
+6,The Council of Blood,6,11.11112,Sanity
+7,Sludgefist,7,25.00002,Sanity
+8,Stone Legion Generals,8,41.6667,Sanity
+9,Sire Denathrius,9,27.7778,Sanity
+0,Shriekwing,0,0.0,Imperium
+1,Huntsman Altimor,1,2.77778,Imperium
+2,Hungering Destroyer,2,5.55556,Imperium
+3,Sun King's Salvation,3,8.33334,Imperium
+4,Artificer Xy'mox,4,16.66668,Imperium
+5,Lady Inerva Darkvein,5,0.0,Imperium
+6,The Council of Blood,6,16.66668,Imperium
+7,Sludgefist,7,16.66668,Imperium
+8,Stone Legion Generals,8,38.88892,Imperium
+9,Sire Denathrius,9,30.55558,Imperium
+0,Shriekwing,0,2.77778,Arctic Avengers
+1,Huntsman Altimor,1,2.77778,Arctic Avengers
+2,Hungering Destroyer,2,2.77778,Arctic Avengers
+3,Sun King's Salvation,3,5.55556,Arctic Avengers
+4,Artificer Xy'mox,4,11.11112,Arctic Avengers
+5,Lady Inerva Darkvein,5,2.77778,Arctic Avengers
+6,The Council of Blood,6,8.33334,Arctic Avengers
+7,Sludgefist,7,2.77778,Arctic Avengers
+8,Stone Legion Generals,8,25.00002,Arctic Avengers
+9,Sire Denathrius,9,13.8889,Arctic Avengers
+0,Shriekwing,0,0.0,Veneration
+1,Huntsman Altimor,1,2.77778,Veneration
+2,Hungering Destroyer,2,0.0,Veneration
+3,Sun King's Salvation,3,2.77778,Veneration
+4,Artificer Xy'mox,4,0.0,Veneration
+5,Lady Inerva Darkvein,5,0.0,Veneration
+6,The Council of Blood,6,5.55556,Veneration
+7,Sludgefist,7,2.77778,Veneration
+8,Stone Legion Generals,8,8.33334,Veneration
+9,Sire Denathrius,9,13.8889,Veneration
+0,Shriekwing,0,0.0,Ring Åklagarn
+1,Huntsman Altimor,1,0.0,Ring Åklagarn
+2,Hungering Destroyer,2,8.33334,Ring Åklagarn
+3,Sun King's Salvation,3,2.77778,Ring Åklagarn
+4,Artificer Xy'mox,4,8.33334,Ring Åklagarn
+5,Lady Inerva Darkvein,5,5.55556,Ring Åklagarn
+6,The Council of Blood,6,11.11112,Ring Åklagarn
+7,Sludgefist,7,2.77778,Ring Åklagarn
+0,Shriekwing,0,2.77778,TED
+1,Huntsman Altimor,1,2.77778,TED
+2,Hungering Destroyer,2,19.44445,TED
+3,Sun King's Salvation,3,2.77778,TED
+4,Artificer Xy'mox,4,13.8889,TED
+5,Lady Inerva Darkvein,5,0.0,TED
+6,The Council of Blood,6,8.33334,TED
+7,Sludgefist,7,11.11112,TED
+8,Stone Legion Generals,8,27.7778,TED
+9,Sire Denathrius,9,30.55558,TED
+0,Shriekwing,0,2.77778,Phoenix
+1,Huntsman Altimor,1,5.55556,Phoenix
+2,Hungering Destroyer,2,5.55556,Phoenix
+3,Sun King's Salvation,3,2.77778,Phoenix
+4,Artificer Xy'mox,4,25.00002,Phoenix
+5,Lady Inerva Darkvein,5,5.55556,Phoenix
+6,The Council of Blood,6,11.11112,Phoenix
+7,Sludgefist,7,19.44446,Phoenix
+8,Stone Legion Generals,8,36.11114,Phoenix
+9,Sire Denathrius,9,33.33336,Phoenix
+0,Shriekwing,0,2.77778,Divinum
+1,Huntsman Altimor,1,0.0,Divinum
+2,Hungering Destroyer,2,0.0,Divinum
+3,Sun King's Salvation,3,8.33334,Divinum
+4,Artificer Xy'mox,4,0.0,Divinum
+5,Lady Inerva Darkvein,5,5.55556,Divinum
+6,The Council of Blood,6,0.0,Divinum
+7,Sludgefist,7,0.0,Divinum
+8,Stone Legion Generals,8,16.66668,Divinum
+9,Sire Denathrius,9,8.33334,Divinum
+0,Shriekwing,0,0.0,Versatile
+1,Huntsman Altimor,1,2.77778,Versatile
+2,Hungering Destroyer,2,8.33334,Versatile
+3,Sun King's Salvation,3,5.55556,Versatile
+4,Artificer Xy'mox,4,5.55556,Versatile
+5,Lady Inerva Darkvein,5,8.33334,Versatile
+6,The Council of Blood,6,11.11112,Versatile
+7,Sludgefist,7,8.33334,Versatile
+8,Stone Legion Generals,8,33.33336,Versatile
+9,Sire Denathrius,9,16.66668,Versatile
+0,Shriekwing,0,0.0,vDo
+1,Huntsman Altimor,1,0.0,vDo
+2,Hungering Destroyer,2,0.0,vDo
+3,Sun King's Salvation,3,2.77778,vDo
+4,Artificer Xy'mox,4,8.33334,vDo
+5,Lady Inerva Darkvein,5,5.55556,vDo
+6,The Council of Blood,6,13.8889,vDo
+7,Sludgefist,7,11.11112,vDo
+8,Stone Legion Generals,8,27.7778,vDo
+9,Sire Denathrius,9,11.11112,vDo
+0,Shriekwing,0,2.77778,Avem
+1,Huntsman Altimor,1,2.77778,Avem
+2,Hungering Destroyer,2,0.0,Avem
+3,Sun King's Salvation,3,0.0,Avem
+4,Artificer Xy'mox,4,0.0,Avem
+5,Lady Inerva Darkvein,5,0.0,Avem
+6,The Council of Blood,6,0.0,Avem
+7,Sludgefist,7,5.55556,Avem
+8,Stone Legion Generals,8,8.33334,Avem
+9,Sire Denathrius,9,13.8889,Avem
+0,Shriekwing,0,5.55556,Revivals
+1,Huntsman Altimor,1,5.55556,Revivals
+2,Hungering Destroyer,2,0.0,Revivals
+3,Sun King's Salvation,3,0.0,Revivals
+4,Artificer Xy'mox,4,11.11112,Revivals
+5,Lady Inerva Darkvein,5,2.77778,Revivals
+6,The Council of Blood,6,2.77778,Revivals
+7,Sludgefist,7,5.55556,Revivals
+8,Stone Legion Generals,8,19.44446,Revivals
+9,Sire Denathrius,9,27.7778,Revivals
+0,Shriekwing,0,2.77778,Catalyst
+1,Huntsman Altimor,1,2.77778,Catalyst
+2,Hungering Destroyer,2,2.77778,Catalyst
+3,Sun King's Salvation,3,11.11112,Catalyst
+4,Artificer Xy'mox,4,8.33334,Catalyst
+5,Lady Inerva Darkvein,5,8.33334,Catalyst
+6,The Council of Blood,6,19.44446,Catalyst
+7,Sludgefist,7,11.11112,Catalyst
+8,Stone Legion Generals,8,30.55558,Catalyst
+9,Sire Denathrius,9,25.00002,Catalyst
+0,Shriekwing,0,2.77778,Internet Friends
+1,Huntsman Altimor,1,2.77778,Internet Friends
+2,Hungering Destroyer,2,5.55556,Internet Friends
+3,Sun King's Salvation,3,2.77778,Internet Friends
+4,Artificer Xy'mox,4,13.8889,Internet Friends
+5,Lady Inerva Darkvein,5,8.33334,Internet Friends
+6,The Council of Blood,6,11.11112,Internet Friends
+7,Sludgefist,7,19.44446,Internet Friends
+8,Stone Legion Generals,8,22.22224,Internet Friends
+9,Sire Denathrius,9,36.11114,Internet Friends
+0,Shriekwing,0,2.77778,Echoes
+1,Huntsman Altimor,1,2.77778,Echoes
+2,Hungering Destroyer,2,2.77778,Echoes
+3,Sun King's Salvation,3,8.33334,Echoes
+4,Artificer Xy'mox,4,2.77778,Echoes
+5,Lady Inerva Darkvein,5,11.11112,Echoes
+6,The Council of Blood,6,13.8889,Echoes
+7,Sludgefist,7,25.00002,Echoes
+8,Stone Legion Generals,8,36.11114,Echoes
+9,Sire Denathrius,9,30.55558,Echoes
+0,Shriekwing,0,0.0,Inept
+1,Huntsman Altimor,1,2.77778,Inept
+2,Hungering Destroyer,2,0.0,Inept
+3,Sun King's Salvation,3,5.55556,Inept
+4,Artificer Xy'mox,4,11.11112,Inept
+5,Lady Inerva Darkvein,5,2.77778,Inept
+6,The Council of Blood,6,16.66668,Inept
+7,Sludgefist,7,8.33334,Inept
+0,Shriekwing,0,5.55556,Last Resort
+1,Huntsman Altimor,1,0.0,Last Resort
+2,Hungering Destroyer,2,5.55556,Last Resort
+3,Sun King's Salvation,3,5.55556,Last Resort
+4,Artificer Xy'mox,4,13.8889,Last Resort
+5,Lady Inerva Darkvein,5,5.55556,Last Resort
+6,The Council of Blood,6,25.00002,Last Resort
+7,Sludgefist,7,22.22224,Last Resort
+8,Stone Legion Generals,8,38.88892,Last Resort
+9,Sire Denathrius,9,36.11114,Last Resort
+0,Shriekwing,0,5.55556,Epoch
+1,Huntsman Altimor,1,11.11112,Epoch
+2,Hungering Destroyer,2,11.11112,Epoch
+3,Sun King's Salvation,3,11.11112,Epoch
+4,Artificer Xy'mox,4,8.33334,Epoch
+5,Lady Inerva Darkvein,5,16.66668,Epoch
+6,The Council of Blood,6,22.22224,Epoch
+7,Sludgefist,7,25.00002,Epoch
+8,Stone Legion Generals,8,61.11116,Epoch
+9,Sire Denathrius,9,66.66672,Epoch
+0,Shriekwing,0,5.55556,Tyrannical
+1,Huntsman Altimor,1,5.55556,Tyrannical
+2,Hungering Destroyer,2,5.55556,Tyrannical
+3,Sun King's Salvation,3,16.66668,Tyrannical
+4,Artificer Xy'mox,4,2.77778,Tyrannical
+5,Lady Inerva Darkvein,5,8.33334,Tyrannical
+6,The Council of Blood,6,16.66668,Tyrannical
+7,Sludgefist,7,27.7778,Tyrannical
+8,Stone Legion Generals,8,30.55558,Tyrannical
+9,Sire Denathrius,9,44.44448,Tyrannical
+0,Shriekwing,0,0.0,jokes on you
+1,Huntsman Altimor,1,0.0,jokes on you
+2,Hungering Destroyer,2,8.33334,jokes on you
+3,Sun King's Salvation,3,2.77778,jokes on you
+4,Artificer Xy'mox,4,2.77778,jokes on you
+5,Lady Inerva Darkvein,5,2.77778,jokes on you
+6,The Council of Blood,6,2.77778,jokes on you
+7,Sludgefist,7,2.77778,jokes on you
+8,Stone Legion Generals,8,2.77778,jokes on you
+9,Sire Denathrius,9,11.11112,jokes on you
+0,Shriekwing,0,30.55558,Imminent
+1,Huntsman Altimor,1,36.11114,Imminent
+2,Hungering Destroyer,2,38.88892,Imminent
+3,Sun King's Salvation,3,38.88892,Imminent
+4,Artificer Xy'mox,4,19.44446,Imminent
+5,Lady Inerva Darkvein,5,44.44448,Imminent
+6,The Council of Blood,6,61.11116,Imminent
+7,Sludgefist,7,61.11116,Imminent
+8,Stone Legion Generals,8,111.1112,Imminent
+9,Sire Denathrius,9,55.55558,Imminent
+0,Shriekwing,0,0.0,The Reckless
+1,Huntsman Altimor,1,5.55556,The Reckless
+2,Hungering Destroyer,2,2.77778,The Reckless
+3,Sun King's Salvation,3,5.55556,The Reckless
+4,Artificer Xy'mox,4,13.8889,The Reckless
+5,Lady Inerva Darkvein,5,8.33334,The Reckless
+6,The Council of Blood,6,11.11112,The Reckless
+7,Sludgefist,7,25.00002,The Reckless
+8,Stone Legion Generals,8,33.33336,The Reckless
+9,Sire Denathrius,9,50.00004,The Reckless
+0,Shriekwing,0,0.0,Jade Falcons
+1,Huntsman Altimor,1,0.0,Jade Falcons
+2,Hungering Destroyer,2,8.33334,Jade Falcons
+3,Sun King's Salvation,3,0.0,Jade Falcons
+4,Artificer Xy'mox,4,8.33334,Jade Falcons
+5,Lady Inerva Darkvein,5,13.8889,Jade Falcons
+6,The Council of Blood,6,16.66668,Jade Falcons
+7,Sludgefist,7,19.44446,Jade Falcons
+8,Stone Legion Generals,8,38.88892,Jade Falcons
+9,Sire Denathrius,9,30.55558,Jade Falcons
+0,Shriekwing,0,2.77778,Bad RNG
+1,Huntsman Altimor,1,0.0,Bad RNG
+2,Hungering Destroyer,2,2.77778,Bad RNG
+3,Sun King's Salvation,3,8.33334,Bad RNG
+4,Artificer Xy'mox,4,5.55556,Bad RNG
+5,Lady Inerva Darkvein,5,11.11112,Bad RNG
+6,The Council of Blood,6,19.44446,Bad RNG
+7,Sludgefist,7,16.66668,Bad RNG
+8,Stone Legion Generals,8,33.33336,Bad RNG
+9,Sire Denathrius,9,25.00002,Bad RNG
+0,Shriekwing,0,0.0,Lost Society
+1,Huntsman Altimor,1,2.77778,Lost Society
+2,Hungering Destroyer,2,5.55556,Lost Society
+3,Sun King's Salvation,3,2.77778,Lost Society
+4,Artificer Xy'mox,4,11.11112,Lost Society
+5,Lady Inerva Darkvein,5,5.55556,Lost Society
+6,The Council of Blood,6,11.11112,Lost Society
+7,Sludgefist,7,5.55556,Lost Society
+0,Shriekwing,0,0.0,Wisp
+1,Huntsman Altimor,1,0.0,Wisp
+2,Hungering Destroyer,2,0.0,Wisp
+3,Sun King's Salvation,3,0.0,Wisp
+4,Artificer Xy'mox,4,2.77778,Wisp
+5,Sludgefist,7,0.0,Wisp
+6,Stone Legion Generals,8,2.77778,Wisp
+7,Sire Denathrius,9,44.44448,Wisp
+0,Shriekwing,0,0.0,Unethical
+1,Huntsman Altimor,1,0.0,Unethical
+2,Hungering Destroyer,2,0.0,Unethical
+3,Sun King's Salvation,3,0.0,Unethical
+4,Artificer Xy'mox,4,8.33334,Unethical
+5,Lady Inerva Darkvein,5,2.77778,Unethical
+6,The Council of Blood,6,0.0,Unethical
+7,Sludgefist,7,0.0,Unethical
+8,Stone Legion Generals,8,11.11112,Unethical
+9,Sire Denathrius,9,25.00002,Unethical
+0,Shriekwing,0,0.0,Blacklîsted
+1,Huntsman Altimor,1,5.55556,Blacklîsted
+2,Hungering Destroyer,2,2.77778,Blacklîsted
+3,Sun King's Salvation,3,8.33334,Blacklîsted
+4,Artificer Xy'mox,4,5.55556,Blacklîsted
+5,Lady Inerva Darkvein,5,11.11112,Blacklîsted
+6,The Council of Blood,6,16.66668,Blacklîsted
+7,Sludgefist,7,13.8889,Blacklîsted
+8,Stone Legion Generals,8,47.22226,Blacklîsted
+9,Sire Denathrius,9,50.00004,Blacklîsted
+0,Shriekwing,0,2.77778,Solaris
+1,Huntsman Altimor,1,0.0,Solaris
+2,Hungering Destroyer,2,2.77778,Solaris
+3,Sun King's Salvation,3,0.0,Solaris
+4,Artificer Xy'mox,4,8.33334,Solaris
+5,Lady Inerva Darkvein,5,2.77778,Solaris
+6,The Council of Blood,6,11.11112,Solaris
+7,Sludgefist,7,13.8889,Solaris
+8,Stone Legion Generals,8,30.55558,Solaris
+9,Sire Denathrius,9,33.33336,Solaris
+0,Shriekwing,0,0.0,Salty Tears
+1,Huntsman Altimor,1,2.77778,Salty Tears
+2,Hungering Destroyer,2,5.55556,Salty Tears
+3,Sun King's Salvation,3,5.55556,Salty Tears
+4,Artificer Xy'mox,4,8.33334,Salty Tears
+5,Lady Inerva Darkvein,5,0.0,Salty Tears
+6,The Council of Blood,6,5.55556,Salty Tears
+7,Sludgefist,7,13.8889,Salty Tears
+8,Stone Legion Generals,8,30.55558,Salty Tears
+9,Sire Denathrius,9,19.44446,Salty Tears
+0,Shriekwing,0,2.77778,Aluren
+1,Huntsman Altimor,1,0.0,Aluren
+2,Hungering Destroyer,2,5.55556,Aluren
+3,Sun King's Salvation,3,2.77778,Aluren
+4,Artificer Xy'mox,4,5.55556,Aluren
+5,Lady Inerva Darkvein,5,5.55556,Aluren
+6,The Council of Blood,6,5.55556,Aluren
+7,Sludgefist,7,16.66668,Aluren
+8,Stone Legion Generals,8,27.7778,Aluren
+9,Sire Denathrius,9,38.88892,Aluren
+0,Shriekwing,0,0.0,Witness
+1,Huntsman Altimor,1,2.77778,Witness
+2,Hungering Destroyer,2,5.55556,Witness
+3,Sun King's Salvation,3,8.33334,Witness
+4,Artificer Xy'mox,4,5.55556,Witness
+5,Lady Inerva Darkvein,5,2.77778,Witness
+6,The Council of Blood,6,8.33334,Witness
+7,Sludgefist,7,0.0,Witness
+8,Stone Legion Generals,8,11.11112,Witness
+9,Sire Denathrius,9,16.66668,Witness
+0,Shriekwing,0,2.77778,Tyranny
+1,Huntsman Altimor,1,0.0,Tyranny
+2,Hungering Destroyer,2,5.55556,Tyranny
+3,Sun King's Salvation,3,11.11112,Tyranny
+4,Artificer Xy'mox,4,5.55556,Tyranny
+5,Lady Inerva Darkvein,5,2.77778,Tyranny
+6,The Council of Blood,6,5.55556,Tyranny
+7,Sludgefist,7,8.33334,Tyranny
+8,Stone Legion Generals,8,11.11112,Tyranny
+9,Sire Denathrius,9,11.11112,Tyranny
+0,Shriekwing,0,0.0,Nurfed
+1,Huntsman Altimor,1,2.77778,Nurfed
+2,Hungering Destroyer,2,2.77778,Nurfed
+3,Sun King's Salvation,3,2.77778,Nurfed
+4,Artificer Xy'mox,4,8.33334,Nurfed
+5,Lady Inerva Darkvein,5,2.77778,Nurfed
+6,The Council of Blood,6,11.11112,Nurfed
+7,Sludgefist,7,11.11112,Nurfed
+8,Stone Legion Generals,8,25.00002,Nurfed
+9,Sire Denathrius,9,30.55558,Nurfed
+0,Shriekwing,0,5.55556,Vindicatum
+1,Huntsman Altimor,1,0.0,Vindicatum
+2,Hungering Destroyer,2,0.0,Vindicatum
+3,Sun King's Salvation,3,13.8889,Vindicatum
+4,Artificer Xy'mox,4,13.8889,Vindicatum
+5,Lady Inerva Darkvein,5,5.55556,Vindicatum
+6,The Council of Blood,6,16.66668,Vindicatum
+7,Sludgefist,7,16.66668,Vindicatum
+8,Stone Legion Generals,8,41.6667,Vindicatum
+9,Sire Denathrius,9,41.6667,Vindicatum
+0,Shriekwing,0,2.77778,Warpath
+1,Huntsman Altimor,1,2.77778,Warpath
+2,Hungering Destroyer,2,5.55556,Warpath
+3,Sun King's Salvation,3,5.55556,Warpath
+4,Artificer Xy'mox,4,25.0,Warpath
+5,Lady Inerva Darkvein,5,5.55556,Warpath
+6,The Council of Blood,6,13.8889,Warpath
+7,Sludgefist,7,36.11112,Warpath
+8,Stone Legion Generals,8,41.6667,Warpath
+9,Sire Denathrius,9,75.00002,Warpath
+0,Shriekwing,0,0.0,Elusive
+1,Huntsman Altimor,1,0.0,Elusive
+2,Hungering Destroyer,2,5.55556,Elusive
+3,Sun King's Salvation,3,2.77778,Elusive
+4,Artificer Xy'mox,4,19.44446,Elusive
+5,Lady Inerva Darkvein,5,8.33334,Elusive
+6,The Council of Blood,6,13.8889,Elusive
+7,Sludgefist,7,22.22224,Elusive
+8,Stone Legion Generals,8,52.77782,Elusive
+9,Sire Denathrius,9,58.33338,Elusive
+0,Shriekwing,0,2.77778,Washed Up Scrubs
+1,Huntsman Altimor,1,2.77778,Washed Up Scrubs
+2,Hungering Destroyer,2,2.77778,Washed Up Scrubs
+3,Sun King's Salvation,3,5.55556,Washed Up Scrubs
+4,Artificer Xy'mox,4,13.8889,Washed Up Scrubs
+5,Lady Inerva Darkvein,5,11.11112,Washed Up Scrubs
+6,The Council of Blood,6,11.11112,Washed Up Scrubs
+7,Sludgefist,7,11.11112,Washed Up Scrubs
+8,Stone Legion Generals,8,25.00002,Washed Up Scrubs
+9,Sire Denathrius,9,33.33336,Washed Up Scrubs
+0,Shriekwing,0,0.0,Ookers
+1,Huntsman Altimor,1,5.55556,Ookers
+2,Hungering Destroyer,2,8.33334,Ookers
+3,Sun King's Salvation,3,2.77778,Ookers
+4,Artificer Xy'mox,4,5.55556,Ookers
+5,Lady Inerva Darkvein,5,5.55556,Ookers
+6,The Council of Blood,6,13.8889,Ookers
+7,Sludgefist,7,11.11112,Ookers
+8,Stone Legion Generals,8,30.55558,Ookers
+9,Sire Denathrius,9,22.22224,Ookers
+0,Shriekwing,0,2.77778,BibleBlack
+1,Huntsman Altimor,1,19.44444,BibleBlack
+2,Hungering Destroyer,2,8.33334,BibleBlack
+3,Sun King's Salvation,3,27.77778,BibleBlack
+4,Artificer Xy'mox,4,16.66668,BibleBlack
+5,Lady Inerva Darkvein,5,2.77778,BibleBlack
+6,The Council of Blood,6,38.8889,BibleBlack
+7,Sludgefist,7,30.55556,BibleBlack
+8,Stone Legion Generals,8,72.22226,BibleBlack
+9,Sire Denathrius,9,108.33338,BibleBlack
+0,Shriekwing,0,0.0,Early Night
+1,Huntsman Altimor,1,8.33334,Early Night
+2,Hungering Destroyer,2,2.77778,Early Night
+3,Sun King's Salvation,3,5.55556,Early Night
+4,Artificer Xy'mox,4,11.11112,Early Night
+5,Lady Inerva Darkvein,5,5.55556,Early Night
+6,The Council of Blood,6,8.33334,Early Night
+7,Sludgefist,7,25.00002,Early Night
+8,Stone Legion Generals,8,33.33336,Early Night
+9,Sire Denathrius,9,38.88892,Early Night
+0,Shriekwing,0,0.0,k m s
+1,Huntsman Altimor,1,0.0,k m s
+2,Hungering Destroyer,2,5.55556,k m s
+3,Sun King's Salvation,3,2.77778,k m s
+4,Lady Inerva Darkvein,5,2.77778,k m s
+0,Shriekwing,0,2.77778,Unic
+1,Huntsman Altimor,1,2.77778,Unic
+2,Hungering Destroyer,2,2.77778,Unic
+3,Sun King's Salvation,3,2.77778,Unic
+4,Artificer Xy'mox,4,8.33334,Unic
+5,Lady Inerva Darkvein,5,8.33334,Unic
+6,The Council of Blood,6,13.8889,Unic
+7,Sludgefist,7,11.11112,Unic
+8,Stone Legion Generals,8,41.6667,Unic
+9,Sire Denathrius,9,38.88892,Unic
+0,Shriekwing,0,0.0,Konfluens
+1,Huntsman Altimor,1,0.0,Konfluens
+2,Hungering Destroyer,2,2.77778,Konfluens
+3,Sun King's Salvation,3,2.77778,Konfluens
+4,Artificer Xy'mox,4,13.8889,Konfluens
+5,Lady Inerva Darkvein,5,11.11112,Konfluens
+6,The Council of Blood,6,11.11112,Konfluens
+7,Sludgefist,7,8.33334,Konfluens
+8,Stone Legion Generals,8,25.00002,Konfluens
+9,Sire Denathrius,9,25.00002,Konfluens
+0,Shriekwing,0,2.77778,Unknown Entity
+1,Huntsman Altimor,1,2.77778,Unknown Entity
+2,Hungering Destroyer,2,5.55556,Unknown Entity
+3,Sun King's Salvation,3,8.33334,Unknown Entity
+4,Artificer Xy'mox,4,11.11112,Unknown Entity
+5,Lady Inerva Darkvein,5,8.33334,Unknown Entity
+6,The Council of Blood,6,19.44446,Unknown Entity
+7,Sludgefist,7,13.8889,Unknown Entity
+8,Stone Legion Generals,8,36.11114,Unknown Entity
+9,Sire Denathrius,9,30.55558,Unknown Entity
+0,Shriekwing,0,2.77778,Glass Cannon
+1,Huntsman Altimor,1,0.0,Glass Cannon
+2,Hungering Destroyer,2,5.55556,Glass Cannon
+3,Sun King's Salvation,3,2.77778,Glass Cannon
+4,Artificer Xy'mox,4,11.11112,Glass Cannon
+5,Lady Inerva Darkvein,5,11.11112,Glass Cannon
+6,The Council of Blood,6,19.44446,Glass Cannon
+7,Sludgefist,7,19.44446,Glass Cannon
+8,Stone Legion Generals,8,30.55558,Glass Cannon
+9,Sire Denathrius,9,47.22226,Glass Cannon
+0,Shriekwing,0,2.77778,Flawless
+1,Huntsman Altimor,1,2.77778,Flawless
+2,Hungering Destroyer,2,5.55556,Flawless
+3,Sun King's Salvation,3,13.8889,Flawless
+4,Artificer Xy'mox,4,13.8889,Flawless
+5,Lady Inerva Darkvein,5,2.77778,Flawless
+6,The Council of Blood,6,16.66668,Flawless
+7,Sludgefist,7,16.66668,Flawless
+8,Stone Legion Generals,8,33.33336,Flawless
+9,Sire Denathrius,9,44.44448,Flawless
+0,Stone Legion Generals,8,5.55556,Die Gummibärenbande
+0,Shriekwing,0,5.55556,Evolution
+1,Huntsman Altimor,1,0.0,Evolution
+2,Hungering Destroyer,2,8.33334,Evolution
+3,Sun King's Salvation,3,2.77778,Evolution
+4,Artificer Xy'mox,4,5.55556,Evolution
+5,Lady Inerva Darkvein,5,2.77778,Evolution
+6,The Council of Blood,6,11.11112,Evolution
+7,Sludgefist,7,5.55556,Evolution
+8,Stone Legion Generals,8,19.44446,Evolution
+9,Sire Denathrius,9,16.66668,Evolution
+0,Shriekwing,0,0.0,Regelwerk
+1,Huntsman Altimor,1,5.55556,Regelwerk
+2,Hungering Destroyer,2,2.77778,Regelwerk
+3,Sun King's Salvation,3,11.11112,Regelwerk
+4,Artificer Xy'mox,4,11.11112,Regelwerk
+5,Lady Inerva Darkvein,5,0.0,Regelwerk
+6,The Council of Blood,6,13.8889,Regelwerk
+7,Sludgefist,7,8.33334,Regelwerk
+8,Stone Legion Generals,8,27.7778,Regelwerk
+9,Sire Denathrius,9,5.55556,Regelwerk
+0,Shriekwing,0,0.0,Feel the Difference
+1,Huntsman Altimor,1,0.0,Feel the Difference
+2,Hungering Destroyer,2,5.55556,Feel the Difference
+3,Sun King's Salvation,3,0.0,Feel the Difference
+4,Artificer Xy'mox,4,5.55556,Feel the Difference
+5,Lady Inerva Darkvein,5,8.33334,Feel the Difference
+6,The Council of Blood,6,11.11112,Feel the Difference
+7,Sludgefist,7,8.33334,Feel the Difference
+8,Stone Legion Generals,8,41.6667,Feel the Difference
+9,Sire Denathrius,9,36.11114,Feel the Difference
+0,Shriekwing,0,2.77778,Vex Thal
+1,Huntsman Altimor,1,8.33334,Vex Thal
+2,Hungering Destroyer,2,0.0,Vex Thal
+3,Sun King's Salvation,3,5.55556,Vex Thal
+4,Artificer Xy'mox,4,11.11112,Vex Thal
+5,Lady Inerva Darkvein,5,8.33334,Vex Thal
+6,The Council of Blood,6,25.00002,Vex Thal
+7,Sludgefist,7,16.66668,Vex Thal
+8,Stone Legion Generals,8,36.11114,Vex Thal
+9,Sire Denathrius,9,47.22226,Vex Thal
+0,Shriekwing,0,2.77778,stay hydrated
+1,Huntsman Altimor,1,0.0,stay hydrated
+2,Hungering Destroyer,2,0.0,stay hydrated
+3,Sun King's Salvation,3,2.77778,stay hydrated
+4,Artificer Xy'mox,4,2.77778,stay hydrated
+5,Lady Inerva Darkvein,5,2.77778,stay hydrated
+6,The Council of Blood,6,13.8889,stay hydrated
+7,Sludgefist,7,13.8889,stay hydrated
+8,Stone Legion Generals,8,25.00002,stay hydrated
+9,Sire Denathrius,9,16.66668,stay hydrated
+0,Shriekwing,0,0.0,Reversio
+1,Huntsman Altimor,1,0.0,Reversio
+2,Hungering Destroyer,2,0.0,Reversio
+3,Sun King's Salvation,3,0.0,Reversio
+4,Artificer Xy'mox,4,0.0,Reversio
+5,Lady Inerva Darkvein,5,0.0,Reversio
+6,The Council of Blood,6,2.77778,Reversio
+7,Sludgefist,7,2.77778,Reversio
+8,Stone Legion Generals,8,0.0,Reversio
+0,Shriekwing,0,19.44446,Inner Sanctum
+1,Huntsman Altimor,1,22.22224,Inner Sanctum
+2,Hungering Destroyer,2,30.55558,Inner Sanctum
+3,Sun King's Salvation,3,22.22224,Inner Sanctum
+4,Artificer Xy'mox,4,19.44446,Inner Sanctum
+5,Lady Inerva Darkvein,5,25.00002,Inner Sanctum
+6,The Council of Blood,6,41.6667,Inner Sanctum
+7,Sludgefist,7,33.33336,Inner Sanctum
+8,Stone Legion Generals,8,83.3334,Inner Sanctum
+9,Sire Denathrius,9,61.11116,Inner Sanctum
+0,Shriekwing,0,22.22224,Blacklisted
+1,Huntsman Altimor,1,16.66668,Blacklisted
+2,Hungering Destroyer,2,13.8889,Blacklisted
+3,Sun King's Salvation,3,25.00002,Blacklisted
+4,Artificer Xy'mox,4,50.00002,Blacklisted
+5,Lady Inerva Darkvein,5,25.00002,Blacklisted
+6,The Council of Blood,6,133.33336,Blacklisted
+7,Sludgefist,7,86.11114,Blacklisted
+8,Stone Legion Generals,8,188.88894,Blacklisted
+9,Sire Denathrius,9,261.11116,Blacklisted
+0,Shriekwing,0,2.77778,Attero Dominatus
+1,Huntsman Altimor,1,5.55556,Attero Dominatus
+2,Hungering Destroyer,2,8.33334,Attero Dominatus
+3,Sun King's Salvation,3,13.8889,Attero Dominatus
+4,Artificer Xy'mox,4,8.33334,Attero Dominatus
+5,Lady Inerva Darkvein,5,8.33334,Attero Dominatus
+6,The Council of Blood,6,27.7778,Attero Dominatus
+7,Sludgefist,7,25.00002,Attero Dominatus
+8,Stone Legion Generals,8,47.22226,Attero Dominatus
+9,Sire Denathrius,9,69.4445,Attero Dominatus
+0,Shriekwing,0,2.77778,Unluck
+1,Huntsman Altimor,1,2.77778,Unluck
+2,Hungering Destroyer,2,5.55556,Unluck
+3,Sun King's Salvation,3,5.55556,Unluck
+4,Artificer Xy'mox,4,8.33334,Unluck
+5,Lady Inerva Darkvein,5,8.33334,Unluck
+6,The Council of Blood,6,13.8889,Unluck
+7,Sludgefist,7,13.8889,Unluck
+8,Stone Legion Generals,8,41.6667,Unluck
+9,Sire Denathrius,9,41.6667,Unluck
+0,Shriekwing,0,0.0,Epsilon
+1,Sludgefist,7,0.0,Epsilon
+2,Stone Legion Generals,8,2.77778,Epsilon
+3,Sire Denathrius,9,36.11114,Epsilon
+0,Shriekwing,0,2.77778,Greta Ghuunberg
+1,Huntsman Altimor,1,0.0,Greta Ghuunberg
+2,Hungering Destroyer,2,5.55556,Greta Ghuunberg
+3,Sun King's Salvation,3,11.11112,Greta Ghuunberg
+4,Artificer Xy'mox,4,13.8889,Greta Ghuunberg
+5,Lady Inerva Darkvein,5,5.55556,Greta Ghuunberg
+6,The Council of Blood,6,8.33334,Greta Ghuunberg
+7,Sludgefist,7,5.55556,Greta Ghuunberg
+8,Stone Legion Generals,8,13.8889,Greta Ghuunberg
+9,Sire Denathrius,9,27.7778,Greta Ghuunberg
+0,Shriekwing,0,0.0,Ambid
+1,Huntsman Altimor,1,2.77778,Ambid
+2,Hungering Destroyer,2,0.0,Ambid
+3,Sun King's Salvation,3,5.55556,Ambid
+4,Artificer Xy'mox,4,8.33334,Ambid
+5,Lady Inerva Darkvein,5,11.11112,Ambid
+6,The Council of Blood,6,11.11112,Ambid
+0,Shriekwing,0,2.77778,Chainless
+1,Huntsman Altimor,1,0.0,Chainless
+2,Hungering Destroyer,2,2.77778,Chainless
+3,Sun King's Salvation,3,8.33334,Chainless
+4,Artificer Xy'mox,4,11.11112,Chainless
+5,Lady Inerva Darkvein,5,8.33334,Chainless
+6,The Council of Blood,6,30.55558,Chainless
+7,Sludgefist,7,30.55558,Chainless
+8,Stone Legion Generals,8,44.44448,Chainless
+9,Sire Denathrius,9,47.22226,Chainless
+0,Shriekwing,0,2.77778,O M E G A
+1,Huntsman Altimor,1,11.11112,O M E G A
+2,Hungering Destroyer,2,8.33334,O M E G A
+3,Sun King's Salvation,3,8.33334,O M E G A
+4,Artificer Xy'mox,4,16.66668,O M E G A
+5,Lady Inerva Darkvein,5,11.11112,O M E G A
+6,The Council of Blood,6,27.7778,O M E G A
+7,Sludgefist,7,16.66668,O M E G A
+8,Stone Legion Generals,8,58.33338,O M E G A
+9,Sire Denathrius,9,33.33336,O M E G A
+0,Shriekwing,0,0.0,Anvil
+1,Huntsman Altimor,1,5.55556,Anvil
+2,Hungering Destroyer,2,0.0,Anvil
+3,Sun King's Salvation,3,2.77778,Anvil
+4,Artificer Xy'mox,4,2.77778,Anvil
+5,Lady Inerva Darkvein,5,2.77778,Anvil
+6,The Council of Blood,6,11.11112,Anvil
+7,Sludgefist,7,16.66668,Anvil
+8,Stone Legion Generals,8,25.00002,Anvil
+9,Sire Denathrius,9,36.11114,Anvil
+0,Shriekwing,0,2.77778,OG Feedback
+1,Huntsman Altimor,1,2.77778,OG Feedback
+2,Hungering Destroyer,2,0.0,OG Feedback
+3,Sun King's Salvation,3,5.55556,OG Feedback
+4,Artificer Xy'mox,4,5.55556,OG Feedback
+5,Lady Inerva Darkvein,5,2.77778,OG Feedback
+6,The Council of Blood,6,11.11112,OG Feedback
+7,Sludgefist,7,5.55556,OG Feedback
+8,Stone Legion Generals,8,27.7778,OG Feedback
+9,Sire Denathrius,9,22.22224,OG Feedback
+0,Shriekwing,0,2.77778,Helden in Pyjamas
+1,Huntsman Altimor,1,5.55556,Helden in Pyjamas
+2,Hungering Destroyer,2,5.55556,Helden in Pyjamas
+3,Sun King's Salvation,3,2.77778,Helden in Pyjamas
+4,Artificer Xy'mox,4,8.33334,Helden in Pyjamas
+5,Lady Inerva Darkvein,5,5.55556,Helden in Pyjamas
+6,The Council of Blood,6,11.11112,Helden in Pyjamas
+7,Sludgefist,7,13.8889,Helden in Pyjamas
+8,Stone Legion Generals,8,44.44448,Helden in Pyjamas
+9,Sire Denathrius,9,52.77782,Helden in Pyjamas
+0,Shriekwing,0,0.0,Fade
+1,Huntsman Altimor,1,0.0,Fade
+2,Hungering Destroyer,2,8.33334,Fade
+3,Sun King's Salvation,3,8.33334,Fade
+4,Artificer Xy'mox,4,13.8889,Fade
+5,Lady Inerva Darkvein,5,5.55556,Fade
+6,The Council of Blood,6,19.44446,Fade
+7,Sludgefist,7,13.8889,Fade
+8,Stone Legion Generals,8,44.44448,Fade
+9,Sire Denathrius,9,63.88894,Fade
+0,Shriekwing,0,2.77778,Lost and Abandoned
+1,Huntsman Altimor,1,0.0,Lost and Abandoned
+2,Hungering Destroyer,2,5.55556,Lost and Abandoned
+3,Sun King's Salvation,3,2.77778,Lost and Abandoned
+4,Artificer Xy'mox,4,0.0,Lost and Abandoned
+5,Lady Inerva Darkvein,5,19.44446,Lost and Abandoned
+6,The Council of Blood,6,13.8889,Lost and Abandoned
+7,Sludgefist,7,16.66668,Lost and Abandoned
+8,Stone Legion Generals,8,36.11114,Lost and Abandoned
+9,Sire Denathrius,9,33.33336,Lost and Abandoned
+0,Shriekwing,0,0.0,Sometimes Gifted
+1,Huntsman Altimor,1,5.55556,Sometimes Gifted
+2,Hungering Destroyer,2,11.11112,Sometimes Gifted
+3,Sun King's Salvation,3,5.55556,Sometimes Gifted
+4,Artificer Xy'mox,4,16.66668,Sometimes Gifted
+5,Lady Inerva Darkvein,5,11.11112,Sometimes Gifted
+6,The Council of Blood,6,22.22224,Sometimes Gifted
+7,Sludgefist,7,22.22224,Sometimes Gifted
+8,Stone Legion Generals,8,50.00004,Sometimes Gifted
+9,Sire Denathrius,9,55.5556,Sometimes Gifted
+0,Shriekwing,0,0.0,Mójo
+1,Huntsman Altimor,1,5.55556,Mójo
+2,Hungering Destroyer,2,0.0,Mójo
+3,Sun King's Salvation,3,11.11112,Mójo
+4,Artificer Xy'mox,4,25.00002,Mójo
+5,Lady Inerva Darkvein,5,0.0,Mójo
+6,The Council of Blood,6,22.22224,Mójo
+7,Sludgefist,7,27.7778,Mójo
+8,Stone Legion Generals,8,44.44448,Mójo
+9,Sire Denathrius,9,77.77784,Mójo
+0,Shriekwing,0,5.55556,Grey Logs
+1,Huntsman Altimor,1,11.11112,Grey Logs
+2,Hungering Destroyer,2,16.66668,Grey Logs
+3,Sun King's Salvation,3,11.11112,Grey Logs
+4,Artificer Xy'mox,4,5.55556,Grey Logs
+5,Lady Inerva Darkvein,5,5.55556,Grey Logs
+6,The Council of Blood,6,22.22224,Grey Logs
+7,Sludgefist,7,22.22224,Grey Logs
+8,Stone Legion Generals,8,41.6667,Grey Logs
+9,Sire Denathrius,9,41.6667,Grey Logs
+0,Shriekwing,0,0.0,Horde at være Alliance
+1,Huntsman Altimor,1,11.11112,Horde at være Alliance
+2,Hungering Destroyer,2,5.55556,Horde at være Alliance
+3,Sun King's Salvation,3,16.66668,Horde at være Alliance
+4,Artificer Xy'mox,4,22.22224,Horde at være Alliance
+5,Lady Inerva Darkvein,5,5.55556,Horde at være Alliance
+6,The Council of Blood,6,16.66668,Horde at være Alliance
+7,Sludgefist,7,22.22224,Horde at være Alliance
+8,Stone Legion Generals,8,44.44448,Horde at være Alliance
+9,Sire Denathrius,9,55.5556,Horde at være Alliance
+0,Shriekwing,0,0.0,The Knife
+1,Huntsman Altimor,1,5.55556,The Knife
+2,Hungering Destroyer,2,0.0,The Knife
+3,Sun King's Salvation,3,0.0,The Knife
+4,Artificer Xy'mox,4,5.55556,The Knife
+5,Lady Inerva Darkvein,5,5.55556,The Knife
+6,The Council of Blood,6,16.66668,The Knife
+7,Sludgefist,7,5.55556,The Knife
+8,Stone Legion Generals,8,30.55558,The Knife
+9,Sire Denathrius,9,33.33336,The Knife
+0,Shriekwing,0,0.0,Hyped
+1,Huntsman Altimor,1,11.11112,Hyped
+2,Hungering Destroyer,2,5.55556,Hyped
+3,Sun King's Salvation,3,0.0,Hyped
+4,Artificer Xy'mox,4,16.66668,Hyped
+5,Lady Inerva Darkvein,5,16.66668,Hyped
+6,The Council of Blood,6,16.66668,Hyped
+7,Sludgefist,7,25.00002,Hyped
+8,Stone Legion Generals,8,33.33336,Hyped
+9,Sire Denathrius,9,69.4445,Hyped
+0,Shriekwing,0,0.0,Deposit Coin
+1,Huntsman Altimor,1,0.0,Deposit Coin
+2,Hungering Destroyer,2,0.0,Deposit Coin
+3,Sun King's Salvation,3,11.11112,Deposit Coin
+4,Artificer Xy'mox,4,5.55556,Deposit Coin
+5,Lady Inerva Darkvein,5,0.0,Deposit Coin
+6,The Council of Blood,6,5.55556,Deposit Coin
+7,Sludgefist,7,5.55556,Deposit Coin
+8,Stone Legion Generals,8,27.7778,Deposit Coin
+9,Sire Denathrius,9,11.11112,Deposit Coin
+0,Shriekwing,0,0.0,Epos
+1,Huntsman Altimor,1,0.0,Epos
+2,Hungering Destroyer,2,11.11112,Epos
+3,Sun King's Salvation,3,5.55556,Epos
+4,Artificer Xy'mox,4,11.11112,Epos
+5,Lady Inerva Darkvein,5,11.11112,Epos
+6,The Council of Blood,6,22.22224,Epos
+7,Sludgefist,7,13.8889,Epos
+8,Stone Legion Generals,8,38.88892,Epos
+9,Sire Denathrius,9,66.66672,Epos
+0,Shriekwing,0,11.11112,No Hard Feelings
+1,Huntsman Altimor,1,0.0,No Hard Feelings
+2,Hungering Destroyer,2,16.66668,No Hard Feelings
+3,Sun King's Salvation,3,44.44448,No Hard Feelings
+4,Artificer Xy'mox,4,27.7778,No Hard Feelings
+5,Lady Inerva Darkvein,5,16.66668,No Hard Feelings
+6,The Council of Blood,6,44.44448,No Hard Feelings
+7,Sludgefist,7,44.44448,No Hard Feelings
+8,Stone Legion Generals,8,122.22232,No Hard Feelings
+9,Sire Denathrius,9,100.00008,No Hard Feelings
+0,Shriekwing,0,11.11112,Distopia
+1,Huntsman Altimor,1,5.55556,Distopia
+2,Hungering Destroyer,2,5.55556,Distopia
+3,Sun King's Salvation,3,5.55556,Distopia
+4,Artificer Xy'mox,4,5.55556,Distopia
+5,Lady Inerva Darkvein,5,27.7778,Distopia
+6,The Council of Blood,6,33.33336,Distopia
+7,Sludgefist,7,22.22224,Distopia
+8,Stone Legion Generals,8,66.66672,Distopia
+9,Sire Denathrius,9,55.5556,Distopia
+0,Shriekwing,0,5.55556,Yes Lads
+1,Huntsman Altimor,1,5.55556,Yes Lads
+2,Hungering Destroyer,2,5.55556,Yes Lads
+3,Sun King's Salvation,3,11.11112,Yes Lads
+4,Artificer Xy'mox,4,11.11112,Yes Lads
+5,Lady Inerva Darkvein,5,5.55556,Yes Lads
+6,The Council of Blood,6,16.66668,Yes Lads
+7,Sludgefist,7,19.44446,Yes Lads
+8,Stone Legion Generals,8,52.77782,Yes Lads
+9,Sire Denathrius,9,25.00002,Yes Lads
+0,Shriekwing,0,11.11112,Stormwall
+1,Huntsman Altimor,1,5.55556,Stormwall
+2,Hungering Destroyer,2,16.66668,Stormwall
+3,Sun King's Salvation,3,5.55556,Stormwall
+4,Artificer Xy'mox,4,22.22224,Stormwall
+5,Lady Inerva Darkvein,5,11.11112,Stormwall
+6,The Council of Blood,6,27.7778,Stormwall
+7,Sludgefist,7,36.11114,Stormwall
+8,Stone Legion Generals,8,44.44448,Stormwall
+9,Sire Denathrius,9,47.22226,Stormwall
+0,Shriekwing,0,5.55556,Pescorus
+1,Huntsman Altimor,1,16.66668,Pescorus
+2,Hungering Destroyer,2,5.55556,Pescorus
+3,Sun King's Salvation,3,16.66668,Pescorus
+4,Artificer Xy'mox,4,16.66668,Pescorus
+5,Lady Inerva Darkvein,5,0.0,Pescorus
+6,The Council of Blood,6,33.33336,Pescorus
+7,Sludgefist,7,38.88892,Pescorus
+8,Stone Legion Generals,8,72.22228,Pescorus
+9,Sire Denathrius,9,63.88894,Pescorus
+0,Shriekwing,0,5.55556,Htag La carpe
+1,Huntsman Altimor,1,5.55556,Htag La carpe
+2,Hungering Destroyer,2,11.11112,Htag La carpe
+3,Sun King's Salvation,3,11.11112,Htag La carpe
+4,Artificer Xy'mox,4,5.55556,Htag La carpe
+5,Lady Inerva Darkvein,5,5.55556,Htag La carpe
+6,The Council of Blood,6,22.22224,Htag La carpe
+7,Sludgefist,7,19.44446,Htag La carpe
+8,Stone Legion Generals,8,0.0,Htag La carpe
+0,Shriekwing,0,0.0,Loot FTW
+1,Huntsman Altimor,1,0.0,Loot FTW
+2,Hungering Destroyer,2,11.11112,Loot FTW
+3,Sun King's Salvation,3,5.55556,Loot FTW
+4,Artificer Xy'mox,4,16.66668,Loot FTW
+5,Lady Inerva Darkvein,5,27.7778,Loot FTW
+6,The Council of Blood,6,22.22224,Loot FTW
+7,Sludgefist,7,27.7778,Loot FTW
+8,Stone Legion Generals,8,69.4445,Loot FTW
+9,Sire Denathrius,9,66.66672,Loot FTW
+0,Shriekwing,0,0.0,Semantics
+1,Huntsman Altimor,1,11.11112,Semantics
+2,Hungering Destroyer,2,16.66668,Semantics
+3,Sun King's Salvation,3,11.11112,Semantics
+4,Artificer Xy'mox,4,27.7778,Semantics
+5,Lady Inerva Darkvein,5,11.11112,Semantics
+6,The Council of Blood,6,38.88892,Semantics
+7,Sludgefist,7,27.7778,Semantics
+8,Stone Legion Generals,8,77.77784,Semantics
+9,Sire Denathrius,9,61.11116,Semantics
+0,Shriekwing,0,5.55556,Denial of Service
+1,Huntsman Altimor,1,5.55556,Denial of Service
+2,Hungering Destroyer,2,22.22224,Denial of Service
+3,Sun King's Salvation,3,5.55556,Denial of Service
+4,Artificer Xy'mox,4,16.66668,Denial of Service
+5,Lady Inerva Darkvein,5,16.66668,Denial of Service
+6,The Council of Blood,6,22.22224,Denial of Service
+7,Sludgefist,7,33.33336,Denial of Service
+8,Stone Legion Generals,8,27.7778,Denial of Service
+9,Sire Denathrius,9,55.5556,Denial of Service
+0,Shriekwing,0,0.0,yeehaw
+1,Huntsman Altimor,1,5.55556,yeehaw
+2,Hungering Destroyer,2,13.8889,yeehaw
+3,Sun King's Salvation,3,11.11112,yeehaw
+4,Artificer Xy'mox,4,11.11112,yeehaw
+5,Lady Inerva Darkvein,5,16.66668,yeehaw
+6,The Council of Blood,6,13.8889,yeehaw
+0,Shriekwing,0,11.11112,Raiding Rainbows
+1,Huntsman Altimor,1,5.55556,Raiding Rainbows
+2,Hungering Destroyer,2,11.11112,Raiding Rainbows
+3,Sun King's Salvation,3,16.66668,Raiding Rainbows
+4,Artificer Xy'mox,4,16.66668,Raiding Rainbows
+5,Lady Inerva Darkvein,5,22.22224,Raiding Rainbows
+6,The Council of Blood,6,33.33336,Raiding Rainbows
+7,Sludgefist,7,33.33336,Raiding Rainbows
+8,Stone Legion Generals,8,86.11118,Raiding Rainbows
+9,Sire Denathrius,9,94.44452,Raiding Rainbows
+0,Shriekwing,0,11.11112,Epic Wipe
+1,Huntsman Altimor,1,0.0,Epic Wipe
+2,Hungering Destroyer,2,5.55556,Epic Wipe
+3,Sun King's Salvation,3,5.55556,Epic Wipe
+4,Artificer Xy'mox,4,11.11112,Epic Wipe
+5,Lady Inerva Darkvein,5,5.55556,Epic Wipe
+6,The Council of Blood,6,27.7778,Epic Wipe
+7,Sludgefist,7,55.5556,Epic Wipe
+8,Stone Legion Generals,8,50.00004,Epic Wipe
+9,Sire Denathrius,9,113.88898,Epic Wipe
+0,Shriekwing,0,5.55556,Synthesis
+1,Huntsman Altimor,1,5.55556,Synthesis
+2,Hungering Destroyer,2,22.22224,Synthesis
+3,Sun King's Salvation,3,27.7778,Synthesis
+4,Artificer Xy'mox,4,61.11112,Synthesis
+5,Lady Inerva Darkvein,5,16.66668,Synthesis
+6,The Council of Blood,6,77.7778,Synthesis
+7,Sludgefist,7,80.55557,Synthesis
+8,Stone Legion Generals,8,111.11112,Synthesis
+9,Sire Denathrius,9,80.55558,Synthesis
+0,Shriekwing,0,5.55556,Twisted Vortex
+1,Huntsman Altimor,1,16.66668,Twisted Vortex
+2,Hungering Destroyer,2,13.8889,Twisted Vortex
+3,Sun King's Salvation,3,16.66668,Twisted Vortex
+4,Artificer Xy'mox,4,16.66668,Twisted Vortex
+5,Lady Inerva Darkvein,5,5.55556,Twisted Vortex
+6,The Council of Blood,6,16.66668,Twisted Vortex
+7,Sludgefist,7,22.22224,Twisted Vortex
+8,Stone Legion Generals,8,38.88892,Twisted Vortex
+9,Sire Denathrius,9,27.7778,Twisted Vortex
+0,Shriekwing,0,0.0,Fun Detected
+1,Huntsman Altimor,1,11.11112,Fun Detected
+2,Hungering Destroyer,2,11.11112,Fun Detected
+3,Sun King's Salvation,3,11.11112,Fun Detected
+4,Artificer Xy'mox,4,22.22224,Fun Detected
+5,Lady Inerva Darkvein,5,5.55556,Fun Detected
+6,The Council of Blood,6,38.88892,Fun Detected
+7,Sludgefist,7,22.22224,Fun Detected
+8,Stone Legion Generals,8,94.44452,Fun Detected
+9,Sire Denathrius,9,77.77784,Fun Detected
+0,Shriekwing,0,11.11112,Scythe
+1,Huntsman Altimor,1,0.0,Scythe
+2,Hungering Destroyer,2,27.7778,Scythe
+3,Sun King's Salvation,3,16.66668,Scythe
+4,Artificer Xy'mox,4,30.55558,Scythe
+5,Lady Inerva Darkvein,5,22.22224,Scythe
+6,The Council of Blood,6,33.33336,Scythe
+7,Sludgefist,7,27.7778,Scythe
+8,Stone Legion Generals,8,61.11116,Scythe
+9,Sire Denathrius,9,55.5556,Scythe
+0,Shriekwing,0,11.11112,Moisty Boyz
+1,Huntsman Altimor,1,0.0,Moisty Boyz
+2,Hungering Destroyer,2,16.66668,Moisty Boyz
+3,Sun King's Salvation,3,5.55556,Moisty Boyz
+4,Artificer Xy'mox,4,16.66668,Moisty Boyz
+5,Lady Inerva Darkvein,5,5.55556,Moisty Boyz
+6,The Council of Blood,6,33.33336,Moisty Boyz
+7,Sludgefist,7,61.11116,Moisty Boyz
+8,Stone Legion Generals,8,75.00006,Moisty Boyz
+9,Sire Denathrius,9,77.77784,Moisty Boyz
+0,Shriekwing,0,0.0,Anger
+1,Huntsman Altimor,1,0.0,Anger
+2,Hungering Destroyer,2,16.66668,Anger
+3,Sun King's Salvation,3,11.11112,Anger
+4,Artificer Xy'mox,4,8.33334,Anger
+5,Lady Inerva Darkvein,5,5.55556,Anger
+6,The Council of Blood,6,22.22224,Anger
+7,Sludgefist,7,38.88892,Anger
+8,Stone Legion Generals,8,119.4445,Anger
+9,Sire Denathrius,9,80.55562,Anger
+0,Shriekwing,0,0.0,Drainlife
+1,Huntsman Altimor,1,5.55556,Drainlife
+2,Hungering Destroyer,2,22.22224,Drainlife
+3,Sun King's Salvation,3,11.11112,Drainlife
+4,Artificer Xy'mox,4,27.7778,Drainlife
+5,Lady Inerva Darkvein,5,16.66668,Drainlife
+6,The Council of Blood,6,44.44448,Drainlife
+7,Sludgefist,7,27.7778,Drainlife
+8,Stone Legion Generals,8,88.88896,Drainlife
+9,Sire Denathrius,9,113.88898,Drainlife
+0,Shriekwing,0,5.55556,Nascent
+1,Huntsman Altimor,1,11.11112,Nascent
+2,Hungering Destroyer,2,16.66668,Nascent
+3,Sun King's Salvation,3,22.22224,Nascent
+4,Artificer Xy'mox,4,80.55557,Nascent
+5,Lady Inerva Darkvein,5,11.11112,Nascent
+6,The Council of Blood,6,22.22224,Nascent
+7,Sludgefist,7,38.88892,Nascent
+8,Stone Legion Generals,8,155.55564,Nascent
+9,Sire Denathrius,9,244.44448,Nascent
+0,Shriekwing,0,11.11112,Proud Manlets
+1,Huntsman Altimor,1,0.0,Proud Manlets
+2,Hungering Destroyer,2,8.33334,Proud Manlets
+3,Sun King's Salvation,3,5.55556,Proud Manlets
+4,Artificer Xy'mox,4,38.88892,Proud Manlets
+5,Lady Inerva Darkvein,5,0.0,Proud Manlets
+6,The Council of Blood,6,19.44446,Proud Manlets
+7,Sludgefist,7,22.22224,Proud Manlets
+8,Stone Legion Generals,8,50.00004,Proud Manlets
+9,Sire Denathrius,9,116.66672,Proud Manlets
+0,Shriekwing,0,5.55556,Obsidium
+1,Huntsman Altimor,1,0.0,Obsidium
+2,Hungering Destroyer,2,11.11112,Obsidium
+3,Sun King's Salvation,3,22.22224,Obsidium
+4,Artificer Xy'mox,4,16.66668,Obsidium
+5,Lady Inerva Darkvein,5,11.11112,Obsidium
+6,The Council of Blood,6,38.88892,Obsidium
+7,Sludgefist,7,33.33336,Obsidium
+8,Stone Legion Generals,8,72.22228,Obsidium
+9,Sire Denathrius,9,108.33342,Obsidium
+0,Shriekwing,0,0.0,Decidedly Uncouth
+1,Huntsman Altimor,1,11.11112,Decidedly Uncouth
+2,Hungering Destroyer,2,16.66668,Decidedly Uncouth
+3,Sun King's Salvation,3,16.66668,Decidedly Uncouth
+4,Artificer Xy'mox,4,16.66668,Decidedly Uncouth
+5,Lady Inerva Darkvein,5,11.11112,Decidedly Uncouth
+6,The Council of Blood,6,27.7778,Decidedly Uncouth
+7,Sludgefist,7,30.55558,Decidedly Uncouth
+8,Stone Legion Generals,8,50.00004,Decidedly Uncouth
+9,Sire Denathrius,9,72.22228,Decidedly Uncouth
+0,Shriekwing,0,0.0,Edict
+1,Huntsman Altimor,1,11.11112,Edict
+2,Hungering Destroyer,2,5.55556,Edict
+3,Sun King's Salvation,3,50.0,Edict
+4,Artificer Xy'mox,4,11.11112,Edict
+5,Lady Inerva Darkvein,5,22.22224,Edict
+6,The Council of Blood,6,30.55558,Edict
+7,Sludgefist,7,38.88892,Edict
+8,Stone Legion Generals,8,55.5556,Edict
+9,Sire Denathrius,9,55.5556,Edict
+0,Shriekwing,0,5.55556,Aero
+1,Huntsman Altimor,1,11.11112,Aero
+2,Hungering Destroyer,2,5.55556,Aero
+3,Sun King's Salvation,3,33.33336,Aero
+4,Artificer Xy'mox,4,130.55558,Aero
+5,Lady Inerva Darkvein,5,22.22224,Aero
+6,The Council of Blood,6,116.66667,Aero
+7,Sludgefist,7,55.55556,Aero
+8,Stone Legion Generals,8,194.44448,Aero
+9,Sire Denathrius,9,288.88892,Aero
+0,Shriekwing,0,5.55556,SIGKILL
+1,Huntsman Altimor,1,11.11112,SIGKILL
+2,Hungering Destroyer,2,27.7778,SIGKILL
+3,Sun King's Salvation,3,33.33336,SIGKILL
+4,Artificer Xy'mox,4,27.7778,SIGKILL
+5,Lady Inerva Darkvein,5,11.11112,SIGKILL
+6,The Council of Blood,6,38.88892,SIGKILL
+7,Sludgefist,7,30.55558,SIGKILL
+8,Stone Legion Generals,8,61.11116,SIGKILL
+9,Sire Denathrius,9,86.11117,SIGKILL
+0,Shriekwing,0,5.55556,Adoration
+1,Huntsman Altimor,1,5.55556,Adoration
+2,Hungering Destroyer,2,11.11112,Adoration
+3,Sun King's Salvation,3,55.55556,Adoration
+4,Artificer Xy'mox,4,44.44448,Adoration
+5,Lady Inerva Darkvein,5,16.66668,Adoration
+6,The Council of Blood,6,72.22224,Adoration
+7,Sludgefist,7,77.7778,Adoration
+8,Stone Legion Generals,8,197.2223,Adoration
+9,Sire Denathrius,9,152.77786,Adoration
+0,Shriekwing,0,5.55556,Pogwarts
+1,Huntsman Altimor,1,0.0,Pogwarts
+2,Hungering Destroyer,2,0.0,Pogwarts
+3,Sun King's Salvation,3,5.55556,Pogwarts
+4,Artificer Xy'mox,4,5.55556,Pogwarts
+5,Lady Inerva Darkvein,5,13.8889,Pogwarts
+6,The Council of Blood,6,22.22224,Pogwarts
+7,Sludgefist,7,19.44446,Pogwarts
+8,Stone Legion Generals,8,41.6667,Pogwarts
+9,Sire Denathrius,9,58.33338,Pogwarts
+0,Shriekwing,0,2.77778,月刃
+1,Huntsman Altimor,1,0.0,月刃
+2,Hungering Destroyer,2,0.0,月刃
+3,Sun King's Salvation,3,5.55556,月刃
+4,Artificer Xy'mox,4,0.0,月刃
+5,Lady Inerva Darkvein,5,2.77778,月刃
+6,The Council of Blood,6,8.33334,月刃
+7,Sludgefist,7,8.33334,月刃
+8,Stone Legion Generals,8,11.11112,月刃
+9,Sire Denathrius,9,8.33334,月刃
+0,Shriekwing,0,2.77778,Frenzied Apes
+1,Huntsman Altimor,1,0.0,Frenzied Apes
+2,Hungering Destroyer,2,0.0,Frenzied Apes
+3,Sun King's Salvation,3,0.0,Frenzied Apes
+4,Artificer Xy'mox,4,0.0,Frenzied Apes
+5,Lady Inerva Darkvein,5,0.0,Frenzied Apes
+6,The Council of Blood,6,0.0,Frenzied Apes
+7,Sludgefist,7,8.33334,Frenzied Apes
+8,Stone Legion Generals,8,5.55556,Frenzied Apes
+9,Sire Denathrius,9,0.0,Frenzied Apes
+0,Shriekwing,0,0.0,Shelter
+1,Huntsman Altimor,1,0.0,Shelter
+2,Hungering Destroyer,2,0.0,Shelter
+3,Sun King's Salvation,3,0.0,Shelter
+4,Artificer Xy'mox,4,0.0,Shelter
+5,Lady Inerva Darkvein,5,2.77778,Shelter
+6,The Council of Blood,6,2.77778,Shelter
+7,Sludgefist,7,11.11112,Shelter
+8,Stone Legion Generals,8,25.00002,Shelter
+9,Sire Denathrius,9,19.44446,Shelter
+0,Shriekwing,0,5.55556,Tiras Valesh
+1,Huntsman Altimor,1,5.55556,Tiras Valesh
+2,Hungering Destroyer,2,5.55556,Tiras Valesh
+3,Sun King's Salvation,3,2.77778,Tiras Valesh
+4,Artificer Xy'mox,4,11.11112,Tiras Valesh
+5,Lady Inerva Darkvein,5,5.55556,Tiras Valesh
+6,The Council of Blood,6,5.55556,Tiras Valesh
+7,Sludgefist,7,11.11112,Tiras Valesh
+8,Stone Legion Generals,8,30.55558,Tiras Valesh
+9,Sire Denathrius,9,27.7778,Tiras Valesh
+0,Shriekwing,0,2.77778,Orden Inmortal
+1,Huntsman Altimor,1,2.77778,Orden Inmortal
+2,Hungering Destroyer,2,5.55556,Orden Inmortal
+3,Sun King's Salvation,3,2.77778,Orden Inmortal
+4,Artificer Xy'mox,4,5.55556,Orden Inmortal
+5,Lady Inerva Darkvein,5,5.55556,Orden Inmortal
+6,The Council of Blood,6,19.44446,Orden Inmortal
+7,Sludgefist,7,22.22224,Orden Inmortal
+8,Stone Legion Generals,8,27.7778,Orden Inmortal
+9,Sire Denathrius,9,36.11114,Orden Inmortal
+0,Shriekwing,0,0.0,ToYz
+1,Huntsman Altimor,1,2.77778,ToYz
+2,Hungering Destroyer,2,8.33334,ToYz
+3,Sun King's Salvation,3,5.55556,ToYz
+4,Artificer Xy'mox,4,2.77778,ToYz
+5,Lady Inerva Darkvein,5,2.77778,ToYz
+6,The Council of Blood,6,11.11112,ToYz
+7,Sludgefist,7,8.33334,ToYz
+8,Stone Legion Generals,8,19.44446,ToYz
+9,Sire Denathrius,9,27.7778,ToYz
+0,Hungering Destroyer,2,2.77778,One Tier Stand
+1,Stone Legion Generals,8,2.77778,One Tier Stand
+2,Sire Denathrius,9,0.0,One Tier Stand
+0,Shriekwing,0,0.0,Reload Dark
+1,Huntsman Altimor,1,0.0,Reload Dark
+2,Hungering Destroyer,2,16.66668,Reload Dark
+3,Sun King's Salvation,3,0.0,Reload Dark
+4,Artificer Xy'mox,4,2.77778,Reload Dark
+5,Lady Inerva Darkvein,5,2.77778,Reload Dark
+6,The Council of Blood,6,2.77778,Reload Dark
+7,Sludgefist,7,11.11112,Reload Dark
+8,Stone Legion Generals,8,30.55558,Reload Dark
+9,Sire Denathrius,9,50.00004,Reload Dark
+0,Shriekwing,0,0.0,nVus
+1,Huntsman Altimor,1,5.55556,nVus
+2,Hungering Destroyer,2,2.77778,nVus
+3,Sun King's Salvation,3,8.33334,nVus
+4,Artificer Xy'mox,4,11.11112,nVus
+5,Lady Inerva Darkvein,5,2.77778,nVus
+6,The Council of Blood,6,13.8889,nVus
+7,Sludgefist,7,16.66668,nVus
+8,Stone Legion Generals,8,27.7778,nVus
+9,Sire Denathrius,9,36.11114,nVus
+0,Shriekwing,0,0.0,Ultra Instinct
+1,Huntsman Altimor,1,8.33334,Ultra Instinct
+2,Hungering Destroyer,2,2.77778,Ultra Instinct
+3,Sun King's Salvation,3,2.77778,Ultra Instinct
+4,Artificer Xy'mox,4,13.8889,Ultra Instinct
+5,Lady Inerva Darkvein,5,2.77778,Ultra Instinct
+6,The Council of Blood,6,13.8889,Ultra Instinct
+7,Sludgefist,7,11.11112,Ultra Instinct
+8,Stone Legion Generals,8,30.55558,Ultra Instinct
+9,Sire Denathrius,9,27.7778,Ultra Instinct
+0,Shriekwing,0,0.0,GordoTiburonSi
+1,Huntsman Altimor,1,0.0,GordoTiburonSi
+2,Hungering Destroyer,2,8.33334,GordoTiburonSi
+3,Sun King's Salvation,3,5.55556,GordoTiburonSi
+4,Artificer Xy'mox,4,2.77778,GordoTiburonSi
+5,Lady Inerva Darkvein,5,11.11112,GordoTiburonSi
+6,The Council of Blood,6,13.8889,GordoTiburonSi
+7,Sludgefist,7,16.66668,GordoTiburonSi
+8,Stone Legion Generals,8,25.00002,GordoTiburonSi
+9,Sire Denathrius,9,30.55558,GordoTiburonSi
+0,Shriekwing,0,5.55556,Insight
+1,Huntsman Altimor,1,16.66668,Insight
+2,Hungering Destroyer,2,13.8889,Insight
+3,Sun King's Salvation,3,16.66668,Insight
+4,Artificer Xy'mox,4,13.8889,Insight
+5,Lady Inerva Darkvein,5,11.11112,Insight
+6,The Council of Blood,6,30.55558,Insight
+7,Sludgefist,7,36.11114,Insight
+8,Stone Legion Generals,8,63.88892,Insight
+9,Sire Denathrius,9,130.55562,Insight
+0,Shriekwing,0,2.77778,Blur
+1,Huntsman Altimor,1,2.77778,Blur
+2,Hungering Destroyer,2,5.55556,Blur
+3,Sun King's Salvation,3,5.55556,Blur
+4,Artificer Xy'mox,4,5.55556,Blur
+5,Lady Inerva Darkvein,5,2.77778,Blur
+6,The Council of Blood,6,2.77778,Blur
+7,Sludgefist,7,8.33334,Blur
+8,Stone Legion Generals,8,22.22224,Blur
+9,Sire Denathrius,9,27.7778,Blur
+0,Shriekwing,0,2.77778,Divergence
+1,Huntsman Altimor,1,0.0,Divergence
+2,Hungering Destroyer,2,5.55556,Divergence
+3,Sun King's Salvation,3,2.77778,Divergence
+4,Artificer Xy'mox,4,13.8889,Divergence
+5,Lady Inerva Darkvein,5,8.33334,Divergence
+6,The Council of Blood,6,38.8889,Divergence
+7,Sludgefist,7,5.55556,Divergence
+8,Stone Legion Generals,8,27.7778,Divergence
+9,Sire Denathrius,9,27.7778,Divergence
+0,Shriekwing,0,0.0,Wined N Dined
+1,Huntsman Altimor,1,5.55556,Wined N Dined
+2,Hungering Destroyer,2,2.77778,Wined N Dined
+3,Sun King's Salvation,3,11.11112,Wined N Dined
+4,Artificer Xy'mox,4,5.55556,Wined N Dined
+5,Lady Inerva Darkvein,5,8.33334,Wined N Dined
+6,The Council of Blood,6,16.66668,Wined N Dined
+7,Sludgefist,7,8.33334,Wined N Dined
+8,Stone Legion Generals,8,30.55558,Wined N Dined
+9,Sire Denathrius,9,30.55558,Wined N Dined
+0,Shriekwing,0,0.0,Defenestrate
+1,Huntsman Altimor,1,5.55556,Defenestrate
+2,Hungering Destroyer,2,25.0,Defenestrate
+3,Sun King's Salvation,3,22.22222,Defenestrate
+4,Artificer Xy'mox,4,2.77778,Defenestrate
+5,Lady Inerva Darkvein,5,5.55556,Defenestrate
+6,The Council of Blood,6,58.33334,Defenestrate
+7,Sludgefist,7,47.22222,Defenestrate
+8,Stone Legion Generals,8,86.11112,Defenestrate
+9,Sire Denathrius,9,61.11112,Defenestrate
+0,Shriekwing,0,2.77778,DMG
+1,Huntsman Altimor,1,5.55556,DMG
+2,Hungering Destroyer,2,5.55556,DMG
+3,Sun King's Salvation,3,5.55556,DMG
+4,Artificer Xy'mox,4,8.33334,DMG
+5,Lady Inerva Darkvein,5,22.22222,DMG
+6,The Council of Blood,6,36.11112,DMG
+7,Sludgefist,7,72.22221,DMG
+8,Stone Legion Generals,8,72.22224,DMG
+9,Sire Denathrius,9,41.66668,DMG
+0,Shriekwing,0,11.11112,Nerd Rage
+1,Huntsman Altimor,1,8.33334,Nerd Rage
+2,Hungering Destroyer,2,38.8889,Nerd Rage
+3,Sun King's Salvation,3,30.55556,Nerd Rage
+4,Artificer Xy'mox,4,36.11112,Nerd Rage
+5,Lady Inerva Darkvein,5,97.22222,Nerd Rage
+6,The Council of Blood,6,113.8889,Nerd Rage
+7,Sludgefist,7,77.77778,Nerd Rage
+8,Stone Legion Generals,8,188.88892,Nerd Rage
+9,Sire Denathrius,9,183.33334,Nerd Rage
+0,Shriekwing,0,0.0,Ascension
+1,Huntsman Altimor,1,2.77778,Ascension
+2,Hungering Destroyer,2,2.77778,Ascension
+3,Sun King's Salvation,3,0.0,Ascension
+4,Artificer Xy'mox,4,2.77778,Ascension
+5,Lady Inerva Darkvein,5,0.0,Ascension
+6,The Council of Blood,6,2.77778,Ascension
+7,Sludgefist,7,5.55556,Ascension
+8,Stone Legion Generals,8,2.77778,Ascension
+9,Sire Denathrius,9,5.55556,Ascension
+0,Shriekwing,0,2.77778,Goodlife
+1,Huntsman Altimor,1,2.77778,Goodlife
+2,Hungering Destroyer,2,8.33334,Goodlife
+3,Sun King's Salvation,3,11.11112,Goodlife
+4,Artificer Xy'mox,4,5.55556,Goodlife
+5,Lady Inerva Darkvein,5,13.8889,Goodlife
+6,The Council of Blood,6,16.66668,Goodlife
+7,Sludgefist,7,11.11112,Goodlife
+8,Stone Legion Generals,8,27.7778,Goodlife
+9,Sire Denathrius,9,33.33336,Goodlife
+0,Shriekwing,0,5.55556,Perseus
+1,Huntsman Altimor,1,0.0,Perseus
+2,Hungering Destroyer,2,22.22224,Perseus
+3,Sun King's Salvation,3,11.11112,Perseus
+4,Artificer Xy'mox,4,27.7778,Perseus
+5,Lady Inerva Darkvein,5,16.66668,Perseus
+6,The Council of Blood,6,50.00004,Perseus
+7,Sludgefist,7,50.00004,Perseus
+8,Stone Legion Generals,8,100.00004,Perseus
+9,Sire Denathrius,9,116.66672,Perseus
+0,Shriekwing,0,13.8889,Speakeasy
+1,Huntsman Altimor,1,0.0,Speakeasy
+2,Hungering Destroyer,2,11.11112,Speakeasy
+3,Sun King's Salvation,3,16.66668,Speakeasy
+4,Artificer Xy'mox,4,16.66668,Speakeasy
+5,Lady Inerva Darkvein,5,11.11112,Speakeasy
+6,The Council of Blood,6,22.22224,Speakeasy
+7,Sludgefist,7,61.11112,Speakeasy
+8,Stone Legion Generals,8,138.88892,Speakeasy
+9,Sire Denathrius,9,180.55558,Speakeasy
+0,Shriekwing,0,0.0,Disconnect
+1,Huntsman Altimor,1,5.55556,Disconnect
+2,Hungering Destroyer,2,55.55556,Disconnect
+3,Sun King's Salvation,3,44.44444,Disconnect
+4,Artificer Xy'mox,4,97.22222,Disconnect
+5,Lady Inerva Darkvein,5,5.55556,Disconnect
+6,The Council of Blood,6,233.33332,Disconnect
+7,Sludgefist,7,122.22224,Disconnect
+8,Stone Legion Generals,8,180.55558,Disconnect
+9,Sire Denathrius,9,224.22224,Disconnect
+0,Shriekwing,0,16.66668,Guild of Stoven
+1,Huntsman Altimor,1,0.0,Guild of Stoven
+2,Hungering Destroyer,2,11.11112,Guild of Stoven
+3,Sun King's Salvation,3,11.11112,Guild of Stoven
+4,Artificer Xy'mox,4,16.66668,Guild of Stoven
+5,Lady Inerva Darkvein,5,11.11112,Guild of Stoven
+6,The Council of Blood,6,16.66668,Guild of Stoven
+7,Sludgefist,7,11.11112,Guild of Stoven
+8,Stone Legion Generals,8,47.22226,Guild of Stoven
+9,Sire Denathrius,9,79.77784,Guild of Stoven
+0,Shriekwing,0,0.0,the long nap
+1,Huntsman Altimor,1,0.0,the long nap
+2,Hungering Destroyer,2,0.0,the long nap
+3,Sun King's Salvation,3,0.0,the long nap
+4,Artificer Xy'mox,4,0.0,the long nap
+5,Lady Inerva Darkvein,5,0.0,the long nap
+6,The Council of Blood,6,0.0,the long nap
+7,Sludgefist,7,0.0,the long nap
+8,Stone Legion Generals,8,5.55556,the long nap
+9,Sire Denathrius,9,2.77778,the long nap
+0,Shriekwing,0,5.55556,Barbershop Quartet
+1,Huntsman Altimor,1,0.0,Barbershop Quartet
+2,Hungering Destroyer,2,16.66668,Barbershop Quartet
+3,Sun King's Salvation,3,11.11112,Barbershop Quartet
+4,Artificer Xy'mox,4,25.00002,Barbershop Quartet
+5,Lady Inerva Darkvein,5,11.11112,Barbershop Quartet
+6,The Council of Blood,6,33.33336,Barbershop Quartet
+7,Sludgefist,7,27.7778,Barbershop Quartet
+8,Stone Legion Generals,8,55.5556,Barbershop Quartet
+9,Sire Denathrius,9,63.88894,Barbershop Quartet
+0,Shriekwing,0,5.55556,Merely A Setback
+1,Huntsman Altimor,1,13.8889,Merely A Setback
+2,Hungering Destroyer,2,0.0,Merely A Setback
+3,Sun King's Salvation,3,16.66668,Merely A Setback
+4,Artificer Xy'mox,4,27.7778,Merely A Setback
+5,Lady Inerva Darkvein,5,11.11112,Merely A Setback
+6,The Council of Blood,6,33.33336,Merely A Setback
+7,Sludgefist,7,27.7778,Merely A Setback
+8,Stone Legion Generals,8,33.33336,Merely A Setback
+9,Sire Denathrius,9,22.22224,Merely A Setback
+0,Shriekwing,0,5.55556,Hideout
+1,Huntsman Altimor,1,5.55556,Hideout
+2,Hungering Destroyer,2,0.0,Hideout
+3,Sun King's Salvation,3,0.0,Hideout
+4,The Council of Blood,6,0.0,Hideout
+5,Sludgefist,7,0.0,Hideout
+0,Shriekwing,0,0.0,Nyratic and Dytonic
+1,Huntsman Altimor,1,5.55556,Nyratic and Dytonic
+2,Hungering Destroyer,2,22.22224,Nyratic and Dytonic
+3,Sun King's Salvation,3,22.22224,Nyratic and Dytonic
+4,Artificer Xy'mox,4,16.66668,Nyratic and Dytonic
+5,Lady Inerva Darkvein,5,16.66668,Nyratic and Dytonic
+6,The Council of Blood,6,33.33336,Nyratic and Dytonic
+7,Sludgefist,7,30.55558,Nyratic and Dytonic
+8,Stone Legion Generals,8,94.44452,Nyratic and Dytonic
+9,Sire Denathrius,9,133.33344,Nyratic and Dytonic
+0,Shriekwing,0,5.55556,Fangs of Fenris
+1,Huntsman Altimor,1,5.55556,Fangs of Fenris
+2,Hungering Destroyer,2,11.11112,Fangs of Fenris
+3,Sun King's Salvation,3,16.66668,Fangs of Fenris
+4,Artificer Xy'mox,4,16.66668,Fangs of Fenris
+5,Lady Inerva Darkvein,5,16.66668,Fangs of Fenris
+6,The Council of Blood,6,16.66668,Fangs of Fenris
+7,Sludgefist,7,22.22224,Fangs of Fenris
+8,Stone Legion Generals,8,41.6667,Fangs of Fenris
+9,Sire Denathrius,9,72.22228,Fangs of Fenris
+0,Shriekwing,0,0.0,Skepsis
+1,Huntsman Altimor,1,5.55556,Skepsis
+2,Hungering Destroyer,2,16.66668,Skepsis
+3,Sun King's Salvation,3,22.22224,Skepsis
+4,Artificer Xy'mox,4,16.66668,Skepsis
+5,Lady Inerva Darkvein,5,8.33334,Skepsis
+6,The Council of Blood,6,22.22224,Skepsis
+7,Sludgefist,7,11.11112,Skepsis
+8,Stone Legion Generals,8,33.33336,Skepsis
+9,Sire Denathrius,9,50.00004,Skepsis
+0,Shriekwing,0,5.55556,Rude
+1,Huntsman Altimor,1,5.55556,Rude
+2,Hungering Destroyer,2,16.66668,Rude
+3,Sun King's Salvation,3,16.66668,Rude
+4,Artificer Xy'mox,4,25.00002,Rude
+5,Lady Inerva Darkvein,5,5.55556,Rude
+6,The Council of Blood,6,27.7778,Rude
+7,Sludgefist,7,27.7778,Rude
+8,Stone Legion Generals,8,88.88896,Rude
+9,Sire Denathrius,9,50.00004,Rude
+0,Shriekwing,0,0.0,External
+1,Huntsman Altimor,1,8.33334,External
+2,Hungering Destroyer,2,5.55556,External
+3,Sun King's Salvation,3,27.7778,External
+4,Artificer Xy'mox,4,16.66668,External
+5,Lady Inerva Darkvein,5,0.0,External
+6,The Council of Blood,6,11.11112,External
+7,Sludgefist,7,22.22224,External
+8,Stone Legion Generals,8,25.00002,External
+9,Sire Denathrius,9,44.44448,External
+0,Shriekwing,0,0.0,Overraided
+1,Huntsman Altimor,1,5.55556,Overraided
+2,Hungering Destroyer,2,11.11112,Overraided
+3,Sun King's Salvation,3,16.66668,Overraided
+4,Artificer Xy'mox,4,22.22224,Overraided
+5,Lady Inerva Darkvein,5,16.66668,Overraided
+6,The Council of Blood,6,22.22224,Overraided
+7,Sludgefist,7,27.7778,Overraided
+8,Stone Legion Generals,8,61.11116,Overraided
+9,Sire Denathrius,9,72.22228,Overraided
+0,Shriekwing,0,0.0,Mindset
+1,Huntsman Altimor,1,0.0,Mindset
+2,Hungering Destroyer,2,22.22224,Mindset
+3,Sun King's Salvation,3,5.55556,Mindset
+4,Artificer Xy'mox,4,22.22224,Mindset
+5,Lady Inerva Darkvein,5,16.66668,Mindset
+6,The Council of Blood,6,50.00004,Mindset
+7,Sludgefist,7,55.5556,Mindset
+8,Stone Legion Generals,8,88.88896,Mindset
+9,Sire Denathrius,9,102.77786,Mindset
+0,Shriekwing,0,0.0,Avalerion
+1,Huntsman Altimor,1,11.11112,Avalerion
+2,Hungering Destroyer,2,13.8889,Avalerion
+3,Sun King's Salvation,3,5.55556,Avalerion
+4,Artificer Xy'mox,4,22.22224,Avalerion
+5,Lady Inerva Darkvein,5,0.0,Avalerion
+6,The Council of Blood,6,22.22224,Avalerion
+7,Sludgefist,7,22.22224,Avalerion
+8,Stone Legion Generals,8,47.22226,Avalerion
+9,Sire Denathrius,9,61.11116,Avalerion
+0,Shriekwing,0,0.0,Most Hated
+1,Huntsman Altimor,1,0.0,Most Hated
+2,Hungering Destroyer,2,0.0,Most Hated
+3,Sun King's Salvation,3,0.0,Most Hated
+4,Artificer Xy'mox,4,0.0,Most Hated
+5,Lady Inerva Darkvein,5,0.0,Most Hated
+6,The Council of Blood,6,0.0,Most Hated
+7,Sludgefist,7,0.0,Most Hated
+8,Sire Denathrius,9,5.55556,Most Hated
+0,Shriekwing,0,0.0,TEAM TURbO
+1,Huntsman Altimor,1,0.0,TEAM TURbO
+2,Hungering Destroyer,2,11.11112,TEAM TURbO
+3,Sun King's Salvation,3,11.11112,TEAM TURbO
+4,Artificer Xy'mox,4,16.66668,TEAM TURbO
+5,Lady Inerva Darkvein,5,11.11112,TEAM TURbO
+6,The Council of Blood,6,19.44446,TEAM TURbO
+7,Sludgefist,7,13.8889,TEAM TURbO
+8,Stone Legion Generals,8,47.22226,TEAM TURbO
+9,Sire Denathrius,9,33.33336,TEAM TURbO
+0,Stone Legion Generals,8,13.8889,Mental Exiles
+0,Shriekwing,0,11.11112,Reprogress Live
+1,Huntsman Altimor,1,0.0,Reprogress Live
+2,Hungering Destroyer,2,16.66668,Reprogress Live
+3,Sun King's Salvation,3,5.55556,Reprogress Live
+4,Artificer Xy'mox,4,11.11112,Reprogress Live
+5,Lady Inerva Darkvein,5,0.0,Reprogress Live
+6,The Council of Blood,6,22.22224,Reprogress Live
+7,Sludgefist,7,11.11112,Reprogress Live
+8,Stone Legion Generals,8,44.44448,Reprogress Live
+9,Sire Denathrius,9,69.4445,Reprogress Live
+0,Shriekwing,0,5.55556,Raze
+1,Huntsman Altimor,1,16.66668,Raze
+2,Hungering Destroyer,2,27.7778,Raze
+3,Sun King's Salvation,3,22.22224,Raze
+4,Artificer Xy'mox,4,27.7778,Raze
+5,Lady Inerva Darkvein,5,16.66668,Raze
+6,The Council of Blood,6,38.88892,Raze
+7,Sludgefist,7,38.88892,Raze
+8,Stone Legion Generals,8,75.00006,Raze
+9,Sire Denathrius,9,83.3334,Raze
+0,Shriekwing,0,0.0,The Crab Bucket
+1,Huntsman Altimor,1,0.0,The Crab Bucket
+2,Hungering Destroyer,2,0.0,The Crab Bucket
+3,Sun King's Salvation,3,16.66668,The Crab Bucket
+4,Artificer Xy'mox,4,11.11112,The Crab Bucket
+5,Lady Inerva Darkvein,5,22.22224,The Crab Bucket
+6,The Council of Blood,6,16.66668,The Crab Bucket
+7,Sludgefist,7,25.00002,The Crab Bucket
+8,Stone Legion Generals,8,55.5556,The Crab Bucket
+9,Sire Denathrius,9,75.00006,The Crab Bucket
+0,Shriekwing,0,2.77778,LENG SQUAD
+1,Huntsman Altimor,1,0.0,LENG SQUAD
+2,Hungering Destroyer,2,5.55556,LENG SQUAD
+3,Sun King's Salvation,3,8.33334,LENG SQUAD
+4,Artificer Xy'mox,4,5.55556,LENG SQUAD
+5,Lady Inerva Darkvein,5,5.55556,LENG SQUAD
+6,The Council of Blood,6,19.44446,LENG SQUAD
+7,Sludgefist,7,11.11112,LENG SQUAD
+8,Stone Legion Generals,8,27.7778,LENG SQUAD
+9,Sire Denathrius,9,19.44446,LENG SQUAD
+0,Shriekwing,0,0.0,Redhands
+1,Huntsman Altimor,1,0.0,Redhands
+2,Hungering Destroyer,2,0.0,Redhands
+3,Sun King's Salvation,3,0.0,Redhands
+4,Artificer Xy'mox,4,2.77778,Redhands
+5,Lady Inerva Darkvein,5,8.33334,Redhands
+6,The Council of Blood,6,0.0,Redhands
+7,Sludgefist,7,0.0,Redhands
+8,Stone Legion Generals,8,2.77778,Redhands
+0,Shriekwing,0,0.0,Pepelands
+1,Huntsman Altimor,1,5.55556,Pepelands
+2,Hungering Destroyer,2,2.77778,Pepelands
+3,Sun King's Salvation,3,8.33334,Pepelands
+4,Artificer Xy'mox,4,8.33334,Pepelands
+5,Lady Inerva Darkvein,5,8.33334,Pepelands
+6,The Council of Blood,6,8.33334,Pepelands
+7,Sludgefist,7,11.11112,Pepelands
+8,Stone Legion Generals,8,30.55558,Pepelands
+9,Sire Denathrius,9,30.55558,Pepelands
+0,Shriekwing,0,2.77778,Malorum
+1,Huntsman Altimor,1,5.55556,Malorum
+2,Hungering Destroyer,2,2.77778,Malorum
+3,Sun King's Salvation,3,8.33334,Malorum
+4,Artificer Xy'mox,4,5.55556,Malorum
+5,Lady Inerva Darkvein,5,8.33334,Malorum
+6,The Council of Blood,6,8.33334,Malorum
+7,Sludgefist,7,13.8889,Malorum
+8,Stone Legion Generals,8,25.00002,Malorum
+9,Sire Denathrius,9,8.33334,Malorum
+0,Shriekwing,0,8.33334,Back To Business
+1,Huntsman Altimor,1,2.77778,Back To Business
+2,Hungering Destroyer,2,8.33334,Back To Business
+3,Sun King's Salvation,3,5.55556,Back To Business
+4,Artificer Xy'mox,4,5.55556,Back To Business
+5,Lady Inerva Darkvein,5,2.77778,Back To Business
+6,The Council of Blood,6,2.77778,Back To Business
+7,Sludgefist,7,8.33334,Back To Business
+8,Stone Legion Generals,8,25.00002,Back To Business
+0,Shriekwing,0,2.77778,Axon Terminal
+1,Huntsman Altimor,1,5.55556,Axon Terminal
+2,Hungering Destroyer,2,8.33334,Axon Terminal
+3,Sun King's Salvation,3,8.33334,Axon Terminal
+4,Artificer Xy'mox,4,11.11112,Axon Terminal
+5,Lady Inerva Darkvein,5,5.55556,Axon Terminal
+6,The Council of Blood,6,19.44446,Axon Terminal
+7,Sludgefist,7,13.8889,Axon Terminal
+8,Stone Legion Generals,8,50.00004,Axon Terminal
+9,Sire Denathrius,9,38.88892,Axon Terminal
+0,Shriekwing,0,0.0,Curse of Years
+1,Huntsman Altimor,1,2.77778,Curse of Years
+2,Hungering Destroyer,2,5.55556,Curse of Years
+3,Sun King's Salvation,3,5.55556,Curse of Years
+4,Artificer Xy'mox,4,8.33334,Curse of Years
+5,Lady Inerva Darkvein,5,5.55556,Curse of Years
+6,The Council of Blood,6,11.11112,Curse of Years
+7,Sludgefist,7,13.8889,Curse of Years
+8,Stone Legion Generals,8,36.11114,Curse of Years
+9,Sire Denathrius,9,25.00002,Curse of Years
+0,Shriekwing,0,5.55556,Arise
+1,Huntsman Altimor,1,5.55556,Arise
+2,Hungering Destroyer,2,2.77778,Arise
+3,Sun King's Salvation,3,13.8889,Arise
+4,Artificer Xy'mox,4,2.77778,Arise
+5,Lady Inerva Darkvein,5,2.77778,Arise
+6,The Council of Blood,6,19.44446,Arise
+7,Sludgefist,7,11.11112,Arise
+8,Stone Legion Generals,8,30.55558,Arise
+9,Sire Denathrius,9,38.88892,Arise
+0,Shriekwing,0,0.0,A Necessary Evil
+1,Huntsman Altimor,1,5.55556,A Necessary Evil
+2,Hungering Destroyer,2,2.77778,A Necessary Evil
+3,Sun King's Salvation,3,5.55556,A Necessary Evil
+4,Artificer Xy'mox,4,5.55556,A Necessary Evil
+5,Lady Inerva Darkvein,5,5.55556,A Necessary Evil
+6,The Council of Blood,6,16.66668,A Necessary Evil
+7,Sludgefist,7,13.8889,A Necessary Evil
+8,Stone Legion Generals,8,25.00002,A Necessary Evil
+9,Sire Denathrius,9,33.33336,A Necessary Evil
+0,Shriekwing,0,0.0,Les Croisés
+1,Huntsman Altimor,1,0.0,Les Croisés
+2,Hungering Destroyer,2,2.77778,Les Croisés
+3,Sun King's Salvation,3,5.55556,Les Croisés
+4,Artificer Xy'mox,4,5.55556,Les Croisés
+5,Lady Inerva Darkvein,5,5.55556,Les Croisés
+6,The Council of Blood,6,5.55556,Les Croisés
+7,Sludgefist,7,8.33334,Les Croisés
+8,Stone Legion Generals,8,19.44446,Les Croisés
+9,Sire Denathrius,9,33.33336,Les Croisés
+0,Shriekwing,0,0.0,Swiss Prime
+1,Huntsman Altimor,1,2.77778,Swiss Prime
+2,Hungering Destroyer,2,2.77778,Swiss Prime
+3,Sun King's Salvation,3,5.55556,Swiss Prime
+4,Artificer Xy'mox,4,8.33334,Swiss Prime
+5,Lady Inerva Darkvein,5,2.77778,Swiss Prime
+6,The Council of Blood,6,19.44446,Swiss Prime
+7,Sludgefist,7,5.55556,Swiss Prime
+8,Stone Legion Generals,8,27.7778,Swiss Prime
+9,Sire Denathrius,9,22.22224,Swiss Prime
+0,Shriekwing,0,0.0,Rederiet
+1,Huntsman Altimor,1,0.0,Rederiet
+2,Hungering Destroyer,2,0.0,Rederiet
+3,Sun King's Salvation,3,0.0,Rederiet
+4,Artificer Xy'mox,4,2.77778,Rederiet
+5,Lady Inerva Darkvein,5,0.0,Rederiet
+6,The Council of Blood,6,0.0,Rederiet
+7,Sludgefist,7,0.0,Rederiet
+8,Stone Legion Generals,8,2.77778,Rederiet
+9,Sire Denathrius,9,19.44446,Rederiet
+0,Shriekwing,0,0.0,Too Much Fun
+1,Huntsman Altimor,1,0.0,Too Much Fun
+2,Hungering Destroyer,2,2.77778,Too Much Fun
+3,Sun King's Salvation,3,2.77778,Too Much Fun
+4,Artificer Xy'mox,4,8.33334,Too Much Fun
+5,Lady Inerva Darkvein,5,5.55556,Too Much Fun
+6,The Council of Blood,6,11.11112,Too Much Fun
+7,Sludgefist,7,8.33334,Too Much Fun
+8,Stone Legion Generals,8,33.33336,Too Much Fun
+9,Sire Denathrius,9,30.55558,Too Much Fun
+0,Shriekwing,0,0.0,Augure
+1,Huntsman Altimor,1,2.77778,Augure
+2,Hungering Destroyer,2,2.77778,Augure
+3,Sun King's Salvation,3,5.55556,Augure
+4,Artificer Xy'mox,4,5.55556,Augure
+5,Lady Inerva Darkvein,5,5.55556,Augure
+6,The Council of Blood,6,11.11112,Augure
+7,Sludgefist,7,5.55556,Augure
+8,Stone Legion Generals,8,27.7778,Augure
+9,Sire Denathrius,9,33.33336,Augure
+0,Shriekwing,0,8.33334,Ad Elysium
+1,Huntsman Altimor,1,5.55556,Ad Elysium
+2,Hungering Destroyer,2,19.44446,Ad Elysium
+3,Sun King's Salvation,3,11.11112,Ad Elysium
+4,Artificer Xy'mox,4,16.66668,Ad Elysium
+5,Lady Inerva Darkvein,5,16.66668,Ad Elysium
+6,The Council of Blood,6,27.7778,Ad Elysium
+7,Sludgefist,7,33.33336,Ad Elysium
+8,Stone Legion Generals,8,50.00004,Ad Elysium
+9,Sire Denathrius,9,55.5556,Ad Elysium
+0,Shriekwing,0,2.77778,Reverse Polarity
+1,Huntsman Altimor,1,2.77778,Reverse Polarity
+2,Hungering Destroyer,2,5.55556,Reverse Polarity
+3,Sun King's Salvation,3,2.77778,Reverse Polarity
+4,Artificer Xy'mox,4,2.77778,Reverse Polarity
+5,Lady Inerva Darkvein,5,5.55556,Reverse Polarity
+6,The Council of Blood,6,16.66668,Reverse Polarity
+7,Sludgefist,7,5.55556,Reverse Polarity
+8,Stone Legion Generals,8,22.22224,Reverse Polarity
+9,Sire Denathrius,9,27.7778,Reverse Polarity
+0,Shriekwing,0,0.0,my bad I guess
+1,Huntsman Altimor,1,0.0,my bad I guess
+2,Hungering Destroyer,2,0.0,my bad I guess
+3,Sun King's Salvation,3,0.0,my bad I guess
+4,Artificer Xy'mox,4,0.0,my bad I guess
+5,Lady Inerva Darkvein,5,0.0,my bad I guess
+6,The Council of Blood,6,2.77778,my bad I guess
+7,Sludgefist,7,2.77778,my bad I guess
+8,Stone Legion Generals,8,5.55556,my bad I guess
+9,Sire Denathrius,9,11.11112,my bad I guess
+0,Shriekwing,0,0.0,Infinite
+1,Huntsman Altimor,1,5.55556,Infinite
+2,Hungering Destroyer,2,11.11112,Infinite
+3,Sun King's Salvation,3,11.11112,Infinite
+4,Artificer Xy'mox,4,19.44446,Infinite
+5,Lady Inerva Darkvein,5,8.33334,Infinite
+6,The Council of Blood,6,13.8889,Infinite
+7,Sludgefist,7,16.66668,Infinite
+8,Stone Legion Generals,8,36.11114,Infinite
+9,Sire Denathrius,9,47.22226,Infinite
+0,Shriekwing,0,5.55556,Bad Omen
+1,Huntsman Altimor,1,2.77778,Bad Omen
+2,Hungering Destroyer,2,5.55556,Bad Omen
+3,Sun King's Salvation,3,8.33334,Bad Omen
+4,Artificer Xy'mox,4,5.55556,Bad Omen
+5,Lady Inerva Darkvein,5,2.77778,Bad Omen
+6,The Council of Blood,6,8.33334,Bad Omen
+7,Sludgefist,7,13.8889,Bad Omen
+8,Stone Legion Generals,8,22.22224,Bad Omen
+9,Sire Denathrius,9,30.55558,Bad Omen
+0,Shriekwing,0,2.77778,Dead On my screen
+1,Huntsman Altimor,1,2.77778,Dead On my screen
+2,Hungering Destroyer,2,11.11112,Dead On my screen
+3,Sun King's Salvation,3,16.66668,Dead On my screen
+4,Artificer Xy'mox,4,8.33334,Dead On my screen
+5,Lady Inerva Darkvein,5,5.55556,Dead On my screen
+6,The Council of Blood,6,16.66668,Dead On my screen
+7,Sludgefist,7,16.66668,Dead On my screen
+8,Stone Legion Generals,8,27.7778,Dead On my screen
+9,Sire Denathrius,9,38.88892,Dead On my screen
+0,Shriekwing,0,0.0,Purified
+1,Huntsman Altimor,1,2.77778,Purified
+2,Hungering Destroyer,2,8.33334,Purified
+3,Sun King's Salvation,3,5.55556,Purified
+4,Artificer Xy'mox,4,2.77778,Purified
+5,Lady Inerva Darkvein,5,11.11112,Purified
+6,The Council of Blood,6,13.8889,Purified
+7,Sludgefist,7,8.33334,Purified
+8,Stone Legion Generals,8,47.22226,Purified
+9,Sire Denathrius,9,30.55558,Purified
+0,Shriekwing,0,5.55556,UndisputeD
+1,Huntsman Altimor,1,8.33334,UndisputeD
+2,Hungering Destroyer,2,5.55556,UndisputeD
+3,Sun King's Salvation,3,5.55556,UndisputeD
+4,Artificer Xy'mox,4,11.11112,UndisputeD
+5,Lady Inerva Darkvein,5,11.11112,UndisputeD
+6,The Council of Blood,6,16.66668,UndisputeD
+7,Sludgefist,7,8.33334,UndisputeD
+8,Stone Legion Generals,8,36.11114,UndisputeD
+9,Sire Denathrius,9,44.44448,UndisputeD
+0,Shriekwing,0,0.0,constant
+1,Huntsman Altimor,1,2.77778,constant
+2,Hungering Destroyer,2,11.11112,constant
+3,Sun King's Salvation,3,8.33334,constant
+4,Artificer Xy'mox,4,13.8889,constant
+5,Lady Inerva Darkvein,5,5.55556,constant
+6,The Council of Blood,6,13.8889,constant
+7,Sludgefist,7,13.8889,constant
+8,Stone Legion Generals,8,33.33336,constant
+9,Sire Denathrius,9,36.11114,constant
+0,Sludgefist,7,2.77778,Agony
+1,Stone Legion Generals,8,2.77778,Agony
+2,Sire Denathrius,9,2.77778,Agony
+0,Shriekwing,0,0.0,Faded
+1,Huntsman Altimor,1,5.55556,Faded
+2,Hungering Destroyer,2,5.55556,Faded
+3,Sun King's Salvation,3,5.55556,Faded
+4,Artificer Xy'mox,4,5.55556,Faded
+5,Lady Inerva Darkvein,5,5.55556,Faded
+6,The Council of Blood,6,0.0,Faded
+0,Shriekwing,0,0.0,V A N Q U I S H
+1,Huntsman Altimor,1,0.0,V A N Q U I S H
+2,Hungering Destroyer,2,5.55556,V A N Q U I S H
+3,Sun King's Salvation,3,11.11112,V A N Q U I S H
+4,Artificer Xy'mox,4,8.33334,V A N Q U I S H
+5,Lady Inerva Darkvein,5,11.11112,V A N Q U I S H
+6,The Council of Blood,6,11.11112,V A N Q U I S H
+7,Sludgefist,7,11.11112,V A N Q U I S H
+8,Stone Legion Generals,8,44.44448,V A N Q U I S H
+9,Sire Denathrius,9,47.22226,V A N Q U I S H
+0,Shriekwing,0,5.55556,Goldenglory
+1,Huntsman Altimor,1,5.55556,Goldenglory
+2,Hungering Destroyer,2,13.8889,Goldenglory
+3,Sun King's Salvation,3,19.44446,Goldenglory
+4,Artificer Xy'mox,4,19.44446,Goldenglory
+5,Lady Inerva Darkvein,5,5.55556,Goldenglory
+6,The Council of Blood,6,22.22224,Goldenglory
+7,Sludgefist,7,30.55558,Goldenglory
+8,Stone Legion Generals,8,50.00004,Goldenglory
+9,Sire Denathrius,9,69.4445,Goldenglory
+0,Shriekwing,0,0.0,Tabbed Out
+1,Huntsman Altimor,1,8.33334,Tabbed Out
+2,Hungering Destroyer,2,8.33334,Tabbed Out
+3,Sun King's Salvation,3,11.11112,Tabbed Out
+4,Artificer Xy'mox,4,13.8889,Tabbed Out
+5,Lady Inerva Darkvein,5,13.8889,Tabbed Out
+6,The Council of Blood,6,16.66668,Tabbed Out
+7,Sludgefist,7,13.8889,Tabbed Out
+8,Stone Legion Generals,8,52.77782,Tabbed Out
+9,Sire Denathrius,9,52.77782,Tabbed Out
+0,Shriekwing,0,2.77778,tmz
+1,Huntsman Altimor,1,2.77778,tmz
+2,Hungering Destroyer,2,2.77778,tmz
+3,Sun King's Salvation,3,2.77778,tmz
+4,Artificer Xy'mox,4,5.55556,tmz
+5,Lady Inerva Darkvein,5,8.33334,tmz
+6,The Council of Blood,6,11.11112,tmz
+7,Sludgefist,7,8.33334,tmz
+0,Shriekwing,0,5.55556,CV
+1,Huntsman Altimor,1,0.0,CV
+2,Hungering Destroyer,2,2.77778,CV
+3,Sun King's Salvation,3,11.11112,CV
+4,Artificer Xy'mox,4,5.55556,CV
+5,Lady Inerva Darkvein,5,8.33334,CV
+6,The Council of Blood,6,19.44446,CV
+7,Sludgefist,7,5.55556,CV
+8,Stone Legion Generals,8,25.00002,CV
+9,Sire Denathrius,9,27.7778,CV
+0,Shriekwing,0,0.0,Blasphemy
+1,Huntsman Altimor,1,8.33334,Blasphemy
+2,Hungering Destroyer,2,8.33334,Blasphemy
+3,Sun King's Salvation,3,8.33334,Blasphemy
+4,Artificer Xy'mox,4,13.8889,Blasphemy
+5,Lady Inerva Darkvein,5,0.0,Blasphemy
+6,The Council of Blood,6,19.44446,Blasphemy
+7,Sludgefist,7,8.33334,Blasphemy
+8,Stone Legion Generals,8,30.55558,Blasphemy
+9,Sire Denathrius,9,38.88892,Blasphemy
+0,Shriekwing,0,0.0,Noted
+1,Huntsman Altimor,1,0.0,Noted
+2,Hungering Destroyer,2,8.33334,Noted
+3,Sun King's Salvation,3,5.55556,Noted
+4,Artificer Xy'mox,4,2.77778,Noted
+5,Lady Inerva Darkvein,5,2.77778,Noted
+6,The Council of Blood,6,19.44446,Noted
+7,Sludgefist,7,8.33334,Noted
+8,Stone Legion Generals,8,30.55558,Noted
+9,Sire Denathrius,9,30.55558,Noted
+0,Shriekwing,0,0.0,SOMA
+1,Huntsman Altimor,1,11.11112,SOMA
+2,Hungering Destroyer,2,5.55556,SOMA
+3,Sun King's Salvation,3,0.0,SOMA
+4,Artificer Xy'mox,4,11.11112,SOMA
+5,Lady Inerva Darkvein,5,5.55556,SOMA
+6,The Council of Blood,6,13.8889,SOMA
+7,Sludgefist,7,13.8889,SOMA
+8,Stone Legion Generals,8,25.00002,SOMA
+9,Sire Denathrius,9,36.11114,SOMA
+0,Shriekwing,0,0.0,No Big Deal
+1,Huntsman Altimor,1,2.77778,No Big Deal
+2,Hungering Destroyer,2,5.55556,No Big Deal
+3,Sun King's Salvation,3,8.33334,No Big Deal
+4,Artificer Xy'mox,4,11.11112,No Big Deal
+5,Lady Inerva Darkvein,5,2.77778,No Big Deal
+6,The Council of Blood,6,8.33334,No Big Deal
+7,Sludgefist,7,8.33334,No Big Deal
+8,Stone Legion Generals,8,41.6667,No Big Deal
+9,Sire Denathrius,9,30.55558,No Big Deal
+0,Shriekwing,0,2.77778,Euphoric
+1,Huntsman Altimor,1,2.77778,Euphoric
+2,Hungering Destroyer,2,11.11112,Euphoric
+3,Sun King's Salvation,3,0.0,Euphoric
+4,Artificer Xy'mox,4,5.55556,Euphoric
+5,Lady Inerva Darkvein,5,5.55556,Euphoric
+6,The Council of Blood,6,8.33334,Euphoric
+7,Sludgefist,7,5.55556,Euphoric
+8,Stone Legion Generals,8,30.55558,Euphoric
+9,Sire Denathrius,9,25.00002,Euphoric
+0,Shriekwing,0,2.77778,Resonate
+1,Huntsman Altimor,1,0.0,Resonate
+2,Hungering Destroyer,2,5.55556,Resonate
+3,Sun King's Salvation,3,2.77778,Resonate
+4,Artificer Xy'mox,4,8.33334,Resonate
+5,Lady Inerva Darkvein,5,5.55556,Resonate
+6,The Council of Blood,6,8.33334,Resonate
+7,Sludgefist,7,13.8889,Resonate
+8,Stone Legion Generals,8,36.11114,Resonate
+9,Sire Denathrius,9,33.33336,Resonate
+0,Shriekwing,0,0.0,Didnt Ask
+1,Huntsman Altimor,1,0.0,Didnt Ask
+2,Hungering Destroyer,2,0.0,Didnt Ask
+3,Sun King's Salvation,3,0.0,Didnt Ask
+4,Artificer Xy'mox,4,0.0,Didnt Ask
+5,Lady Inerva Darkvein,5,0.0,Didnt Ask
+6,The Council of Blood,6,0.0,Didnt Ask
+7,Sludgefist,7,0.0,Didnt Ask
+8,Stone Legion Generals,8,0.0,Didnt Ask
+9,Sire Denathrius,9,11.11112,Didnt Ask
+0,Shriekwing,0,2.77778,DKG
+1,Huntsman Altimor,1,2.77778,DKG
+2,Hungering Destroyer,2,5.55556,DKG
+3,Sun King's Salvation,3,5.55556,DKG
+4,Artificer Xy'mox,4,11.11112,DKG
+5,Lady Inerva Darkvein,5,5.55556,DKG
+6,The Council of Blood,6,2.77778,DKG
+7,Sludgefist,7,30.55556,DKG
+8,Stone Legion Generals,8,8.33334,DKG
+9,Sire Denathrius,9,75.00002,DKG
+0,Shriekwing,0,0.0,OBSCURE REFERENCE
+1,Huntsman Altimor,1,2.77778,OBSCURE REFERENCE
+2,Hungering Destroyer,2,5.55556,OBSCURE REFERENCE
+3,Sun King's Salvation,3,5.55556,OBSCURE REFERENCE
+4,Artificer Xy'mox,4,8.33334,OBSCURE REFERENCE
+5,Lady Inerva Darkvein,5,11.11112,OBSCURE REFERENCE
+6,The Council of Blood,6,19.44446,OBSCURE REFERENCE
+7,Sludgefist,7,11.11112,OBSCURE REFERENCE
+8,Stone Legion Generals,8,38.88892,OBSCURE REFERENCE
+9,Sire Denathrius,9,30.55558,OBSCURE REFERENCE
+0,Shriekwing,0,0.0,Trash Mob Death Machine
+1,Huntsman Altimor,1,2.77778,Trash Mob Death Machine
+2,Hungering Destroyer,2,2.77778,Trash Mob Death Machine
+3,Sun King's Salvation,3,11.11112,Trash Mob Death Machine
+4,Artificer Xy'mox,4,0.0,Trash Mob Death Machine
+5,Lady Inerva Darkvein,5,5.55556,Trash Mob Death Machine
+6,The Council of Blood,6,19.44446,Trash Mob Death Machine
+7,Sludgefist,7,13.8889,Trash Mob Death Machine
+8,Stone Legion Generals,8,44.44448,Trash Mob Death Machine
+9,Sire Denathrius,9,44.44448,Trash Mob Death Machine
+0,Shriekwing,0,0.0,Fury
+1,Huntsman Altimor,1,8.33334,Fury
+2,Hungering Destroyer,2,2.77778,Fury
+3,Sun King's Salvation,3,11.11112,Fury
+4,Artificer Xy'mox,4,50.0,Fury
+5,Lady Inerva Darkvein,5,44.44444,Fury
+6,The Council of Blood,6,75.0,Fury
+7,Sludgefist,7,11.11112,Fury
+8,Stone Legion Generals,8,138.8889,Fury
+9,Sire Denathrius,9,113.8889,Fury
+0,Shriekwing,0,22.22222,yeah right
+1,Huntsman Altimor,1,0.0,yeah right
+2,Hungering Destroyer,2,5.55556,yeah right
+3,Sun King's Salvation,3,27.77778,yeah right
+4,Artificer Xy'mox,4,33.33334,yeah right
+5,Lady Inerva Darkvein,5,27.77778,yeah right
+6,The Council of Blood,6,72.22221,yeah right
+7,Sludgefist,7,25.0,yeah right
+8,Stone Legion Generals,8,97.22222,yeah right
+9,Sire Denathrius,9,177.77778,yeah right
+0,Shriekwing,0,0.0,Fate
+1,Huntsman Altimor,1,2.77778,Fate
+2,Hungering Destroyer,2,8.33334,Fate
+3,Sun King's Salvation,3,0.0,Fate
+4,Lady Inerva Darkvein,5,2.77778,Fate
+0,Shriekwing,0,0.0,Kultzipuppelit
+1,Huntsman Altimor,1,0.0,Kultzipuppelit
+2,Hungering Destroyer,2,5.55556,Kultzipuppelit
+3,Sun King's Salvation,3,11.11112,Kultzipuppelit
+4,Artificer Xy'mox,4,13.8889,Kultzipuppelit
+5,Lady Inerva Darkvein,5,13.8889,Kultzipuppelit
+6,The Council of Blood,6,13.8889,Kultzipuppelit
+7,Sludgefist,7,22.22224,Kultzipuppelit
+8,Stone Legion Generals,8,33.33336,Kultzipuppelit
+9,Sire Denathrius,9,47.22226,Kultzipuppelit
+0,Shriekwing,0,2.77778,Bag for Life
+1,Huntsman Altimor,1,2.77778,Bag for Life
+2,Hungering Destroyer,2,2.77778,Bag for Life
+3,Sun King's Salvation,3,5.55556,Bag for Life
+4,Artificer Xy'mox,4,11.11112,Bag for Life
+5,Lady Inerva Darkvein,5,5.55556,Bag for Life
+6,The Council of Blood,6,11.11112,Bag for Life
+7,Sludgefist,7,8.33334,Bag for Life
+8,Stone Legion Generals,8,38.88892,Bag for Life
+9,Sire Denathrius,9,36.11114,Bag for Life
+0,Shriekwing,0,0.0,raise
+1,Huntsman Altimor,1,5.55556,raise
+2,Hungering Destroyer,2,5.55556,raise
+3,Sun King's Salvation,3,2.77778,raise
+4,Artificer Xy'mox,4,8.33334,raise
+5,Lady Inerva Darkvein,5,2.77778,raise
+6,The Council of Blood,6,11.11112,raise
+7,Sludgefist,7,5.55556,raise
+8,Stone Legion Generals,8,22.22224,raise
+9,Sire Denathrius,9,30.55558,raise
+0,Shriekwing,0,2.77778,Lordaerons Erben
+1,Huntsman Altimor,1,5.55556,Lordaerons Erben
+2,Hungering Destroyer,2,0.0,Lordaerons Erben
+3,Sun King's Salvation,3,8.33334,Lordaerons Erben
+4,Artificer Xy'mox,4,13.8889,Lordaerons Erben
+5,Lady Inerva Darkvein,5,2.77778,Lordaerons Erben
+6,The Council of Blood,6,8.33334,Lordaerons Erben
+7,Sludgefist,7,0.0,Lordaerons Erben
+0,Shriekwing,0,2.77778,Lakko
+1,Huntsman Altimor,1,5.55556,Lakko
+2,Hungering Destroyer,2,2.77778,Lakko
+3,Sun King's Salvation,3,11.11112,Lakko
+4,Artificer Xy'mox,4,8.33334,Lakko
+5,Lady Inerva Darkvein,5,5.55556,Lakko
+6,The Council of Blood,6,16.66668,Lakko
+7,Sludgefist,7,13.8889,Lakko
+8,Stone Legion Generals,8,27.7778,Lakko
+9,Sire Denathrius,9,33.33336,Lakko
+0,Shriekwing,0,5.55556,RR inc
+1,Huntsman Altimor,1,0.0,RR inc
+2,Hungering Destroyer,2,5.55556,RR inc
+3,Sun King's Salvation,3,8.33334,RR inc
+4,Artificer Xy'mox,4,13.8889,RR inc
+5,Lady Inerva Darkvein,5,11.11112,RR inc
+6,The Council of Blood,6,19.44446,RR inc
+7,Sludgefist,7,19.44446,RR inc
+8,Stone Legion Generals,8,63.88894,RR inc
+9,Sire Denathrius,9,47.22226,RR inc
+0,Shriekwing,0,2.77778,Virtual
+1,Huntsman Altimor,1,2.77778,Virtual
+2,Hungering Destroyer,2,8.33334,Virtual
+3,Sun King's Salvation,3,11.11112,Virtual
+4,Artificer Xy'mox,4,13.8889,Virtual
+5,Lady Inerva Darkvein,5,8.33334,Virtual
+6,The Council of Blood,6,16.66668,Virtual
+7,Sludgefist,7,19.44446,Virtual
+8,Stone Legion Generals,8,22.22224,Virtual
+9,Sire Denathrius,9,19.44446,Virtual
+0,Shriekwing,0,0.0,RETRY
+1,Huntsman Altimor,1,11.11112,RETRY
+2,Hungering Destroyer,2,5.55556,RETRY
+3,Sun King's Salvation,3,5.55556,RETRY
+4,Artificer Xy'mox,4,2.77778,RETRY
+5,Lady Inerva Darkvein,5,11.11112,RETRY
+6,The Council of Blood,6,22.22224,RETRY
+7,Sludgefist,7,8.33334,RETRY
+8,Stone Legion Generals,8,47.22226,RETRY
+9,Sire Denathrius,9,36.11114,RETRY
+0,Shriekwing,0,2.77778,Revoke
+1,Huntsman Altimor,1,0.0,Revoke
+2,Hungering Destroyer,2,0.0,Revoke
+3,Sun King's Salvation,3,2.77778,Revoke
+4,Artificer Xy'mox,4,0.0,Revoke
+5,Lady Inerva Darkvein,5,0.0,Revoke
+6,The Council of Blood,6,2.77778,Revoke
+7,Sludgefist,7,8.33334,Revoke
+8,Stone Legion Generals,8,5.55556,Revoke
+9,Sire Denathrius,9,0.0,Revoke
+0,Shriekwing,0,5.55556,HKM
+1,Huntsman Altimor,1,0.0,HKM
+2,Hungering Destroyer,2,2.77778,HKM
+3,Sun King's Salvation,3,11.11112,HKM
+4,Artificer Xy'mox,4,11.11112,HKM
+5,Lady Inerva Darkvein,5,11.11112,HKM
+6,The Council of Blood,6,16.66668,HKM
+7,Sludgefist,7,11.11112,HKM
+8,Stone Legion Generals,8,25.00002,HKM
+9,Sire Denathrius,9,22.22224,HKM
+0,Shriekwing,0,0.0,Digress
+1,Huntsman Altimor,1,5.55556,Digress
+2,Hungering Destroyer,2,5.55556,Digress
+3,Sun King's Salvation,3,5.55556,Digress
+4,Artificer Xy'mox,4,5.55556,Digress
+5,Lady Inerva Darkvein,5,8.33334,Digress
+6,The Council of Blood,6,19.44446,Digress
+7,Sludgefist,7,11.11112,Digress
+8,Stone Legion Generals,8,41.6667,Digress
+9,Sire Denathrius,9,36.11114,Digress
+0,Shriekwing,0,8.33334,Death and Glory
+1,Huntsman Altimor,1,13.8889,Death and Glory
+2,Hungering Destroyer,2,22.22224,Death and Glory
+3,Sun King's Salvation,3,16.66668,Death and Glory
+4,Artificer Xy'mox,4,33.33336,Death and Glory
+5,Lady Inerva Darkvein,5,19.44446,Death and Glory
+6,The Council of Blood,6,52.77782,Death and Glory
+7,Sludgefist,7,44.44448,Death and Glory
+8,Stone Legion Generals,8,94.44452,Death and Glory
+9,Sire Denathrius,9,105.55564,Death and Glory
+0,Shriekwing,0,5.55556,styx
+1,Huntsman Altimor,1,5.55556,styx
+2,Hungering Destroyer,2,5.55556,styx
+3,Sun King's Salvation,3,5.55556,styx
+4,Artificer Xy'mox,4,8.33334,styx
+5,Lady Inerva Darkvein,5,5.55556,styx
+6,The Council of Blood,6,16.66668,styx
+7,Sludgefist,7,0.0,styx
+8,Stone Legion Generals,8,38.88892,styx
+9,Sire Denathrius,9,30.55558,styx
+0,Shriekwing,0,2.77778,Blessing of Wisdom
+1,Huntsman Altimor,1,2.77778,Blessing of Wisdom
+2,Hungering Destroyer,2,11.11112,Blessing of Wisdom
+3,Sun King's Salvation,3,8.33334,Blessing of Wisdom
+4,Artificer Xy'mox,4,19.44446,Blessing of Wisdom
+5,Lady Inerva Darkvein,5,5.55556,Blessing of Wisdom
+6,The Council of Blood,6,19.44446,Blessing of Wisdom
+7,Sludgefist,7,11.11112,Blessing of Wisdom
+8,Stone Legion Generals,8,44.44448,Blessing of Wisdom
+9,Sire Denathrius,9,47.22226,Blessing of Wisdom
+0,Shriekwing,0,2.77778,Debauchery Teaparty
+1,Huntsman Altimor,1,0.0,Debauchery Teaparty
+2,Hungering Destroyer,2,11.11112,Debauchery Teaparty
+3,Sun King's Salvation,3,5.55556,Debauchery Teaparty
+4,Artificer Xy'mox,4,8.33334,Debauchery Teaparty
+5,Lady Inerva Darkvein,5,2.77778,Debauchery Teaparty
+6,The Council of Blood,6,0.0,Debauchery Teaparty
+7,Sludgefist,7,2.77778,Debauchery Teaparty
+8,Stone Legion Generals,8,16.66668,Debauchery Teaparty
+0,Shriekwing,0,2.77778,Infected Nation
+1,Huntsman Altimor,1,5.55556,Infected Nation
+2,Hungering Destroyer,2,8.33334,Infected Nation
+3,Sun King's Salvation,3,5.55556,Infected Nation
+4,Artificer Xy'mox,4,16.66668,Infected Nation
+5,Lady Inerva Darkvein,5,2.77778,Infected Nation
+6,The Council of Blood,6,16.66668,Infected Nation
+7,Sludgefist,7,11.11112,Infected Nation
+8,Stone Legion Generals,8,27.7778,Infected Nation
+9,Sire Denathrius,9,36.11114,Infected Nation
+0,Shriekwing,0,5.55556,Candy Truck
+1,Huntsman Altimor,1,2.77778,Candy Truck
+2,Hungering Destroyer,2,0.0,Candy Truck
+3,Sun King's Salvation,3,2.77778,Candy Truck
+4,Artificer Xy'mox,4,8.33334,Candy Truck
+5,Lady Inerva Darkvein,5,8.33334,Candy Truck
+6,The Council of Blood,6,16.66668,Candy Truck
+7,Sludgefist,7,8.33334,Candy Truck
+8,Stone Legion Generals,8,16.66668,Candy Truck
+9,Sire Denathrius,9,2.77778,Candy Truck
+0,Huntsman Altimor,1,0.0,Curry Pain
+1,Hungering Destroyer,2,0.0,Curry Pain
+2,Sun King's Salvation,3,2.77778,Curry Pain
+3,Artificer Xy'mox,4,0.0,Curry Pain
+4,Lady Inerva Darkvein,5,2.77778,Curry Pain
+5,The Council of Blood,6,16.66668,Curry Pain
+6,Sludgefist,7,2.77778,Curry Pain
+7,Stone Legion Generals,8,11.11112,Curry Pain
+8,Sire Denathrius,9,33.33336,Curry Pain
+0,Shriekwing,0,0.0,Landogar
+1,Huntsman Altimor,1,2.77778,Landogar
+2,Hungering Destroyer,2,8.33334,Landogar
+3,Sun King's Salvation,3,2.77778,Landogar
+4,Artificer Xy'mox,4,8.33334,Landogar
+5,Lady Inerva Darkvein,5,11.11112,Landogar
+6,The Council of Blood,6,19.44446,Landogar
+7,Sludgefist,7,8.33334,Landogar
+8,Stone Legion Generals,8,38.88892,Landogar
+9,Sire Denathrius,9,38.88892,Landogar
+0,Shriekwing,0,2.77778,Deus Ex
+1,Huntsman Altimor,1,0.0,Deus Ex
+2,Hungering Destroyer,2,5.55556,Deus Ex
+3,Sun King's Salvation,3,2.77778,Deus Ex
+4,Artificer Xy'mox,4,13.8889,Deus Ex
+5,Lady Inerva Darkvein,5,5.55556,Deus Ex
+6,The Council of Blood,6,16.66668,Deus Ex
+7,Sludgefist,7,13.8889,Deus Ex
+8,Stone Legion Generals,8,38.88892,Deus Ex
+9,Sire Denathrius,9,41.6667,Deus Ex
+0,Shriekwing,0,0.0,Alpha
+1,Huntsman Altimor,1,5.55556,Alpha
+2,Hungering Destroyer,2,8.33334,Alpha
+3,Sun King's Salvation,3,2.77778,Alpha
+4,Artificer Xy'mox,4,5.55556,Alpha
+5,Lady Inerva Darkvein,5,11.11112,Alpha
+6,The Council of Blood,6,19.44446,Alpha
+7,Sludgefist,7,13.8889,Alpha
+8,Stone Legion Generals,8,33.33336,Alpha
+9,Sire Denathrius,9,61.11116,Alpha
+0,Shriekwing,0,2.77778,Caustic
+1,Huntsman Altimor,1,0.0,Caustic
+2,Hungering Destroyer,2,5.55556,Caustic
+3,Sun King's Salvation,3,11.11112,Caustic
+4,Artificer Xy'mox,4,16.66668,Caustic
+5,Lady Inerva Darkvein,5,5.55556,Caustic
+6,The Council of Blood,6,19.44446,Caustic
+7,Sludgefist,7,13.8889,Caustic
+8,Stone Legion Generals,8,27.7778,Caustic
+9,Sire Denathrius,9,33.33336,Caustic
+0,Shriekwing,0,0.0,Temporary Insanity
+1,Huntsman Altimor,1,2.77778,Temporary Insanity
+2,Hungering Destroyer,2,2.77778,Temporary Insanity
+3,Sun King's Salvation,3,5.55556,Temporary Insanity
+4,Artificer Xy'mox,4,2.77778,Temporary Insanity
+5,Lady Inerva Darkvein,5,11.11112,Temporary Insanity
+6,The Council of Blood,6,13.8889,Temporary Insanity
+7,Sludgefist,7,11.11112,Temporary Insanity
+8,Stone Legion Generals,8,33.33336,Temporary Insanity
+9,Sire Denathrius,9,36.11114,Temporary Insanity
+0,Shriekwing,0,2.77778,W H Y
+1,Huntsman Altimor,1,0.0,W H Y
+2,Hungering Destroyer,2,8.33334,W H Y
+3,Sun King's Salvation,3,8.33334,W H Y
+4,Artificer Xy'mox,4,16.66668,W H Y
+5,Lady Inerva Darkvein,5,2.77778,W H Y
+6,The Council of Blood,6,8.33334,W H Y
+7,Sludgefist,7,13.8889,W H Y
+8,Stone Legion Generals,8,30.55558,W H Y
+9,Sire Denathrius,9,30.55558,W H Y
+0,Shriekwing,0,2.77778,Project HD
+1,Huntsman Altimor,1,5.55556,Project HD
+2,Hungering Destroyer,2,8.33334,Project HD
+3,Sun King's Salvation,3,11.11112,Project HD
+4,Artificer Xy'mox,4,13.8889,Project HD
+5,Lady Inerva Darkvein,5,11.11112,Project HD
+6,The Council of Blood,6,16.66668,Project HD
+7,Sludgefist,7,13.8889,Project HD
+8,Stone Legion Generals,8,55.5556,Project HD
+9,Sire Denathrius,9,63.88894,Project HD
+0,Shriekwing,0,0.0,Wing It
+1,Huntsman Altimor,1,27.77778,Wing It
+2,Hungering Destroyer,2,11.11112,Wing It
+3,Sun King's Salvation,3,30.55556,Wing It
+4,Artificer Xy'mox,4,13.8889,Wing It
+5,Lady Inerva Darkvein,5,30.55556,Wing It
+6,The Council of Blood,6,22.22224,Wing It
+7,Sludgefist,7,19.44446,Wing It
+8,Stone Legion Generals,8,55.55558,Wing It
+9,Sire Denathrius,9,25.0,Wing It
+0,Shriekwing,0,16.66667,Obey
+1,Huntsman Altimor,1,5.55556,Obey
+2,Hungering Destroyer,2,11.11112,Obey
+3,Sun King's Salvation,3,2.77778,Obey
+4,Artificer Xy'mox,4,13.8889,Obey
+5,Lady Inerva Darkvein,5,16.66668,Obey
+6,The Council of Blood,6,25.00002,Obey
+7,Sludgefist,7,11.11112,Obey
+8,Stone Legion Generals,8,16.66668,Obey
+0,Shriekwing,0,5.55556,Indestructible
+1,Huntsman Altimor,1,0.0,Indestructible
+2,Hungering Destroyer,2,8.33334,Indestructible
+3,Sun King's Salvation,3,11.11112,Indestructible
+4,Artificer Xy'mox,4,30.55556,Indestructible
+5,Lady Inerva Darkvein,5,2.77778,Indestructible
+6,The Council of Blood,6,19.44446,Indestructible
+7,Sludgefist,7,33.33334,Indestructible
+8,Stone Legion Generals,8,55.55558,Indestructible
+9,Sire Denathrius,9,100.00002,Indestructible
+0,Shriekwing,0,5.55556,Imagine Progress
+1,Huntsman Altimor,1,5.55556,Imagine Progress
+2,Hungering Destroyer,2,2.77778,Imagine Progress
+3,Sun King's Salvation,3,5.55556,Imagine Progress
+4,Artificer Xy'mox,4,11.11112,Imagine Progress
+5,Lady Inerva Darkvein,5,11.11112,Imagine Progress
+6,The Council of Blood,6,16.66668,Imagine Progress
+7,Sludgefist,7,11.11112,Imagine Progress
+8,Stone Legion Generals,8,36.11114,Imagine Progress
+9,Sire Denathrius,9,75.00002,Imagine Progress
+0,Shriekwing,0,2.77778,Nexus Sx
+1,Huntsman Altimor,1,2.77778,Nexus Sx
+2,Hungering Destroyer,2,27.77778,Nexus Sx
+3,Sun King's Salvation,3,72.22222,Nexus Sx
+4,Artificer Xy'mox,4,36.11112,Nexus Sx
+5,Lady Inerva Darkvein,5,27.77778,Nexus Sx
+6,The Council of Blood,6,77.77778,Nexus Sx
+7,Sludgefist,7,52.77778,Nexus Sx
+8,Stone Legion Generals,8,166.66666,Nexus Sx
+9,Sire Denathrius,9,191.66668,Nexus Sx
+0,Shriekwing,0,2.77778,Keep Calm
+1,Huntsman Altimor,1,5.55556,Keep Calm
+2,Hungering Destroyer,2,2.77778,Keep Calm
+3,Sun King's Salvation,3,8.33334,Keep Calm
+4,Artificer Xy'mox,4,8.33334,Keep Calm
+5,Lady Inerva Darkvein,5,5.55556,Keep Calm
+6,The Council of Blood,6,61.11112,Keep Calm
+7,Sludgefist,7,27.77778,Keep Calm
+8,Stone Legion Generals,8,80.55557,Keep Calm
+9,Sire Denathrius,9,119.44446,Keep Calm
+0,Shriekwing,0,2.77778,Kirkland Signature
+1,Huntsman Altimor,1,0.0,Kirkland Signature
+2,Hungering Destroyer,2,2.77778,Kirkland Signature
+3,Sun King's Salvation,3,8.33334,Kirkland Signature
+4,Artificer Xy'mox,4,27.77778,Kirkland Signature
+5,Lady Inerva Darkvein,5,5.55556,Kirkland Signature
+6,The Council of Blood,6,77.77778,Kirkland Signature
+7,Sludgefist,7,2.77778,Kirkland Signature
+8,Stone Legion Generals,8,55.55556,Kirkland Signature
+9,Sire Denathrius,9,63.8889,Kirkland Signature
+0,Shriekwing,0,0.0,Polite
+1,Huntsman Altimor,1,0.0,Polite
+2,Hungering Destroyer,2,2.77778,Polite
+3,Sun King's Salvation,3,2.77778,Polite
+4,Artificer Xy'mox,4,5.55556,Polite
+5,Lady Inerva Darkvein,5,8.33334,Polite
+6,The Council of Blood,6,11.11112,Polite
+7,Sludgefist,7,2.77778,Polite
+0,Shriekwing,0,0.0,CelestialBeing
+1,Huntsman Altimor,1,0.0,CelestialBeing
+2,Hungering Destroyer,2,0.0,CelestialBeing
+3,Sun King's Salvation,3,2.77778,CelestialBeing
+4,Artificer Xy'mox,4,0.0,CelestialBeing
+5,Lady Inerva Darkvein,5,2.77778,CelestialBeing
+6,The Council of Blood,6,5.55556,CelestialBeing
+7,Sludgefist,7,5.55556,CelestialBeing
+8,Stone Legion Generals,8,2.77778,CelestialBeing
+9,Sire Denathrius,9,22.22224,CelestialBeing
+0,Shriekwing,0,8.33334,Friendly Banter
+1,Huntsman Altimor,1,2.77778,Friendly Banter
+2,Hungering Destroyer,2,11.11112,Friendly Banter
+3,Sun King's Salvation,3,5.55556,Friendly Banter
+4,Artificer Xy'mox,4,11.11112,Friendly Banter
+5,Lady Inerva Darkvein,5,5.55556,Friendly Banter
+6,The Council of Blood,6,8.33334,Friendly Banter
+7,Sludgefist,7,16.66668,Friendly Banter
+8,Stone Legion Generals,8,33.33336,Friendly Banter
+9,Sire Denathrius,9,30.55558,Friendly Banter
+0,Shriekwing,0,0.0,pazifik
+1,Huntsman Altimor,1,2.77778,pazifik
+2,Hungering Destroyer,2,5.55556,pazifik
+3,Sun King's Salvation,3,5.55556,pazifik
+4,Artificer Xy'mox,4,5.55556,pazifik
+5,Lady Inerva Darkvein,5,11.11112,pazifik
+6,The Council of Blood,6,13.8889,pazifik
+7,Sludgefist,7,8.33334,pazifik
+8,Stone Legion Generals,8,16.66668,pazifik
+9,Sire Denathrius,9,16.66668,pazifik
+0,Shriekwing,0,2.77778,Nuke Society
+1,Huntsman Altimor,1,8.33334,Nuke Society
+2,Hungering Destroyer,2,16.66668,Nuke Society
+3,Sun King's Salvation,3,11.11112,Nuke Society
+4,Artificer Xy'mox,4,13.8889,Nuke Society
+5,Lady Inerva Darkvein,5,11.11112,Nuke Society
+6,The Council of Blood,6,22.22224,Nuke Society
+7,Sludgefist,7,19.44446,Nuke Society
+8,Stone Legion Generals,8,52.77782,Nuke Society
+9,Sire Denathrius,9,52.77782,Nuke Society
+0,Shriekwing,0,0.0,Yeet
+1,Huntsman Altimor,1,0.0,Yeet
+2,Hungering Destroyer,2,2.77778,Yeet
+3,Sun King's Salvation,3,5.55556,Yeet
+4,Artificer Xy'mox,4,0.0,Yeet
+5,Lady Inerva Darkvein,5,2.77778,Yeet
+6,The Council of Blood,6,11.11112,Yeet
+7,Sludgefist,7,5.55556,Yeet
+8,Stone Legion Generals,8,25.00002,Yeet
+9,Sire Denathrius,9,33.33336,Yeet
+0,Shriekwing,0,0.0,Death Wish
+1,Huntsman Altimor,1,2.77778,Death Wish
+2,Hungering Destroyer,2,5.55556,Death Wish
+3,Sun King's Salvation,3,2.77778,Death Wish
+4,Artificer Xy'mox,4,2.77778,Death Wish
+5,Lady Inerva Darkvein,5,8.33334,Death Wish
+6,The Council of Blood,6,11.11112,Death Wish
+7,Sludgefist,7,11.11112,Death Wish
+8,Stone Legion Generals,8,25.00002,Death Wish
+9,Sire Denathrius,9,30.55558,Death Wish
+0,Shriekwing,0,2.77778,So Fluffy
+1,Huntsman Altimor,1,0.0,So Fluffy
+2,Hungering Destroyer,2,2.77778,So Fluffy
+3,Sun King's Salvation,3,5.55556,So Fluffy
+4,Artificer Xy'mox,4,16.66668,So Fluffy
+5,Lady Inerva Darkvein,5,5.55556,So Fluffy
+6,The Council of Blood,6,19.44446,So Fluffy
+7,Sludgefist,7,16.66668,So Fluffy
+8,Stone Legion Generals,8,33.33336,So Fluffy
+9,Sire Denathrius,9,25.00002,So Fluffy
+0,Shriekwing,0,5.55556,I N V I C T A
+1,Huntsman Altimor,1,5.55556,I N V I C T A
+2,Hungering Destroyer,2,0.0,I N V I C T A
+3,Sun King's Salvation,3,16.66668,I N V I C T A
+4,Artificer Xy'mox,4,13.8889,I N V I C T A
+5,Lady Inerva Darkvein,5,5.55556,I N V I C T A
+6,The Council of Blood,6,8.33334,I N V I C T A
+7,Sludgefist,7,11.11112,I N V I C T A
+8,Stone Legion Generals,8,30.55558,I N V I C T A
+9,Sire Denathrius,9,38.88892,I N V I C T A
+0,Shriekwing,0,0.0,Addicted
+1,Huntsman Altimor,1,8.33334,Addicted
+2,Hungering Destroyer,2,2.77778,Addicted
+3,Sun King's Salvation,3,5.55556,Addicted
+4,Artificer Xy'mox,4,2.77778,Addicted
+5,Lady Inerva Darkvein,5,0.0,Addicted
+6,The Council of Blood,6,11.11112,Addicted
+7,Sludgefist,7,8.33334,Addicted
+8,Stone Legion Generals,8,5.55556,Addicted
+9,Sire Denathrius,9,11.11112,Addicted
+0,Shriekwing,0,0.0,Mayhem
+1,Huntsman Altimor,1,0.0,Mayhem
+2,Hungering Destroyer,2,5.55556,Mayhem
+3,Sun King's Salvation,3,11.11112,Mayhem
+4,Artificer Xy'mox,4,11.11112,Mayhem
+5,Lady Inerva Darkvein,5,2.77778,Mayhem
+6,The Council of Blood,6,11.11112,Mayhem
+7,Sludgefist,7,19.44446,Mayhem
+8,Stone Legion Generals,8,38.88892,Mayhem
+9,Sire Denathrius,9,36.11114,Mayhem
+0,Shriekwing,0,0.0,big dumb kids
+1,Huntsman Altimor,1,2.77778,big dumb kids
+2,Hungering Destroyer,2,0.0,big dumb kids
+3,Sun King's Salvation,3,2.77778,big dumb kids
+4,Artificer Xy'mox,4,11.11112,big dumb kids
+5,Lady Inerva Darkvein,5,5.55556,big dumb kids
+6,The Council of Blood,6,8.33334,big dumb kids
+7,Sludgefist,7,16.66668,big dumb kids
+8,Stone Legion Generals,8,25.00002,big dumb kids
+9,Sire Denathrius,9,47.22226,big dumb kids
+0,Shriekwing,0,2.77778,CMT
+1,Huntsman Altimor,1,2.77778,CMT
+2,Hungering Destroyer,2,2.77778,CMT
+3,Sun King's Salvation,3,5.55556,CMT
+4,Artificer Xy'mox,4,8.33334,CMT
+5,Lady Inerva Darkvein,5,2.77778,CMT
+6,The Council of Blood,6,13.8889,CMT
+7,Sludgefist,7,13.8889,CMT
+8,Stone Legion Generals,8,33.33336,CMT
+9,Sire Denathrius,9,52.77782,CMT
+0,Shriekwing,0,2.77778,Swapblasters
+1,Huntsman Altimor,1,5.55556,Swapblasters
+2,Hungering Destroyer,2,5.55556,Swapblasters
+3,Sun King's Salvation,3,8.33334,Swapblasters
+4,Artificer Xy'mox,4,11.11112,Swapblasters
+5,Lady Inerva Darkvein,5,5.55556,Swapblasters
+6,The Council of Blood,6,13.8889,Swapblasters
+7,Sludgefist,7,16.66668,Swapblasters
+8,Stone Legion Generals,8,33.33336,Swapblasters
+9,Sire Denathrius,9,36.11114,Swapblasters
+0,Shriekwing,0,2.77778,Fysikbasserne
+1,Huntsman Altimor,1,0.0,Fysikbasserne
+2,Hungering Destroyer,2,5.55556,Fysikbasserne
+3,Sun King's Salvation,3,5.55556,Fysikbasserne
+4,Artificer Xy'mox,4,2.77778,Fysikbasserne
+5,Lady Inerva Darkvein,5,5.55556,Fysikbasserne
+6,The Council of Blood,6,5.55556,Fysikbasserne
+7,Sludgefist,7,2.77778,Fysikbasserne
+8,Stone Legion Generals,8,16.66668,Fysikbasserne
+9,Sire Denathrius,9,22.22224,Fysikbasserne
+0,Shriekwing,0,2.77778,Beyond Darkness
+1,Huntsman Altimor,1,5.55556,Beyond Darkness
+2,Hungering Destroyer,2,2.77778,Beyond Darkness
+3,Sun King's Salvation,3,2.77778,Beyond Darkness
+4,Artificer Xy'mox,4,11.11112,Beyond Darkness
+5,Lady Inerva Darkvein,5,5.55556,Beyond Darkness
+6,The Council of Blood,6,8.33334,Beyond Darkness
+7,Sludgefist,7,5.55556,Beyond Darkness
+8,Stone Legion Generals,8,33.33336,Beyond Darkness
+9,Sire Denathrius,9,27.7778,Beyond Darkness
+0,Shriekwing,0,5.55556,D A W N
+1,Huntsman Altimor,1,0.0,D A W N
+2,Hungering Destroyer,2,2.77778,D A W N
+3,Sun King's Salvation,3,11.11112,D A W N
+4,Artificer Xy'mox,4,2.77778,D A W N
+5,Lady Inerva Darkvein,5,5.55556,D A W N
+6,The Council of Blood,6,11.11112,D A W N
+7,Sludgefist,7,13.8889,D A W N
+8,Stone Legion Generals,8,27.7778,D A W N
+9,Sire Denathrius,9,27.7778,D A W N
+0,Shriekwing,0,0.0,Ashes of Harmony
+1,Huntsman Altimor,1,8.33334,Ashes of Harmony
+2,Hungering Destroyer,2,5.55556,Ashes of Harmony
+3,Sun King's Salvation,3,8.33334,Ashes of Harmony
+4,Artificer Xy'mox,4,13.8889,Ashes of Harmony
+5,Lady Inerva Darkvein,5,2.77778,Ashes of Harmony
+6,The Council of Blood,6,8.33334,Ashes of Harmony
+7,Sludgefist,7,16.66668,Ashes of Harmony
+8,Stone Legion Generals,8,25.00002,Ashes of Harmony
+9,Sire Denathrius,9,19.44446,Ashes of Harmony
+0,Shriekwing,0,0.0,Epic Whine
+1,Huntsman Altimor,1,0.0,Epic Whine
+2,Hungering Destroyer,2,0.0,Epic Whine
+3,Sun King's Salvation,3,0.0,Epic Whine
+4,Artificer Xy'mox,4,0.0,Epic Whine
+5,Lady Inerva Darkvein,5,0.0,Epic Whine
+6,The Council of Blood,6,16.66668,Epic Whine
+7,Sludgefist,7,0.0,Epic Whine
+8,Stone Legion Generals,8,2.77778,Epic Whine
+9,Sire Denathrius,9,52.77782,Epic Whine
+0,The Council of Blood,6,0.0,High Quality
+1,Sludgefist,7,0.0,High Quality
+2,Stone Legion Generals,8,0.0,High Quality
+3,Sire Denathrius,9,36.11114,High Quality
+0,Shriekwing,0,0.0,Oracle
+1,Huntsman Altimor,1,0.0,Oracle
+2,Hungering Destroyer,2,5.55556,Oracle
+3,Sun King's Salvation,3,2.77778,Oracle
+4,Artificer Xy'mox,4,11.11112,Oracle
+5,Lady Inerva Darkvein,5,5.55556,Oracle
+6,The Council of Blood,6,13.8889,Oracle
+7,Sludgefist,7,13.8889,Oracle
+8,Stone Legion Generals,8,22.22224,Oracle
+9,Sire Denathrius,9,33.33336,Oracle
+0,Shriekwing,0,2.77778,Folkvang
+1,Huntsman Altimor,1,2.77778,Folkvang
+2,Hungering Destroyer,2,0.0,Folkvang
+3,Sun King's Salvation,3,8.33334,Folkvang
+4,Artificer Xy'mox,4,2.77778,Folkvang
+5,Lady Inerva Darkvein,5,0.0,Folkvang
+6,The Council of Blood,6,5.55556,Folkvang
+7,Sludgefist,7,16.66668,Folkvang
+8,Stone Legion Generals,8,16.66668,Folkvang
+9,Sire Denathrius,9,13.8889,Folkvang
+0,Shriekwing,0,5.55556,Rally
+1,Huntsman Altimor,1,2.77778,Rally
+2,Hungering Destroyer,2,8.33334,Rally
+3,Sun King's Salvation,3,5.55556,Rally
+4,Artificer Xy'mox,4,8.33334,Rally
+5,Lady Inerva Darkvein,5,0.0,Rally
+6,The Council of Blood,6,8.33334,Rally
+7,Sludgefist,7,11.11112,Rally
+8,Stone Legion Generals,8,30.55558,Rally
+9,Sire Denathrius,9,33.33336,Rally
+0,Shriekwing,0,2.77778,TAG
+1,Huntsman Altimor,1,8.33334,TAG
+2,Hungering Destroyer,2,8.33334,TAG
+3,Sun King's Salvation,3,5.55556,TAG
+4,Artificer Xy'mox,4,13.8889,TAG
+5,Lady Inerva Darkvein,5,5.55556,TAG
+6,The Council of Blood,6,11.11112,TAG
+7,Sludgefist,7,8.33334,TAG
+8,Stone Legion Generals,8,22.22224,TAG
+9,Sire Denathrius,9,5.55556,TAG
+0,Shriekwing,0,5.55556,Nox
+1,Huntsman Altimor,1,2.77778,Nox
+2,Hungering Destroyer,2,13.8889,Nox
+3,Sun King's Salvation,3,2.77778,Nox
+4,Artificer Xy'mox,4,11.11112,Nox
+5,Lady Inerva Darkvein,5,2.77778,Nox
+6,The Council of Blood,6,16.66668,Nox
+7,Sludgefist,7,13.8889,Nox
+8,Stone Legion Generals,8,30.55558,Nox
+9,Sire Denathrius,9,30.55558,Nox
+0,Shriekwing,0,11.11112,ad hoc
+1,Huntsman Altimor,1,8.33334,ad hoc
+2,Hungering Destroyer,2,8.33334,ad hoc
+3,Sun King's Salvation,3,2.77778,ad hoc
+4,Artificer Xy'mox,4,5.55556,ad hoc
+5,Lady Inerva Darkvein,5,5.55556,ad hoc
+6,The Council of Blood,6,11.11112,ad hoc
+7,Sludgefist,7,8.33334,ad hoc
+8,Stone Legion Generals,8,22.22224,ad hoc
+9,Sire Denathrius,9,27.7778,ad hoc
+0,Shriekwing,0,2.77778,Notorious
+1,Huntsman Altimor,1,2.77778,Notorious
+2,Hungering Destroyer,2,2.77778,Notorious
+3,Sun King's Salvation,3,8.33334,Notorious
+4,Artificer Xy'mox,4,11.11112,Notorious
+5,Lady Inerva Darkvein,5,2.77778,Notorious
+6,The Council of Blood,6,16.66668,Notorious
+7,Sludgefist,7,8.33334,Notorious
+8,Stone Legion Generals,8,36.11114,Notorious
+9,Sire Denathrius,9,38.88892,Notorious
+0,Shriekwing,0,5.55556,Quality Check
+1,Huntsman Altimor,1,0.0,Quality Check
+2,Hungering Destroyer,2,5.55556,Quality Check
+3,Sun King's Salvation,3,8.33334,Quality Check
+4,Artificer Xy'mox,4,2.77778,Quality Check
+5,Lady Inerva Darkvein,5,2.77778,Quality Check
+6,The Council of Blood,6,5.55556,Quality Check
+7,Sludgefist,7,8.33334,Quality Check
+8,Stone Legion Generals,8,0.0,Quality Check
+0,Shriekwing,0,0.0,Snowblind
+1,Huntsman Altimor,1,2.77778,Snowblind
+2,Hungering Destroyer,2,5.55556,Snowblind
+3,Sun King's Salvation,3,8.33334,Snowblind
+4,Artificer Xy'mox,4,0.0,Snowblind
+5,Lady Inerva Darkvein,5,2.77778,Snowblind
+6,The Council of Blood,6,19.44446,Snowblind
+7,Sludgefist,7,5.55556,Snowblind
+8,Stone Legion Generals,8,33.33336,Snowblind
+9,Sire Denathrius,9,38.88892,Snowblind
+0,Shriekwing,0,2.77778,CthUwU
+1,Huntsman Altimor,1,8.33334,CthUwU
+2,Hungering Destroyer,2,8.33334,CthUwU
+3,Sun King's Salvation,3,2.77778,CthUwU
+4,Artificer Xy'mox,4,8.33334,CthUwU
+5,Lady Inerva Darkvein,5,5.55556,CthUwU
+6,The Council of Blood,6,13.8889,CthUwU
+7,Sludgefist,7,5.55556,CthUwU
+8,Stone Legion Generals,8,2.77778,CthUwU
+0,Shriekwing,0,5.55556,Shuffle
+1,Huntsman Altimor,1,0.0,Shuffle
+2,Hungering Destroyer,2,2.77778,Shuffle
+3,Sun King's Salvation,3,2.77778,Shuffle
+4,Artificer Xy'mox,4,5.55556,Shuffle
+5,Lady Inerva Darkvein,5,5.55556,Shuffle
+6,The Council of Blood,6,19.44446,Shuffle
+7,Sludgefist,7,8.33334,Shuffle
+8,Stone Legion Generals,8,30.55558,Shuffle
+9,Sire Denathrius,9,36.11114,Shuffle
+0,Shriekwing,0,0.0,Sacred Lotus
+1,Huntsman Altimor,1,0.0,Sacred Lotus
+2,Hungering Destroyer,2,2.77778,Sacred Lotus
+3,Sun King's Salvation,3,2.77778,Sacred Lotus
+4,Artificer Xy'mox,4,13.8889,Sacred Lotus
+5,Lady Inerva Darkvein,5,0.0,Sacred Lotus
+6,The Council of Blood,6,8.33334,Sacred Lotus
+7,Sludgefist,7,8.33334,Sacred Lotus
+8,Stone Legion Generals,8,22.22224,Sacred Lotus
+9,Sire Denathrius,9,36.11114,Sacred Lotus
+0,Shriekwing,0,0.0,Okay
+1,Huntsman Altimor,1,8.33334,Okay
+2,Hungering Destroyer,2,11.11112,Okay
+3,Sun King's Salvation,3,2.77778,Okay
+4,Artificer Xy'mox,4,8.33334,Okay
+5,Lady Inerva Darkvein,5,5.55556,Okay
+6,The Council of Blood,6,8.33334,Okay
+7,Sludgefist,7,8.33334,Okay
+8,Stone Legion Generals,8,25.00002,Okay
+9,Sire Denathrius,9,25.00002,Okay
+0,Shriekwing,0,0.0,just sit me
+1,Huntsman Altimor,1,0.0,just sit me
+2,Hungering Destroyer,2,0.0,just sit me
+3,Sun King's Salvation,3,0.0,just sit me
+4,Artificer Xy'mox,4,2.77778,just sit me
+5,Lady Inerva Darkvein,5,0.0,just sit me
+6,The Council of Blood,6,2.77778,just sit me
+7,Sludgefist,7,0.0,just sit me
+8,Stone Legion Generals,8,25.00002,just sit me
+9,Sire Denathrius,9,36.11114,just sit me
+0,Shriekwing,0,5.55556,Dinosaur Cowboys
+1,Huntsman Altimor,1,2.77778,Dinosaur Cowboys
+2,Hungering Destroyer,2,5.55556,Dinosaur Cowboys
+3,Sun King's Salvation,3,5.55556,Dinosaur Cowboys
+4,Artificer Xy'mox,4,2.77778,Dinosaur Cowboys
+5,Lady Inerva Darkvein,5,2.77778,Dinosaur Cowboys
+6,The Council of Blood,6,16.66668,Dinosaur Cowboys
+7,Sludgefist,7,13.8889,Dinosaur Cowboys
+8,Stone Legion Generals,8,19.44446,Dinosaur Cowboys
+9,Sire Denathrius,9,38.88892,Dinosaur Cowboys
+0,Shriekwing,0,0.0,Business Class
+1,Huntsman Altimor,1,5.55556,Business Class
+2,Hungering Destroyer,2,8.33334,Business Class
+3,Sun King's Salvation,3,8.33334,Business Class
+4,Artificer Xy'mox,4,5.55556,Business Class
+5,Lady Inerva Darkvein,5,11.11112,Business Class
+6,The Council of Blood,6,13.8889,Business Class
+7,Sludgefist,7,22.22224,Business Class
+8,Stone Legion Generals,8,36.11114,Business Class
+9,Sire Denathrius,9,50.00004,Business Class
+0,Shriekwing,0,0.0,Thats My Cousin
+1,Huntsman Altimor,1,2.77778,Thats My Cousin
+2,Hungering Destroyer,2,2.77778,Thats My Cousin
+3,Sun King's Salvation,3,0.0,Thats My Cousin
+4,Artificer Xy'mox,4,11.11112,Thats My Cousin
+5,Lady Inerva Darkvein,5,5.55556,Thats My Cousin
+6,The Council of Blood,6,11.11112,Thats My Cousin
+7,Sludgefist,7,5.55556,Thats My Cousin
+0,Shriekwing,0,2.77778,scheme team
+1,Huntsman Altimor,1,5.55556,scheme team
+2,Hungering Destroyer,2,2.77778,scheme team
+3,Sun King's Salvation,3,0.0,scheme team
+4,Artificer Xy'mox,4,8.33334,scheme team
+5,Lady Inerva Darkvein,5,8.33334,scheme team
+6,The Council of Blood,6,8.33334,scheme team
+7,Sludgefist,7,16.66668,scheme team
+8,Stone Legion Generals,8,22.22224,scheme team
+9,Sire Denathrius,9,30.55558,scheme team

@@ -10,39 +10,50 @@ from datetime import datetime
 from scipy import stats
 from matplotlib import pyplot as plt
 
-server = 'localhost'
-database = 'nathria_prog'
-username = 'postgres'
-password = 'postgres'
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+try:
+    server = 'localhost'
+    database = 'nathria_prog'
+    username = 'postgres'
+    password = 'postgres'
 
-if 'conn' in locals():
-    conn.close()
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
-conn = psycopg2.connect('host='+server+' dbname='+database+' user = '+username+' password='+password)
-curs = conn.cursor()
+    if 'conn' in locals():
+        conn.close()
+    engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+    conn = psycopg2.connect('host='+server+' dbname='+database+' user = '+username+' password='+password)
+    curs = conn.cursor()
 
-curs.execute('select distinct guild_name from nathria_prog')
-guilds = [item[0] for item in curs.fetchall()]
+    curs.execute('select distinct guild_name from nathria_prog')
+    guilds = [item[0] for item in curs.fetchall()]
 
-if 'conn' in locals():
-    conn.close()
-conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-curs = conn.cursor()
-
-def get_prog_hours(guild_name):
+    if 'conn' in locals():
+        conn.close()
+    conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+    curs = conn.cursor()
+except:
+    data = pd.read_csv(dname+'/nathria_prog_allpulls_small.csv')
+    guilds = data['guild_name'].unique()
     
-    curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
-        ('nathria_guild_raid_hours',))
-    if curs.fetchone()[0]:
-        curs.execute("select * from nathria_guild_raid_hours where guild_name = '"+str(guild_name)+"'")
-        guild_already_added = pd.DataFrame(curs.fetchall())
-        if len(guild_already_added) == 1:
-            print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
-            return None     
+    pass
 
-    curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
-    guild_pulls = pd.DataFrame(curs.fetchall())
-    guild_pulls.columns = [desc[0] for desc in curs.description]
+def get_prog_hours(guild_name, sql = True, guild_pulls = None):
+    if sql:
+        curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+            ('nathria_guild_raid_hours',))
+        if curs.fetchone()[0]:
+            curs.execute("select * from nathria_guild_raid_hours where guild_name = '"+str(guild_name)+"'")
+            guild_already_added = pd.DataFrame(curs.fetchall())
+            if len(guild_already_added) == 1:
+                print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
+                return None     
+
+        curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
+        guild_pulls = pd.DataFrame(curs.fetchall())
+        guild_pulls.columns = [desc[0] for desc in curs.description]
+    elif guild_pulls is None:
+        raise(f'Not sql and guild pulls is non in get prog hours.')
+
     guild_pulls = guild_pulls.sort_values(by = ['boss_num','pull_num'])
 
     if len(guild_pulls)< 50:
@@ -116,24 +127,29 @@ def get_prog_hours(guild_name):
         'daily_hours': [guild_daily_hours],
         'weekly_hours': [guild_weekly_hours]
     })
-    print('Adding guild '+str(guild_name)+' to nathria_guild_raid_hours.')
-    guild_hours.to_sql('nathria_guild_raid_hours', engine, if_exists = 'append', index = False)
+    try:
+        guild_hours.to_sql('nathria_guild_raid_hours', engine, if_exists = 'append', index = False)
+        print('Adding guild '+str(guild_name)+' to nathria_guild_raid_hours.')
+    except:
+        print(f'Didnt add to sql.')
+        return(guild_hours)
 
-def get_boss_prog_time(guild_name):
+def get_boss_prog_time(guild_name, sql = True, guild_pulls = None):
     
-    sql_table_exist = curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
-        ('nathria_guild_bossprog_hours',))
-    if curs.fetchone()[0]:
-        curs.execute("select * from nathria_guild_bossprog_hours where guild_name = '"+str(guild_name)+"'")
-        guild_already_added = pd.DataFrame(curs.fetchall())
-        if len(guild_already_added) == 1:
-            print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
-            return None    
+    if sql:
+        sql_table_exist = curs.execute("select exists(select * from information_schema.tables where table_name=%s)",\
+            ('nathria_guild_bossprog_hours',))
+        if curs.fetchone()[0]:
+            curs.execute("select * from nathria_guild_bossprog_hours where guild_name = '"+str(guild_name)+"'")
+            guild_already_added = pd.DataFrame(curs.fetchall())
+            if len(guild_already_added) == 1:
+                print('Guild: '+str(guild_name)+' already in SQL table. Continuing...')
+                return None    
 
-    
-    curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
-    guild_pulls = pd.DataFrame(curs.fetchall())
-    guild_pulls.columns = [desc[0] for desc in curs.description]
+        
+        curs.execute("select * from nathria_prog where guild_name = '"+guild_name+"'")
+        guild_pulls = pd.DataFrame(curs.fetchall())
+        guild_pulls.columns = [desc[0] for desc in curs.description]
 
     if len(guild_pulls)< 50:
         return None
@@ -171,14 +187,34 @@ def get_boss_prog_time(guild_name):
         'prog_time': boss_prog_time[bosses_seen], 
         'guild_name': guild_name
     })
-    print('Adding guild '+str(guild_name)+' to nathria_guild_bossprog_hours.')
-    boss_prog_df.to_sql('nathria_guild_bossprog_hours', engine, if_exists = 'append', index = False)
+    try:
+        boss_prog_df.to_sql('nathria_guild_bossprog_hours', engine, if_exists = 'append', index = False)
+        print('Adding guild '+str(guild_name)+' to nathria_guild_bossprog_hours.')
+    except:
+        print(f'Didnt add to sql.')
+        return(boss_prog_df)   
 
-for k, guild_name in enumerate(guilds[5000:]):
+#%%
+for k, guild_name in enumerate(guilds):
     print('Pulling guild '+str(guild_name)+' Number '+str(k))
     get_prog_hours(guild_name)
     get_boss_prog_time(guild_name)
 
+prog_hours = pd.DataFrame()
+prog_boss_hours = pd.DataFrame()
+
+for k, guild_name in enumerate(guilds):
+    print('Pulling guild '+str(guild_name)+' Number '+str(k))
+    try:
+        prog_hours = pd.concat([prog_hours,get_prog_hours(guild_name, sql = False, guild_pulls=data.query("guild_name == @guild_name"))])    
+        write_csv(prog_hours, 'prog_hours.csv')
+    except:
+        pass
+    try:
+        prog_boss_hours = pd.concat([prog_boss_hours,get_boss_prog_time(guild_name, sql = False, guild_pulls=data.query("guild_name == @guild_name"))])
+        write_csv(prog_boss_hours, 'prog_boss_hours.csv')
+    except:
+        pass
 
 # for guild in guilds:
 #     try:

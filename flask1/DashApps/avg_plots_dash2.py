@@ -26,6 +26,15 @@ import regex as re
 from sqlalchemy import create_engine
 import psycopg2
 
+import numpy as np
+import json
+import os
+import time
+from datetime import datetime
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+
 def add_boss_nums(df):
 
     boss_names = [
@@ -54,6 +63,70 @@ def filter_df(df_filter, metric):
         new_df_filt = new_df_filt.append(boss_df.query(str(metric)+ ' < '+str(upper)).query(str(metric)+ ' > '+str(lower)))
     return new_df_filt
 
+def make_agg_data_groupcomp(specific_boss, sql = True, dname = None):  
+    specific_boss = specific_boss.replace("'", "''")
+    
+    if sql:
+        curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
+            ilvl, covenant, boss_name \
+            from nathria_prog_v2_players as players \
+            join \
+                (select * from max_pull_count_small \
+                where name = '{specific_boss}' and kill = 'True') as kill_df \
+            on players.unique_id = kill_df.unique_id;")
+        sql_df = pd.DataFrame(curs.fetchall())
+        sql_df.columns = [desc[0] for desc in curs.description]
+
+        n_pulls = len(sql_df.unique_id.unique())
+      
+        df = sql_df
+        
+        df = df.dropna(subset = ['p_class','spec','role'])
+
+        df['test'] = df[df.columns[1:4]].apply(
+            lambda x: ', '.join(x.dropna().astype(str)),
+            axis=1
+        )
+    else:
+        df = pull_df = pd.read_csv(dname+'/../../Pulling data/only_first_kill_players.csv').query(f"boss_name == '{specific_boss}'")
+        df = df.rename(columns = {'class': 'p_class'})
+        n_pulls = len(df.unique_id.unique())
+        
+        df = df.dropna(subset = ['p_class','spec','role'])
+
+        df['test'] = df[df.columns[5:8]].apply(
+            lambda x: ', '.join(x.dropna().astype(str)),
+            axis=1
+        )
+
+    temp_df = df.groupby(['unique_id','test']).\
+        size().unstack(fill_value=0).stack().reset_index(name='counts')
+
+    test = []
+    for x in temp_df[temp_df.columns[1]]:
+        test.append(re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0])
+    temp_df['p_class'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][0]
+    )
+    temp_df['spec'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][1]
+    )
+    temp_df['role'] = temp_df[temp_df.columns[1]].apply(
+        lambda x: re.findall('(.*),\s(.*),\s(.*)', str(x))[0][2]
+    )
+
+    avg_comp = temp_df.groupby(['p_class','spec','role']).mean().reset_index().dropna().rename(columns={'counts': 'mean_val'})
+    std_comp = temp_df.groupby(['p_class','spec','role']).std().reset_index().dropna().rename(columns={'counts': 'std_val'})
+    std_comp['std_val'] = std_comp['std_val']/np.sqrt(n_pulls)
+
+    df = pd.merge(avg_comp, std_comp, on=['p_class', 'spec'], how='inner').\
+        rename(columns={'role_x': 'role'})
+
+    df = df.reindex(columns=['p_class', 'spec', 'role', 'mean_val','std_val'])
+    df['n_pulls'] = n_pulls
+
+    return df
+
 #%%
 def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
@@ -70,24 +143,32 @@ def init_dashboard(server):
     # app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 
     #%% Create Data
-    server = 'localhost'
-    database = 'nathria_prog'
-    username = 'postgres'
-    password = 'postgres'
-
-    if 'conn' in locals():
-        conn.close()
     try:
-        engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
-        conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-    except:
-        engine = create_engine('postgresql://postgres:postgres@192.168.0.6:5432/nathria_prog')
-        conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
-    curs = conn.cursor()
+        server = 'localhost'
+        database = 'nathria_prog'
+        username = 'postgres'
+        password = 'postgres'
 
-    curs.execute('select distinct guild_name from nathria_prog')
-    guilds = [item[0] for item in curs.fetchall()]
-    # guilds = ['Dinosaur Cowboys']
+        if 'conn' in locals():
+            conn.close()
+        try:
+            engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+            conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+        except:
+            engine = create_engine('postgresql://postgres:postgres@192.168.0.6:5432/nathria_prog')
+            conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
+        curs = conn.cursor()
+
+        curs.execute('select distinct guild_name from nathria_prog')
+        guilds = [item[0] for item in curs.fetchall()]
+        # guilds = ['Dinosaur Cowboys']
+    except:
+        print(f"Data base not found, using csv.")
+        data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_allpulls_small.csv')
+        guilds = data['guild_name'].unique()
+        
+        pulls = data
+
 
     boss_names = ['Shriekwing', \
                 'Huntsman Altimor',
@@ -122,14 +203,17 @@ def init_dashboard(server):
                             vertical_spacing = 0.25)
 
         # Pull Count Plotting
-        pull_count_query = \
-            f"\
-                select name, pull_num, average_item_level from max_pull_count_small \
-                where name = '{specific_boss}' and kill = 'True';\
-            "
-        curs.execute(pull_count_query)
-        pull_count = pd.DataFrame(curs.fetchall())
-        pull_count.columns = [desc[0] for desc in curs.description]
+        try:
+            pull_count_query = \
+                f"\
+                    select name, pull_num, average_item_level from max_pull_count_small \
+                    where name = '{specific_boss}' and kill = 'True';\
+                "
+            curs.execute(pull_count_query)
+            pull_count = pd.DataFrame(curs.fetchall())
+            pull_count.columns = [desc[0] for desc in curs.description]
+        except:
+            pull_count = pulls.query("name == @specific_boss and kill == 't'").groupby('guild_name').first().reset_index()
         pull_count = pull_count.rename(columns = {'max': 'pull_num'}).query('pull_num > 5')
         pull_count = add_boss_nums(pull_count)
         pull_count = filter_df(pull_count.copy(deep = True), 'pull_num')
@@ -149,11 +233,15 @@ def init_dashboard(server):
         )
         
         # Progression Time Plotting
-        curs.execute(f"select boss_num, prog_time, name, guild_name \
-            from nathria_guild_bossprog_hours \
-            where name = '{specific_boss}' and prog_time > 0.5;")
-        prog_hours = pd.DataFrame(curs.fetchall())
-        prog_hours.columns = [desc[0] for desc in curs.description]
+        try:
+            curs.execute(f"select boss_num, prog_time, name, guild_name \
+                from nathria_guild_bossprog_hours \
+                where name = '{specific_boss}' and prog_time > 0.5;")
+            prog_hours = pd.DataFrame(curs.fetchall())
+            prog_hours.columns = [desc[0] for desc in curs.description]
+        except:
+            prog_hours = pd.read_csv(dname+'/../../Pulling data/prog_boss_hours.csv').query("name == @specific_boss")
+
         prog_hours = add_boss_nums(prog_hours)
         prog_hours = filter_df(prog_hours.copy(deep = True), 'prog_time')
         # prog_hours = pd.read_csv('G://My Drive//succes_predictor//dash2//prog_hours.csv')
@@ -174,16 +262,25 @@ def init_dashboard(server):
         )
 
         # Average Item Level Plotting
-        fig.append_trace(go.Histogram(
-            x = filter_df(pull_count.copy(deep = True), 'average_item_level')['average_item_level'], 
-            histnorm='probability',
-            name = 'Item Level',
-            marker=dict(color = 'grey'),
-        ), row = 2, col = 1)
+        if 'average_item_level' in pull_count.columns:
+            fig.append_trace(go.Histogram(
+                x = filter_df(pull_count.copy(deep = True), 'average_item_level')['average_item_level'], 
+                histnorm='probability',
+                name = 'Item Level',
+                marker=dict(color = 'grey'),
+            ), row = 2, col = 1)
+        else:
+            ilvl_data = pd.read_csv(dname+'/../../Pulling data/only_first_kill_players.csv').query('boss_name == @specific_boss').groupby('guild_name')['ilvl'].mean()
+            fig.append_trace(go.Histogram(
+                x = ilvl_data,
+                histnorm='probability',
+                name = 'Item Level',
+                marker=dict(color = 'grey'),
+            ), row = 2, col = 1)
         fig['layout']['xaxis3']['title'] = 'Average Group Item Level at Kill'
         fig['layout']['yaxis3']['title'] = 'Proportion'
         fig.add_vline(
-            x = np.median(pull_count['average_item_level']),
+            x = np.nanmedian(list(ilvl_data)),
                 line_color = 'red',
             row = 2,
             col = 1
@@ -267,12 +364,15 @@ def init_dashboard(server):
     )
     def make_comp_plot(specific_boss):
         specific_boss = specific_boss.replace("'", "''")
-        curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
-        sql_df = pd.DataFrame(curs.fetchall())
-        sql_df.columns = [desc[0] for desc in curs.description]
+        try:
+            curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
+            sql_df = pd.DataFrame(curs.fetchall())
+            sql_df.columns = [desc[0] for desc in curs.description]
 
-        df = sql_df
-            
+            df = sql_df
+        except:
+            df = make_agg_data_groupcomp(specific_boss, sql = False, dname = dname)
+
         colors = {'DeathKnight': '#D62728',
                 'DemonHunter': '#750D86',
                 'Druid': '#F58518',
@@ -302,15 +402,16 @@ def init_dashboard(server):
                 bars.append(go.Bar(
                     x = spec_df.p_class,
                     y = spec_df.mean_val,
+                    error_y=dict(
+                        type='data', 
+                        array=[spec_df.std_val.iloc[0]],
+                        thickness=0.75),
+                    customdata = [[spec_df.std_val.iloc[0]]],
                     name = '',
                     # y = spec_df.counts,
                     width = .15,
-                    error_y=dict(
-                        type='data', 
-                        array=[spec_df.std_val],
-                        thickness=0.75),
                     text = spec_df.spec,
-                    hovertemplate = '%{text} %{x} <br> %{y:.2f} ± %{error_y:.2f}',
+                    hovertemplate = '%{text} %{x} <br> %{y:.2f} ± %{customdata[0]:.2f}',
                     offsetgroup = spec_count,
                     showlegend = False,
                     marker = {'color': colors[p_class]}))

@@ -68,13 +68,17 @@ def rm_repeat_boss(df):
 
 def get_one_guild_pulls(specific_boss, guild_name):
     specific_boss = specific_boss.replace("'", "''")
-    curs2.execute(f"Select *, log_start+start_time as fight_start_time\
-        from nathria_prog_v2 where name = '{specific_boss}' and guild_name = '{guild_name}';")
+    try:
+        curs2.execute(f"Select *, log_start+start_time as fight_start_time\
+            from nathria_prog_v2 where name = '{specific_boss}' and guild_name = '{guild_name}';")
 
-    pull_df = pd.DataFrame(curs2.fetchall())
-    pull_df.columns = [desc[0] for desc in curs2.description]
+        pull_df = pd.DataFrame(curs2.fetchall())
+        pull_df.columns = [desc[0] for desc in curs2.description]
 
-    pull_df = rm_repeat_boss(pull_df)
+        pull_df = rm_repeat_boss(pull_df)
+    except:
+        pull_df = pd.read_csv(dname+'/../../Pulling data/only_first_kill_players.csv').query(f"guild_name == '{guild_name}' and boss_name == '{specific_boss}'")
+        
     return pull_df
 
 def make_fights_query_onefight(fight):
@@ -253,13 +257,20 @@ from datetime import datetime
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
+print(os.listdir(dname+'\\..\\..\\Pulling Data\\'))
+print(dname)
+print(dname)
+print(dname)
+print(dname)
+print(dname)
+print(os.path.isfile(dname+'\\..\\..\\Pulling Data\\refresh_token.env'))
 
-if os.path.isfile('..\\Pulling Data\\refresh_token.env'):
-    env_vars = dotenv_values('..\\Pulling Data\\refresh_token.env')
+if os.path.isfile(dname+'\\..\\..\\Pulling Data\\refresh_token.env'):
+    env_vars = dotenv_values(dname+'\\..\\..\\Pulling Data\\refresh_token.env')
     refresh_token = env_vars['refresh_token']
     access_token = env_vars['access_token']
 
-    env_vars = dotenv_values('..\\Pulling Data\\config.env')
+    env_vars = dotenv_values(dname+'\\..\\..\\Pulling Data\\config.env')
     client_id = env_vars['id']
     client_secret = env_vars['secret']
     code = env_vars['code']
@@ -275,20 +286,23 @@ if os.path.isfile('..\\Pulling Data\\refresh_token.env'):
 else:
     raise 'Get your fresh token dumby'
 
-from sqlalchemy import create_engine
-import psycopg2
+try:
+    from sqlalchemy import create_engine
+    import psycopg2
 
-server = 'localhost'
-database = 'nathria_prog'
-username = 'postgres'
-password = 'postgres'
+    server = 'localhost'
+    database = 'nathria_prog'
+    username = 'postgres'
+    password = 'postgres'
 
-if 'conn' in locals():
-    conn.close()
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
-conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-curs = conn.cursor()
-curs2 = conn.cursor()
+    if 'conn' in locals():
+        conn.close()
+    engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+    conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+    curs = conn.cursor()
+    curs2 = conn.cursor()
+except:
+    print(f'No database found, using csvs.')
 
 
 def init_dashboard(server):
@@ -304,9 +318,12 @@ def init_dashboard(server):
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
     # dash_app.server = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 
-
-    curs.execute('select distinct guild_name from nathria_prog')
-    guilds = [item[0] for item in curs.fetchall()]
+    try:
+        curs.execute('select distinct guild_name from nathria_prog')
+        guilds = [item[0] for item in curs.fetchall()]
+    except:
+        data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_small.csv')
+        guilds = data['guild_name'].unique()
 
     boss_names = ['Shriekwing', \
                 'Huntsman Altimor',
@@ -335,14 +352,28 @@ def init_dashboard(server):
         specific_boss = specific_boss.replace("'", "''")
         # curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
 
-        if prog_or_all == 'prog_only_pulls':
-            curs.execute(f"select * from nathria_prog where guild_name = '{guild_name}' and name = '{specific_boss}'")
-        elif prog_or_all == 'all_pulls':
-            curs.execute(f"select * from nathria_prog_allpulls where guild_name = '{guild_name}' and name = '{specific_boss}'")
+        try:
+            if prog_or_all == 'prog_only_pulls':
+                curs.execute(f"select * from nathria_prog where guild_name = '{guild_name}' and name = '{specific_boss}'")
+            elif prog_or_all == 'all_pulls':
+                curs.execute(f"select * from nathria_prog_allpulls where guild_name = '{guild_name}' and name = '{specific_boss}'")
 
-        # curs.execute("select * from nathria_prog where guild_name = '" + str(guilds[int(guild_num)])+"'")
-        pulls = pd.DataFrame(curs.fetchall())
-        pulls.columns = [desc[0] for desc in curs.description]
+            # curs.execute("select * from nathria_prog where guild_name = '" + str(guilds[int(guild_num)])+"'")
+            pulls = pd.DataFrame(curs.fetchall())
+            pulls.columns = [desc[0] for desc in curs.description]
+        except:
+            print(f"Data base not found, using csv.")
+            if prog_or_all == 'prog_only_pulls':
+                data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_small.csv')
+                guilds = data['guild_name'].unique()
+
+                pulls = data.query(f"guild_name == '{guild_name}' and name == '{specific_boss}'")
+            elif prog_or_all == 'all_pulls':
+                data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_allpulls_small.csv')
+                guilds = data['guild_name'].unique()
+                
+                pulls = data.query(f"guild_name == '{guild_name}' and name == '{specific_boss}'")
+
         newdf = pulls.sort_values(by = 'boss_num')
         n_bosses = len(np.unique(pulls['boss_num']))
         # # Fixing Data frames cause I don't know why
@@ -390,46 +421,46 @@ def init_dashboard(server):
         fig.for_each_xaxis(lambda xaxis: xaxis.update(title = 'Pull Number'))
         fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
-        # try:
-        model_specific_boss = specific_boss.replace(' ','_')
-        filename = dname+f'.\{model_specific_boss}_mod.pickle'
-        clf = joblib.load(filename)
+        try:
+            model_specific_boss = specific_boss.replace(' ','_')
+            filename = dname+f'.\{model_specific_boss}_mod.pickle'
+            clf = joblib.load(filename)
 
-        def listify_pulls(end_perc):
-            pull_list = []
+            def listify_pulls(end_perc):
+                pull_list = []
 
-            n_fights = 10
-            end_perc
+                n_fights = 10
+                end_perc
 
-            pulls = [100]*n_fights
-            for k in range(len(end_perc)-1):
-                if k == 0:
-                    pass
-                else:
-                    pulls.pop(0)
-                    pulls.append(end_perc[k])
-                pull_list.append(pulls.copy())
-            return pull_list
+                pulls = [100]*n_fights
+                for k in range(len(end_perc)-1):
+                    if k == 0:
+                        pass
+                    else:
+                        pulls.pop(0)
+                        pulls.append(end_perc[k])
+                    pull_list.append(pulls.copy())
+                return pull_list
 
-        pulls = listify_pulls(list(newdf.sort_values(by = ['pull_num'])['end_perc']))
+            pulls = listify_pulls(list(newdf.sort_values(by = ['pull_num'])['end_perc']))
 
-        s_prob = [item[1] for item in clf.predict_proba(pulls)]
+            s_prob = [item[1] for item in clf.predict_proba(pulls)]
 
-        fig = fig
-        fig.add_trace(
-            go.Scatter(x = sorted(newdf['pull_num']), 
-                    y = np.array(s_prob)*100,
-                    marker = {'size': 0,
-                            'opacity': 0},
-                    # showlegend = False,
-                    name = 'Kill Probability<br>on next pull',
-                    # hovertemplate = 'Win Prob<br>on next pull<br>%{y:.2f}%'),
-                    hovertemplate = '%{y:.2f}%'),
-            # row = 1,
-            # col = 1,
-        )
-        # except:
-        #     pass
+            fig = fig
+            fig.add_trace(
+                go.Scatter(x = sorted(newdf['pull_num']), 
+                        y = np.array(s_prob)*100,
+                        marker = {'size': 0,
+                                'opacity': 0},
+                        # showlegend = False,
+                        name = 'Kill Probability<br>on next pull',
+                        # hovertemplate = 'Win Prob<br>on next pull<br>%{y:.2f}%'),
+                        hovertemplate = '%{y:.2f}%'),
+                # row = 1,
+                # col = 1,
+            )
+        except:
+            pass
         
         fig.update_layout(hovermode = 'x')
         fig.update_layout(
@@ -464,26 +495,35 @@ def init_dashboard(server):
 
         pulls_for_comp = get_one_guild_pulls(specific_boss, guild_name)
         
-        first_kill = pulls_for_comp.query('kill == 1.0')
-        if len(first_kill) > 0:
-            first_time = first_kill.loc[first_kill['fight_start_time'].idxmin()]['fight_start_time']
-            pulls_for_comp = pulls_for_comp.query(f'fight_start_time < {first_time+10}')
-        last_pull = pulls_for_comp.tail(1).to_dict(orient="records")[0]
-        last_pull['id'] = int(last_pull['id'])
+        try:
+            first_kill = pulls_for_comp.query('kill == 1.0')
+            if len(first_kill) > 0:
+                first_time = first_kill.loc[first_kill['fight_start_time'].idxmin()]['fight_start_time']
+                pulls_for_comp = pulls_for_comp.query(f'fight_start_time < {first_time+10}')
+            last_pull = pulls_for_comp.tail(1).to_dict(orient="records")[0]
+            last_pull['id'] = int(last_pull['id'])
 
-        result = requests.post(**get_fight_args(last_pull, graphql_endpoint, headers))
-        table = result.json()['data']['reportData']['report']['table']['data']
+            result = requests.post(**get_fight_args(last_pull, graphql_endpoint, headers))
+            table = result.json()['data']['reportData']['report']['table']['data']
 
-        player_info = parse_fight_table(table, 
-            last_pull['name'], 
-            last_pull['unique_id'], 
-            guild_name)
-        player_df = pd.DataFrame.from_dict(player_info)
+            player_info = parse_fight_table(table, 
+                last_pull['name'], 
+                last_pull['unique_id'], 
+                guild_name)
+            player_df = pd.DataFrame.from_dict(player_info)
+
+            player_df['test'] = player_df[player_df.columns[4:7]].apply(
+                lambda x: ', '.join(x.dropna().astype(str)),
+                axis=1
+            )
+        except:
+            player_df = pulls_for_comp
+
+            player_df['test'] = player_df[player_df.columns[5:8]].apply(
+                lambda x: ', '.join(x.dropna().astype(str)),
+                axis=1
+            )
         
-        player_df['test'] = player_df[player_df.columns[4:7]].apply(
-            lambda x: ', '.join(x.dropna().astype(str)),
-            axis=1
-        )
 
         temp_df = player_df.groupby(['unique_id','test']).\
             size().unstack(fill_value=0).stack().reset_index(name='counts')

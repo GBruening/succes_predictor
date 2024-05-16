@@ -99,28 +99,41 @@ except:
     conn = psycopg2.connect('host=192.168.0.6 dbname='+database+' user='+username+' password='+password)
 curs = conn.cursor()
 
-def make_agg_data_groupcomp(specific_boss):  
+def make_agg_data_groupcomp(specific_boss, sql = True, dname = None):  
     specific_boss = specific_boss.replace("'", "''")
     
-    curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
-        ilvl, covenant, boss_name \
-        from nathria_prog_v2_players as players \
-        join \
-            (select * from max_pull_count_small \
-            where name = '{specific_boss}' and kill = 'True') as kill_df \
-        on players.unique_id = kill_df.unique_id;")
-    sql_df = pd.DataFrame(curs.fetchall())
-    sql_df.columns = [desc[0] for desc in curs.description]
+    if sql:
+        curs.execute(f"select kill_df.unique_id, class as p_class, spec, role, \
+            ilvl, covenant, boss_name \
+            from nathria_prog_v2_players as players \
+            join \
+                (select * from max_pull_count_small \
+                where name = '{specific_boss}' and kill = 'True') as kill_df \
+            on players.unique_id = kill_df.unique_id;")
+        sql_df = pd.DataFrame(curs.fetchall())
+        sql_df.columns = [desc[0] for desc in curs.description]
 
-    n_pulls = len(sql_df.unique_id.unique())
+        n_pulls = len(sql_df.unique_id.unique())
       
-    df = sql_df
-    df = df.dropna(subset = ['p_class','spec','role'])
+        df = sql_df
+        
+        df = df.dropna(subset = ['p_class','spec','role'])
 
-    df['test'] = df[df.columns[1:4]].apply(
-        lambda x: ', '.join(x.dropna().astype(str)),
-        axis=1
-    )
+        df['test'] = df[df.columns[1:4]].apply(
+            lambda x: ', '.join(x.dropna().astype(str)),
+            axis=1
+        )
+    else:
+        df = pull_df = pd.read_csv(dname+'/../../Pulling data/only_first_kill_players.csv').query(f"boss_name == '{specific_boss}'")
+        df = df.rename(columns = {'class': 'p_class'})
+        n_pulls = len(df.unique_id.unique())
+        
+        df = df.dropna(subset = ['p_class','spec','role'])
+
+        df['test'] = df[df.columns[5:8]].apply(
+            lambda x: ', '.join(x.dropna().astype(str)),
+            axis=1
+        )
 
     temp_df = df.groupby(['unique_id','test']).\
         size().unstack(fill_value=0).stack().reset_index(name='counts')

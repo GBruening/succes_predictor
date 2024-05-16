@@ -32,21 +32,26 @@ import os
 import time
 from datetime import datetime
 
-from sqlalchemy import create_engine
-import psycopg2
-server = 'localhost'
-database = 'nathria_prog'
-username = 'postgres'
-password = 'postgres'
+try:
+    from sqlalchemy import create_engine
+    import psycopg2
+    server = 'localhost'
+    database = 'nathria_prog'
+    username = 'postgres'
+    password = 'postgres'
 
-if 'conn' in locals():
-    conn.close()
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
-conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
-curs = conn.cursor()
+    if 'conn' in locals():
+        conn.close()
+    engine = create_engine('postgresql://postgres:postgres@localhost:5432/nathria_prog')
+    conn = psycopg2.connect('host='+server+' dbname='+database+' user='+username+' password='+password)
+    curs = conn.cursor()
 
-curs.execute('select distinct guild_name from nathria_prog')
-guilds = [item[0] for item in curs.fetchall()]
+    curs.execute('select distinct guild_name from nathria_prog')
+    guilds = [item[0] for item in curs.fetchall()]
+except:
+    print(f"Data base not found, using csv.")
+    data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_allpulls_small.csv')
+    guilds = data['guild_name'].unique()
 
 boss_names = ['Shriekwing', \
             'Huntsman Altimor',
@@ -75,14 +80,30 @@ def update_fig(guild_name, prog_or_all, specific_boss):
     specific_boss = specific_boss.replace("'", "''")
     # curs.execute(f"select * from nathria_kill_comps where name = '{specific_boss}';")
 
-    if prog_or_all == 'prog_only_pulls':
-        curs.execute(f"select * from nathria_prog where guild_name = '{guild_name}' and name = '{specific_boss}'")
-    elif prog_or_all == 'all_pulls':
-        curs.execute(f"select * from nathria_prog_allpulls where guild_name = '{guild_name}' and name = '{specific_boss}'")
+    try:
+        if prog_or_all == 'prog_only_pulls':
+            curs.execute(f"select * from nathria_prog where guild_name = '{guild_name}' and name = '{specific_boss}'")
+        elif prog_or_all == 'all_pulls':
+            curs.execute(f"select * from nathria_prog_allpulls where guild_name = '{guild_name}' and name = '{specific_boss}'")
 
-    # curs.execute("select * from nathria_prog where guild_name = '" + str(guilds[int(guild_num)])+"'")
-    pulls = pd.DataFrame(curs.fetchall())
-    pulls.columns = [desc[0] for desc in curs.description]
+        # curs.execute("select * from nathria_prog where guild_name = '" + str(guilds[int(guild_num)])+"'")
+        pulls = pd.DataFrame(curs.fetchall())
+        pulls.columns = [desc[0] for desc in curs.description]
+    except:
+        print(f"Data base not found, using csv.")
+        if prog_or_all == 'prog_only_pulls':
+            data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_small.csv')
+            guilds = data['guild_name'].unique()
+
+            pulls = data.query(f"guild_name == '{guild_name}' and name == '{specific_boss}'")
+        elif prog_or_all == 'all_pulls':
+            data = pd.read_csv(dname+'/../../Pulling data/nathria_prog_allpulls_small.csv')
+            guilds = data['guild_name'].unique()
+            
+            pulls = data.query(f"guild_name == '{guild_name}' and name == '{specific_boss}'")
+
+
+
     newdf = pulls.sort_values(by = 'boss_num')
     n_bosses = len(np.unique(pulls['boss_num']))
     # # Fixing Data frames cause I don't know why
